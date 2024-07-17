@@ -1,0 +1,155 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+  {% from "internal-service-header/macro.njk" import dwpHeader %}
+
+{{
+    dwpHeader({
+        serviceName: "Service name",
+        serviceHref: '/index.html',
+        container: true,
+        navigation: {
+          items: [
+              {
+                  href: "ef-start-v2",
+                  text: "Case overview"
+              },
+              {
+                  href: "ef-payment-breakdown-v2",
+                  text: "Payment breakdown"
+              }
+          ]
+      }  
+    })
+}}
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{{ 
+    dwpKeyDetailsBar({
+        primaryIdentifier: {
+            text: 'Simon Smith:',
+            value: 'Simon Smith'
+        },
+        secondaryIdentifier: {
+            text: '1-2323454332:',
+            value: '1-2323454332'
+        },
+        status: {
+            text: 'Paying parent:',
+            value: 'Paying parent'
+        }
+    })
+}}
+{% endblock %}
+
+
+
+{% block content %}
+<h1 class="govuk-heading-xltwo">
+  Case overview
+</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-phase-bannerTwo">
+      <p class="govuk-phase-banner__content">
+        <span class="govuk-phase-banner__text">
+         Showing data for <b>6 months</b> 1 Jan 2024 to 1 Jun 2024.
+        </span>
+      </p>
+      <a href="ef-timeframe-v2.html" class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+        Change timeframe
+      </a>
+    </div>
+  </div>
+  
+
+  <div class="govuk-grid-column-full">
+    <div class="ef-card">
+      <div class="dfe-title">
+        <h2>Total</h2>
+        <p class="value">from 1 Jan 2024 to 1 Jun 2024</p>
+        <p>£23,608.50</p>
+      </div>
+      <article class="moj-ticket-panel" aria-label="Sub navigation 1">
+        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+          <p class="govuk-body">Maintenance due</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£11,643.07</h2>
+        </section>
+        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+          <p class="govuk-body">Charges, dept and fees due</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£11,965.43</h2>
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Collection charges</td>
+                <th scope="row" class="govuk-table__header">£1,961.43</th>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Enforcement charges</td>
+                <th scope="row" class="govuk-table__header">£300.00</th>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">CSA debt</td>
+                <th scope="row" class="govuk-table__header">£9,704.00</th>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Any other costs</td>
+                <th scope="row" class="govuk-table__header">£0.00</th>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </article>
+      
+    </div>
+    <div class="ef-card">
+      <div class="dfe-title">
+        <h2>Paid</h2>
+        <p class="value">from 1 Jan 2024 to 1 Jun 2024</p>
+        <p>£2,826.60</p>
+      </div>
+      <article class="moj-ticket-panel" aria-label="Sub navigation 1">
+        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+          <p class="govuk-body">Maintenance paid</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£2,100.00</h2>
+        </section>
+        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+          <p class="govuk-body">Charges, dept and fees paid</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£726.60</h2>
+        </section>
+      </article>
+    </div>
+    
+    <div class="ef-card">
+      <div class="dfe-title">
+        <h2>Outstanding</h2>
+        <p class="value">from 1 Jan 2024 to 1 Jun 2024</p>
+        <p>£19,357.56</p>
+      </div>
+      <article class="moj-ticket-panel" aria-label="Sub navigation 1">
+        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+          <p class="govuk-body">Maintenance outstanding</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£15,143.34</h2>
+        </section>
+        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+          <p class="govuk-body">Charges, dept and fees outstanding</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£4,214.22</h2>
+        </section>
+      </article>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
