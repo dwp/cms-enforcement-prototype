@@ -70,13 +70,15 @@
 
 
 {% block content %}
-
+<h1 class="govuk-heading-xltwo">
+  Case overview
+</h1>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <div class="govuk-phase-banner">
+    <div class="govuk-phase-bannerTwo">
       <p class="govuk-phase-banner__content">
         <span class="govuk-phase-banner__text">
-         Showing data for <b>6 months.</b>
+         Showing data for the <b>whole case.</b>
         </span>
       </p>
       <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
@@ -85,28 +87,23 @@
       <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
         Last month
       </button>
-      <button type="submit" disabled aria-disabled="true" class="govuk-button" data-module="govuk-button">
+      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
         Last 6 months
       </button>
       <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
         Last year
       </button>
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      <button type="submit" disabled aria-disabled="true" class="govuk-button" data-module="govuk-button">
         All
       </button>
     </div>
-
-    <h1 class="govuk-heading-xl">
-      Case overview
-    </h1>
-
   </div>
   
 
   <div class="govuk-grid-column-full">
     <div class="ef-card">
       <div class="dfe-title">
-        <h2>What’s due</h2>
+        <h2>What's due</h2>
         <p>£23,608.50</p>
       </div>
       <article class="moj-ticket-panel" aria-label="Sub navigation 1">
