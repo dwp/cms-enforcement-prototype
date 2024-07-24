@@ -35,14 +35,14 @@
         container: true,
         navigation: {
           items: [
-              {
-                  href: "ef-start-v1",
-                  text: "Case overview"
-              },
-              {
-                  href: "ef-payment-breakdown",
-                  text: "Payment breakdown"
-              }
+          {
+            href: "ef-v1-caseoverview-wholecase",
+            text: "Case overview"
+        },
+        {
+            href: "ef-v1-payment-breakdown-wholecase",
+            text: "Payment breakdown"
+        }
           ]
       }  
     })
@@ -81,21 +81,18 @@
          Showing data for the <b>whole case.</b>
         </span>
       </p>
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Last 7 days
-      </button>
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
         Last month
-      </button>
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      </a>
+      <a href="ef-v1-payment-breakdown-6months.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
         Last 6 months
-      </button>
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      </a>
+      <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
         Last year
-      </button>
-      <button type="submit" disabled aria-disabled="true" class="govuk-button" data-module="govuk-button">
-        All
-      </button>
+      </a>
+      <a href="#" class="govuk-button" disabled aria-disabled="true" data-module="govuk-button">
+        Whole case
+      </a>
     </div>
   </div>
 
