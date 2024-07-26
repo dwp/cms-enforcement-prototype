@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  <!-- Blank header with no service name for the start page -->
+  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+  <header>
+    <div class="govuk-header hmrc-header hmrc-header--with-additional-navigation" data-module="govuk-header">
+      <div class="govuk-header__container govuk-width-container">
+  
+        <div class="govuk-header__content">
+          <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+            Service Name
+          </a>
+        </div>
+        <!--<nav class="hmrc-sign-out-nav">
+          <a class="govuk-link hmrc-sign-out-nav__link" href="#">
+            Sign out </a>
+        </nav>-->
+      </div>
+    </div>
+  </header>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <img src="/public/images/CMS2012.png" alt="User icon">
+   </div>
+      
+
+{% endblock %}

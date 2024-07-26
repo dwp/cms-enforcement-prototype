@@ -6,6 +6,27 @@
 // Add extra styles here
 @import 'node_modules/dfe-frontend/packages/dfefrontend';
 
+// Header sign out
+.dwp-header-navigation {
+  float: left;
+}
+
+.govuk-header__content {
+  padding: 0px;
+}
+
+.hmrc-header.hmrc-header--with-additional-navigation .hmrc-sign-out-nav__link {
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.8em;
+  text-decoration: none;
+}
+
+.hmrc-sign-out-nav {
+  float:right;
+  text-align: right;
+  padding-top: 5px;
+}
 
 // Key details bar
 .dwp-key-details-bar__key-details {
@@ -28,6 +49,13 @@ h1.govuk-heading-xltwo {
   font-size: 48px;
         line-height: 1.33333;
         font-weight: 700;
+}
+
+// Search results tables
+
+.govuk-table {
+  caption-side: top;
+  color: #000000;
 }
 
 
@@ -96,6 +124,7 @@ h2.govuk-heading-m {
     margin-bottom: 40px;
 }
 
+
   // Card title and value
   .dfe-title {
     background-color: #F7F7F7;
@@ -132,5 +161,13 @@ h2.govuk-heading-m {
     padding: 0px;
     display: flex;
     width: fit-content;
+}
+
+// Password field
+
+.govuk-input__wrapper .govuk-input {
+  flex: 0 1 auto;
+  width: 550px;
+  margin: 0px 10px 0 0;
 }
 
