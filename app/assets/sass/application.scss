@@ -28,6 +28,48 @@
   padding-top: 5px;
 }
 
+.dwp-header-navigation__item {
+  font-size: 1.2rem;
+}
+
+a.navActive {
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+// Quick reference component
+.dwp-quick-reference {
+  min-height: 110px;
+    border-bottom: 10px solid #1d70b8;
+}
+
+.dwp-quick-reference--alternative {
+  margin-left: -15px;
+  padding: 15px 15px 5px;
+  color: #ffffff;
+  background: #1d70b8;
+}
+
+.dwp-quick-reference__primary {
+  font-size: 1.6875rem;
+  font-family: Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 700;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.dwp-quick-reference__secondary {
+  float: left;
+  margin-right: 20px;
+}
+
+.dwp-quick-reference__label {
+  float:left;
+  width: auto;
+  margin-right: 5px;
+}
+
 // CMS 2012 image
 .imageContainer {
   align-items: center;
@@ -77,6 +119,10 @@ h1.govuk-heading-xltwo {
   p.govuk-phase-banner__content {
     padding-bottom: 20px;
   }
+
+  .govuk-phase-banner__text {
+    font-size: 20px;
+}
  
 
 // Cards
