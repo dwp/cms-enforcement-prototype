@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Case overview – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -30,7 +30,7 @@
   <header data-module="govuk-header" class="dwp-header">
     <div class="dwp-header__content govuk-width-container">
       <div class="dwp-header__service-name">
-        <a href="/index.html" class="dwp-header__link">Service name</a>
+        <a href="/index.html" class="dwp-header__link">View case finances</a>
       </div>
     <nav class="dwp-header-navigation" aria-label="Primary">
   <button type="button" class="dwp-header-navigation__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden="">
@@ -61,10 +61,10 @@
   <dl class="dwp-quick-reference__block">
   <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
   <dd class="dwp-quick-reference__primary">Jane Doe</dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">SCIN number:</dt>
-  <dd class="dwp-quick-reference__secondary">1-2323454332</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">SCIN:</dt>
+  <dd class="dwp-quick-reference__secondary">121323454332</dd>
   <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Case ID:</dt>
-  <dd class="dwp-quick-reference__secondary">12345678</dd>
+  <dd class="dwp-quick-reference__secondary">1-12345678</dd>
   <dt class="dwp-quick-reference__label">Status:</dt>
   <dd class="dwp-quick-reference__status">
     <strong class="govuk-tag govuk-tag--blue">
@@ -81,7 +81,7 @@
     <div class="govuk-phase-bannerTwo">
       <p class="govuk-phase-banner__content">
         <span class="govuk-phase-banner__text">
-          Showing data from <b>13 March 2017</b> to <b>13 July 2024.</b>
+          Showing data from <strong>13 March 2017</strong> to <strong>19 August 2024</strong>.
          </span>
        </p>
        <!--<a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
@@ -103,7 +103,7 @@
   <div class="govuk-grid-column-full">
     <div class="ef-card">
       <div class="dfe-title">
-        <h2>Total</h2>
+        <h2>Total expected</h2>
         <!--<p class="value">from 13 Mar 2017 to 13 Jul 2024</p>-->
         <p>£23,608.50</p>
       </div>
