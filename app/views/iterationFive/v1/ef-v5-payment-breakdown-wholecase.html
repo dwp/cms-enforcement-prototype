@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Payments made – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -30,7 +30,7 @@
   <header data-module="govuk-header" class="dwp-header">
     <div class="dwp-header__content govuk-width-container">
       <div class="dwp-header__service-name">
-        <a href="/index.html" class="dwp-header__link">Service name</a>
+        <a href="/index.html" class="dwp-header__link">View case finances</a>
       </div>
     <nav class="dwp-header-navigation" aria-label="Primary">
   <button type="button" class="dwp-header-navigation__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden="">
@@ -60,10 +60,10 @@
   <dl class="dwp-quick-reference__block">
   <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
   <dd class="dwp-quick-reference__primary">Jane Doe</dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">SCIN number:</dt>
-  <dd class="dwp-quick-reference__secondary">1-2323454332</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">SCIN:</dt>
+  <dd class="dwp-quick-reference__secondary">121323454332</dd>
   <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Case ID:</dt>
-  <dd class="dwp-quick-reference__secondary">12345678</dd>
+  <dd class="dwp-quick-reference__secondary">1-2345678</dd>
   <dt class="dwp-quick-reference__label">Status:</dt>
   <dd class="dwp-quick-reference__status">
     <strong class="govuk-tag govuk-tag--blue">
@@ -80,7 +80,7 @@
     <div class="govuk-phase-bannerTwo">
       <p class="govuk-phase-banner__content">
         <span class="govuk-phase-banner__text">
-          Showing data from <b>13 March 2017</b> to <b>13 July 2024.</b>
+          Showing data from <strong>13 March 2017</strong> to <strong>13 July 2024</strong>.
          </span>
        </p>
        <!--<a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
@@ -104,7 +104,7 @@
     <div class="ef-card-trio">
       <article class="moj-ticket-panel-trio" aria-label="Sub navigation 1">
         <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
-          <p class="govuk-body">Due</p>
+          <p class="govuk-body">Total expected</p>
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£23,608.50</h2>
         </section>
         <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
@@ -129,6 +129,13 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Aug 2024</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">Payment received from you</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">4 Aug 2024</td>
+        </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">1 Jul 2024</td>
           <td class="govuk-table__cell">£300.00</td>

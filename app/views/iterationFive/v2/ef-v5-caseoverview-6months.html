@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  View finances – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -31,7 +31,7 @@
   <header data-module="govuk-header" class="dwp-header">
     <div class="dwp-header__content govuk-width-container">
       <div class="dwp-header__service-name">
-        <a href="/index.html" class="dwp-header__link">Service name</a>
+        <a href="/index.html" class="dwp-header__link">View finances</a>
       </div>
     <nav class="dwp-header-navigation" aria-label="Primary">
   <button type="button" class="dwp-header-navigation__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden="">
@@ -40,12 +40,12 @@
   <ul id="navigation" class="dwp-header-navigation__list">
       <li class="dwp-header-navigation__item">
         <a class="navActive" href="ef-v5-caseoverview-6months.html">
-            Case overview
+            View finances
         </a>
       </li>
       <li class="dwp-header-navigation__item">
         <a href="ef-v5-payment-breakdown-6months.html">
-            Payments made
+            View payments
         </a>
       </li>
   </ul>
@@ -61,10 +61,10 @@
   <dl class="dwp-quick-reference__block">
   <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
   <dd class="dwp-quick-reference__primary">Jane Doe</dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">SCIN number:</dt>
-  <dd class="dwp-quick-reference__secondary">1-2323454332</dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Case ID:</dt>
-  <dd class="dwp-quick-reference__secondary">12345678</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">SCIN:</dt>
+  <dd class="dwp-quick-reference__secondary">121323454332</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Child:</dt>
+  <dd class="dwp-quick-reference__secondary">Tom Doe</dd>
   <dt class="dwp-quick-reference__label">Status:</dt>
   <dd class="dwp-quick-reference__status">
     <strong class="govuk-tag govuk-tag--blue">
@@ -74,26 +74,26 @@
   </dl>
   </section>
 <h1 class="govuk-heading-xltwo">
-  Case overview
+  View finances
 </h1>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <div class="govuk-phase-bannerTwo">
       <a href="ef-v5-caseoverview-wholecase.html" class="govuk-button govuk-button--secondary" data-module="govuk-button"">
-        Whole case
+       All
       </a>
-       <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-         Last 3 months
-       </a>
+      <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+        Last year
+      </a>
        <a href="#" class="govuk-button" disabled aria-disabled="true" data-module="govuk-button">
          Last 6 months
        </a>
        <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-         Last year
-       </a>
+        Last 3 months
+      </a>
        <p class="govuk-phase-banner__content">
         <span class="govuk-phase-banner__text">
-          Showing data for the <b>Last six months</b> 29 January 2024 to 29 July 2024.
+          From <strong>19 February 2024</strong> to <strong>19 August 2024</strong>.
          </span>
        </p>
     </div>
@@ -113,7 +113,7 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£2,000.00</h2>
         </section>
         <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
-          <p class="govuk-body">Charges, debt and fees</p>
+          <p class="govuk-body">Charges and debt</p>
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£100.00</h2>
           <table class="govuk-table">
             <thead class="govuk-table__head">
@@ -132,7 +132,7 @@
                 <th scope="row" class="govuk-table__header">£0</th>
               </tr>
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Any other costs</td>
+                <td class="govuk-table__cell">Court costs and DNA tests</td>
                 <th scope="row" class="govuk-table__header">£0</th>
               </tr>
             </tbody>
@@ -153,7 +153,7 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£2,000.00</h2>
         </section>
         <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
-          <p class="govuk-body">Charges, debt and fees</p>
+          <p class="govuk-body">Charges and debt</p>
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£100.00</h2>
         </section>
       </article>
@@ -161,7 +161,7 @@
     
     <div class="ef-card">
       <div class="dfe-title">
-        <h2>Outstanding</h2>
+        <h2>Balance to pay</h2>
         <!--<p class="value">29 January to 29 Jul 2024</p>-->
         <p>£0</p>
       </div>
@@ -171,7 +171,7 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£0</h2>
         </section>
         <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
-          <p class="govuk-body">Charges, debt and fees</p>
+          <p class="govuk-body">Charges and debt</p>
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£0</h2>
         </section>
       </article>
