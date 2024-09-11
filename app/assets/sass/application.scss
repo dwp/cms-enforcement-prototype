@@ -263,3 +263,11 @@ h2.govuk-heading-m {
 .hydrated {
   font-family: "GDS Transport", arial, sans-serif !important;
 }
+
+.govuk-table__cell_last {
+  width: 320px;
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #b1b4b6;
+  text-align: left;
+  vertical-align: top; 
+}
