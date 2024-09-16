@@ -1,0 +1,248 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  View finances – {{ serviceName }} – GOV.UK Prototype Kit
+  <script>
+    const $subNavTabs = document.querySelector('[data-module="dl-subnav"]')
+    const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
+  </script>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+   <!-- Blank header with no service name for the start page -->
+   <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+   <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+       crossorigin="anonymous"
+     />
+
+     <header>
+      <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+        <div class="govuk-header__container govuk-width-container ">
+          <div class="govuk-header__content">
+            <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+              View parent finances
+            </a>
+          </div>
+          <nav class="hmrc-sign-out-nav">
+            <a class="govuk-link hmrc-sign-out-nav__link" href="ef-v6-caseclosed.html">
+              Close window </a>
+          </nav>
+          <nav class="hmrc-sign-out-nav">
+            <a class="govuk-link hmrc-sign-out-nav__link" href="../access/cmshomepage/cms-search.html">
+              Search for SCIN</a>
+          </nav>
+    </div>
+      </div>
+    </header>
+
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{% endblock %}
+
+{% block content %}
+<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+  <dl class="dwp-quick-reference__block">
+  <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+  <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+  <dd class="dwp-quick-reference__status">
+    <strong class="govuk-tag govuk-tag--blue">
+      Paying parent
+    </strong>
+  </dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">SCIN:</dt>
+  <dd class="dwp-quick-reference__secondary">121323454332</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Case ID:</dt>
+  <dd class="dwp-quick-reference__secondary">12345678</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">N.I number:</dt>
+  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+  <dt class="dwp-quick-reference__label">Status:</dt>
+  <dd class="dwp-quick-reference__secondary">Single case</dd>
+  </dl>
+  </section>
+
+
+  <div class="moj-primary-navigation">
+
+    <div class="moj-primary-navigation__container">
+  
+      <div class="moj-primary-navigation__nav">
+  
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="#1">Case information</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-v7-finances.html">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-v7-payments.html">Payments</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-v7-schedules.html">Schedule</a>
+            </li>
+          </ul>
+
+        </nav>
+  
+      </div>
+    </div>
+  
+  </div>
+  
+
+
+
+<h1 class="govuk-heading-xltwo">
+  Case information
+</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!--<p class="govuk-phase-banner__content">
+      <span class="govuk-phase-banner__text">
+        From <strong>1 January 2014</strong> to <strong>5 September 2024</strong>.
+       </span>
+     </p>-->
+  </div>
+ 
+
+  <div class="govuk-grid-column-full">
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Case details
+        </h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              SCIN number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              121323454332
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Case number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              12345678
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Children
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Richard Smith<br>Anna Smith
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Receiving parent details
+        </h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Jane Smith
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              1 Feburary 1978
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              National insurance number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              QQ123456C
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              12 Pearl Street<br>Bristol<br>BS3 4AB
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Contact details
+        </h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home phone
+            </dt>
+            <dd class="govuk-summary-list__value">
+              None
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Mobile phone
+            </dt>
+            <dd class="govuk-summary-list__value">
+              0777 7777777
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              simon@example.com
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    
+    
+  </div>
+</div>
+
+
+
+{% endblock %}
