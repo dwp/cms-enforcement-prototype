@@ -197,8 +197,8 @@
     <div class="ef-card">
       <div class="dfe-title">
         <h2>Balance to pay</h2>
-        <!--<p class="value">from 13 Mar 2017 to 13 Jul 2024</p>-->
-        <p>£5,430.00</p>
+        <p>£5,430.23</p>
+        <p class="value">(Inc cash balance <b>£0.23</b>)</p>
       </div>
       <article class="moj-ticket-panel" aria-label="Sub navigation 1">
         <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
@@ -278,6 +278,13 @@
   </div>
 </div>
 
-
+<style>
+.dfe-title p.value {
+    float: right;
+    margin: 25px 20px 18px 10px;
+    font-size: 19px;
+    font-weight: normal;
+}
+</style>
 
 {% endblock %}
