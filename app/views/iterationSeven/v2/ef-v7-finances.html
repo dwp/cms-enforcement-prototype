@@ -131,6 +131,7 @@
             <h2>Payments</h2>
             <!--<p class="value">from 13 Mar 2017 to 13 Jul 2024</p>-->
             <p>£30,480.00</p>
+            <p class="value">(Cash balance <b>£0.00</b>)</p>
           </div>
           <article class="moj-ticket-panel" aria-label="Sub navigation 1">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
@@ -141,7 +142,7 @@
               <p class="govuk-body">Charges and debt</p>
               <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£5,080.00</h2>
             </section>
-            <a class="govuk-link" href="ef-v6-payment-breakdown-wholecase.html">View payments</a>
+            <a class="govuk-link" href="ef-v7-payments.html">View payments</a>
           </article>
         </div>
     
@@ -198,7 +199,14 @@
   </main>
 </div>
 
-
+<style>
+  .dfe-title p.value {
+      float: right;
+      margin: 25px 20px 18px 10px;
+      font-size: 19px;
+      font-weight: normal;
+  }
+  </style>
 
 
 {% endblock %}
