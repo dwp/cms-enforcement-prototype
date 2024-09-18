@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  View payments – {{ serviceName }} – GOV.UK Prototype Kit
+  Payments – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -61,14 +61,14 @@
     Paying parent
   </strong>
 </dd>
-<dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">SCIN:</dt>
+<dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">SCIN:</dt>
 <dd class="dwp-quick-reference__secondary">121323454332</dd>
-<dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Case ID:</dt>
+<dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Case ID:</dt>
 <dd class="dwp-quick-reference__secondary">12345678</dd>
-<dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">N.I number:</dt>
+<dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">NI number:</dt>
 <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
-<dt class="dwp-quick-reference__label">Status:</dt>
-<dd class="dwp-quick-reference__secondary">Single case</dd>
+<!--<dt class="dwp-quick-reference__label govuk-visually-hidden">Status:</dt>
+<dd class="dwp-quick-reference__secondary">Single case</dd>-->
 </dl>
 </section>
 
@@ -82,7 +82,7 @@
           <nav class="moj-side-navigation" aria-label="Side navigation">
             <ul class="moj-side-navigation__list">
               <li class="moj-side-navigation__item">
-                <a href="ef-v7-caseinformation.html">Case information</a>
+                <a href="ef-v7-caseinformation.html">Cases</a>
               </li>
               <li class="moj-side-navigation__item">
                 <a href="ef-v7-finances.html">Finances</a>
