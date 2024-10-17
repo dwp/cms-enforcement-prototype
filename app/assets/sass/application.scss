@@ -131,6 +131,11 @@ h1.govuk-heading-xltwo {
 
 // Modified phase banner
 
+.govuk-phase-banner {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  border: none;;
+}
 .govuk-phase-bannerTwo {
   padding-top: 10px;
   padding-bottom: 40px;
@@ -141,8 +146,11 @@ h1.govuk-heading-xltwo {
     padding-bottom: 20px;
   }
 
-  .govuk-phase-banner__text {
-    font-size: 20px;
+  .dateRange {
+  padding-bottom: 30px;
+  }
+  .dateRange__text {
+   font-size: 24px;
 }
 
 // Date range 
@@ -192,6 +200,32 @@ h2.govuk-heading-m {
   grid-template-columns: repeat(auto-fill, minmax(300px, 0fr));
   gap: 30px;
 }
+.ef-card-trio-v2 {
+  max-width: none;
+  position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+.moj-ticket-panel-trio-v2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(292px, 0fr));
+  gap: 19px;
+  padding: 22px;
+}
+.ef-card-duo {
+  max-width: none;
+  position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+.moj-ticket-panel-duo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(447px, 0fr));
+  gap: 19px;
+  padding: 22px;
+}
 
 .ef-card {
   max-width: none;
@@ -213,16 +247,37 @@ h2.govuk-heading-m {
 
 
   // Card title and value
-  .dfe-title {
+  .dfe-title, .dfe-title-i8 {
     background-color: #F7F7F7;
     border-bottom: 1px solid #b1b4b6;
     }
 
+  // before iteration 8
   .dfe-title h2 {
     float: left;
     font-size: 1.5rem;
-    margin: 20px 0px 20px 40px;
+    margin: 25px 0px 24px 40px;
     }
+    .dfe-title h2.value {
+      float: right;
+      font-size: 40px;
+      margin: 15px 30px 15px 15px;
+      font-weight: bold;
+      }
+// iteration 8 onwards
+    .dfe-title-i8 h2 {
+      float: left;
+      font-size: 1.5rem;
+      margin: 20px 0px 20px 22px;
+      }
+      .dfe-title-i8 h2.value {
+        float: right;
+        font-size: 40px;
+        margin: 10px 25px 11px 15px;
+        font-weight: bold;
+        }
+
+    
   
     .dfe-title p {
       float: right;
@@ -239,6 +294,11 @@ h2.govuk-heading-m {
         font-weight: normal;
         }
 
+// Card title and value
+.govuk-details {
+  margin-bottom: 0px;
+  width: 750px;
+}
 
 // Pagination
 
