@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Payments – {{ serviceName }} – GOV.UK Prototype Kit
+  Payment plan – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -59,7 +59,7 @@
 <section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
   <dl class="dwp-quick-reference__block">
   <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-  <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+  <dd class="dwp-quick-reference__primary">Alex White</dd>
   <dd class="dwp-quick-reference__status">
     <strong class="govuk-tag govuk-tag--turquoise">
       Paying parent
@@ -69,9 +69,9 @@
     </strong>
   </dd>
   <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
-  <dd class="dwp-quick-reference__secondary">121323454332</dd>
+  <dd class="dwp-quick-reference__secondary">121323454222</dd>
   <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
-  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+  <dd class="dwp-quick-reference__secondary">QQ123222C</dd>
   </dl>
   </section>
 
@@ -113,7 +113,7 @@
   <div class="govuk-grid-column-full">
     <p class="dateRange">
       <span class="dateRange__text">
-        From <strong>27 March 2024</strong> to <strong>26 March 2025</strong>.
+        From <strong>30 August 2024</strong> to <strong>8 December 2025</strong>.
        </span>
      </p>
   </div>
@@ -127,15 +127,15 @@
         <article class="moj-ticket-panel-trio-v2" aria-label="Sub navigation 1">
           <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
             <p class="govuk-body">Child maintenance</p>
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£120.00</h2>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£193.00</h2>
           </section>
           <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
             <p class="govuk-body">Collection charges</p>
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£30.00</h2>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£38.50</h2>
           </section>
           <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
             <p class="govuk-body">Unpaid child maintenance</p>
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£150.00</h2>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£70.21</h2>
           </section>
         </article>
       </div>
@@ -157,133 +157,45 @@
         
        
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Apr 2024</td>
-          <td class="govuk-table__cell">£300.23</td>
-          <td class="govuk-table__cell">£300.23</td>
-          <td class="govuk-table__cell">Direct debit</td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--green">
-              Received
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 May 2024</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">Direct debit</td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--green">
-              Received
-            </strong>
-          </td>
-        </tr> 
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Jun 2024</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">£0.00</td>
-          <td class="govuk-table__cell">Direct debit</td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--red">
-              Missed
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Jul 2024</td>
-          <td class="govuk-table__cell">£600.00</td>
-          <td class="govuk-table__cell">£600.00</td>
+          <td class="govuk-table__cell">19 Oct 2024</td>
+          <td class="govuk-table__cell">£301.71</td>
+          <td class="govuk-table__cell">£160.79</td>
           <td class="govuk-table__cell">Deductions from earnings order</td>
           <td class="govuk-table__cell">
             <strong class="govuk-tag govuk-tag--green">
-              Received
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Aug 2024</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">£280.00</td>
-          <td class="govuk-table__cell">Voluntary standing order</td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--orange">
               Partial
             </strong>
           </td>
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Sep 2024</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">£320.00</td>
-          <td class="govuk-table__cell">Voluntary standing order</td>
+          <td class="govuk-table__cell">19 Nov 2024</td>
+          <td class="govuk-table__cell">£301.71</td>
+          <td class="govuk-table__cell">£0</td>
+          <td class="govuk-table__cell">Deductions from earnings order</td>
           <td class="govuk-table__cell">
             <strong class="govuk-tag govuk-tag--green">
-              Received
+              Awaiting
             </strong>
           </td>
-        </tr>
+        </tr> 
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Oct 2024</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">19 Dec 2024</td>
+          <td class="govuk-table__cell">£301.71</td>
+          <td class="govuk-table__cell">£0</td>
+          <td class="govuk-table__cell">Deductions from earnings order</td>
           <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--green">
-              Received
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Nov 2024</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">Direct debit</td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--green">
-              Received
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Dec 2024</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">-</td>
-          <td class="govuk-table__cell">Direct debit</td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
+            <strong class="govuk-tag govuk-tag--red">
               Awaiting
             </strong>
           </td>
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Jan 2025</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">-</td>
-          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">19 Jan 2024</td>
+          <td class="govuk-table__cell">£301.71</td>
+          <td class="govuk-table__cell">£0</td>
+          <td class="govuk-table__cell">Deductions from earnings order</td>
           <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
-              Awaiting
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Feb 2025</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">-</td>
-          <td class="govuk-table__cell">Direct debit</td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
-              Awaiting
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1 Mar 2025</td>
-          <td class="govuk-table__cell">£300.00</td>
-          <td class="govuk-table__cell">-</td>
-          <td class="govuk-table__cell">Direct debit</td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
+            <strong class="govuk-tag govuk-tag--green">
               Awaiting
             </strong>
           </td>
