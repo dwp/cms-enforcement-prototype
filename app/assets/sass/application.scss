@@ -132,6 +132,13 @@ h1.govuk-heading-xltwo {
   color: #000000;
 }
 
+.govuk-table__cell_link {
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #b1b4b6;
+  text-align: left;
+  vertical-align: top;
+}
+
 
 // Modified phase banner
 
@@ -345,4 +352,20 @@ h2.govuk-heading-m {
   border-bottom: 1px solid #b1b4b6;
   text-align: left;
   vertical-align: top; 
+}
+.govuk-table__cell_link {
+  color: #1d70b8;
+  padding: 10px 20px 10px 0;
+    border-bottom: 1px solid #b1b4b6;
+    text-align: left;
+    vertical-align: top;
+    text-align: center;
+}
+
+// Breadcrumbs
+
+.govuk-breadcrumbs__list {
+  margin: 20px 0 -10px 0;
+  padding: 0;
+  list-style-type: none;
 }
