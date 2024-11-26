@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Payments – {{ serviceName }} – GOV.UK Prototype Kit
+  Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -59,7 +59,7 @@
 <section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
   <dl class="dwp-quick-reference__block">
   <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-  <dd class="dwp-quick-reference__primary">Alex White</dd>
+  <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
   <dd class="dwp-quick-reference__status">
     <strong class="govuk-tag govuk-tag--turquoise">
       Paying parent
@@ -69,9 +69,9 @@
     </strong>
   </dd>
   <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
-  <dd class="dwp-quick-reference__secondary">121323454222</dd>
+  <dd class="dwp-quick-reference__secondary">121323454232</dd>
   <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
-  <dd class="dwp-quick-reference__secondary">QQ123222C</dd>
+  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
   </dl>
   </section>
 
@@ -155,8 +155,8 @@
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Date</th>
           <th scope="col" class="govuk-table__header">Balance</th>
-          <th scope="col" class="govuk-table__header">Decreased amount</th>
           <th scope="col" class="govuk-table__header">Increased amount</th>
+          <th scope="col" class="govuk-table__header">Decreased amount</th>
           <th scope="col" class="govuk-table__header">Description</th>
         </tr>
       </thead>
@@ -164,14 +164,224 @@
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">22 Nov 2024</td>
           <td class="govuk-table__cell">-£307.57</td>
-          <td class="govuk-table__cell">£xxx.xx</td>
-          <td class="govuk-table__cell">£xxx.xx</td>
-          <td class="govuk-table__cell_last">Lorium ipsum description</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£14.57</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
         </tr>
-        
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">22 Nov 2024</td>
+          <td class="govuk-table__cell">-£293.00</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£72.54</td>
+          <td class="govuk-table__cell_last">Child maintenance due </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">19 Nov 2024</td>
+          <td class="govuk-table__cell">-£220.46</td>
+          <td class="govuk-table__cell">£24.61</td>
+          <td class="govuk-table__cell">£14.57</td>
+          <td class="govuk-table__cell_last">Payment received from you</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">9 Nov 2024</td>
+          <td class="govuk-table__cell">-£245.07</td>
+          <td class="govuk-table__cell">£73.84</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Payment received from you </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">22 Oct 2024</td>
+          <td class="govuk-table__cell">-£318.91</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£10.81</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">22 Oct 2024</td>
+          <td class="govuk-table__cell">-£308.10</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£53.82</td>
+          <td class="govuk-table__cell_last">Child maintenance due </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£254.28</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£3.29</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£250.99</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£3.29</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£247.70</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£3.29</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£244.41</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£3.29</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£241.12</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£3.29</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£237.83</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£1.41</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£236.42</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£2.04</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£234.38</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£0.09</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£216.64</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£3.53</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£195.46</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£3.53</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£174.28</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£3.53</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£153.10</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£3.53</td>
+          <td class="govuk-table__cell_last">Collect and pay fee added</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£220.17</td>
+          <td class="govuk-table__cell">-£88.25</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Unpaid direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Sep 2024</td>
+          <td class="govuk-table__cell">-£131.92</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£50.00</td>
+          <td class="govuk-table__cell_last">DEO enforcement charge due</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">29 Sep 2024</td>
+          <td class="govuk-table__cell">-£81.92</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£16.38</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">27 Sep 2024</td>
+          <td class="govuk-table__cell">-£65.54</td>
+          <td class="govuk-table__cell">£17.65</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">22 Sep 2024</td>
+          <td class="govuk-table__cell">-£83.19</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£16.38</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">20 Sep 2024</td>
+          <td class="govuk-table__cell">-£66.81</td>
+          <td class="govuk-table__cell">£17.65</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">15 Sep 2024</td>
+          <td class="govuk-table__cell">-£84.46</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£16.38</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">13 Sep 2024</td>
+          <td class="govuk-table__cell">-£68.08</td>
+          <td class="govuk-table__cell">£17.65</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">8 Sep 2024</td>
+          <td class="govuk-table__cell">-£85.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£16.38</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">6 Sep 2024</td>
+          <td class="govuk-table__cell">-£69.35</td>
+          <td class="govuk-table__cell">£17.65</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Sep 2024</td>
+          <td class="govuk-table__cell">-£87.00</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£16.38</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">30 Aug 2024</td>
+          <td class="govuk-table__cell">-£70.62</td>
+          <td class="govuk-table__cell">£17.65</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">25 Aug 2024</td>
+          <td class="govuk-table__cell">-£88.27</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.02</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
       </tbody>
     </table>
 
+    <!-- 2023-->
     <h3 class="govuk-notification-banner__heading">
       2023
      </h3>
@@ -180,75 +390,273 @@
          <tr class="govuk-table__row">
            <th scope="col" class="govuk-table__header">Date</th>
            <th scope="col" class="govuk-table__header">Balance</th>
-           <th scope="col" class="govuk-table__header">Decreased amount</th>
            <th scope="col" class="govuk-table__header">Increased amount</th>
+           <th scope="col" class="govuk-table__header">Decreased amount</th>
            <th scope="col" class="govuk-table__header">Description</th>
          </tr>
        </thead>
-       <tbody class="govuk-table__body">
+     </table>
+
+    <!-- 2022-->
+    <h3 class="govuk-notification-banner__heading">
+      2022
+     </h3>
+     <table class="govuk-table">
+       <thead class="govuk-table__head">
          <tr class="govuk-table__row">
-           <td class="govuk-table__cell">dd/Month/yyyy</td>
-           <td class="govuk-table__cell">£xxxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell_last">Lorium ipsum description</td>
+           <th scope="col" class="govuk-table__header">Date</th>
+           <th scope="col" class="govuk-table__header">Balance</th>
+           <th scope="col" class="govuk-table__header">Increased amount</th>
+           <th scope="col" class="govuk-table__header">Decreased amount</th>
+           <th scope="col" class="govuk-table__header">Description</th>
          </tr>
-         <tr class="govuk-table__row">
-           <td class="govuk-table__cell">dd/Month/yyyy</td>
-           <td class="govuk-table__cell">£xxxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell_last">Lorium ipsum description</td>
-         </tr>
-         <tr class="govuk-table__row">
-           <td class="govuk-table__cell">dd/Month/yyyy</td>
-           <td class="govuk-table__cell">£xxxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell_last">Lorium ipsum description</td>
-         </tr>
-         <tr class="govuk-table__row">
-           <td class="govuk-table__cell">dd/Month/yyyy</td>
-           <td class="govuk-table__cell">£xxxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell_last">Lorium ipsum description</td>
-         </tr>
-         <tr class="govuk-table__row">
-           <td class="govuk-table__cell">dd/Month/yyyy</td>
-           <td class="govuk-table__cell">£xxxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell_last">Lorium ipsum description</td>
-         </tr>
-         <tr class="govuk-table__row">
-           <td class="govuk-table__cell">dd/Month/yyyy</td>
-           <td class="govuk-table__cell">£xxxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell_last">Lorium ipsum description</td>
-         </tr>
-         <tr class="govuk-table__row">
-           <td class="govuk-table__cell">dd/Month/yyyy</td>
-           <td class="govuk-table__cell">£xxxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell_last">Lorium ipsum description</td>
-         </tr>
-         <tr class="govuk-table__row">
-           <td class="govuk-table__cell">dd/Month/yyyy</td>
-           <td class="govuk-table__cell">£xxxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell_last">Lorium ipsum description</td>
-         </tr>
-         <tr class="govuk-table__row">
-           <td class="govuk-table__cell">dd/Month/yyyy</td>
-           <td class="govuk-table__cell">£xxxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell">£xxx.xx</td>
-           <td class="govuk-table__cell_last">Lorium ipsum description</td>
-         </tr>
+       </thead>
+       <tbody class="govuk-table__body">       
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">22 Aug 2022</td>
+          <td class="govuk-table__cell">-£81.25</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£10.21</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">21 Aug 2022</td>
+          <td class="govuk-table__cell">-£71.04</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£71.47</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">19 Aug 2022</td>
+          <td class="govuk-table__cell">-£0.43</td>
+          <td class="govuk-table__cell">£81.25</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">14 Aug 2022</td>
+          <td class="govuk-table__cell">-£80.82</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£71.47</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">12 Aug 2022</td>
+          <td class="govuk-table__cell">-£9.35</td>
+          <td class="govuk-table__cell">£81.25</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">7 Aug 2022</td>
+          <td class="govuk-table__cell">-£90.60</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£71.47</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">5 Aug 2022</td>
+          <td class="govuk-table__cell">-£19.13</td>
+          <td class="govuk-table__cell">£81.25</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">31 Jul 2022</td>
+          <td class="govuk-table__cell">-£100.38</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£71.47</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">29 Jul 2022</td>
+          <td class="govuk-table__cell">-£28.91</td>
+          <td class="govuk-table__cell">£81.25</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">24 Jul 2022</td>
+          <td class="govuk-table__cell">-£110.16</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£71.47</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">22 Jul 2022</td>
+          <td class="govuk-table__cell">-£38.69</td>
+          <td class="govuk-table__cell">£81.25</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">17 Jul 2022</td>
+          <td class="govuk-table__cell">-£119.94</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£20.42</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">16 Jul 2022</td>
+          <td class="govuk-table__cell">-£99.52</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£9.21</td>
+          <td class="govuk-table__cell_last">Direct pay amount adjusted</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">16 Jul 2022</td>
+          <td class="govuk-table__cell">-£90.31</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£5.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">15 Jul 2022</td>
+          <td class="govuk-table__cell">-£85.31</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">10 Jul 2022</td>
+          <td class="govuk-table__cell">-£92.04</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">8 Jul 2022</td>
+          <td class="govuk-table__cell">-£85.04</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">3 Jul 2022</td>
+          <td class="govuk-table__cell">-£91.77</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Jul 2022</td>
+          <td class="govuk-table__cell">-£84.77</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">26 Jun 2022</td>
+          <td class="govuk-table__cell">-£91.50</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">24 Jun 2022</td>
+          <td class="govuk-table__cell">-£84.50</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">19 Jun 2022</td>
+          <td class="govuk-table__cell">-£91.23</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">17 Jun 2022</td>
+          <td class="govuk-table__cell">-£84.23</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">12 Jun 2022</td>
+          <td class="govuk-table__cell">-£90.96</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">10 Jun 2022</td>
+          <td class="govuk-table__cell">-£83.96</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">5 Jun 2022</td>
+          <td class="govuk-table__cell">-£90.69</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">3 Jun 2022</td>
+          <td class="govuk-table__cell">-£83.69</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">29 May 2022</td>
+          <td class="govuk-table__cell">-£90.42</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">27 May 2022</td>
+          <td class="govuk-table__cell">-£83.42</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">22 May 2022</td>
+          <td class="govuk-table__cell">-£90.15</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">20 May 2022</td>
+          <td class="govuk-table__cell">-£83.15</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">15 May 2022</td>
+          <td class="govuk-table__cell">-£89.88</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">13 May 2022</td>
+          <td class="govuk-table__cell">-£82.88</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">8 May 2022</td>
+          <td class="govuk-table__cell">-£89.61</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">£7.00</td>
+          <td class="govuk-table__cell_last">Child maintenance due - 3020913856</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">6 May 2022</td>
+          <td class="govuk-table__cell">-£82.61</td>
+          <td class="govuk-table__cell">£6.73</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell_last">Direct pay payment</td>
+        </tr>
        </tbody>
       </table>
 
