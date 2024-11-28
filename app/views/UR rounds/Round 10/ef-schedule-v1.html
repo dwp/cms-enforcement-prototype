@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Payments – {{ serviceName }} – GOV.UK Prototype Kit
+  Payment plan – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -114,7 +114,7 @@
     <div class="govuk-grid-column-full">
       <div class="govuk-phase-bannerTwo">
           <span class="dateRange__text">
-            Select schedule
+            Select plan
             <div class="govuk-form-group-dropdown">
               <select class="govuk-select" id="sort" name="sort" onChange="window.location.href=this.value">
                 <option value="ef-paymentplan">Version 12</option>
@@ -133,7 +133,7 @@
     </div>
 
   
-
+<!-- Remove historic breakdowns 
   <div class="govuk-grid-column-full">
     <div class="ef-card">
       <div class="dfe-title-i8">
@@ -155,25 +155,26 @@
           </section>
         </article>
       </div>
-    </div>
+    </div>-->
 
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Collection</th>
+          <th scope="col" class="govuk-table__header">Method</th>
           <th scope="col" class="govuk-table__header">Due</th>
           <th scope="col" class="govuk-table__header">Paid</th>
-          <th scope="col" class="govuk-table__header">Method</th>
           <!--<th scope="col" class="govuk-table__header">Status</th>-->
         </tr>
       </thead>
       <tbody class="govuk-table__body">
         
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">30 Aug 2024</td>
-          <td class="govuk-table__cell">£17.65</td>
-          <td class="govuk-table__cell">£0</td>
-          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">26 Nov 2021</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
+          
           <!--<td class="govuk-table__cell">
             <strong class="govuk-tag govuk-tag--green">
               Received
@@ -181,10 +182,10 @@
           </td>-->
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">6 Sep 2024</td>
-          <td class="govuk-table__cell">£17.65</td>
-          <td class="govuk-table__cell">£0</td>
-          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">3 Dec 2021</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
           <!--<td class="govuk-table__cell">
             <strong class="govuk-tag govuk-tag--green">
               Received
@@ -192,10 +193,10 @@
           </td>-->
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">13 Sep 2024</td>
-          <td class="govuk-table__cell">£17.65</td>
-          <td class="govuk-table__cell">£0</td>
-          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">10 Dec 2021</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
           <!--<td class="govuk-table__cell">
             <strong class="govuk-tag govuk-tag--green">
               Received
@@ -203,10 +204,10 @@
           </td>-->
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">20 Sep 2024</td>
-          <td class="govuk-table__cell">£17.65</td>
-          <td class="govuk-table__cell">£0</td>
-          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">17 Dec 2021</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
           <!--<td class="govuk-table__cell">
             <strong class="govuk-tag govuk-tag--green">
               Received
@@ -214,10 +215,65 @@
           </td>-->
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">27 Sep 2024</td>
-          <td class="govuk-table__cell">£17.65</td>
-          <td class="govuk-table__cell">£0</td>
-          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">24 Dec 2021</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <!--<td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>-->
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">31 Dec 2021</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <!--<td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>-->
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">7 Jan 2022</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <!--<td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>-->
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">14 Jan 2022</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <!--<td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>-->
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">21 Jan 2022</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <!--<td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>-->
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">28 Jan 2022</td>
+          <td class="govuk-table__cell">Direct Pay</td>
+          <td class="govuk-table__cell">£93.17</td>
+          <td class="govuk-table__cell">£93.17</td>
           <!--<td class="govuk-table__cell">
             <strong class="govuk-tag govuk-tag--green">
               Received
