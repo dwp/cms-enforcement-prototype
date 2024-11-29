@@ -371,7 +371,7 @@ h2.govuk-heading-m {
 }
 
 
-// Table styling
+// Payments table
 
 .cell_date {
   width:150px;
@@ -382,5 +382,24 @@ h2.govuk-heading-m {
 }
 
 .cell_amount {
-  width:140px;
+  width:130px;
+}
+
+// Statement table 
+
+.statement_date {
+  width:170px;
+}
+
+.statement_description {
+  width:610px;
+}
+
+.statement_amount {
+  width:170px;
+}
+
+.statement_end {
+  text-align: right;
+  width: 120px;
 }
