@@ -388,7 +388,7 @@ h2.govuk-heading-m {
 // Statement table 
 
 .statement_date {
-  width:170px;
+  width:200px;
 }
 
 .statement_description {
@@ -402,4 +402,20 @@ h2.govuk-heading-m {
 .statement_end {
   text-align: right;
   width: 120px;
+}
+
+// Payment table
+
+.schedule_date {
+  width:20%;
+}
+.schedule_method {
+  width:56%;
+}
+.schedule_due {
+  width:12%;
+}
+.schedule_paid {
+  width:12%;
+  text-align: right;
 }
