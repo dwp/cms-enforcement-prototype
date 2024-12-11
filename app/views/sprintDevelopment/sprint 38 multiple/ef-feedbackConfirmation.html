@@ -1,0 +1,84 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Finances – {{ serviceName }} – GOV.UK Prototype Kit
+  <script>
+    const $subNavTabs = document.querySelector('[data-module="dl-subnav"]')
+    const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
+  </script>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+   <!-- Blank header with no service name for the start page -->
+   <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+   <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+       crossorigin="anonymous"
+     />
+
+     <header>
+      <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+        <div class="govuk-header__container govuk-width-container ">
+          <div class="govuk-header__content">
+            <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+              View parent finances
+            </a>
+          </div>
+          <!--<nav class="hmrc-sign-out-nav">
+            <a class="govuk-link hmrc-sign-out-nav__link" href="#">Close</a>
+          </nav>-->
+    </div>
+      </div>
+    </header>
+
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="/form-handler" method="post" novalidate>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-heading-xl">
+                  Feedback sent
+                </h1>
+              </legend>
+              
+              <p>Thank you for your feedback and agreeing to take part in research. We'll use this to improve the service.<br><br>
+                You can close this tab and go back to the service.</p>
+
+            </fieldset>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+
+
+
+{% endblock %}
