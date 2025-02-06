@@ -362,6 +362,10 @@ h2.govuk-heading-m {
     text-align: center;
 }
 
+.numerical {
+  text-align: right;
+}
+
 // Breadcrumbs
 
 .govuk-breadcrumbs__list {
@@ -397,11 +401,12 @@ h2.govuk-heading-m {
 
 .statement_amount {
   width:170px;
+  text-align: right;
 }
 
 .statement_end {
   text-align: right;
-  width: 120px;
+  width: 150px;
 }
 .statement_39_end {
   text-align: right;
