@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Statement – {{ serviceName }} – GOV.UK Prototype Kit
+  Payment plan – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -51,7 +51,7 @@
       Beta
     </strong>
     <span class="govuk-phase-banner__text">
-      This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.
+      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="ef-feedback.html">give your feedback (opens in new tab)</a>.
     </span>
   </p>
 </div>
@@ -76,86 +76,151 @@
   </section>
 
   <div class="moj-primary-navigation">
+
     <div class="moj-primary-navigation__container">
+  
       <div class="moj-primary-navigation__nav">
+  
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="ef-finances.html">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page"  href="#">Statement</a>
+              <a class="moj-primary-navigation__link" href="ef-statements.html">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-paymentplan.html">Payment plans</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="#">Payment plans</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="ef-caseinformation.html">Case</a>
             </li>
           </ul>
+
         </nav>
+  
       </div>
     </div>
+  
   </div>
 
-  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
-    <a href="../ef-statements.html" class="govuk-back-link">Back</a>
-  </nav>
+
 
 <h1 class="govuk-heading-xltwo">
-  Payment allocation
+  Payment plans
 </h1>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <p class="dateRange">
-      <span class="dateRange__text">
-        Shows how the system shared the payment received on <strong>9 November 2024</strong>.
-       </span>
-     </p>
+    <div class="govuk-phase-bannerTwo">
+        <span class="dateRange__text">
+          Select plan
+          <div class="govuk-form-group-dropdown">
+            <select class="govuk-select" id="sort" name="sort" onChange="window.location.href=this.value">
+              <option value="ef-paymentplan">Version 12</option>
+              <option value="published" selected>Version 11</option>
+            </select>
+          </div>
+         </span>
+    </div>
   </div>
+
 
   <div class="govuk-grid-column-full">
 
+    <div class="ef-card">
+      <div class="dfe-title-i8">
+        <h2>Expected amount</h2>
+      </div>
+      <div class="ef-card-trio-v2">
+        <article class="moj-ticket-panel-trio-v2" aria-label="Sub navigation 1">
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body" style="min-height: 50px;">Child maintenance</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£69.56</h2>
+          </section>
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body" style="min-height: 50px;">Collection charges</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£13.97</h2>
+          </section>
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Unpaid maintenance and charges</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£23.12</h2>
+          </section>
+        </article>
+      </div>
+    </div>
+  
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Received</th>
-          <th scope="col" class="govuk-table__header">Posted date</th>
-          <th scope="col" class="govuk-table__header">Paid</th>
-          <th scope="col" class="govuk-table__header statement_39_end">Amount (£)</th>
+          <th scope="col" class="govuk-table__header">Collection</th>
+          <th scope="col" class="govuk-table__header">Method</th>
+          <th scope="col" class="govuk-table__header">Due (£)</th>
+          <th scope="col" class="govuk-table__header">Paid (£)</th>
+          <!--<th scope="col" class="govuk-table__header">Status</th>-->
         </tr>
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell statement_date">9 Nov 2024</td>
-          <td class="govuk-table__cell statement_date">22 Oct 2024</td>
-          <td class="govuk-table__cell statement_description">Child maintenance</td>
-          <td class="govuk-table__cell statement_39_end">44.85</td>
+          <td class="govuk-table__cell">19 Oct 2024</td>
+          <td class="govuk-table__cell">Deductions from earnings order</td>
+          <td class="govuk-table__cell">301.71</td>
+          <td class="govuk-table__cell">160.79</td>
+          <!--<td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--orange">
+              Partial
+            </strong>
+          </td>-->
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell statement_date">9 Nov 2024</td>
-          <td class="govuk-table__cell statement_date">22 Oct 2024</td>
-          <td class="govuk-table__cell statement_description">Collection charges</td>
-          <td class="govuk-table__cell statement_39_end">8.97</td>
+          <td class="govuk-table__cell">19 Nov 2024</td>
+          <td class="govuk-table__cell">Deductions from earnings order</td>
+          <td class="govuk-table__cell">301.71</td>
+          <td class="govuk-table__cell"></td>
+          <!--<td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--grey">
+              Planned
+            </strong>
+          </td>-->
+        </tr> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">19 Dec 2024</td>
+          <td class="govuk-table__cell">Deductions from earnings order</td>
+          <td class="govuk-table__cell">301.71</td>
+          <td class="govuk-table__cell"></td>
+          <!--<td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--grey">
+              Planned
+            </strong>
+          </td>-->
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell statement_date">9 Nov 2024</td>
-          <td class="govuk-table__cell statement_date">30 Sep 2024</td>
-          <td class="govuk-table__cell statement_description">Unpaid child maintenance</td>
-          <td class="govuk-table__cell statement_39_end">16.68</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell statement_date">9 Nov 2024</td>
-          <td class="govuk-table__cell statement_date">30 Sep 2024</td>
-          <td class="govuk-table__cell statement_description">Unpaid collection charges</td>
-          <td class="govuk-table__cell statement_39_end">3.34</td>
-        </tr>
+          <td class="govuk-table__cell">19 Jan 2025</td>
+          <td class="govuk-table__cell">Deductions from earnings order</td>
+          <td class="govuk-table__cell">301.71</td>
+          <td class="govuk-table__cell"></td>
+          <!--<td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--grey">
+              Planned
+            </strong>
+          </td>-->
+        </tr> 
       </tbody>
     </table>
 
- 
+   
+  </div>
+
+    <script defer>
+      import('https://unpkg.com/@ukic/web-components/loader').then((module) => {
+        module.defineCustomElements();
+      });
+      // The ICDS has types available if your JavaScript framework allows for use with TypeScript
+      // Below is an example of how to import an ICDS type
+      // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
+    </script>
 </div>
 </div>
+
 {% endblock %}
 
 {% block footer %}
@@ -221,6 +286,5 @@
 
 
 {% endblock %}
-
 
 
