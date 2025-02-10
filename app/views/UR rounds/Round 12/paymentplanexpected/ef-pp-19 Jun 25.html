@@ -1,46 +1,52 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Statement – {{ serviceName }} – GOV.UK Prototype Kit
+  Case – {{ serviceName }} – GOV.UK Prototype Kit
+  <script>
+    const $subNavTabs = document.querySelector('[data-module="dl-subnav"]')
+    const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
+  </script>
 {% endblock %}
 
 {% block header %}
   <!-- Blank header with no service name for the start page -->
-  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
-  <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
-      crossorigin="anonymous"
-    />
-  {% from "internal-service-header/macro.njk" import dwpHeader %}
+   <!-- Blank header with no service name for the start page -->
+   <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+   <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+       crossorigin="anonymous"
+     />
 
-  <header>
-    <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
-      <div class="govuk-header__container govuk-width-container ">
-        <div class="govuk-header__content">
-          <a href="/index.html" class="govuk-header__link govuk-header__service-name">
-            View parent finances
-          </a>
-        </div>
-        <!--<nav class="hmrc-sign-out-nav">
+     <header>
+      <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+        <div class="govuk-header__container govuk-width-container ">
+          <div class="govuk-header__content">
+            <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+              View parent finances
+            </a>
+          </div>
+          <!--<nav class="hmrc-sign-out-nav">
             <a class="govuk-link hmrc-sign-out-nav__link" href="#">Close</a>
           </nav>-->
-  </div>
     </div>
-  </header>
+      </div>
+    </header>
+
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
 
 {% endblock %}
 
@@ -75,22 +81,23 @@
   </dl>
   </section>
 
+
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-finances.html">Finances</a>
+              <a class="moj-primary-navigation__link" href="../ef-finances.html">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page"  href="#">Statement</a>
+              <a class="moj-primary-navigation__link" href="../ef-statements.html">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-paymentplan.html">Payment plans</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="../ef-paymentplan.html">Payment plans</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-caseinformation.html">Case</a>
+              <a class="moj-primary-navigation__link" href="../ef-caseinformation.html">Case</a>
             </li>
           </ul>
         </nav>
@@ -99,49 +106,65 @@
   </div>
 
   <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
-    <a href="../ef-statements.html" class="govuk-back-link">Back</a>
-  </nav>
+    <a href="../ef-paymentplan.html" class="govuk-back-link">Back</a>
+  </nav> 
 
-<h1 class="govuk-heading-xltwo">
-  Payment allocation
-</h1>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <p class="dateRange">
-      <span class="dateRange__text">
-        Shows how the system shared the payment received on <strong>19 November 2024</strong>.
-       </span>
-     </p>
+  <h1 class="govuk-heading-xltwo">
+    What makes up the payment
+    </h1>
+    <div class="govuk-grid-row">
+      <!--<div class="govuk-grid-column-full">
+        <p class="dateRange">
+          <span class="dateRange__text">
+            From the case effective date <strong>23 August 2021</strong> to <strong>22 November 2024</strong>.
+           </span>
+         </p>
+      </div>-->
+ 
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          £106.65 due 19 June 2025
+        </h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Child maintenance
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £69.56
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Collection charges
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £13.97
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Unpaid child maintenance and charges
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £23.12
+            </dd>
+          </div> 
+        </dl>
+      </div>
+    </div>
+   
+
+    
+    
   </div>
-
-  <div class="govuk-grid-column-full">
-
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Received</th>
-          <th scope="col" class="govuk-table__header">Posted date</th>
-          <th scope="col" class="govuk-table__header">Paid</th>
-          <th scope="col" class="govuk-table__header statement_39_end">Amount (£)</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell statement_date">19 Nov 2024</td>
-          <td class="govuk-table__cell statement_date">30 Sep 2024</td>
-          <td class="govuk-table__cell statement_description">Unpaid child maintenance</td>
-          <td class="govuk-table__cell statement_39_end">20.51</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell statement_date">19 Nov 2024</td>
-          <td class="govuk-table__cell statement_date">30 Sep 2024</td>
-          <td class="govuk-table__cell statement_description">Unpaid collection charges</td>
-          <td class="govuk-table__cell statement_39_end">4.10</td>
-        </tr>
-      </tbody>
-    </table> 
 </div>
-</div>
+
+
 {% endblock %}
 
 {% block footer %}
@@ -170,6 +193,9 @@
 </footer>
 
 <style>
+  .statement_end {
+    width: 160px;
+}
   .govuk-footer {
     display: none;
   }
@@ -207,6 +233,3 @@
 
 
 {% endblock %}
-
-
-
