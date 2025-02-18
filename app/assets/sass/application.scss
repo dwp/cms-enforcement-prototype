@@ -466,6 +466,7 @@ h2.govuk-heading-m {
 a.dropdownActive {
   background-color: #767676 !important;
   color: #ffffff !important;
+  pointer-events: none;
 }
 
 a.govuk-focused-text {
