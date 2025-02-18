@@ -50,9 +50,16 @@ a.navActive {
 }
 
 // Quick reference component
+
+//.dwp-quick-reference {
+//  min-height: 110px;
+//  border-bottom: 10px solid #1d70b8;
+//}
+
 .dwp-quick-reference {
-  min-height: 110px;
-    border-bottom: 10px solid #1d70b8;
+  min-height: 127px;
+  margin: 0px;
+  border-bottom: 10px solid #1d70b8;
 }
 
 .dwp-quick-reference--alternative {
@@ -453,4 +460,19 @@ h2.govuk-heading-m {
 // Payment plan due amount breakdown
 .expectedTitle {
   width: 47%;
+}
+
+// Filter dropdown
+a.dropdownActive {
+  background-color: #767676 !important;
+  color: #ffffff !important;
+}
+
+a.govuk-focused-text {
+  color: $govuk-focus-text-colour;
+  background-color: $govuk-focus-colour;
+  box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+  // When link is focussed, hide the default underline since the
+  // box shadow adds the "underline"
+  text-decoration: none;
 }
