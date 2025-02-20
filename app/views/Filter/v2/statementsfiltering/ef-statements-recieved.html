@@ -73,7 +73,7 @@
   <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
   <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
   </dl>
-  </section>
+</section>
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
@@ -81,16 +81,16 @@
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-finances.html">Finances</a>
+              <a class="moj-primary-navigation__link" href="ef-finances.html">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" aria-current="page"  href="#">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-paymentplan.html">Payment plans</a>
+              <a class="moj-primary-navigation__link" href="ef-paymentplan.html">Payment plans</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-caseinformation.html">Case</a>
+              <a class="moj-primary-navigation__link" href="ef-caseinformation.html">Case</a>
             </li>
           </ul>
         </nav>
@@ -98,48 +98,114 @@
     </div>
   </div>
 
-  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
-    <a href="ef-statements-credits.html" class="govuk-back-link">Back</a>
-  </nav>
-
 <h1 class="govuk-heading-xltwo">
-  Payment allocation
+  Statement
 </h1>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <p class="dateRange">
       <span class="dateRange__text">
-        Shows how CMS2012 shared the payment.
+        From the case effective date <strong>8 December 2014</strong> to <strong>22 November 2024</strong>.
        </span>
      </p>
   </div>
 
   <div class="govuk-grid-column-full">
+    <div class="ef-card">
+      <div class="dfe-title-i8">
+        <h2>Finance summary</h2>
+      </div>
+      <div class="ef-card-trio-v2">
+        <article class="moj-ticket-panel-trio-v2" aria-label="Sub navigation 1">
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Money still owed</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£307.58</h2>
+          </section>
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Payments made</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£1,597.92</h2>
+          </section>
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Total expected</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£1,905.49</h2>
+          </section>
+        </article>
+      </div>
+    </div>
 
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Received</th>
-          <th scope="col" class="govuk-table__header">Posted date</th>
-          <th scope="col" class="govuk-table__header">Paid</th>
-          <th scope="col" class="govuk-table__header statement_39_end">Amount (£)</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell statement_date">19 Nov 2024</td>
-          <td class="govuk-table__cell statement_date">30 Sep 2024</td>
-          <td class="govuk-table__cell statement_description">Unpaid child maintenance</td>
-          <td class="govuk-table__cell statement_39_end">20.51</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell statement_date">19 Nov 2024</td>
-          <td class="govuk-table__cell statement_date">30 Sep 2024</td>
-          <td class="govuk-table__cell statement_description">Unpaid collection charges</td>
-          <td class="govuk-table__cell statement_39_end">4.10</td>
-        </tr>
-      </tbody>
-    </table> 
+
+    <div class="moj-button-group moj-button-group--inline">
+      <div class="moj-button-menu" data-module="moj-button-menu" data-button-text="Payments received" data-button-classes="toggle-button">
+        <a href="../ef-statements.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+          All transactions
+        </a> 
+      
+        <a href="ef-statements-credits.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+          All credits
+        </a>
+      </div>
+    </div>
+
+
+    <!-- 2024-->
+    <h3 class="govuk-notification-banner__heading">
+      2024
+     </h3>
+     <table class="govuk-table">
+       <thead class="govuk-table__head">
+         <tr class="govuk-table__row">
+           <th scope="col" class="govuk-table__header">Date</th>
+           <th scope="col" class="govuk-table__header">Description</th>
+           <th scope="col" class="govuk-table__header numerical">Credit (£)</th>
+           <!--<th scope="col" class="govuk-table__header numerical">Debit (£)</th>-->
+         </tr>
+       </thead>
+       <tbody class="govuk-table__body">
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell statement_date">19 Nov 2024</td>
+           <td class="govuk-table__cell statement_description">Payment received from you - DDR</td>
+           <td class="govuk-table__cell statement_amount"><a class="govuk-link" href="paymentallocation/ef-pb-19 Nov 24.html">24.61</a></td>
+           <!--<td class="govuk-table__cell statement_amount"></td>-->
+           
+         </tr>
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell">9 Nov 2024</td>
+           <td class="govuk-table__cell_last">Payment received from you - DDR</td>
+           <td class="govuk-table__cell statement_amount"><a class="govuk-link" href="paymentallocation/ef-pb-9 Nov 24.html">73.84</a></td>
+           <!--<td class="govuk-table__cell statement_amount"></td>-->
+         </tr>
+       </tbody>
+     </table>
+ 
+     
+
+ <!-- 2021 NEW-->
+ <h3 class="govuk-notification-banner__heading">
+  2021
+ </h3>
+
+ <table class="govuk-table">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header">Description</th>
+      <th scope="col" class="govuk-table__header numerical">Credit (£)</th>
+      <!--<th scope="col" class="govuk-table__header numerical">Debit (£)</th>-->
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table__body">   
+<tr class="govuk-table__row">
+  <td class="govuk-table__cell statement_date">24 Sep 2021</td>
+  <td class="govuk-table__cell statement_description">Payment received from you - CRD</td>
+  <td class="govuk-table__cell statement_amount">239.40</td>
+  <!--<td class="govuk-table__cell statement_amount"></td>-->
+</tr>
+ </tbody>
+</table>
+ 
 </div>
 </div>
 {% endblock %}
