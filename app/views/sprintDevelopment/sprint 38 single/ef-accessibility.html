@@ -60,17 +60,17 @@
   </p>
 </div>
 
-<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+<!--<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
   <a onclick="history.back()" class="govuk-back-link">Back</a>
-</nav>
+</nav>-->
 
-
-<h1 class="govuk-heading-xltwo">
-  Accessibility statement for the View parent finances service
-</h1>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <p class="govuk-body">View parent finances (VPF) uses data from CMS2012.</p> 
+<div class="govuk-width-container">
+  <a onclick="history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Accessibility statement for the View parent finances service</h1>
+        <p class="govuk-body">View parent finances (VPF) uses data from CMS2012.</p> 
 
     <p class="govuk-body">
       This accessibility statement applies to View parent finances. This is an agent-facing service used in the Department of Work and Pensions (DWP). No citizens use this service and it is not available on GOV.UK.
@@ -136,16 +136,11 @@
       <p class="govuk-body">
         This service was tested by the DWP Digital Accessibility Team and checked for compliance with WCAG 2.2AA.
       </p>
-
-
-  </div>
+      </div>
+    </div>
+  </main>
 </div>
 
-<style>
-.govuk-table__body .govuk-table__header {
-  text-align: right;
-}
-</style>
 
 {% endblock %}
 
@@ -175,9 +170,12 @@
 </footer>
 
 <style>
-  h1.govuk-heading-xltwo {
+  h1.govuk-heading-xl {
     margin: 0px 0px 20px 0px;
   }
+  .govuk-main-wrapper {
+    padding-top: 0px;
+}
   .govuk-breadcrumbs {
     margin-top: 0px;
   }
