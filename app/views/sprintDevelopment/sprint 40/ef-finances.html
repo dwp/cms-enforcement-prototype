@@ -1,0 +1,393 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Finances – {{ serviceName }} – GOV.UK Prototype Kit
+  <script>
+    const $subNavTabs = document.querySelector('[data-module="dl-subnav"]')
+    const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
+  </script>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+   <!-- Blank header with no service name for the start page -->
+   <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+   <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+       crossorigin="anonymous"
+     />
+
+     <header>
+      <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+        <div class="govuk-header__container govuk-width-container ">
+          <div class="govuk-header__content">
+            <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+              View parent finances
+            </a>
+          </div>
+          <nav class="hmrc-sign-out-nav">
+            <ul class="moj-header__navigation-list">
+              <li class="moj-header__navigation-item">
+                <a class="moj-header__navigation-link" href="ef-whatsnew.html" aria-current="page"><span id="notifications" class="moj-notification-badge">10</span>
+                  What’s new</a>
+              </li>
+              <li class="moj-header__navigation-item">
+                <a class="moj-header__navigation-link" href="ef-about.html">About</a>
+              </li>
+            </ul>
+          </nav>
+    </div>
+      </div>
+    </header>
+
+
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="ef-feedback.html">give your feedback (opens in new tab)</a>.
+    </span>
+  </p>
+</div>
+
+<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+  <dl class="dwp-quick-reference__block">
+  <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+  <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
+  <dd class="dwp-quick-reference__status">
+    <strong class="govuk-tag govuk-tag--turquoise">
+      Paying parent
+    </strong>
+    <strong class="govuk-tag govuk-tag--blue">
+      Single case
+    </strong>
+  </dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
+  <dd class="dwp-quick-reference__secondary">121323454232</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
+  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+  </dl>
+</section>
+
+
+ <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="#1">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-statements.html">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-paymentplan.html">Payment plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-caseinformation.html">Case</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  
+
+<h1 class="govuk-heading-xltwo">
+  Finances
+</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+   
+    <p class="dateRange">
+      <span class="dateRange__text">
+        From the case effective date <strong>8 December 2014</strong> to <strong>20 November 2024</strong>.
+       </span>
+     </p>
+  </div>
+ 
+
+  <div class="govuk-grid-column-full">
+
+    <div class="ef-card">
+      <div class="dfe-title-i8">
+        <h2>Money still owed</h2>
+        <h2 class="value">£3,268.77</h2>
+      </div>
+      <div class="ef-card-duo">
+        <article class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Child maintenance</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£2,683.46</h2>
+          </section>
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Charges and debt</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£585.32</h2>
+          </section>
+        </article>
+      </div>
+    </div>
+
+    <div class="ef-card">
+      <div class="dfe-title-i8">
+        <h2>Amount written off</h2>
+        <h2 class="value">£0</h2>
+      </div>
+    </div>
+    
+
+    <div class="ef-card">
+      <div class="dfe-title-i8">
+        <h2>Payments made</h2>
+        <h2 class="value">£7,463.97</h2>
+      </div>
+      <div class="ef-card-duo">
+        <article class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Child maintenance</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£7,387.06</h2>
+          </section>
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Charges and debt</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£76.91</h2>
+          </section>
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Cash balance £0.01
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              Money paid that cannot be allocated to child maintenance or charges yet. 
+            </div>
+          </details>
+        </article>
+      </div>
+    </div>
+
+
+    <div class="ef-card">
+      <div class="dfe-title-i8">
+        <h2>Total expected</h2>
+        <h2 class="value">£10,732.75</h2>
+      </div>
+      <div class="ef-card-duo">
+        <article class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Child maintenance</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£10,070.52</h2>
+          </section>
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Charges and debt</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£662.23</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Collection charges</td>
+                  <th scope="row" class="govuk-table__header">£5,444.55</th>
+                </tr>
+
+                <!--
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Enforcement charges</td>
+                  <th scope="row" class="govuk-table__header">£350.00</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    <ul class="govuk-list govuk-list--bullet enforcement-charges">
+                      <li>Deduction from earnings order</li>
+                      <li>Deduction from earnings request</li>
+                      <li>Regular deduction order</li>
+                      <li>Lump sum deduction order</li>
+                      <li>Liability order</li>
+                    </ul>
+                  </td>
+                  <th scope="row" class="govuk-table__header">
+                    <ul class="govuk-list enforcement-charges">
+                      <li>£20.00</li>
+                      <li>£10.00</li>
+                      <li>£20.00</li>
+                      <li>£100.00</li>
+                      <li>£200.00</li>
+                    </ul>
+                  </td>
+                </tr>-->
+
+
+
+
+                
+
+
+
+
+
+
+               <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Enforcement charges
+                    <ul class="govuk-list enforcement-charges">
+                      <li>Deduction from earnings order</li>
+                      <li>Deduction from earnings request</li>
+                      <li>Regular deduction order</li>
+                      <li>Lump sum deduction order</li>
+                      <li>Liability order</li>
+                    </ul>
+                  </td>
+                  <th scope="row" class="govuk-table__header">£350.00
+                    <ul class="govuk-list enforcement-charges">
+                      <li>£20.00</li>
+                      <li>£10.00</li>
+                      <li>£20.00</li>
+                      <li>£100.00</li>
+                      <li>£200.00</li>
+                    </ul>
+                  </th>
+                </tr> 
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Enforcement costs</td>
+                  <th scope="row" class="govuk-table__header">£160.00</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">CSA debt</td>
+                  <th scope="row" class="govuk-table__header">£63.45</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">DNA costs</td>
+                  <th scope="row" class="govuk-table__header">£87.23</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Subject access request costs</td>
+                  <th scope="row" class="govuk-table__header">£19.00</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Interest</td>
+                  <th scope="row" class="govuk-table__header">£30.67</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Fees</td>
+                  <th scope="row" class="govuk-table__header">£22.87</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Judicial review costs</td>
+                  <th scope="row" class="govuk-table__header">£107.89</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Appeal costs</td>
+                  <th scope="row" class="govuk-table__header">£43.45</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">CMS administration costs</td>
+                  <th scope="row" class="govuk-table__header">£26.89</th>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Liability order administration costs</td>
+                  <th scope="row" class="govuk-table__header">£54.00</th>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </article>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<style>
+.govuk-table__body .govuk-table__header {
+  text-align: right;
+}
+</style>
+
+{% endblock %}
+
+{% block footer %}
+
+<footer class="enforcement-footer" role="contentinfo">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <h2 class="govuk-visually-hidden">Footer links</h2>
+            <ul class="govuk-footer__inline-list">
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="ef-accessibility.html">
+                    Accessibility statement
+                  </a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="#">
+                    Privacy policy
+                  </a>
+                </li>
+            </ul>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .govuk-footer {
+    display: none;
+  }
+  .enforcement-footer {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.1428571429;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    border-top: 1px solid #b1b4b6;
+    color: #0b0c0c;
+    background: #f3f2f1;
+  }
+  @media (min-width: 40.0625em) {
+    .enforcement-footer {
+        padding-bottom: 25px;
+    }
+}
+@media (min-width: 40.0625em) {
+    .enforcement-footer {
+        padding-top: 40px;
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .enforcement-footer {
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+}
+</style>
+
+
+{% endblock %}
+
+
