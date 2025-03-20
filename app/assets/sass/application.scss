@@ -267,7 +267,7 @@ h2.govuk-heading-m {
 
 
   // Card title and value
-  .dfe-title, .dfe-title-i8 {
+  .dfe-title, .dfe-title-i8, .dfe-title-cash {
     background-color: #F7F7F7;
     border-bottom: 1px solid #b1b4b6;
     }
@@ -291,6 +291,7 @@ h2.govuk-heading-m {
       margin: 20px 0px 20px 22px;
       font-family: "GDS Transport", arial, sans-serif;
       }
+
       .dfe-title-i8 h2.value {
         float: right;
         font-size: 40px;
@@ -298,6 +299,29 @@ h2.govuk-heading-m {
         font-weight: bold;
         font-family: "GDS Transport", arial, sans-serif;
         }
+
+  // prototypes with cash balance subheader
+
+    .dfe-title-cash h2 {
+    float: left;
+    font-size: 1.5rem;
+    margin: 20px 0px 0px 22px;
+    font-family: "GDS Transport", arial, sans-serif;
+    }
+  
+    .dfe-title-cash span.govuk-caption-m {
+    width: fit-content;
+    margin: 0px 0px 20px 22px;
+    clear: left;
+    }
+    
+    .dfe-title-cash h2.value {
+      float: right;
+      font-size: 40px;
+      margin: 23px 25px 11px 15px;
+      font-weight: bold;
+      font-family: "GDS Transport", arial, sans-serif;
+      }
 
     
   
