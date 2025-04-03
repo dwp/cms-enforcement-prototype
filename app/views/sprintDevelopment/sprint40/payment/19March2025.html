@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
- What’s new – {{ serviceName }} – GOV.UK Prototype Kit
+  Case – {{ serviceName }} – GOV.UK Prototype Kit
   <script>
     const $subNavTabs = document.querySelector('[data-module="dl-subnav"]')
     const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
@@ -35,14 +35,14 @@
       <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
         <div class="govuk-header__container govuk-width-container ">
           <div class="govuk-header__content">
-            <a href="ef-finances.html" class="govuk-header__link govuk-header__service-name">
+            <a href="/index.html" class="govuk-header__link govuk-header__service-name">
               View parent finances
             </a>
           </div>
           <nav class="hmrc-sign-out-nav">
             <ul class="moj-header__navigation-list">
               <li class="moj-header__navigation-item">
-                <a class="moj-header__navigation-link" href="ef-whatsnew.html" aria-current="page">
+                <a class="moj-header__navigation-link" href="ef-whatsnew.html" aria-current="page"><span id="notifications" class="moj-notification-badge">1</span>
                   What’s new</a>
               </li>
               <li class="moj-header__navigation-item">
@@ -53,7 +53,6 @@
     </div>
       </div>
     </header>
-
 
 {% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
 
@@ -71,63 +70,108 @@
   </p>
 </div>
 
-<!--<div class="moj-primary-navigation">
-  <div class="moj-primary-navigation__container">
-    <div class="moj-primary-navigation__nav">
-      <nav class="moj-primary-navigation" aria-label="Primary navigation">
-        <ul class="moj-primary-navigation__list">
-          <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="ef-finances.html">Finances</a>
-          </li>
-          <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="ef-statements.html">Statement</a>
-          </li>
-          <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="ef-paymentplan.html">Payment plans</a>
-          </li>
-          <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="ef-caseinformation.html">Case</a>
-          </li>
-        </ul>
-      </nav>
+<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+  <dl class="dwp-quick-reference__block">
+  <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+  <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
+  <dd class="dwp-quick-reference__status">
+    <strong class="govuk-tag govuk-tag--turquoise">
+      Paying parent
+    </strong>
+    <strong class="govuk-tag govuk-tag--blue">
+      Single case
+    </strong>
+  </dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
+  <dd class="dwp-quick-reference__secondary">121323454232</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
+  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+  </dl>
+  </section>
+
+
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-finances.html">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-statements.html">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="../ef-paymentplan.html">Payment plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-caseinformation.html">Case</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
-</div>-->
 
-<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
-  <a onclick="history.back()" class="govuk-back-link">Back</a>
-</nav>
-
-<h1 class="govuk-heading-xltwo">
-  What’s new
-</h1>
-<div class="govuk-grid-row">
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <a href="../ef-paymentplan.html" class="govuk-back-link">Back</a>
+  </nav>
+  
+  <h1 class="govuk-heading-xltwo">
+    What makes up the payment
+    </h1>
+    <div class="govuk-grid-row">
+      <!--<div class="govuk-grid-column-full">
+        <p class="dateRange">
+          <span class="dateRange__text">
+            From the case effective date <strong>23 August 2021</strong> to <strong>22 November 2024</strong>.
+           </span>
+         </p>
+      </div>-->
+ 
   <div class="govuk-grid-column-two-thirds">
-
-       <div class="updates-form-group">
-      <div id="more-detail-hint" class="govuk-hint">
-        14 April 2025
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          £106.65 due 19 March 2025
+        </h2>
       </div>
-      <h2 class="govuk-heading-m">View parent finances features </h2>
-      <p class="govuk-body">This version includes:</p>
-      <ul class="govuk-list">
-      <ul class="govuk-list govuk-list--bullet">
-        <li>a summary of the paying parent’s finances</li>
-        <li>a statement showing all transactions from the start of the case up to today</li>
-        <li>payment plans</li>
-        <li>how much of each planned payment will go to child maintenance, collection charges and repaying debt</li>
-        <li>basic details about the receiving parent and qualifying children</li>
-      </ul>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Child maintenance
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £69.56
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Collection charges
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £13.97
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Unpaid child maintenance and charges
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £23.12
+            </dd>
+          </div> 
+        </dl>
+      </div>
     </div>
    
+
+    
+    
   </div>
 </div>
 
-<style>
-.govuk-table__body .govuk-table__header {
-  text-align: right;
-}
-</style>
 
 {% endblock %}
 
@@ -145,7 +189,7 @@
                   </a>
                 </li>
                 <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="https://intranet.dwp.gov.uk/page/dwp-employee-privacy-notice">
+                  <a class="govuk-footer__link" href="#">
                     Privacy policy
                   </a>
                 </li>
@@ -157,12 +201,9 @@
 </footer>
 
 <style>
-  h1.govuk-heading-xltwo {
-    margin: 0px 0px 20px 0px;
-  }
-  .govuk-breadcrumbs {
-    margin-top: 0px;
-  }
+  .statement_end {
+    width: 160px;
+}
   .govuk-footer {
     display: none;
   }
@@ -200,5 +241,3 @@
 
 
 {% endblock %}
-
-

@@ -272,7 +272,12 @@ h2.govuk-heading-m {
     background-color: #ffffff;
     margin-bottom: 40px;
 }
-
+.moj-ticket-panel-trio {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(292px, 0fr));
+  gap: 19px;
+  padding: 22px;
+}
 
   // Card title and value
   .dfe-title, .dfe-title-i8, .dfe-title-cash {
