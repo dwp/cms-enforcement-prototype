@@ -534,3 +534,23 @@ a.govuk-focused-text {
 .enforcement-charges {
   margin: 15px 0px 5px 0px !important;
 }
+
+// Maintenance calcs table
+.reasonTitle {
+  width:180px;
+}
+
+.cell_reason {
+  width:180px;
+  position: relative;
+  width: -webkit-fit-content;
+  width: fit-content;
+  padding-left: 0px;
+  color: #1d70b8;
+  cursor: pointer;
+}
+
+.cell_calDate {
+  width:130px;
+}
+
