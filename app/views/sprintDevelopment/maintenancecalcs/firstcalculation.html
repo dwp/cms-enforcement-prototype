@@ -83,11 +83,22 @@
   </dl>
 </section>
 
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <a href="ef-calculations.html" class="govuk-back-link">Back</a>
+  </nav>
+
 <h1 class="govuk-heading-xltwo">
   First calculation
 </h1>
 
 <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <p class="dateRange" style="padding-bottom: 20px;">
+      <span class="dateRange__text">
+        <b>SR calculation number:</b> 1-123456789, <b>Parent SR number:</b> 1-123456789
+       </span>
+     </p>
+  </div>
   <div class="govuk-grid-column-full">
     <p class="dateRange">
       <span class="dateRange__text">
@@ -112,14 +123,14 @@
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">10 Nov 2021</td>
-          <td class="govuk-table__cell">19 Oct 2021</td>
-          <td class="govuk-table__cell">2 Jan 2022</td>
-          <td class="govuk-table__cell">500.00</td>
-          <td class="govuk-table__cell">500.00</td>
-          <td class="govuk-table__cell">63.16</td>
+          <td class="govuk-table__cell">01 Nov 20</td>
+          <td class="govuk-table__cell">19 Oct 21</td>
+          <td class="govuk-table__cell">25 Nov 20</td>
           <td class="govuk-table__cell">0</td>
-          <td class="govuk-table__cell">686.24</td>
+          <td class="govuk-table__cell">0</td>
+          <td class="govuk-table__cell">51.00</td>
+          <td class="govuk-table__cell">0</td>
+          <td class="govuk-table__cell">277.02</td>
         </tr>
       </tbody>
     </table>
@@ -127,11 +138,12 @@
     <br><br>
 
     <div class="govuk-grid-row">
+       
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-summary-card">
           <div class="govuk-summary-card__title-wrapper">
             <h2 class="govuk-summary-card__title">
-              Assessable weekly income - £2,000.00
+              Assessable weekly income - £0.00
             </h2>
           </div>
           <div class="govuk-summary-card__content">
@@ -141,7 +153,7 @@
                  Daily liability
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  £9.02
+                  £7.29
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
@@ -149,15 +161,15 @@
                  Daily collection charge
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  0
+                  £0
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                 Income
+                 Income amount
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  £26,000.00
+                  £0
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
@@ -165,7 +177,7 @@
                   Income source
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  HMRC
+                  None
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
@@ -173,31 +185,49 @@
                   HMRC income tax year
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  2021
+                  None
                 </dd>
               </div> 
-              <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__row" style="border-bottom: 0px;">
                 <dt class="govuk-summary-list__key">
+                  Variation
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £0
+                </dd>
+              </div>
+
+              <div class="govuk-summary-list__row" style="border-bottom: 0px;">
+                <dt class="govuk-summary-list__row" style="font-weight: 100;">
                   Additional income
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  0
+                  £0
                 </dd>
               </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
+              
+             <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" style="font-weight: 100;">
                   Special expense
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  0
+                  £0
                 </dd>
               </div>
-              <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__row" style="border-bottom: 0px;">
                 <dt class="govuk-summary-list__key">
                   Benefit
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  N/A
+                  None
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" style="font-weight: 100;">
+                  Partner household
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  None
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
@@ -205,7 +235,7 @@
                   Pension
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  0
+                  £0
                 </dd>
               </div> 
               <div class="govuk-summary-list__row">
@@ -213,7 +243,7 @@
                   Foreign exchange costs
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  0
+                  £0
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
@@ -221,7 +251,7 @@
                   Your status
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  N/A
+                  None
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
@@ -229,7 +259,7 @@
                   Rate applied
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  Basic rate
+                  DMD
                 </dd>
               </div>      
             </dl>
@@ -259,12 +289,20 @@
                   Date of birth
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  03/05/2016
+                  3 May 2016
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Number of overnight stays
+                  Overnight stays
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  0 night per week
+                </dd>
+              </div> 
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Local authority stays
                 </dt>
                 <dd class="govuk-summary-list__value">
                   0 night per week
@@ -275,7 +313,7 @@
         </div>
       </div>
 
-      <div class="govuk-grid-column-two-thirds">
+       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-summary-card">
           <div class="govuk-summary-card__title-wrapper">
             <h2 class="govuk-summary-card__title">
@@ -297,15 +335,23 @@
                   Date of birth
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  06/08/2022
+                  6 Aug 2022
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Number of overnight stays
+                  Overnight stays
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  1 night per week
+                  0 night per week
+                </dd>
+              </div> 
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Local authority stays
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  0 night per week
                 </dd>
               </div> 
             </dl>
@@ -324,12 +370,20 @@
             <dl class="govuk-summary-list">
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key mcTitle">
-                  Child in family based arrangements
+                  Relevant other child
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  Janine Turner
+                  0
                 </dd>
               </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Children in family based arrangements
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  1
+                </dd>
+              </div> 
             </dl>
           </div>
         </div>
