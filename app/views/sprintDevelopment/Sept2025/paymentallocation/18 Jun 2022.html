@@ -136,7 +136,33 @@
 
   <div class="govuk-grid-column-full">
 
-    <div class="moj-button-group moj-button-group--inline">
+              <div class="govuk-form-group">
+      <label class="govuk-label" for="sort">
+      Sort by
+    </label>
+    <select onchange="window.location.href=this.value;" class="govuk-select" id="sort" name="sort" style="
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 8px 10px 7px;
+    border: 2px solid transparent;
+    border-radius: 0;
+    color: #ffffff;
+    background-color: #00703c;
+    box-shadow: 0 2px 0 rgb(0, 44.8, 24);
+    text-align: center;">
+    <option value="../ef-paymentallocation.html" >21 Dec 2023 - 21 Jun 2024</option>
+    <option value="20 Jun 2023.html">20 Jun 2023 - 20 Dec 2023</option>
+    <option value="19 Dec 2022.html">19 Dec 2022 - 19 Jun 2023</option>
+    <option value="published" selected>18 Jun 2022 - 18 Dec 2022</option>
+    </select>
+  </div>
+
+   <!-- <div class="moj-button-group moj-button-group--inline">
       <div class="moj-button-menu" data-module="moj-button-menu" data-button-text="18 Jun 2022 - 18 Dec 2022" data-button-classes="toggle-button">
         <a href="../ef-paymentallocation.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button" style="width: 260px;">
           21 Dec 2023 - 21 Jun 2024
@@ -149,7 +175,7 @@
         </a>
       
       </div>
-    </div>
+    </div>-->
 
     <!-- 2022-->
     <h3 class="govuk-notification-banner__heading">
