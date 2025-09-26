@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: prototype.interface.cms-enforcement-prototype
-  title: cms-enforcement-prototype
+  title: CMS-Enforcement-Prototype
   description: |
     TODO: add description for cms-enforcement-prototype.
 
