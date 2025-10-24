@@ -1,0 +1,243 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Case – {{ serviceName }} – GOV.UK Prototype Kit
+  <script>
+    const $subNavTabs = document.querySelector('[data-module="dl-subnav"]')
+    const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
+  </script>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+   <!-- Blank header with no service name for the start page -->
+   <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+   <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+       crossorigin="anonymous"
+     />
+
+     <header>
+      <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+        <div class="govuk-header__container govuk-width-container ">
+          <div class="govuk-header__content">
+            <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+              View parent finances
+            </a>
+          </div>
+          <nav class="hmrc-sign-out-nav">
+            <ul class="moj-header__navigation-list">
+              <li class="moj-header__navigation-item">
+                <a class="moj-header__navigation-link" href="../ef-whatsnew.html" aria-current="page"><span id="notifications" class="moj-notification-badge">5</span>
+                  What’s new</a>
+              </li>
+              <li class="moj-header__navigation-item">
+                <a class="moj-header__navigation-link" href="../ef-about.html">About</a>
+              </li>
+            </ul>
+          </nav>
+    </div>
+      </div>
+    </header>
+
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="../ef-feedback.html">give your feedback (opens in new tab)</a>.
+    </span>
+  </p>
+</div>
+
+<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+  <dl class="dwp-quick-reference__block">
+  <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+  <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
+  <dd class="dwp-quick-reference__status">
+    <strong class="govuk-tag govuk-tag--turquoise">
+      Paying parent
+    </strong>
+    <strong class="govuk-tag govuk-tag--blue">
+      Single case
+    </strong>
+  </dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
+  <dd class="dwp-quick-reference__secondary">121323454232</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
+  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+  </dl>
+  </section>
+
+
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-finances.html">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-statements.html">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="../ef-paymentplan.html">Payment plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-caseinformation.html">Case</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <a href="../ef-paymentplan.html" class="govuk-back-link">Back</a>
+  </nav>
+
+  <h1 class="govuk-heading-xltwo">
+    What makes up the payment
+    </h1>
+    <div class="govuk-grid-row">
+      <!--<div class="govuk-grid-column-full">
+        <p class="dateRange">
+          <span class="dateRange__text">
+            From the case effective date <strong>23 August 2021</strong> to <strong>22 November 2024</strong>.
+           </span>
+         </p>
+      </div>-->
+ 
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          £106.65 due 19 Feburary 2025
+        </h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Child maintenance
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £69.56
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Collection charges
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £13.97
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Unpaid child maintenance and charges
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £23.12
+            </dd>
+          </div> 
+        </dl>
+      </div>
+    </div>
+   
+
+    
+    
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+
+<footer class="enforcement-footer" role="contentinfo">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <h2 class="govuk-visually-hidden">Footer links</h2>
+            <ul class="govuk-footer__inline-list">
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="ef-accessibility.html">
+                    Accessibility statement
+                  </a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="#">
+                    Privacy policy
+                  </a>
+                </li>
+            </ul>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .statement_end {
+    width: 160px;
+}
+  .govuk-footer {
+    display: none;
+  }
+  .enforcement-footer {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.1428571429;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    border-top: 1px solid #b1b4b6;
+    color: #0b0c0c;
+    background: #f3f2f1;
+  }
+  @media (min-width: 40.0625em) {
+    .enforcement-footer {
+        padding-bottom: 25px;
+    }
+}
+@media (min-width: 40.0625em) {
+    .enforcement-footer {
+        padding-top: 40px;
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .enforcement-footer {
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+}
+</style>
+
+
+{% endblock %}

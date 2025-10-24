@@ -1,0 +1,220 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Finances – {{ serviceName }} – GOV.UK Prototype Kit
+  <script>
+    const $subNavTabs = document.querySelector('[data-module="dl-subnav"]')
+    const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
+  </script>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+   <!-- Blank header with no service name for the start page -->
+   <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+   <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+       crossorigin="anonymous"
+     />
+     <link
+       rel="stylesheet"
+       type="text/css"
+       href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+       crossorigin="anonymous"
+     />
+
+     <header>
+      <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+        <div class="govuk-header__container govuk-width-container ">
+          <div class="govuk-header__content">
+            <a href="ef-finances.html" class="govuk-header__link govuk-header__service-name">
+              View parent finances
+            </a>
+          </div>
+    </div>
+      </div>
+    </header>
+
+
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>.
+    </span>
+  </p>
+</div>
+
+<!--<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <a onclick="history.back()" class="govuk-back-link">Back</a>
+</nav>-->
+
+<div class="govuk-width-container">
+  <a onclick="history.back()" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Accessibility statement for the View parent finances service</h1>
+        <p class="govuk-body">View parent finances (VPF) uses data from CMS2012.</p> 
+
+    <p class="govuk-body">
+      This accessibility statement applies to View parent finances. This is an agent-facing service used in the Department of Work and Pensions (DWP). No citizens use this service and it is not available on GOV.UK.
+    </p>
+
+    <p class="govuk-body">
+      View parent finances allows authorised users to view a range of data items which are held in other DWP systems.
+    </p>
+
+    <p class="govuk-body">
+      Use of the service is secure, controlled by access permissions set by DWP.
+    </p>
+      <h2 class="govuk-summary-card__title">
+        Using the service
+      </h2>
+      <p class="govuk-body">This service is run by the Department for Work and Pensions (DWP). We want as many child maintenance case workers as possible to be able to use this service. For example, that means you should be able to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>change colours, contrast levels and fonts using browser or device settings</li>
+        <li>zoom in up to 400% without the text spilling off the screen</li>
+        <li>navigate most of the service using a keyboard or speech recognition software</li>
+        <li>listen to most of the service using a screen reader (including the most recent versions of JAWS, NVDA and VoiceOver)</li>
+      </ul>
+      <p class="govuk-body">We’ve also made the text in the service as simple as possible to understand.</p>
+      <p class="govuk-body"><a class="govuk-link" href="https://mcmw.abilitynet.org.uk" target=”_blank”>AbilityNet (opens in a new tab)</a> has advice on making your device easier to use if you have a disability.</p>
+
+      <h2 class="govuk-summary-card__title">
+        Reporting accessibility problems with this service
+      </h2>
+      <p class="govuk-body">
+        We’re always looking to improve the accessibility of this service. If you find any problems that are not listed on this page or think we’re not meeting accessibility requirements, you can  <a class="govuk-link" href="ef-feedback" target="_blank">give feedback (opens in a new tab)</a>.
+      </p>
+
+      <h2 class="govuk-summary-card__title">
+        Enforcement procedure
+      </h2>
+      <p class="govuk-body">
+        The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). 
+      </p>
+      <p class="govuk-body">
+        If you’re not happy with how we respond to your complaint, <a class="govuk-link" href="https://www.equalityadvisoryservice.com" target=”_blank”>contact the Equality Advisory and Support Service (EASS) (opens in a new tab)</a>.
+      </p>
+      <p class="govuk-body">
+        If you are in Northern Ireland, <a class="govuk-link" href="https://www.equalityni.org/Home" target=”_blank”>contact the Equalities Commission for Northern Ireland (ECNI) (opens in a new tab)</a>.
+      </p>
+
+      <h2 class="govuk-summary-card__title">
+        Technical information about this service’s accessibility
+      </h2>
+      <p class="govuk-body">
+        The Department of Work and Pensions (DWP) is committed to making this service accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
+      </p> 
+      <p class="govuk-body">  
+        This service is fully compliant with the 
+        <a class="govuk-link" href="https://www.w3.org/TR/WCAG22/" target="_blank">Web Content Accessibility Guidelines version 2.2 (opens in a new tab)</a> AA standard. 
+      </p>
+
+      <h2 class="govuk-summary-card__title">
+        Preparation of this accessibility statement
+      </h2>
+      <p class="govuk-body">
+        This statement was prepared on 10 January 2025. It was last reviewed on 20 March 2025.  
+      </p>
+      <p class="govuk-body">
+        This service was tested by the DWP Digital Accessibility Team and checked for compliance with WCAG 2.2AA.
+      </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+
+<footer class="enforcement-footer" role="contentinfo">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <h2 class="govuk-visually-hidden">Footer links</h2>
+            <ul class="govuk-footer__inline-list">
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="ef-accessibility.html">
+                    Accessibility statement
+                  </a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="#">
+                    Privacy policy
+                  </a>
+                </li>
+            </ul>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  h1.govuk-heading-xl {
+    margin: 0px 0px 20px 0px;
+  }
+  .govuk-main-wrapper {
+    padding-top: 0px;
+}
+  .govuk-breadcrumbs {
+    margin-top: 0px;
+  }
+  .govuk-footer {
+    display: none;
+  }
+  .enforcement-footer {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.1428571429;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    border-top: 1px solid #b1b4b6;
+    color: #0b0c0c;
+    background: #f3f2f1;
+  }
+  @media (min-width: 40.0625em) {
+    .enforcement-footer {
+        padding-bottom: 25px;
+    }
+}
+@media (min-width: 40.0625em) {
+    .enforcement-footer {
+        padding-top: 40px;
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .enforcement-footer {
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+}
+</style>
+
+
+{% endblock %}
+
+
