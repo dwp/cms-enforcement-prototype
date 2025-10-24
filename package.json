@@ -15,7 +15,7 @@
     "dfe-frontend": "^2.0.1",
     "eazy-logger": "^4.1.0",
     "govuk-frontend": "5.8.0",
-    "govuk-prototype-kit": "13.16.2",
+    "govuk-prototype-kit": "13.18.1",
     "path-to-regexp": "^8.3.0"
   }
 }
