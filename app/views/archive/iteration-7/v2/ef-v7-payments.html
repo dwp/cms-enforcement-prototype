@@ -1,0 +1,1004 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Payments – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+  <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+      crossorigin="anonymous"
+    />
+  {% from "internal-service-header/macro.njk" import dwpHeader %}
+
+  <header>
+    <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+      <div class="govuk-header__container govuk-width-container ">
+        <div class="govuk-header__content">
+          <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+            View parent finances
+          </a>
+        </div>
+        <!--<nav class="hmrc-sign-out-nav">
+          <a class="govuk-link hmrc-sign-out-nav__link" href="ef-v6-case-closed.html">
+            Close window </a>
+        </nav>
+        <nav class="hmrc-sign-out-nav">
+          <a class="govuk-link hmrc-sign-out-nav__link" href="../access/cms-homepage/cms-search.html">
+            Search for SCIN</a>
+        </nav>-->
+  </div>
+    </div>
+  </header>
+
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{% endblock %}
+
+{% block content %}
+<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+<dl class="dwp-quick-reference__block">
+<dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+<dd class="dwp-quick-reference__primary">Jane Doe</dd>
+<dd class="dwp-quick-reference__status">
+  <strong class="govuk-tag govuk-tag--blue">
+    Paying parent
+  </strong>
+</dd>
+<dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">SCIN:</dt>
+<dd class="dwp-quick-reference__secondary">121323454332</dd>
+<!--<dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Case ID:</dt>
+<dd class="dwp-quick-reference__secondary">12345678</dd>-->
+<dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">NI number:</dt>
+<dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+<!--<dt class="dwp-quick-reference__label govuk-visually-hidden">Status:</dt>
+<dd class="dwp-quick-reference__secondary">Single case</dd>-->
+</dl>
+</section>
+
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-grid-row">
+          <nav class="moj-side-navigation" aria-label="Side navigation">
+            <ul class="moj-side-navigation__list">
+              <li class="moj-side-navigation__item">
+                <a href="ef-v7-case-information.html">Case</a>
+              </li>
+              <li class="moj-side-navigation__item">
+                <a href="ef-v7-finances.html">Finances</a>
+              </li>
+              <li class="moj-side-navigation__item moj-side-navigation__item--active">
+                <a href="#" aria-current="location">Payments</a>
+              </li>
+              <li class="moj-side-navigation__item">
+                <a href="ef-v7-schedules.html">Schedules</a>
+              </li>
+            </ul>
+          </nav>
+      </div>
+        
+      </div>
+
+
+      <div class="govuk-grid-column-three-quarters">
+        <h1 class="govuk-heading-xltwo">
+          Payments
+        </h1>
+        <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            From <strong>1 January 2014</strong> to <strong>5 September 2024</strong>.
+           </span>
+          </p>
+        <div class="trio-card">
+              <div class="tileContainer">
+                <p class="govuk-body">Total expected</p>
+                <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£35,910.00</h2>
+              </div>
+              <div class="tileContainer">
+                <p class="govuk-body">Payments</p>
+                <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£30,480.00</h2>
+              </div>
+              <div class="tileContainerlast">
+                <p class="govuk-body">Balance to pay</p>
+               <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£5,430.00</h2>
+             </div>
+            </section>
+          </article>
+        </div>
+    
+        <!-- 2024-->
+        <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2024</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Sep 2024</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <td class="govuk-table__cell">1 Aug 2024</td>
+            <td class="govuk-table__cell">£300.00</td>
+            <td class="govuk-table__cell">Payment received from you</td>
+            <td class="govuk-table__cell_last">Direct debit</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">1 Jul 2024</td>
+            <td class="govuk-table__cell">£300.00</td>
+            <td class="govuk-table__cell">Payment received from you</td>
+            <td class="govuk-table__cell_last">Direct debit</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">1 Jun 2024</td>
+            <td class="govuk-table__cell">£320.00</td>
+            <td class="govuk-table__cell">Payment received from you</td>
+            <td class="govuk-table__cell_last">Voluntary standing order</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">1 May 2024</td>
+            <td class="govuk-table__cell">£280.00</td>
+            <td class="govuk-table__cell">Payment received from you</td>
+            <td class="govuk-table__cell_last">Voluntary standing order</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">1 Apr 2024</td>
+            <td class="govuk-table__cell">£600.00</td>
+            <td class="govuk-table__cell">Payment received from you</td>
+            <td class="govuk-table__cell_last">Deductions from earnings order</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">1 Feb 2024</td>
+            <td class="govuk-table__cell">£300.00</td>
+            <td class="govuk-table__cell">Payment received from you</td>
+            <td class="govuk-table__cell_last">Direct debit</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">1 Jan 2024</td>
+            <td class="govuk-table__cell">£300.00</td>
+            <td class="govuk-table__cell">Payment received from you</td>
+            <td class="govuk-table__cell_last">Direct debit</td>
+          </tr>
+          </tbody>
+        </table>
+    
+    
+         <!-- 2023-->
+         <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2023</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Dec 2023</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Nov 2023</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Sep 2023</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Feb 2023</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jan 2023</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <!-- 2022-->
+        <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2022</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Dec 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Nov 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Oct 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Sep 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Aug 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jul 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jun 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 May 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Apr 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Mar 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Feb 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jan 2022</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <!-- 2021-->
+        <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2021</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Dec 2021</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Nov 2021</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Oct 2021</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+    
+         <!-- 2020-->
+         <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2020</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Mar 2020</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Feb 2020</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jan 2020</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+    
+         <!-- 2019-->
+         <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2019</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Dec 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Nov 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Oct 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Sep 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Aug 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jul 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jun 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 May 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Apr 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Mar 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Feb 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jan 2019</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+    
+         <!-- 2018-->
+         <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2018</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Dec 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Nov 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Oct 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Sep 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Aug 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jul 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jun 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 May 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Apr 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Mar 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Feb 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jan 2018</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+    
+         <!-- 2017-->
+         <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2017</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Dec 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Nov 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Oct 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Sep 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Aug 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jul 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jun 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 May 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Apr 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Mar 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Feb 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jan 2017</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+    
+         <!-- 2016-->
+         <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2016</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Dec 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Nov 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Oct 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Sep 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Aug 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jul 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jun 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 May 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Apr 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Mar 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Feb 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jan 2016</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+    
+         <!-- 2015-->
+         <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2015</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Dec 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Nov 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Oct 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Sep 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Aug 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jul 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jun 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 May 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Apr 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Mar 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Feb 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jan 2015</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+    
+         <!-- 2014-->
+         <p class="govuk-phase-banner__content">
+          <span class="govuk-phase-banner__text">
+            <strong>2014</strong>
+           </span>
+         </p>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Received</th>
+              <th scope="col" class="govuk-table__header">Amount</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header">Method</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Dec 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Nov 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Oct 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Sep 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Aug 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jul 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jun 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 May 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Apr 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Mar 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Feb 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">1 Jan 2014</td>
+              <td class="govuk-table__cell">£300.00</td>
+              <td class="govuk-table__cell">Payment received from you</td>
+              <td class="govuk-table__cell_last">Direct debit</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+
+
+
+    </div>
+  </main>
+</div>
+
+<style>
+  .govuk-table__cell_last {
+    width: 260px;
+}
+
+.trio-card {
+    background-color: #ffffff;
+    border: 1px solid #b1b4b6;
+    border-left: 4px solid transparent;
+    border-left-color: #1d70b8;
+    float: left;
+    margin: 0px;
+    height: fit-content;
+    width: 715px;
+    margin-bottom: 40px;
+}
+.trio-card p {
+  margin-bottom: 0px;
+}
+.tileContainer{
+  float: left;
+  margin-right: 30px;
+  padding: 15px 0px 10px 15px;
+}
+.tileContainerlast{
+  float: left;
+  margin-right: 0px;
+  padding: 15px 0px 10px 15px;
+}
+.tileContainer h2 {
+  font-size: 36px;
+}
+.tileContainerlast h2 {
+  font-size: 36px;
+}
+</style>
+
+
+
+{% endblock %}

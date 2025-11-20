@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  <!-- Blank header with no service name for the start page -->
+  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+  {% from "internal-service-header/macro.njk" import dwpHeader %}
+
+{{
+    dwpHeader({
+        serviceName: "Service name",
+        serviceHref: '/index.html',
+        container: true,
+        navigation: {
+          
+      }  
+    })
+}}
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{{ 
+    dwpKeyDetailsBar({
+        primaryIdentifier: {
+            text: 'Simon Smith:',
+            value: 'Simon Smith'
+        },
+        secondaryIdentifier: {
+            text: '1-2323454332:',
+            value: '1-2323454332'
+        },
+        status: {
+            text: 'Paying parent:',
+            value: 'Paying parent'
+        }
+    })
+}}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        <!--{{ serviceName }}-->What financial information do you need?
+      </h1>
+
+      <p>Select a date range.</p>
+
+      <div class="govuk-grid-column-full">
+        <div class="govuk-phase-banner">
+          <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Last month
+          </a>
+          <a href="ef-v2-case-overview-6months.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Last 6 months
+          </a>
+          <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Last year
+          </a>
+          <a href="ef-v2-case-overview-wholecase.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Whole case
+          </a>
+        </div>
+    </div>
+
+   
+
+{% endblock %}

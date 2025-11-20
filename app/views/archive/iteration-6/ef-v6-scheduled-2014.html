@@ -1,0 +1,323 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  View payments – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+  <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+      crossorigin="anonymous"
+    />
+  {% from "internal-service-header/macro.njk" import dwpHeader %}
+
+  <header>
+    <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+      <div class="govuk-header__container govuk-width-container ">
+        <div class="govuk-header__content">
+          <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+            View parent finances
+          </a>
+        </div>
+        <nav class="hmrc-sign-out-nav">
+          <a class="govuk-link hmrc-sign-out-nav__link" href="ef-v6-case-closed.html">
+            Close window </a>
+        </nav>
+        <nav class="hmrc-sign-out-nav">
+          <a class="govuk-link hmrc-sign-out-nav__link" href="../access/cms-homepage/cms-search.html">
+            Search for SCIN</a>
+        </nav>
+        <nav class="dwp-header-navigation"
+      aria-label="Primary">
+      <button type="button" class="dwp-header-navigation__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden>
+        Menu
+      </button>
+      <ul id="navigation" class="dwp-header-navigation__list">
+        <li class="dwp-header-navigation__item">
+          <a href="ef-v6-case-overview-wholecase">
+              Finances
+          </a>
+        </li>
+        <li class="dwp-header-navigation__item">
+          <a href="ef-v6-payment-breakdown-wholecase">
+              Payments
+          </a>
+        </li>
+        <li class="dwp-header-navigation__item">
+          <a class="navActive" href="ef-v6-scheduled-wholecase">
+            Schedules
+          </a>
+        </li>
+    </ul>
+    </nav>
+  </div>
+    </div>
+  </header>
+
+{% endblock %}
+
+{% block content %}
+<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+  <dl class="dwp-quick-reference__block">
+  <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+  <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+  <dd class="dwp-quick-reference__status">
+    <strong class="govuk-tag govuk-tag--blue">
+      Paying parent
+    </strong>
+  </dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">SCIN:</dt>
+  <dd class="dwp-quick-reference__secondary">121323454332</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Case ID:</dt>
+  <dd class="dwp-quick-reference__secondary">12345678</dd>
+  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">N.I number:</dt>
+  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+  <dt class="dwp-quick-reference__label">Status:</dt>
+  <dd class="dwp-quick-reference__secondary">Single case</dd>
+  </dl>
+  </section>
+<h1 class="govuk-heading-xltwo">
+  Schedules
+</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-phase-bannerTwo">
+      <span class="govuk-phase-banner__text">Select schedule 
+        <div class="govuk-form-group-dropdown">
+          <select class="govuk-select" id="sort" name="sort" onChange="window.location.href=this.value">
+            <option value="ef-v6-scheduled-wholecase">1 January 2024 to 31 December 2024</option>
+            <option value="ef-v6-scheduled-2023.html">1 January 2023 to 31 December 2023</option>
+            <option value="ef-v6-scheduled-2022">1 January 2022 to 31 December 2022</option>
+            <option value="ef-v6-scheduled-2021.html">1 January 2021 to 31 December 2021</option>
+            <option value="ef-v6-scheduled-2020.html">1 January 2020 to 31 December 2020</option>
+            <option value="ef-v6-scheduled-2019.html">1 January 2019 to 31 December 2019</option>
+            <option value="ef-v6-scheduled-2018.html">1 January 2018 to 31 December 2018</option>
+            <option value="ef-v6-scheduled-2017.html">1 January 2017 to 31 December 2017</option>
+            <option value="ef-v6-scheduled-2016.html">1 January 2016 to 31 December 2016</option>
+            <option value="ef-v6-scheduled-2015.html">1 January 2015 to 31 December 2015</option>
+            <option value="published" selected>1 January 2014 to 31 December 2014</option>
+          </select>
+        </div>
+       </span>
+    </div>
+  </div>
+
+  
+
+  <div class="govuk-grid-column-full">
+    <div class="ef-card-trio">
+      <article class="moj-ticket-panel-trio" aria-label="Sub navigation 1">
+        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+          <p class="govuk-body">Child maintenance</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£120.00</h2>
+        </section>
+        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+          <p class="govuk-body">Collection charges</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£30.00</h2>
+        </section>
+        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+          <p class="govuk-body">Unpaid child maintenance</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£150.00</h2>
+        </section>
+      </article>
+    </div>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Collection</th>
+          <th scope="col" class="govuk-table__header">Due</th>
+          <th scope="col" class="govuk-table__header">Paid</th>
+          <th scope="col" class="govuk-table__header">Received</th>
+          <th scope="col" class="govuk-table__header">Method</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Jan 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Jan 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Feb 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Feb 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Mar 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Mar 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Apr 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Apr 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 May 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 May 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Jun 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Jun 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Jul 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Jul 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Aug 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Aug 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Sep 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Sep 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr>  
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Oct 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Oct 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Nov 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Nov 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">1 Dec 2014</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">£300.00</td>
+          <td class="govuk-table__cell">4 Dec 2014</td>
+          <td class="govuk-table__cell">Direct debit</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Received
+            </strong>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+   
+  </div>
+
+<!--<div class="pagination">
+    <ic-pagination
+    type="complex"
+    adjacent-count="2"
+    boundary-count="2"
+    pages="10"
+  ></ic-pagination>-->
+    <script defer>
+      import('https://unpkg.com/@ukic/web-components/loader').then((module) => {
+        module.defineCustomElements();
+      });
+      // The ICDS has types available if your JavaScript framework allows for use with TypeScript
+      // Below is an example of how to import an ICDS type
+      // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
+    </script>
+</div>
+</div>
+
+{% endblock %}

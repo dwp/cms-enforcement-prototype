@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  <!-- Blank header with no service name for the start page -->
+  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+  
+  <header>
+    <div class="govuk-header hmrc-header hmrc-header--with-additional-navigation" data-module="govuk-header">
+      <div class="govuk-header__container govuk-width-container">
+  
+        <div class="govuk-header__content">
+          <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+            Service Name
+          </a>
+        </div>
+        <nav class="hmrc-sign-out-nav">
+          <a class="govuk-link hmrc-sign-out-nav__link" href="ef-v1-sign-in.html">
+            Sign out </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  
+  <!--{% from "internal-service-header/macro.njk" import dwpHeader %}
+
+{{
+    dwpHeader({
+        serviceName: "Service name",
+        serviceHref: '/index.html',
+        container: true,
+        navigation: {
+          
+      }  
+    })
+}}
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}-->
+
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+      Search results
+      </h1>
+
+      <fieldset class="govuk-fieldset">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-town">
+           Search using SCIN number
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="addressTown" type="text" autocomplete="address-level2">
+        </div>
+      </fieldset>
+
+      {{ govukButton({
+        text: "Search",
+        href: "#",
+        isStartButton: true
+      }) }}
+    </div>
+
+
+    <div class="govuk-grid-column-full">
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Search results (1)</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Case ID</th>
+          <th scope="col" class="govuk-table__header">SCIN</th>
+          <th scope="col" class="govuk-table__header">Surname</th>
+          <th scope="col" class="govuk-table__header">Forename</th>
+          <th scope="col" class="govuk-table__header">Service type</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header">Action</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">12345678</td>
+          <td class="govuk-table__cell">1-2323454332</td>
+          <td class="govuk-table__cell">Smith</td>
+          <td class="govuk-table__cell">Simon</td>
+          <td class="govuk-table__cell">Direct pay</td>
+          <td class="govuk-table__cell">Perform calculation</td>
+          <td class="govuk-table__cell"><a href="ef-v1-access.html" role="tab" aria-controls="button-example-html" data-track="tab-html" aria-expanded="false">View info</a></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+
+  </div>
+
+{% endblock %}
