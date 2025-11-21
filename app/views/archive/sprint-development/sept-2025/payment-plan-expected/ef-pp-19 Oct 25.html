@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Finances – {{ serviceName }} – GOV.UK Prototype Kit
+  Case – {{ serviceName }} – GOV.UK Prototype Kit
   <script>
     const $subNavTabs = document.querySelector('[data-module="dl-subnav"]')
     const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
@@ -90,7 +90,7 @@
   </section>
 
 
-  <div class="moj-primary-navigation">
+     <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
@@ -105,113 +105,78 @@
               <a class="moj-primary-navigation__link" href="ef-payment-allocation.html">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-plan.html">Payment plans</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="ef-payment-plan.html">Payment plans</a>
             </li>
-            <!--<li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-calculations.html">Calculations</a>
-            </li>-->
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="ef-case-information.html">Case</a>
+              <a class="moj-primary-navigation__link" href="ef-calculations-1.html">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-case-information.html">Case</a>
             </li>
           </ul>
         </nav>
       </div>
     </div>
   </div>
-  
 
+  <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+    <a href="../ef-payment-plan.html" class="govuk-back-link">Back</a>
+  </nav>
 
-
-<h1 class="govuk-heading-xltwo">
-Case
-</h1>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <!--<p class="govuk-phase-banner__content">
-      <span class="govuk-phase-banner__text">
-        From <strong>1 January 2014</strong> to <strong>5 September 2024</strong>.
-       </span>
-     </p>-->
-  </div>
+  <h1 class="govuk-heading-xltwo">
+    What makes up the payment
+    </h1>
+    <div class="govuk-grid-row">
+      <!--<div class="govuk-grid-column-full">
+        <p class="dateRange">
+          <span class="dateRange__text">
+            From the case effective date <strong>23 August 2021</strong> to <strong>22 November 2024</strong>.
+           </span>
+         </p>
+      </div>-->
  
-
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-two-thirds">
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
         <h2 class="govuk-summary-card__title">
-          Receiving parent or person
+          £106.65 due 19 October 2025
         </h2>
       </div>
       <div class="govuk-summary-card__content">
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Name
+            <dt class="govuk-summary-list__key expectedTitle">
+              Child maintenance
             </dt>
             <dd class="govuk-summary-list__value">
-              Daria Oblonskaya
+              £69.56
             </dd>
           </div>
           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Qualifying children
+            <dt class="govuk-summary-list__key expectedTitle">
+              Collection charges
             </dt>
             <dd class="govuk-summary-list__value">
-              Lily Oblonskaya <br>Tatiana Oblonskaya
+              £13.97
             </dd>
           </div>
           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Case
+            <dt class="govuk-summary-list__key expectedTitle">
+              Unpaid child maintenance and charges
             </dt>
             <dd class="govuk-summary-list__value">
-              1-2345999
+              £23.12
             </dd>
           </div> 
         </dl>
       </div>
     </div>
-    <!--<div class="govuk-summary-card">
-      <div class="govuk-summary-card__title-wrapper">
-        <h2 class="govuk-summary-card__title">
-          Contact details
-        </h2>
-      </div>
-      <div class="govuk-summary-card__content">
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Home phone
-            </dt>
-            <dd class="govuk-summary-list__value">
-              None
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Mobile phone
-            </dt>
-            <dd class="govuk-summary-list__value">
-              0777 7777777
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Email address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              simon@example.com
-            </dd>
-          </div>
-        </dl>
-      </div>
-    </div>-->
+   
 
     
     
   </div>
 </div>
-
 
 
 {% endblock %}
@@ -242,6 +207,9 @@ Case
 </footer>
 
 <style>
+  .statement_end {
+    width: 160px;
+}
   .govuk-footer {
     display: none;
   }
@@ -279,5 +247,3 @@ Case
 
 
 {% endblock %}
-
-

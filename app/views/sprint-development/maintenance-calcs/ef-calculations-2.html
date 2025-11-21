@@ -26,8 +26,6 @@
       crossorigin="anonymous"
     />
   {% from "internal-service-header/macro.njk" import dwpHeader %}
-  
-  
 
   <header>
     <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
@@ -40,11 +38,11 @@
         <nav class="hmrc-sign-out-nav">
           <ul class="moj-header__navigation-list">
             <li class="moj-header__navigation-item">
-              <a class="moj-header__navigation-link" href="ef-whats-new.html" aria-current="page"><span id="notifications" class="moj-notification-badge">1</span>
+              <a class="moj-header__navigation-link" href="#" aria-current="page"><span id="notifications" class="moj-notification-badge">1</span>
                 What’s new</a>
             </li>
             <li class="moj-header__navigation-item">
-              <a class="moj-header__navigation-link" href="ef-about.html">About</a>
+              <a class="moj-header__navigation-link" href="#">About</a>
             </li>
           </ul>
         </nav>
@@ -61,7 +59,7 @@
       Beta
     </strong>
     <span class="govuk-phase-banner__text">
-      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>.
+      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>
     </span>
   </p>
 </div>
@@ -91,22 +89,22 @@
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-finances.html">Finances</a>
+              <a class="moj-primary-navigation__link" href="#">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-statements.html">Statement</a>
+              <a class="moj-primary-navigation__link" href="#">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-allocation.html">Payment allocation</a>
+              <a class="moj-primary-navigation__link" href="#">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-plan.html">Payment plans</a>
+              <a class="moj-primary-navigation__link" href="#">Payment plans</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="ef-calculations.html">Calculations</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="ef-calculations-1.html">Calculations</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-case-information.html">Case</a>
+              <a class="moj-primary-navigation__link" href="#">Case</a>
             </li>
           </ul>
         </nav>
@@ -167,6 +165,8 @@
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+          <th scope="col" class="govuk-table__header cell_calDate">Perform date</th>
+
           <th scope="col" class="govuk-table__header cell_calDate">Effective from</th>
           <th scope="col" class="govuk-table__header cell_calDate">Effective<br>to</th>
           <th scope="col" class="govuk-table__header">Weekly income (£)</th>
@@ -178,7 +178,8 @@
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell  cell_reason"><a href="../sept-2025/maintenance-calcs/annualreview.html">Annual review</a></td>
+          <td class="govuk-table__cell  cell_reason"><a href="maintenance-calcs/annualreview.html">Annual review</a></td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">19 Oct 24</td>
           <td class="govuk-table__cell">19 Oct 25</td>
           <td class="govuk-table__cell">383.56</td>
@@ -187,7 +188,8 @@
           <td class="govuk-table__cell">25.40</td>
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell  cell_reason"><a href="../sept-2025/maintenance-calcs/stays-increased.html">Number of overnight stays increased</a></td>
+          <td class="govuk-table__cell  cell_reason"><a href="maintenance-calcs/stays-increased.html">Number of overnight stays increased</a></td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">11 Dec 23</td>
           <td class="govuk-table__cell">18 Oct 24</td>
           <td class="govuk-table__cell">383.56</td>
@@ -197,6 +199,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell cell_reason">Annual review</td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">19 Oct 23</td>
           <td class="govuk-table__cell">10 Dec 23</td>
           <td class="govuk-table__cell">383.56</td>
@@ -206,6 +209,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell cell_reason">Service type changed</td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">02 Jul 23</td>
           <td class="govuk-table__cell">18 Oct 23</td>
           <td class="govuk-table__cell">345.21</td>
@@ -215,6 +219,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell cell_reason">Income increased</td>
+          <td class="govuk-table__cell">25 Oct 24</td>
           <td class="govuk-table__cell">05 Feb 23</td>
           <td class="govuk-table__cell">01 Jul 23</td>
           <td class="govuk-table__cell">345.21</td>
@@ -224,6 +229,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell cell_reason">Annual review</td>
+          <td class="govuk-table__cell">20 Oct 24</td>
           <td class="govuk-table__cell">19 Oct 22</td>
           <td class="govuk-table__cell">04 Feb 23</td>
           <td class="govuk-table__cell">287.67</td>
@@ -233,6 +239,7 @@
         </tr>
             <tr class="govuk-table__row">
           <td class="govuk-table__cell cell_reason">Off benefit</td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">04 Mar 22</td>
           <td class="govuk-table__cell">18 Oct 22</td>
           <td class="govuk-table__cell">287.67</td>
@@ -241,7 +248,8 @@
           <td class="govuk-table__cell">0.00</td>
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell  cell_reason"><a href="../sept-2025/maintenance-calcs/children-increased.html">Number of children living with you increased</a></td>
+          <td class="govuk-table__cell  cell_reason"><a href="maintenance-calcs/children-increased.html">Number of children living with you increased</a></td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">11 Dec 21</td>
           <td class="govuk-table__cell">03 Mar 22</td>
           <td class="govuk-table__cell">0.00</td>
@@ -251,6 +259,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell cell_reason">On benefit</td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">02 Dec 21</td>
           <td class="govuk-table__cell">10 Dec 21</td>
           <td class="govuk-table__cell">0.00</td>
@@ -260,6 +269,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell cell_reason">Annual review</td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">19 Oct 21</td>
           <td class="govuk-table__cell">01 Dec 21</td>
           <td class="govuk-table__cell">287.67</td>
@@ -269,6 +279,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell cell_reason">Variation increased</td>
+          <td class="govuk-table__cell">19 Oct 21</td>
           <td class="govuk-table__cell">03 Jan 21</td>
           <td class="govuk-table__cell">18 Oct 21</td>
           <td class="govuk-table__cell">230.14</td>
@@ -278,6 +289,7 @@
         </tr>
            <tr class="govuk-table__row">
           <td class="govuk-table__cell cell_reason">Income increased</td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">26 Nov 20</td>
           <td class="govuk-table__cell">02 Jan 21</td>
           <td class="govuk-table__cell">230.14</td>
@@ -286,7 +298,8 @@
           <td class="govuk-table__cell">0.00</td>
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell  cell_reason"><a href="../sept-2025/maintenance-calcs/first-calculation.html">First calculation</a></td>
+          <td class="govuk-table__cell  cell_reason"><a href="maintenance-calcs/first-calculation.html">First calculation</a></td>
+          <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell">19 Oct 20</td>
           <td class="govuk-table__cell">25 Nov 20</td>
           <td class="govuk-table__cell">0.00</td>
@@ -311,7 +324,7 @@
           <h2 class="govuk-visually-hidden">Footer links</h2>
             <ul class="govuk-footer__inline-list">
                 <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="ef-accessibility.html">
+                  <a class="govuk-footer__link" href="#">
                     Accessibility statement
                   </a>
                 </li>
@@ -326,154 +339,6 @@
     </div>
   </div>
 </footer>
-
-<style>
-  .govuk-footer {
-    display: none;
-  }
-  .enforcement-footer {
-    font-family: "GDS Transport", arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 1.1428571429;
-    padding-top: 25px;
-    padding-bottom: 15px;
-    border-top: 1px solid #b1b4b6;
-    color: #0b0c0c;
-    background: #f3f2f1;
-  }
-  @media (min-width: 40.0625em) {
-    .enforcement-footer {
-        padding-bottom: 25px;
-    }
-}
-@media (min-width: 40.0625em) {
-    .enforcement-footer {
-        padding-top: 40px;
-    }
-}
-
-@media (min-width: 40.0625em) {
-    .enforcement-footer {
-        font-size: 1rem;
-        line-height: 1.25;
-    }
-}
-
-.govuk-tableallocation__cell {
-  padding: 10px 20px 10px 0;
-  vertical-align: top;
-}
-
-.govuk-details {
-  margin-bottom: 0px;
-  width: auto;
-}
-.govuk-details__summary {
-  position: relative;
-  width: -webkit-fit-content;
-  width: fit-content;
-  padding-left: 0px;
-  color: #1d70b8;
-  cursor: pointer;
-}
-span.govuk-details__summary-textend{
-  float: right;
-}
-
-.govuk-details__text {
-  padding-top: 5px;
-}
-.govuk-table {
-  margin-bottom: 0px;
-}
-.govuk-details__text {
-  padding-bottom: 0px;
-}
-
-.govuk-table__cellEnd {
-  padding: 10px 20px 10px 0;
-  border-bottom: 1px solid #b1b4b6;
-  text-align: right;
-  vertical-align: top;
-}
-@supports not (-ms-ime-align: auto) {
-  .govuk-details__summary-text::after {
-  content: "";
-  /* position: absolute; */
-  top: -1px;
-  bottom: 0;
-  left: 0;
-  margin-left: 15px;
-  display: block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: transparent;
-  -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-  border-width: 7px 0 7px 12.124px;
-  border-left-color: inherit;
-  display: inline-block;
-}
-}
-@supports not (-ms-ime-align: auto) {
-  .govuk-details[open] > .govuk-details__summary-text::after {
-  top: -1px;
-  bottom: 0;
-  left: 0;
-  margin-left: 15px;
-  display: block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: transparent;
-  -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-  border-width: 7px 0 7px 12.124px;
-  border-left-color: inherit;
-  display: inline-block;
-}
-}
-
-@supports not (-ms-ime-align: auto) {
-  .govuk-details__summary-text {
-      position: relative;
-      width: -webkit-fit-content;
-      width: fit-content;
-      padding-left:0px;
-      color: #1d70b8;
-      cursor: pointer;
-  }
-}
-
-@supports not (-ms-ime-align: auto) {
-  .govuk-details[open] > .govuk-details__summary::before {
-      display: block;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-color: transparent;
-      -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-      clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-      border-width: 12.124px 7px 0 7px;
-      border-top-color: inherit;
-  }
-}
-
-.govuk-details__summary::before {
-  display: none;
-}
-
-@supports not (-ms-ime-align: auto) {
-  .govuk-details[open] > .govuk-details__summary::before {
-    display: none;
-  }
-}
-</style>
-
 
 {% endblock %}
 

@@ -1,0 +1,325 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+<link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet"
+  integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@ukic/fonts/dist/fonts.css" crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+  crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+  crossorigin="anonymous" />
+{% from "internal-service-header/macro.njk" import dwpHeader %}
+
+
+
+<header>
+  <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+    <div class="govuk-header__container govuk-width-container ">
+      <div class="govuk-header__content">
+        <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+          View parent finances
+        </a>
+      </div>
+      <nav class="hmrc-sign-out-nav">
+        <ul class="moj-header__navigation-list">
+          <li class="moj-header__navigation-item">
+            <a class="moj-header__navigation-link" href="#" aria-current="page"><span id="notifications"
+                class="moj-notification-badge">1</span>
+              What’s new</a>
+          </li>
+          <li class="moj-header__navigation-item">
+            <a class="moj-header__navigation-link" href="#">About</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service. Help us improve it and <a target="_blank" class="govuk-link"
+        href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give
+        your feedback (opens in new tab)</a>
+    </span>
+  </p>
+</div>
+
+<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+  <dl class="dwp-quick-reference__block">
+    <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+    <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
+    <dd class="dwp-quick-reference__status">
+      <strong class="govuk-tag govuk-tag--turquoise">
+        Paying parent
+      </strong>
+      <strong class="govuk-tag govuk-tag--blue">
+        Single case
+      </strong>
+    </dd>
+    <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
+    <dd class="dwp-quick-reference__secondary">121323454232</dd>
+    <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
+    <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+  </dl>
+</section>
+
+<div class="moj-primary-navigation">
+  <div class="moj-primary-navigation__container">
+    <div class="moj-primary-navigation__nav">
+      <nav class="moj-primary-navigation" aria-label="Primary navigation">
+        <ul class="moj-primary-navigation__list">
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="#">Finances</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="#">Statement</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="#">Payment allocation</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="#">Payment plans</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" aria-current="page" href="ef-calculations-1.html">Calculations</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="#">Case</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<h1 class="govuk-heading-xltwo">
+  Calculations
+</h1>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <p class="dateRange">
+      <span class="dateRange__text">
+        From the case effective date <strong>19 October 2020</strong> to <strong>19 August 2025</strong>.
+      </span>
+      <span class="dateRange__text">
+        The next annual review will be on <strong>19 October 2025</strong>.
+      </span>
+    </p>
+  </div>
+
+
+
+  <div class="govuk-grid-column-full">
+
+    <div class="ef-card">
+      <div class="dfe-title-i8">
+        <h2>Finance summary</h2>
+      </div>
+      <div class="ef-card-trio-v2">
+        <article class="moj-ticket-panel-trio-v2" aria-label="Sub navigation 1">
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Money still owed</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£3,268.77</h2>
+          </section>
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Payments made</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£27,194.61</h2>
+          </section>
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+            <p class="govuk-body">Total expected</p>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£30,463.38</h2>
+          </section>
+        </article>
+      </div>
+    </div>
+
+    <!-- 2024-->
+    <p class="dateRange">
+      <span class="dateRange__text">
+        Select a calculation reason to view more details about how it affects the case.
+      </span>
+    </p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+          <th scope="col" class="govuk-table__header cell_calDate">Effective from</th>
+          <th scope="col" class="govuk-table__header cell_calDate">Effective<br>to</th>
+          <th scope="col" class="govuk-table__header">Weekly income (£)</th>
+          <th scope="col" class="govuk-table__header">Assessable weekly income (£)</th>
+          <th scope="col" class="govuk-table__header">Weekly liability (£)</th>
+          <th scope="col" class="govuk-table__header">Weekly charge (£)</th>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell  cell_reason"><a href="maintenance-calcs/annualreview.html">Annual review</a>
+          </td>
+          <td class="govuk-table__cell">19 Oct 24</td>
+          <td class="govuk-table__cell">19 Oct 25</td>
+          <td class="govuk-table__cell">383.56</td>
+          <td class="govuk-table__cell">1,342.47</td>
+          <td class="govuk-table__cell">127.02</td>
+          <td class="govuk-table__cell">25.40</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell  cell_reason"><a href="maintenance-calcs/stays-increased.html">Number of
+              overnight stays increased</a></td>
+          <td class="govuk-table__cell">11 Dec 23</td>
+          <td class="govuk-table__cell">18 Oct 24</td>
+          <td class="govuk-table__cell">383.56</td>
+          <td class="govuk-table__cell">1,342.47</td>
+          <td class="govuk-table__cell">127.02</td>
+          <td class="govuk-table__cell">25.40</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">Annual review</td>
+          <td class="govuk-table__cell">19 Oct 23</td>
+          <td class="govuk-table__cell">10 Dec 23</td>
+          <td class="govuk-table__cell">383.56</td>
+          <td class="govuk-table__cell">1,342.47</td>
+          <td class="govuk-table__cell">136.79</td>
+          <td class="govuk-table__cell">27.36</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">Service type changed</td>
+          <td class="govuk-table__cell">02 Jul 23</td>
+          <td class="govuk-table__cell">18 Oct 23</td>
+          <td class="govuk-table__cell">345.21</td>
+          <td class="govuk-table__cell">1,304.11</td>
+          <td class="govuk-table__cell">133.49</td>
+          <td class="govuk-table__cell">26.70</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">Income increased (adjusted)</td>
+          <td class="govuk-table__cell">05 Feb 23</td>
+          <td class="govuk-table__cell">01 Jul 23</td>
+          <td class="govuk-table__cell">345.21</td>
+          <td class="govuk-table__cell">1,304.11</td>
+          <td class="govuk-table__cell">133.49</td>
+          <td class="govuk-table__cell">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">Annual review (adjusted)</td>
+          <td class="govuk-table__cell">19 Oct 22</td>
+          <td class="govuk-table__cell">04 Feb 23</td>
+          <td class="govuk-table__cell">287.67</td>
+          <td class="govuk-table__cell">1,246.58</td>
+          <td class="govuk-table__cell">128.54</td>
+          <td class="govuk-table__cell">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">Off benefit</td>
+          <td class="govuk-table__cell">04 Mar 22</td>
+          <td class="govuk-table__cell">18 Oct 22</td>
+          <td class="govuk-table__cell">287.67</td>
+          <td class="govuk-table__cell">1,246.58</td>
+          <td class="govuk-table__cell">128.54</td>
+          <td class="govuk-table__cell">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell  cell_reason"><a href="maintenance-calcs/children-increased.html">Number of
+              children living with you increased</a></td>
+          <td class="govuk-table__cell">11 Dec 21</td>
+          <td class="govuk-table__cell">03 Mar 22</td>
+          <td class="govuk-table__cell">0.00</td>
+          <td class="govuk-table__cell">0.00</td>
+          <td class="govuk-table__cell">0.00</td>
+          <td class="govuk-table__cell">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">On benefit</td>
+          <td class="govuk-table__cell">02 Dec 21</td>
+          <td class="govuk-table__cell">10 Dec 21</td>
+          <td class="govuk-table__cell">0.00</td>
+          <td class="govuk-table__cell">0.00</td>
+          <td class="govuk-table__cell">0.00</td>
+          <td class="govuk-table__cell">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">Annual review</td>
+          <td class="govuk-table__cell">19 Oct 21</td>
+          <td class="govuk-table__cell">01 Dec 21</td>
+          <td class="govuk-table__cell">287.67</td>
+          <td class="govuk-table__cell">1,246.58</td>
+          <td class="govuk-table__cell">145.99</td>
+          <td class="govuk-table__cell">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">Variation increased (adjusted)</td>
+          <td class="govuk-table__cell">03 Jan 21</td>
+          <td class="govuk-table__cell">18 Oct 21</td>
+          <td class="govuk-table__cell">230.14</td>
+          <td class="govuk-table__cell">1,189.04</td>
+          <td class="govuk-table__cell">140.24</td>
+          <td class="govuk-table__cell">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">Income increased</td>
+          <td class="govuk-table__cell">26 Nov 20</td>
+          <td class="govuk-table__cell">02 Jan 21</td>
+          <td class="govuk-table__cell">230.14</td>
+          <td class="govuk-table__cell">230.14</td>
+          <td class="govuk-table__cell">29.15</td>
+          <td class="govuk-table__cell">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell  cell_reason"><a href="maintenance-calcs/first-calculation.html">First
+              calculation</a></td>
+          <td class="govuk-table__cell">19 Oct 20</td>
+          <td class="govuk-table__cell">25 Nov 20</td>
+          <td class="govuk-table__cell">0.00</td>
+          <td class="govuk-table__cell">0.00</td>
+          <td class="govuk-table__cell">51.00</td>
+          <td class="govuk-table__cell">0.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+<footer class="enforcement-footer" role="contentinfo">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Footer links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="#">
+              Accessibility statement
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="#">
+              Privacy policy
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}
