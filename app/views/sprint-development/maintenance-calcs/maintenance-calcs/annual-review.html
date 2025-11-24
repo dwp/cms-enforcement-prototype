@@ -1,54 +1,43 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Statement – {{ serviceName }} – GOV.UK Prototype Kit
+Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
-  <!-- Blank header with no service name for the start page -->
-  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
-  <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
-      crossorigin="anonymous"
-    />
-  {% from "internal-service-header/macro.njk" import dwpHeader %}
+<!-- Blank header with no service name for the start page -->
+<link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet"
+  integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@ukic/fonts/dist/fonts.css" crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
+  crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
+  crossorigin="anonymous" />
+{% from "internal-service-header/macro.njk" import dwpHeader %}
 
-  <header>
-    <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
-      <div class="govuk-header__container govuk-width-container ">
-        <div class="govuk-header__content">
-          <a href="/index.html" class="govuk-header__link govuk-header__service-name">
-            View parent finances
-          </a>
-        </div>
-        <nav class="hmrc-sign-out-nav">
-          <ul class="moj-header__navigation-list">
-            <li class="moj-header__navigation-item">
-              <a class="moj-header__navigation-link" href="#" aria-current="page"><span id="notifications" class="moj-notification-badge">1</span>
-                What’s new</a>
-            </li>
-            <li class="moj-header__navigation-item">
-              <a class="moj-header__navigation-link" href="#">About</a>
-            </li>
-          </ul>
-        </nav>
-  </div>
+<header>
+  <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+    <div class="govuk-header__container govuk-width-container ">
+      <div class="govuk-header__content">
+        <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+          View parent finances
+        </a>
+      </div>
+      <nav class="hmrc-sign-out-nav">
+        <ul class="moj-header__navigation-list">
+          <li class="moj-header__navigation-item">
+            <a class="moj-header__navigation-link" href="#" aria-current="page"><span id="notifications"
+                class="moj-notification-badge">1</span>
+              What’s new</a>
+          </li>
+          <li class="moj-header__navigation-item">
+            <a class="moj-header__navigation-link" href="#">About</a>
+          </li>
+        </ul>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
 
 {% endblock %}
 
@@ -59,33 +48,35 @@
       Beta
     </strong>
     <span class="govuk-phase-banner__text">
-      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>.
+      This is a new service. Help us improve it and <a target="_blank" class="govuk-link"
+        href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give
+        your feedback (opens in new tab)</a>.
     </span>
   </p>
 </div>
 
 <section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
   <dl class="dwp-quick-reference__block">
-  <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-  <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
-  <dd class="dwp-quick-reference__status">
-    <strong class="govuk-tag govuk-tag--turquoise">
-      Paying parent
-    </strong>
-    <strong class="govuk-tag govuk-tag--blue">
-      Single case
-    </strong>
-  </dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
-  <dd class="dwp-quick-reference__secondary">121323454232</dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
-  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+    <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+    <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
+    <dd class="dwp-quick-reference__status">
+      <strong class="govuk-tag govuk-tag--turquoise">
+        Paying parent
+      </strong>
+      <strong class="govuk-tag govuk-tag--blue">
+        Single case
+      </strong>
+    </dd>
+    <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
+    <dd class="dwp-quick-reference__secondary">121323454232</dd>
+    <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
+    <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
   </dl>
 </section>
 
 <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
-    <a href="../ef-calculations-1.html" class="govuk-back-link">Back</a>
-  </nav>
+  <a href="../ef-calculations-1.html" class="govuk-back-link">Back</a>
+</nav>
 
 <h1 class="govuk-heading-xltwo">
   Annual review
@@ -96,26 +87,25 @@
     <p class="dateRange" style="padding-bottom: 20px;">
       <span class="dateRange__text">
         <b>SR calculation number:</b> 1-123456789, <b>Parent SR number:</b> 1-123456789
-       </span>
-     </p>
+      </span>
+    </p>
   </div>
   <div class="govuk-grid-column-full">
     <p class="dateRange">
       <span class="dateRange__text">
         Version 10
-       </span>
-     </p>
+      </span>
+    </p>
   </div>
 
   <div class="govuk-grid-column-full">
-     <table class="govuk-table">
+    <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header cell_calDate">Perform date</th>
           <th scope="col" class="govuk-table__header cell_calDate">Effective from</th>
           <th scope="col" class="govuk-table__header cell_calDate">Effective<br>to</th>
           <th scope="col" class="govuk-table__header">Weekly income (£)</th>
-          <th scope="col" class="govuk-table__header">Assessable weekly income (£)</th>
           <th scope="col" class="govuk-table__header">Weekly liability (£)</th>
           <th scope="col" class="govuk-table__header">Weekly charge (£)</th>
         </tr>
@@ -126,7 +116,6 @@
           <td class="govuk-table__cell">19 Oct 24</td>
           <td class="govuk-table__cell">19 Oct 25</td>
           <td class="govuk-table__cell">383.56</td>
-          <td class="govuk-table__cell">1,342.47</td>
           <td class="govuk-table__cell">127.02</td>
           <td class="govuk-table__cell">25.40</td>
         </tr>
@@ -137,7 +126,7 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        
+
       </div>
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-summary-card">
@@ -150,7 +139,7 @@
             <dl class="govuk-summary-list">
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key mcTitle">
-                 Daily liability
+                  Daily liability
                 </dt>
                 <dd class="govuk-summary-list__value">
                   £18.15
@@ -158,7 +147,7 @@
               </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                 Daily collection charge
+                  Daily collection charge
                 </dt>
                 <dd class="govuk-summary-list__value">
                   £3.63
@@ -166,7 +155,7 @@
               </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                 Income amount
+                  Income amount
                 </dt>
                 <dd class="govuk-summary-list__value">
                   £20,000.00
@@ -186,51 +175,6 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                   6 April 2023 - 5 April 2024
-                </dd>
-              </div> 
-              <div class="govuk-summary-list__row" style="border-bottom: 0px;">
-                <dt class="govuk-summary-list__key">
-                  Variation
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  £50,000.00
-                </dd>
-              </div>
- 
-  <div class="govuk-summary-list__row" style="border-bottom: 0px;">
-          <td class="govuk-table__cell statement_description" style="border-bottom: none;">
-            <details class="govuk-details" style="width: 587px;">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text" style="width: 299px; display:inline-block;">Additional income</span>
-                  <span class="govuk-details__summary-textend">£50,000.00</span>
-              </summary>
-              <div class="govuk-details__text">
-                <div class="moj-scrollable-pane">
-                  <table class="govuk-table">
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row" style="width: 587px; border-bottom: 1px solid #b1b4b6;">
-                          <td class="govuk-table__cell" style="width: 276px;">Unearned income</td>
-                          <td class="govuk-table__cellEnd" style="text-align: left;">£25,000.00</td>
-                        </tr>
-                        <tr class="govuk-table__row" style="width: 587px;">
-                          <td class="govuk-table__cell" style="width: 200px;">Diversional income</td>
-                          <td class="govuk-table__cellEnd" style="text-align: left;">£25,000.00</td>
-                        </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-          </td>
-        </tr>
-        </div>
-
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key" style="font-weight: 100;">
-                  Special expense
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  £0
                 </dd>
               </div>
               <div class="govuk-summary-list__row" style="border-bottom: 0px;">
@@ -256,7 +200,7 @@
                 <dd class="govuk-summary-list__value">
                   £0
                 </dd>
-              </div> 
+              </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Foreign exchange costs
@@ -280,7 +224,7 @@
                 <dd class="govuk-summary-list__value">
                   Basic rate plus (15%)
                 </dd>
-              </div>      
+              </div>
             </dl>
           </div>
         </div>
@@ -318,7 +262,7 @@
                 <dd class="govuk-summary-list__value">
                   1 night per week
                 </dd>
-              </div> 
+              </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Local authority stays
@@ -326,7 +270,7 @@
                 <dd class="govuk-summary-list__value">
                   0 night per week
                 </dd>
-              </div> 
+              </div>
             </dl>
           </div>
         </div>
@@ -364,7 +308,7 @@
                 <dd class="govuk-summary-list__value">
                   0 night per week
                 </dd>
-              </div> 
+              </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Local authority stays
@@ -372,7 +316,7 @@
                 <dd class="govuk-summary-list__value">
                   0 night per week
                 </dd>
-              </div> 
+              </div>
             </dl>
           </div>
         </div>
@@ -403,7 +347,7 @@
                 <dd class="govuk-summary-list__value">
                   1
                 </dd>
-              </div> 
+              </div>
             </dl>
           </div>
         </div>
@@ -416,14 +360,14 @@
 
 
 
-    
-
- 
-      
 
 
- 
-</div>
+
+
+
+
+
+  </div>
 </div>
 
 <ic-back-to-top target="main"></ic-back-to-top>
@@ -443,19 +387,19 @@
   <div class="govuk-width-container">
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
-          <h2 class="govuk-visually-hidden">Footer links</h2>
-            <ul class="govuk-footer__inline-list">
-                <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="#">
-                    Accessibility statement
-                  </a>
-                </li>
-                <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="#">
-                    Privacy policy
-                  </a>
-                </li>
-            </ul>
+        <h2 class="govuk-visually-hidden">Footer links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="#">
+              Accessibility statement
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="#">
+              Privacy policy
+            </a>
+          </li>
+        </ul>
 
       </div>
     </div>
@@ -466,6 +410,7 @@
   .govuk-footer {
     display: none;
   }
+
   .enforcement-footer {
     font-family: "GDS Transport", arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -479,113 +424,121 @@
     color: #0b0c0c;
     background: #f3f2f1;
   }
+
   @media (min-width: 40.0625em) {
     .enforcement-footer {
-        padding-bottom: 25px;
+      padding-bottom: 25px;
     }
-}
-@media (min-width: 40.0625em) {
+  }
+
+  @media (min-width: 40.0625em) {
     .enforcement-footer {
-        padding-top: 40px;
+      padding-top: 40px;
     }
-}
+  }
 
-@media (min-width: 40.0625em) {
+  @media (min-width: 40.0625em) {
     .enforcement-footer {
-        font-size: 1rem;
-        line-height: 1.25;
+      font-size: 1rem;
+      line-height: 1.25;
     }
-}
+  }
 
-.govuk-tableallocation__cell {
-  padding: 10px 20px 10px 0;
-  vertical-align: top;
-}
+  .govuk-tableallocation__cell {
+    padding: 10px 20px 10px 0;
+    vertical-align: top;
+  }
 
-.govuk-details {
-  margin-bottom: 0px;
-  width: auto;
-}
-.govuk-details__summary {
-  position: relative;
-  width: -webkit-fit-content;
-  width: fit-content;
-  padding-left: 0px;
-  color: #1d70b8;
-  cursor: pointer;
-}
-span.govuk-details__summary-textend{
-  float: right;
-}
+  .govuk-details {
+    margin-bottom: 0px;
+    width: auto;
+  }
 
-.govuk-details__text {
-  padding-top: 5px;
-}
-.govuk-table {
-  margin-bottom: 0px;
-}
-.govuk-details__text {
-  padding-bottom: 0px;
-}
+  .govuk-details__summary {
+    position: relative;
+    width: -webkit-fit-content;
+    width: fit-content;
+    padding-left: 0px;
+    color: #1d70b8;
+    cursor: pointer;
+  }
 
-.govuk-table__cellEnd {
-  padding: 10px 20px 10px 0;
-  border-bottom: 1px solid #b1b4b6;
-  text-align: right;
-  vertical-align: top;
-}
-@supports not (-ms-ime-align: auto) {
-  .govuk-details__summary-text::after {
-  content: "";
-  /* position: absolute; */
-  top: -1px;
-  bottom: 0;
-  left: 0;
-  margin-left: 15px;
-  display: block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: transparent;
-  -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-  border-width: 7px 0 7px 12.124px;
-  border-left-color: inherit;
-  display: inline-block;
-}
-}
-@supports not (-ms-ime-align: auto) {
-  .govuk-details[open] > .govuk-details__summary-text::after {
-  top: -1px;
-  bottom: 0;
-  left: 0;
-  margin-left: 15px;
-  display: block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: transparent;
-  -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-  border-width: 7px 0 7px 12.124px;
-  border-left-color: inherit;
-  display: inline-block;
-}
-}
+  span.govuk-details__summary-textend {
+    float: right;
+  }
 
-@supports not (-ms-ime-align: auto) {
-  .govuk-details__summary-text {
+  .govuk-details__text {
+    padding-top: 5px;
+  }
+
+  .govuk-table {
+    margin-bottom: 0px;
+  }
+
+  .govuk-details__text {
+    padding-bottom: 0px;
+  }
+
+  .govuk-table__cellEnd {
+    padding: 10px 20px 10px 0;
+    border-bottom: 1px solid #b1b4b6;
+    text-align: right;
+    vertical-align: top;
+  }
+
+  @supports not (-ms-ime-align: auto) {
+    .govuk-details__summary-text::after {
+      content: "";
+      /* position: absolute; */
+      top: -1px;
+      bottom: 0;
+      left: 0;
+      margin-left: 15px;
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent;
+      -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+      clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+      border-width: 7px 0 7px 12.124px;
+      border-left-color: inherit;
+      display: inline-block;
+    }
+  }
+
+  @supports not (-ms-ime-align: auto) {
+    .govuk-details[open]>.govuk-details__summary-text::after {
+      top: -1px;
+      bottom: 0;
+      left: 0;
+      margin-left: 15px;
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent;
+      -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+      clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+      border-width: 7px 0 7px 12.124px;
+      border-left-color: inherit;
+      display: inline-block;
+    }
+  }
+
+  @supports not (-ms-ime-align: auto) {
+    .govuk-details__summary-text {
       position: relative;
       width: -webkit-fit-content;
       width: fit-content;
-      padding-left:0px;
+      padding-left: 0px;
       color: #1d70b8;
       cursor: pointer;
+    }
   }
-}
 
-@supports not (-ms-ime-align: auto) {
-  .govuk-details[open] > .govuk-details__summary::before {
+  @supports not (-ms-ime-align: auto) {
+    .govuk-details[open]>.govuk-details__summary::before {
       display: block;
       width: 0;
       height: 0;
@@ -595,22 +548,19 @@ span.govuk-details__summary-textend{
       clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
       border-width: 12.124px 7px 0 7px;
       border-top-color: inherit;
+    }
   }
-}
 
-.govuk-details__summary::before {
-  display: none;
-}
-
-@supports not (-ms-ime-align: auto) {
-  .govuk-details[open] > .govuk-details__summary::before {
+  .govuk-details__summary::before {
     display: none;
   }
-}
+
+  @supports not (-ms-ime-align: auto) {
+    .govuk-details[open]>.govuk-details__summary::before {
+      display: none;
+    }
+  }
 </style>
 
 
 {% endblock %}
-
-
-
