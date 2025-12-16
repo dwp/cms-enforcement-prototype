@@ -1,0 +1,109 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block pageTitle %}
+  Statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+
+    {% from "internal-service-header/macro.njk" import dwpHeader %}
+
+    <header>
+        <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
+            <div class="govuk-header__container govuk-width-container ">
+                <div class="govuk-header__content">
+                    <a href="/index.html" class="govuk-header__link govuk-header__service-name">
+            View parent finances
+          </a>
+                </div>
+                <nav class="hmrc-sign-out-nav">
+                    <ul class="moj-header__navigation-list">
+                        <li class="moj-header__navigation-item">
+                            <a class="moj-header__navigation-link" href="#" aria-current="page">
+                                <span id="notifications" class="moj-notification-badge">1</span>
+                What’s new</a>
+                        </li>
+                        <li class="moj-header__navigation-item">
+                            <a class="moj-header__navigation-link" href="#">About</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
+
+{% block content %}
+
+    {% include "includes/phase-banner.html" %}
+
+    <section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+            <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+            <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
+            <dd class="dwp-quick-reference__status">
+                <strong class="govuk-tag govuk-tag--turquoise">
+      Paying parent
+    </strong>
+                <strong class="govuk-tag govuk-tag--blue">
+      Single case
+    </strong>
+            </dd>
+            <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
+            <dd class="dwp-quick-reference__secondary">121323454232</dd>
+            <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
+            <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
+        </dl>
+    </section>
+
+    <div class="moj-primary-navigation">
+        <div class="moj-primary-navigation__container">
+            <div class="moj-primary-navigation__nav">
+                <nav class="moj-primary-navigation" aria-label="Primary navigation">
+                    <ul class="moj-primary-navigation__list">
+                        <li class="moj-primary-navigation__item">
+                            <a class="moj-primary-navigation__link" href="#">Finances</a>
+                        </li>
+                        <li class="moj-primary-navigation__item">
+                            <a class="moj-primary-navigation__link" href="#">Statement</a>
+                        </li>
+                        <li class="moj-primary-navigation__item">
+                            <a class="moj-primary-navigation__link" href="#">Payment allocation</a>
+                        </li>
+                        <li class="moj-primary-navigation__item">
+                            <a class="moj-primary-navigation__link" aria-current="page" href="#">Payment plan</a>
+                        </li>
+                        <li class="moj-primary-navigation__item">
+                            <a class="moj-primary-navigation__link"href="#">Calculations</a>
+                        </li>
+                        <li class="moj-primary-navigation__item">
+                            <a class="moj-primary-navigation__link" href="#">Case</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l govuk-!-margin-top-4">Payment plan</h1>
+                <div class="govuk-warning-text" style="margin-bottom: 13px;">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                  <span class="govuk-visually-hidden">Warning</span>
+                  Calculations have been corrected
+                </strong>
+              </div>
+            <h2 class="govuk-heading-s"></h2>
+            <p class="govuk-body">We cannot currently display calculations that have been corrected.</p>
+            <p class="govuk-body">
+                   Go to CMS2012 to view information about how the maintenance has been calculated and relevant dates.
+                </p>
+        </div>
+    </div>
+
+{% endblock %}
+
+app/views/sprint-development/sept-2025/ef-payment-plan.html
