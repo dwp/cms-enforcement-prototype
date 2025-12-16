@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/old-main.html" %}
 
 {% block pageTitle %}
   Finances – {{ serviceName }} – GOV.UK Prototype Kit
@@ -124,14 +124,14 @@
 
 
 
-  <h1 class="govuk-heading-xltwo">
+  <h1 class="govuk-heading-xl">
     Finances
   </h1>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
      
       <p class="dateRange">
-        <span class="dateRange__text">
+        <span class="govuk-!-font-size-24">
           From the case effective date <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
          </span>
        </p>
@@ -143,18 +143,18 @@
       <div class="ef-card">
         <div class="dfe-title-cash">
           <h2>Money still owed</h2>
-          <h2 class="value">£3,268.78</h2>
+          <h2 class="value">£34,921.80</h2>
           <span class="govuk-caption-m">Cash balance not included</span>
       </div>
         <div class="ef-card-duo">
           <article class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Child maintenance</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£2,683.46</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£31,545.95</h2>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Charges and debt</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£585.32</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£3,375.85</h2>
             </section>
           </article>
         </div>
@@ -190,23 +190,23 @@
       <div class="ef-card">
         <div class="dfe-title-cash">
           <h2>Payments made</h2>
-          <h2 class="value">£7,564.20</h2>
+          <h2 class="value">£0.00</h2>
           <span class="govuk-caption-m">Includes cash balance and overpayments</span>
       </div>
         <div class="ef-card-duo">
           <article class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Child maintenance</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£7,387.06</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£0.00</h2>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Charges and debt</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£76.91</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£0.00</h2>
             </section>
             <details class="govuk-details">
               <summary class="govuk-details__summary">
                 <span class="govuk-details__summary-text">
-                  Cash balance £330.61
+                  Cash balance £0.00
                 </span>
               </summary>
               <div class="govuk-details__text">
@@ -227,24 +227,24 @@
       <div class="ef-card">
         <div class="dfe-title-i8">
           <h2>Total expected</h2>
-          <h2 class="value">£10,732.75</h2>
+          <h2 class="value">£34,921.80</h2>
         </div>
         <div class="ef-card-duo">
           <article class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Child maintenance</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£10,070.52</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£31,545.95</h2>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Charges and debt</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£662.23</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£3,375.85</h2>
               <table class="govuk-table">
                 <thead class="govuk-table__head">
                 </thead>
                 <tbody class="govuk-table__body">
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Collection charges</td>
-                    <th scope="row" class="govuk-table__header">£5,444.55</th>
+                    <th scope="row" class="govuk-table__header">£3,075.85</th>
                   </tr>
   
                  <tr class="govuk-table__row">
@@ -256,11 +256,11 @@
                         <li>Deduction from earnings order or request</li>
                       </ul>
                     </td>
-                    <th scope="row" class="govuk-table__header">£350.00
+                    <th scope="row" class="govuk-table__header">£300.00
                       <ul class="govuk-list enforcement-charges govuk-body-s">
                         <li>£20.00</li>
                         <li>£100.00</li>
-                        <li>£200.00</li>
+                        <li>£150.00</li>
                         <li>£30.00</li>
                       </ul>
                     </th>
@@ -384,7 +384,6 @@
       }
   }
   </style>
-  
-  
+
   {% endblock %}
   

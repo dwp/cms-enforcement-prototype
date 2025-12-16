@@ -1,0 +1,410 @@
+<!-- {% from "internal-service-header/macro.njk" import dwpHeader %} -->
+
+<details class="govuk-details" style="margin-bottom: 40px;">
+    <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+            Cash balance £34.38
+        </span>
+    </summary>
+    <div class="govuk-details__text">
+        Money paid that cannot be allocated to child maintenance or charges yet.
+    </div>
+</details>
+    <div class="govuk-form-group">
+        <label class="govuk-label" for="sort">
+            Select period
+        </label>
+        <select onchange="window.location.href=this.value;" class="govuk-select" id="sort" name="sort" style="
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 8px 10px 7px;
+    border: 2px solid transparent;
+    border-radius: 0;
+    color: #ffffff;
+    background-color: #00703c;
+    box-shadow: 0 2px 0 rgb(0, 44.8, 24);
+    text-align: center;">
+            <option value="published" selected>21 Dec 2023 - 21 Jun 2024</option>
+            <option value="payment-allocation/20 Jun 2023.html">20 Jun 2023 - 20 Dec 2023</option>
+            <option value="payment-allocation/19 Dec 2022.html">19 Dec 2022 - 19 Jun 2023</option>
+            <option value="payment-allocation/18 Jun 2022.html">18 Jun 2022 - 18 Dec 2022</option>
+        </select>
+    </div>
+
+    <!-- 2024-->
+    <h3 class="govuk-notification-banner__heading">
+        2024
+    </h3>
+    <table class="govuk-table">
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Date</th>
+                <th scope="col" class="govuk-table__header">Description</th>
+                <th scope="col" class="govuk-table__header numerical">Clearance days</th>
+                <th scope="col" class="govuk-table__header statement_end">Amount (£)</th>
+            </tr>
+        </thead>
+
+        <!-- NEW DATE ROW -->
+        <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6; border-top: 1px solid #b1b4b6;">
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date">21 Jun 2024</td>
+                <td class="govuk-tableallocation__cell statement_description" style="font-weight: bold;">Payment
+                    received -
+                    SDO</td>
+                <td class="govuk-tableallocation__cell statement_amount" style="text-align: center;">3</td>
+                <td class="govuk-tableallocation__cell statement_end" style="font-weight: bold;">39.10</td>
+            </tr>
+        </tbody>
+        <!-- END DATE ROW -->
+
+        <!-- START ALLOCATION ROW -->
+        <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6;">
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date">7 Jun 2024</td>
+                <td class="govuk-tableallocation__cell statement_description" style="font-weight: bold;">Payment
+                    allocation
+                </td>
+                <td class="govuk-tableallocation__cell statement_amount"></td>
+                <td class="govuk-tableallocation__cell statement_end" style="font-weight: bold;">39.10</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date"></td>
+                <td class="govuk-tableallocation__cell statement_description">CMS administration costs</td>
+                <td class="govuk-tableallocation__cell statement_amount"></td>
+                <td class="govuk-tableallocation__cell statement_end">6.52</td>
+            </tr>
+
+            <tr class="govuk-table__row" style="width: 100px; padding-left: 200px; display: block;">
+                <td class="govuk-table__cell statement_description" style="border-bottom: none;">
+                    <details class="govuk-details">
+                        <summary class="govuk-details__summary" style="width: 760px;">
+                            <span class="govuk-details__summary-text">Enforcement charges and costs</span>
+                            <span class="govuk-details__summary-textend">32.58</span>
+                        </summary>
+                        <div class="govuk-details__text" style="width:760px;">
+                            <div class="moj-scrollable-pane">
+                                <table class="govuk-table">
+                                    <tbody class="govuk-table__body">
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Regular deduction order</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">£10.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Lump sum deduction order</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">£5.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Liability order</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">£7.58</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Deduction from earnings order or request</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">£10.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                </td>
+            </tr>
+
+        </tbody>
+        <!-- END ALLOCATION ROW -->
+
+        <!-- NEW DATE ROW -->
+        <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6; border-top: 1px solid #b1b4b6;">
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date">7 May 2024</td>
+                <td class="govuk-tableallocation__cell statement_description" style="font-weight: bold;">Payment
+                    received -
+                    CHQ</td>
+                <td class="govuk-tableallocation__cell statement_amount" style="text-align: center;">5</td>
+                <td class="govuk-tableallocation__cell statement_end" style="font-weight: bold;">1,339.72</td>
+            </tr>
+        </tbody>
+        <!-- END DATE ROW -->
+
+        <!-- NEW DATE ROW -->
+        <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6; border-top: 1px solid #b1b4b6;">
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date">14 Apr 2024</td>
+                <td class="govuk-tableallocation__cell statement_description" style="font-weight: bold;">Payment
+                    received -
+                    SDO</td>
+                <td class="govuk-tableallocation__cell statement_amount" style="text-align: center;">3</td>
+                <td class="govuk-tableallocation__cell statement_end" style="font-weight: bold;">39.93</td>
+            </tr>
+        </tbody>
+        <!-- END DATE ROW -->
+
+        <!-- START ALLOCATION ROW -->
+        <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6;">
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date">15 Mar 2024</td>
+                <td class="govuk-tableallocation__cell statement_description" style="font-weight: bold;">Payment
+                    allocation
+                </td>
+                <td class="govuk-tableallocation__cell statement_amount"></td>
+                <td class="govuk-tableallocation__cell statement_end" style="font-weight: bold;">39.10</td>
+            </tr>
+
+            <tr class="govuk-table__row" style="width: 100px; padding-left: 200px; display: block;">
+                <td class="govuk-table__cell statement_description" style="border-bottom: none;">
+                    <details class="govuk-details">
+                        <summary class="govuk-details__summary" style="width: 760px;">
+                            <span class="govuk-details__summary-text">Child maintenance</span>
+                            <span class="govuk-details__summary-textend">32.57</span>
+                        </summary>
+                        <div class="govuk-details__text" style="width:760px;">
+                            <div class="moj-scrollable-pane">
+                                <table class="govuk-table">
+                                    <tbody class="govuk-table__body">
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell" style="width: 480px;">Child maintenance
+                                                (123456789101 - Rachel
+                                                Smith)</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">30.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Child maintenance arrears (1234567772232 -
+                                                Ruth Slater)</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">2.57</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                </td>
+            </tr>
+
+            <tr class="govuk-table__row" style="width: 100px; padding-left: 200px; display: block;">
+                <td class="govuk-table__cell statement_description" style="border-bottom: none;">
+                    <details class="govuk-details">
+                        <summary class="govuk-details__summary" style="width: 760px;">
+                            <span class="govuk-details__summary-text">Collection charges</span>
+                            <span class="govuk-details__summary-textend">6.53</span>
+                        </summary>
+                        <div class="govuk-details__text" style="width:760px;">
+                            <div class="moj-scrollable-pane">
+                                <table class="govuk-table">
+                                    <tbody class="govuk-table__body">
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Collection charges</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">6.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Collection charges arrears</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">0.53</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                </td>
+            </tr>
+
+        </tbody>
+        <!-- END ALLOCATION ROW -->
+
+        <!-- NEW DATE ROW -->
+        <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6; border-top: 1px solid #b1b4b6;">
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date">17 Feb 2024</td>
+                <td class="govuk-tableallocation__cell statement_description" style="font-weight: bold;">Payment
+                    received -
+                    SDO</td>
+                <td class="govuk-tableallocation__cell statement_amount" style="text-align: center;">3</td>
+                <td class="govuk-tableallocation__cell statement_end" style="font-weight: bold;">39.10</td>
+            </tr>
+        </tbody>
+        <!-- END DATE ROW -->
+
+        <!-- NEW DATE ROW -->
+        <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6; border-top: 1px solid #b1b4b6;">
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date">21 Jan 2024</td>
+                <td class="govuk-tableallocation__cell statement_description" style="font-weight: bold;">Payment
+                    received -
+                    SDO</td>
+                <td class="govuk-tableallocation__cell statement_amount" style="text-align: center;">3</td>
+                <td class="govuk-tableallocation__cell statement_end" style="font-weight: bold;">39.93</td>
+            </tr>
+        </tbody>
+        <!-- END DATE ROW -->
+
+    </table>
+
+    <!-- 2023-->
+    <h3 class="govuk-notification-banner__heading" style="padding-top: 20px;">
+        2023
+    </h3>
+    <table class="govuk-table">
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Date</th>
+                <th scope="col" class="govuk-table__header">Description</th>
+                <th scope="col" class="govuk-table__header numerical">Clearance days</th>
+                <th scope="col" class="govuk-table__header statement_end">Amount (£)</th>
+            </tr>
+        </thead>
+
+        <!-- START ALLOCATION ROW -->
+        <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6;">
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date">21 Dec 2023</td>
+                <td class="govuk-tableallocation__cell statement_description" style="font-weight: bold;">Payment
+                    allocation
+                </td>
+                <td class="govuk-tableallocation__cell statement_amount"></td>
+                <td class="govuk-tableallocation__cell statement_end" style="font-weight: bold;">1,344.45</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-tableallocation__cell statement_date"></td>
+                <td class="govuk-tableallocation__cell statement_description">CMS administration costs</td>
+                <td class="govuk-tableallocation__cell statement_amount"></td>
+                <td class="govuk-tableallocation__cell statement_end">10.00</td>
+            </tr>
+
+            <tr class="govuk-table__row" style="width: 100px; padding-left: 200px; display: block;">
+                <td class="govuk-table__cell statement_description" style="border-bottom: none;">
+                    <details class="govuk-details">
+                        <summary class="govuk-details__summary" style="width: 760px;">
+                            <span class="govuk-details__summary-text">Child maintenance</span>
+                            <span class="govuk-details__summary-textend">1034.45</span>
+                        </summary>
+                        <div class="govuk-details__text" style="width:760px;">
+                            <div class="moj-scrollable-pane">
+                                <table class="govuk-table">
+                                    <tbody class="govuk-table__body">
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell" style="width: 480px;">Child maintenance
+                                                (123456789101 - Rachel
+                                                Smith)</td>
+                                            <td class="govuk-table__cellEnd">£400.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Child maintenance - liability order
+                                                (123456789101 - Ruth Slater)
+                                            </td>
+
+                                            <td class="govuk-table__cellEnd">£300.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Child maintenance - lump sum deduction order
+                                                (123456789101 -
+                                                Ruth Slater)
+                                            </td>
+                                            <td class="govuk-table__cellEnd">£100.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Child maintenance arrears (123456789101 - Ruth
+                                                Slater)
+                                            </td>
+                                            <td class="govuk-table__cellEnd">£234.45</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                </td>
+            </tr>
+
+            <tr class="govuk-table__row" style="width: 100px; padding-left: 200px; display: block;">
+                <td class="govuk-table__cell statement_description" style="border-bottom: none;"">
+                    <details class=" govuk-details">
+                        <summary class="govuk-details__summary" style="width: 760px;">
+                            <span class="govuk-details__summary-text">Collection charges</span>
+                            <span class="govuk-details__summary-textend">100.00</span>
+                        </summary>
+                        <div class="govuk-details__text" style="width:760px;">
+                            <div class="moj-scrollable-pane">
+                                <table class="govuk-table">
+                                    <tbody class="govuk-table__body">
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Collection charges</td>
+                                            <td class="govuk-table__cellEnd">£30.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Collection charges - liability order</td>
+                                            <td class="govuk-table__cellEnd">£50.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Collection charges - lump sum deduction order</td>
+                                            <td class="govuk-table__cellEnd">£15.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Collection charges arrears </td>
+                                            <td class="govuk-table__cellEnd">£5.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                </td>
+            </tr>
+
+            <tr class="govuk-table__row" style="width: 100px; padding-left: 200px; display: block;">
+                <td class="govuk-table__cell statement_description" style="border-bottom: none;"">
+                    <details class=" govuk-details">
+                        <summary class="govuk-details__summary" style="width: 760px;">
+                            <span class="govuk-details__summary-text">CSA debt</span>
+                            <span class="govuk-details__summary-textend">200.00</span>
+                        </summary>
+                        <div class="govuk-details__text" style="width:760px;">
+                            <div class="moj-scrollable-pane">
+                                <table class="govuk-table">
+                                    <tbody class="govuk-table__body">
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell" style="width: 480px;">Child support agency -
+                                            liability order
+                                            (123456789101 - Ruth Slater)</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">£100.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Child Support Agency - lump sum deduction order
+                                            (123456789101 -
+                                            Ruth Slater)</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">£60.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Child Support Agency - secretary of state</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">£30.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">Child Support Agency - (123456789101 - Ruth
+                                            Slater)</td>
+                                            <td class="govuk-table__cell"></td>
+                                            <td class="govuk-table__cellEnd">£10.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                </td>
+            </tr>
+        </tbody>
+        <!-- END ALLOCATION ROW -->
+    </table>

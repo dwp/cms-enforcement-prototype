@@ -1,0 +1,141 @@
+{% extends "layouts/internal-service.html" %}
+
+<!-- ////// PRESETS ///// -->
+{% set tab_clicked = data['tab'] %}
+{% set number_of_cases = "4" %}
+{% set active_cases = "2" %}
+
+<!-- //////////////////// -->
+
+{% block pageTitle %}
+Statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/dwp-internal-service-header" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "includes/govuk-beta-banner" %}
+
+  {% include "includes/dwp-quick-reference-multicase" %}
+
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-finances.html">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-statements.html">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation.html">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan.html">Payment
+              plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-information.html">Cases ({{ number_of_cases
+              }})</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- {% include "includes/moj-primary-navigation-multicase" %} -->
+  <!-- /////////////////////////////////// -->
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
+      Statement {{ tab_clicked }} ** Active case {{ tab_clicked }}
+      </h1>
+      <p>Your selected tab: <strong id="displayNum"></strong></p>
+
+      {# /////////////////////////////// #}
+
+      <div class="govuk-tabs" data-module="govuk-tabs">
+        <h2 class="govuk-tabs__title">
+          Contents
+        </h2>
+        <ul class="govuk-tabs__list">
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+            <a class="govuk-tabs__tab" href="#total" data-menukey="0" onclick="handleNav(this)">
+            Total
+          </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#daria" data-menukey="1" onclick="handleNav(this)">
+              Daria Oblonskaya
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#ruth" data-menukey="2" onclick="handleNav(this)">
+              Ruth Slater
+            </a>
+          </li>
+        </ul>
+
+        <div class="govuk-tabs__panel" id="total">
+          <h2 class="govuk-heading-m"> All transactions for {{ active_cases }} active cases</h2>
+          <p>Cases effective from <strong>8 December 2014</strong>.
+          </p>
+          {% include "includes/multicase/finance-summary-case-all" %}
+          {% include "includes/multicase/multicase-statements-case-all" %}
+        </div>
+
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
+          <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
+            <strong class="govuk-tag govuk-tag--orange">Pay and collect</strong>
+          </h2>
+          <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
+          </p>
+          {% include "includes/multicase/finance-summary-case-all" %}
+          {% include "includes/multicase/multicase-statements-case-1" %}
+        </div>
+
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+          <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
+            <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+          </h2>
+          <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
+          </p>
+          {% include "includes/multicase/finance-summary-case-all" %}
+          {% include "includes/multicase/multicase-statements-case-2" %}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<ic-back-to-top target="main"></ic-back-to-top>
+<script defer>
+  import ('https://unpkg.com/@ukic/web-components@3.1.0/loader').then((module) => {
+    module.defineCustomElements();
+  });
+  // The ICDS has types available if your JavaScript framework allows for use with TypeScript
+  // Below is an example of how to import an ICDS type
+  // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
+</script>
+
+{# //////////////// #}
+<script>
+    function handleNav(el) {
+      const selectedTab = el.getAttribute('data-menukey');    
+      // Use document.cookie to store the value
+      document.cookie = "selectedTabCookie=" + selectedTab + ";path=/"; 
+      // You'll still need to refresh the page (or redirect) for the server to pick up the *new* cookie value
+      window.location.reload();
+    };
+</script>
+{# //////////////// #}
+{% endblock %}

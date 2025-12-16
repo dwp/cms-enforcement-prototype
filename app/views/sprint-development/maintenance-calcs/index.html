@@ -1,0 +1,52 @@
+{% extends "layouts/internal-service.html" %}
+
+{% set pageName = "Home" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+
+      {% include "includes/back-link.html" %}
+
+      <h1 class="govuk-heading-l">
+      Maintenance calculations
+    </h1>
+
+      <h3 class="govuk-heading-s">Iterations in progress</h3>
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          <a href="ef-calculations-1.html">
+          SAE-1681 &ndash; Maintenance calculations 1 &ndash; Without 'Perform date' column
+        </a>
+        </li>
+        <li>
+          <a href="ef-calculations-2.html">
+          SAE-1681 &ndash; Maintenance calculations -- With 'Perform date' column plus tags
+        </a>
+        </li>
+        <li>
+          <a href="ef-calculations-3.html">
+          SAE-1686 &ndash; Remove 'Assessable Weekly Income' column and 'Variations' row
+        </a>
+        </li>
+        <li>
+          <a href="ef-calculations-4.html">
+          SAE-1715 &ndash; Visualise "Simple check" warning 1
+        </a>
+        </li>
+        <li>
+          <a href="ef-calculations-4b.html">
+          SAE-1715 &ndash; Visualise "Simple check" warning 2
+        </a>
+        </li>
+
+      </ul>
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}--->
+    </div>
+  </div>
+
+{% endblock %}

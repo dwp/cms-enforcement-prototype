@@ -1,0 +1,91 @@
+{% extends "layouts/internal-service.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+
+{% include "includes/back-link.html" %}
+
+    <h1 class="govuk-heading-l">
+      Multicase finances
+    </h1>
+
+    <h3 class="govuk-heading-s">Iterations in progress</h3>
+    <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+      <li>
+        <a href="multicase-finances.html">
+          Finances
+        </a>
+      </li>
+      <li>
+        <a href="multicase-statements.html">
+          Statements
+        </a>
+      </li>
+      <li>
+        <a href="multicase-payment-allocation.html">
+          Payment allocations
+        </a>
+      </li>
+      <li>
+        <a href="multicase-payment-plan.html">
+          Payment plans
+        </a>
+      </li>
+      <li>
+        <a href="multicase-payment-plan.html">
+          Calculations
+        </a>
+      </li>            
+      <li>
+        <a href="multicase-case-information.html">
+          Cases
+        </a>
+      </li>
+    </ul>
+
+    <h3 class="govuk-heading-s">Iterations in progress ** using tabs pattern **</h3>
+    <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+      <li>
+        <a href="tabs-pattern/multicase-finances.html">
+          Finances
+        </a>
+      </li>
+      <li>
+        <a href="tabs-pattern/multicase-statements.html">
+          Statements
+        </a>
+      </li>
+      <li>
+        <a href="tabs-pattern/multicase-payment-allocation.html">
+          Payment allocations
+        </a>
+      </li>
+      <li>
+        <a href="tabs-pattern/multicase-payment-plan.html">
+          Payment plans
+        </a>
+      </li>
+      <li>
+        <a href="tabs-pattern/multicase-payment-plan.html">
+          Calculations
+        </a>
+      </li>            
+      <li>
+        <a href="tabs-pattern/multicase-case-information.html">
+          Cases
+        </a>
+      </li>
+    </ul>
+
+
+    <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+  </div>
+</div>
+
+{% endblock %}

@@ -59,10 +59,10 @@ a.navActive {
 
 // Quick reference component
 
-//.dwp-quick-reference {
-//  min-height: 110px;
-//  border-bottom: 10px solid #1d70b8;
-//}
+.dwp-quick-reference {
+ min-height: 110px;
+ border-bottom: 10px solid #1d70b8;
+}
 
 .dwp-quick-reference {
   min-height: 127px;
@@ -128,17 +128,17 @@ a.navActive {
 }
 
 // Page heading
-h1.govuk-heading-xl {
-  margin: 30px 0px 30px 0px;
-}
+// h1.govuk-heading-xl {
+//   margin: 30px 0px 30px 0px;
+// }
 
 // Page heading v2
-h1.govuk-heading-xltwo {
-  margin: 20px 0px 20px 0px;
-  font-size: 48px;
-        line-height: 1.33333;
-        font-weight: 700;
-}
+// h1.govuk-heading-xltwo {
+//   margin: 20px 0px 20px 0px;
+//   font-size: 48px;
+//         line-height: 1.33333;
+//         font-weight: 700;
+// }
 
 // Search results tables
 
@@ -212,9 +212,7 @@ h1.govuk-heading-xltwo {
   gap: 30px;
 }
 
-h2.govuk-heading-m {
-  font-size: 40px;
-}
+
 
 .moj-ticket-panel {
   margin: 30px;

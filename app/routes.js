@@ -23,3 +23,62 @@ router.post('/juggling-balls-answer', function (req, res) {
     }
   
   })
+
+// router.get('/sprint-development/multicase/tabs-pattern/multicase-finances', function (req, res, next) {   
+  //   res.locals.tab = '2';   
+  //   next(); });
+/////////-------------------------
+  router.get('/sprint-development/multicase/tabs-pattern/multicase-finances', function (req, res, next) {   
+    // Check if a 'tab' query parameter exists in the URL (e.g., ?tab=1 or ?tab=2)
+    const selectedTab = req.query.tab;
+
+    if (selectedTab) {
+      // If found in the URL, use that value for the Nunjucks variable
+      res.locals.tab = selectedTab;
+    } else {
+      // Otherwise, default to '2' (or your preferred default)
+      res.locals.tab = 'none';
+    }
+    
+    // Continue processing the request and rendering the Nunjucks template
+    next(); 
+});
+router.get('/sprint-development/multicase/tabs-pattern/multicase-statements', function (req, res, next) {   
+    // Check if a 'tab' query parameter exists in the URL (e.g., ?tab=1 or ?tab=2)
+    const selectedTab = req.query.tab;
+
+    if (selectedTab) {
+      // If found in the URL, use that value for the Nunjucks variable
+      res.locals.tab = selectedTab;
+    } else {
+      // Otherwise, default to '2' (or your preferred default)
+      res.locals.tab = 'none';
+    }
+    
+    // Continue processing the request and rendering the Nunjucks template
+    next(); 
+});
+// router.get('/sprint-development/multicase/tabs-pattern/multicase-finances', function (req, res, next) {   
+//     // Read the value from the cookies sent by the browser
+//     const tabFromCookie = req.cookies.selectedTabCookie;
+
+//     if (tabFromCookie) {
+//       res.locals.tab = tabFromCookie;
+//     } else {
+//       res.locals.tab = '0'; // Default value if the cookie isn't set
+//     }
+
+//     next(); 
+// });
+// router.get('/sprint-development/multicase/tabs-pattern/multicase-statements', function (req, res, next) {   
+//     // Read the value from the cookies sent by the browser
+//     const tabFromCookie = req.cookies.selectedTabCookie;
+
+//     if (tabFromCookie) {
+//       res.locals.tab = tabFromCookie;
+//     } else {
+//       res.locals.tab = '0'; // Default value if the cookie isn't set
+//     }
+
+//     next(); 
+// });

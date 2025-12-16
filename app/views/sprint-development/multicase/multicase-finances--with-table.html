@@ -1,0 +1,256 @@
+{% extends "layouts/internal-service.html" %}
+
+<!-- ////// PRESETS ///// -->
+{% set number_of_cases = "4" %}
+{% set selected_view = "2" %}
+<!-- //////////////////// -->
+
+{% block pageTitle %}
+Finances – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/dwp-internal-service-header" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/govuk-beta-banner" %}
+
+{% include "includes/dwp-quick-reference-multicase" %}
+
+<!-- /////// NAVIGATION PRIMARY /////// -->
+<div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation__container">
+    <div class="moj-primary-navigation__nav">
+      <nav class="moj-primary-navigation" aria-label="Primary navigation">
+        <ul class="moj-primary-navigation__list">
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances.html">Finances</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="multicase-statements.html">Statement</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="multicase-payment-allocation.html">Payment allocation</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="multicase-payment-plan.html">Payment
+              plans</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="multicase-case-information.html">Cases({{ number_of_cases }})</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+<!-- {% include "includes/moj-primary-navigation-multicase" %} -->
+<!-- /////////////////////////////////// -->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+      Finances for case ID 1-2345703
+    </h1>
+    <p><span class="govuk-body govuk-!-font-size-19"><strong>Paying to:</strong> Ruth Slater</span> <strong
+        class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+    </p>
+
+    {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+    <form>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="finances">
+          Select a summary
+        </label>
+        <!-- <div id="finances-hint" class="govuk-hint">
+    This can be different to where you went before
+  </div> -->
+        <select class="govuk-select" id="finances" name="finances" aria-describedby="finances-hint">
+          {% if selected_view == "all" %}
+          <option value="Total" selected>Total finances</option>
+          <option value="financesCase1">Daria Oblonskaya &ndash; 1-2345999</option>
+          <option value="financesCase2">Ruth Slater &ndash; 1-2345703</option>
+          {% elif selected_view == "1" %}
+          <option value="Total">All finances total</option>
+          <option value="financesCase1" selected>Daria Oblonskaya &ndash; 1-2345999</option>
+          <option value="financesCase2">Ruth Slater &ndash; 1-2345703</option>
+          {% elif selected_view == "2" %}
+          <option value="Total">All finances total</option>
+          <option value="financesCase1">Daria Oblonskaya &ndash; 1-2345999</option>
+          <option value="financesCase2" selected>Ruth Slater &ndash; 1-2345703</option>
+          {% endif %}
+        </select>
+      </div>
+
+    </form>
+
+    <!-- <p class="dateRange">
+      <span class="dateRange__text">
+        Case effective from <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
+      </span>
+    </p> -->
+  </div>
+
+
+  <!-- /////////////////////////// -->
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Finance summary</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Description</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Child maintenace</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Charges and debt</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Total</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Money still owed</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£2,683.46</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£300</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£3,268.78</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Overpayments *</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,101.55</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£550.96</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,652.51</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Payments made *</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£7,564.20</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£7,387.06</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£76.91</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Amount written off</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£0.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£0.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Total expected</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£10,070.52</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£662.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£10,732.75</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="govuk-body govuk-!-margin-bottom-9">* Amounts include cash balance of £330.61</p>
+  </div>
+
+  <!-- //////////////////////////// -->
+  <!-- /////////////////////////// -->
+
+  <!-- ////////////////////////////////// -->
+  <!-- ////////////////////////////////// -->
+  <!-- ////////////////////////////////// -->
+
+  <div class="govuk-grid-column-full">
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Charges and debt</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Description</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">All cases</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Ruth Slater</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Olga Oblonskaya</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Total expected</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£662.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£500.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£162.23</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Collection charges</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£5,444.55</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£3,550.96</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£1,993.49</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Enforcement charges</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£350.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£287.06</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£62.94</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Enforcement costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£160.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£160.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">CSA debt</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£63.45</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£53.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£10.75</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">DNA costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£87.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£62.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£25.75</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Subject access request costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£19.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£10.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£9.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Interest</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£30.68</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£8.75</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Fees</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.87</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£12.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£10.44</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Judicial review costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£107.89</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£82.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£25.66</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Appeal costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£43.45</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£21.22</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">CMS administration costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£26.89</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£2.89</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£20.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-text-align-left">Liability order administration costs</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£54.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£32.23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.17</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ////////////////////////////////// -->
+<!-- ////////////////////////////////// -->
+<!-- ////////////////////////////////// -->
+
+{% endblock %}

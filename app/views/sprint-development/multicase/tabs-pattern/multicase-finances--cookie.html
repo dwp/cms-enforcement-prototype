@@ -1,0 +1,147 @@
+{% extends "layouts/internal-service.html" %}
+
+<!-- ////// PRESETS ///// -->
+
+{% set tab_clicked = data['tab'] %}
+{% set number_of_cases = "4" %}
+{% set active_cases = "2" %}
+{% set selected_view = "2" %}
+
+<!-- //////////////////// -->
+
+{% block pageTitle %}
+Finances – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/dwp-internal-service-header" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "includes/govuk-beta-banner" %}
+
+  {% include "includes/dwp-quick-reference-multicase" %}
+
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances.html">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statements.html">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation.html">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan.html">Payment
+              plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-information.html">Cases ({{  number_of_cases }})</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- {% include "includes/moj-primary-navigation-multicase" %} -->
+  <!-- /////////////////////////////////// -->
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
+      Finances for {{ active_cases }} ** Active case {{ tab_clicked }}
+      </h1>
+<p>Your selected tab: <strong id="displayNum"></strong></p>
+      {# /////////////////////////////// #}
+      <form>
+        <div class="govuk-tabs" data-module="govuk-tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+          <ul class="govuk-tabs__list">
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+            <a class="govuk-tabs__tab" href="#total" data-menukey="0" onclick="handleNav(this)">
+            Total
+          </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#daria" data-menukey="1" onclick="handleNav(this)">
+              Daria Oblonskaya
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#ruth" data-menukey="2" onclick="handleNav(this)">
+              Ruth Slater
+            </a>
+          </li>
+        </ul>
+
+          <div class="govuk-tabs__panel" id="total">
+            <h2 class="govuk-heading-m">Total for 2 cases</h2>
+            <p>Cases effective from <strong>8 December 2014</strong>.
+          </p>
+            {% include "includes/multicase/finance-amounts-case-all.html
+          " %}
+          </div>
+
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
+            <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
+              <strong class="govuk-tag govuk-tag--orange">Pay and collect</strong>
+            </h2>
+            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
+          </p>
+            {% include "includes/multicase/finance-amounts-case-1" %}
+          </div>
+
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+            <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
+              <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+            </h2>
+            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
+          </p>
+            {% include "includes/multicase/finance-amounts-case-2" %}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {# //////////////// #}
+<script>
+    function handleNav(el) {
+      const selectedTab = el.getAttribute('data-menukey');    
+      // Use document.cookie to store the value
+      document.cookie = "selectedTabCookie=" + selectedTab + ";path=/"; 
+      // You'll still need to refresh the page (or redirect) for the server to pick up the *new* cookie value
+      window.location.reload();
+    };
+</script>
+  {# <script>
+    function handleNav(el) {
+      // Find the HTML element and update its content
+      const selectedTab = el.getAttribute('data-menukey');    
+      // Instead of sessionStorage, redirect to the URL with a query parameter
+      window.location.href = '/sprint-development/multicase/tabs-pattern/multicase-finances?tab=' + selectedTab;
+      
+      // For testing - find HTML placeholder and display value
+      const displayNum = document.getElementById('displayNum');
+      if (selectedTab && displayNum) {
+        displayNum.textContent = selectedTab;
+      } else if (displayNum) {
+        displayNum.textContent = 'Not found';
+      }
+    };
+  </script> #}
+
+  {# //////////////// #}
+
+{% endblock %}
