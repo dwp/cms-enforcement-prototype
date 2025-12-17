@@ -1,47 +1,42 @@
 {% extends "layouts/internal-service.html" %}
 
-{% set pageName="Home" %}
+{% set pageName = "Home" %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
 
-    <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-l">
       Label for drop down selectors 
     </h1>
 
-    <p>
+      <h2 class="govuk-heading-m">Jira: 
         <a href="https://dwpdigital.atlassian.net/browse/SAE-1674?focusedCommentId=3066965&sourceType=mention">
-          Jira-1674
-        </a></h3>
-            <h3 class="govuk-heading-s">
-        Pages
+          SEA-1674
+        </a>
+      </h2>
+      <h3 class="govuk-heading-s">Pages changed:</h3>
     <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
-      
-      <li>
-        <a href="ef-statements">
+
+          <li>
+            <a href="ef-statements">
           Statement -- "Select type"
         </a>
-        
-      </li>
-            <li>
-        <a href="ef-payment-allocation">
+
+          </li>
+          <li>
+            <a href="ef-payment-allocation">
           Payment allocation -- "Select period"
         </a>
-        
-      </li>
-    </ul>
-    <hr class="govuk-section-break govuk-section-break--visible">
-    <!--<p>
-  <a href="access/ef-v1-sign-in.html">
-      Access via web browser
-  </a>
-</p>-->
 
-  </div>
-</div>
+          </li>
+        </ul>
 
-{% endblock %}
+
+      </div>
+    </div>
+
+  {% endblock %}
