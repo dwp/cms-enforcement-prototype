@@ -1,0 +1,32 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      {% include "includes/back-link.html" %}
+      <span class="govuk-caption-m"><a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-1669'>SAE-1669</a></span>
+      <h1 class="govuk-heading-l">
+          Service unavailable
+      </h1>
+
+      <h2 class="govuk-heading-s">Description:</h2>
+
+      <p>Shutter page that will be displayed when the service is taken offline.</p>
+
+      <h2 class="govuk-heading-s">Designs:</h2>
+      
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          <a href="service-unavailable">
+          Sorry, the service is unavailable
+        </a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+{% endblock %}
