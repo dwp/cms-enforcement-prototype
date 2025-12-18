@@ -1,83 +1,155 @@
 {% extends "layouts/internal-service.html" %}
+{% extends "layouts/internal-service.html" %}
 
+{% set pageName = "Home" %}
 {% set pageName = "Home" %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
       <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
 
-      <h1 class="govuk-heading-l">
-        View Parent Finances prototype
-      </h1>
+      <h1 class="govuk-heading-xl">
+      View parent finances prototype
+    </h1>
 
-      <h3 class="govuk-heading-s">Latest sprint-iteration &mdash; September 2025</h3>
-      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
-        <li>
-          <a href="sprint-development/sept-2025/ef-finances.html">
+      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+          Latest sprint-iteration &mdash; September 2025
+        </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+            <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+              <li>
+                <a href="sprint-development/sept-2025/ef-finances.html">
           Finances
         </a>
-        </li>
-        <li>
-          <a href="sprint-development/sept-2025/ef-statements.html">
+              </li>
+              <li>
+                <a href="sprint-development/sept-2025/ef-statements.html">
           Statements
         </a>
-        </li>
-        <li>
-          <a href="sprint-development/sept-2025/ef-payment-allocation.html">
+              </li>
+              <li>
+                <a href="sprint-development/sept-2025/ef-payment-allocation.html">
           Payment allocations
         </a>
-        </li>
-        <li>
-          <a href="sprint-development/sept-2025/ef-payment-plan.html">
+              </li>
+              <li>
+                <a href="sprint-development/sept-2025/ef-payment-plan.html">
           Payment plans
         </a>
-        </li>
-        <li>
-          <a href="sprint-development/sept-2025/ef-case-information.html">
+              </li>
+              <li>
+                <a href="sprint-development/sept-2025/ef-case-information.html">
           Case
         </a>
-        </li>
-        <li>
-          <a href="sprint-development/sept-2025/ef-contact-summary.html">
+              </li>
+              <li>
+                <a href="sprint-development/sept-2025/ef-contact-summary.html">
           CMS 2012 Contact summary
         </a>
-        </li>
-      </ul>
-
-      <h3 class="govuk-heading-s">New features in progress</h3>
-      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
-        <li>
-          <a href="sprint-development/maintenance-calcs/index.html">
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
           Maintenance calculations
+        </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+            <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+              <li>
+                <a href="sprint-development/1681">
+          SAE-1681 &ndash; Perform date
         </a>
-        </li>
-        <li>
-          <a href="sprint-development/service-unavailable/service-unavailable">
+              </li>
+              <li>
+                <a href="sprint-development/1686/index">
+          SAE-1686 &ndash; Remove 'Assessable Weekly Income' column and 'Variations' row
+        </a>
+              </li>
+              <li>
+                <a href="sprint-development/1715/index">
+          SAE-1715 &ndash; Visualise "Simple check" warning
+        </a>
+              </li>
+              <li>
+                <a href="sprint-development/1683/index">
+          SAE-1683 &ndash; Wording for CQS exclusions for MC page
+        </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
           Service unavailable
-        </a>
-        </li>
-        <li>
-          <a href="sprint-development/multicase/index">
+        </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+            <p class="govuk-body">This is the content for Know your audience.</p>
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
           Multicase finances
-        </a>
-        </li>
-        <li>
-          <a href="sprint-development/1674/index">
-          Label for drop down selectors
-        </a>
-        </li>
-      </ul>
+        </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+            <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+              <li>
+                <a href="sprint-development/1716/index">
+                  SEA-1716 -- Initial draft prototype from round 18 insights
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+          UR round-latest
+        </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+            <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+              <li>
+                <a href="UR rounds/round-12/ef-contact-summary.html">
+                  Round-12 &mdash; March 2025
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <h3 class="govuk-heading-s">UR round-latest</h3>
-      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
-        <li>
-        <a href="UR rounds/round-12/ef-contact-summary.html">
-        round-12 &mdash; March 2025
-      </a>
-      </li>
-      </ul>
+
+      <p></p>
+
       <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-7">
       <p class="govuk-!-margin-top-3">
         <a class="govuk-link" href="archive/index">
@@ -85,7 +157,14 @@
       </a>
       </p>
       <hr class="govuk-section-break govuk-section-break--visible">
+      <!--<p>
+  <a href="access/ef-v1-sign-in.html">
+      Access via web browser
+  </a>
+</p>-->
 
+    </div>
+  </div>
     </div>
   </div>
 

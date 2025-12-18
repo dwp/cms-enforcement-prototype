@@ -88,8 +88,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <h2 class="govuk-heading-m">Total for 2 cases</h2>
             <p>Cases effective from <strong>8 December 2014</strong>.
           </p>
-            {% include "includes/multicase/finance-amounts-case-all.html
-          " %}
+            {% include "includes/multicase/finance-amounts-case-all.html" %}
           </div>
 
           <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
@@ -121,7 +120,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       const selectedTab = el.getAttribute('data-menukey');
       const anchorHref = el.getAttribute('href');
       // Instead of sessionStorage, redirect to the URL with a query parameter
-      window.location.href = '/sprint-development/multicase/tabs-pattern/multicase-finances' + anchorHref + '?tab=' + selectedTab;
+      window.location.href = '/sprint-development/1716/tabs-pattern/multicase-finances' + anchorHref + '?tab=' + selectedTab;
     };
   </script>
   {# //////////////// #}

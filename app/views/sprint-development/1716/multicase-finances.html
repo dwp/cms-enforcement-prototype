@@ -129,7 +129,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   <!-- /////////////////////////// -->
 
 {% if case_number == '0' %}
-{% include "includes/multicase/finance-amounts-all-cases" %}
+{% include "includes/multicase/finance-amounts-case-all" %}
 {% elif case_number == '1' or '2' %}
 {% include "includes/multicase/finance-amounts-case-1" %}
 {% endif %}
