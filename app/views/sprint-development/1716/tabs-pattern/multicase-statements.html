@@ -1,7 +1,7 @@
 {% extends "layouts/internal-service.html" %}
 
 <!-- ////// PRESETS ///// -->
-{% set tab_clicked = tab %}
+{% set tab_clicked = selectedTab %}
 {% set number_of_cases = "4" %}
 {% set active_cases = "2" %}
 
@@ -55,7 +55,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
-      Statement {{ active_cases }} ** tab: {{ tab }}
+      Statement {{ active_cases }}
       </h1>
 
       {# /////////////////////////////// #}
@@ -66,21 +66,17 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
         </h2>
         <ul class="govuk-tabs__list">
           
-          {% if tab_clicked == '0' %}<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">{% else %}
-          <li class="govuk-tabs__list-item">{% endif %}
+         <li class="govuk-tabs__list-item{% if tab_clicked == '0' %} govuk-tabs__list-item--selected{% endif %}">
             <a class="govuk-tabs__tab" href="#total" data-menukey="0" onclick="handleTab(this)">
             Total
           </a>
           </li>
-          {% if tab_clicked == '1' %}<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">{% else %}
-          <li class="govuk-tabs__list-item">{% endif %}
+          <li class="govuk-tabs__list-item{% if tab_clicked == '1' %} govuk-tabs__list-item--selected{% endif %}">
             <a class="govuk-tabs__tab" href="#daria" data-menukey="1" onclick="handleTab(this)">
               Daria Oblonskaya
             </a>
           </li>
-          
-          {% if tab_clicked == '2' %}<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">{% else %}
-          <li class="govuk-tabs__list-item">{% endif %}
+          <li class="govuk-tabs__list-item{% if tab_clicked == '2' %} govuk-tabs__list-item--selected{% endif %}">
             <a class="govuk-tabs__tab" href="#ruth" data-menukey="2" onclick="handleTab(this)">
               Ruth Slater
             </a>
@@ -99,7 +95,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
           <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
             <strong class="govuk-tag govuk-tag--orange">Pay and collect</strong>
           </h2>
-          <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
+          <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong>.
           </p>
           {% include "includes/multicase/finance-summary-case-all" %}
           {% include "includes/multicase/multicase-statements-case-1" %}
@@ -109,7 +105,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
           <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
             <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
           </h2>
-          <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
+          <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong>.
           </p>
           {% include "includes/multicase/finance-summary-case-all" %}
           {% include "includes/multicase/multicase-statements-case-2" %}
@@ -156,7 +152,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
       const selectedTab = el.getAttribute('data-menukey');
       const anchorHref = el.getAttribute('href');
       //Redirect to the URL with a query parameter
-      window.location.href = '/sprint-development/1716/tabs-pattern/multicase-finances' + '?tab=' + selectedTab;
+      window.location.href = '/sprint-development/1716/tabs-pattern/multicase-statements' + anchorHref + '?tab=' + selectedTab;
     };
   </script>
 {# //////////////// #}

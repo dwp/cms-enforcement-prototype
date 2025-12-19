@@ -28,31 +28,31 @@ router.post('/juggling-balls-answer', function (req, res) {
   //   res.locals.tab = '2';   
   //   next(); });
 /////////-------------------------
-  router.get('/sprint-development/multicase/tabs-pattern/multicase-finances', function (req, res, next) {   
+  router.get('/sprint-development/1716/tabs-pattern/multicase-finances', function (req, res, next) {   
     // Check if a 'tab' query parameter exists in the URL (e.g., ?tab=1 or ?tab=2)
-    const selectedTab = req.query.tab;
+    const activeTab = req.query.selectedTab;
 
-    if (selectedTab) {
+    if (activeTab) {
       // If found in the URL, use that value for the Nunjucks variable
-      res.locals.tab = selectedTab;
+      res.locals.selectedTab = activeTab;
     } else {
       // Otherwise, default to '2' (or your preferred default)
-      res.locals.tab = 'none';
+      res.locals.selectedTab = 'none';
     }
     
     // Continue processing the request and rendering the Nunjucks template
     next(); 
 });
-router.get('/sprint-development/multicase/tabs-pattern/multicase-statements', function (req, res, next) {   
+router.get('/sprint-development/1716/tabs-pattern/multicase-statements', function (req, res, next) {   
     // Check if a 'tab' query parameter exists in the URL (e.g., ?tab=1 or ?tab=2)
-    const selectedTab = req.query.tab;
+    const activeTab = req.query.selectedTab;
 
-    if (selectedTab) {
+    if (activeTab) {
       // If found in the URL, use that value for the Nunjucks variable
-      res.locals.tab = selectedTab;
+      res.locals.selectedTab = activeTab;
     } else {
       // Otherwise, default to '2' (or your preferred default)
-      res.locals.tab = 'none';
+      res.locals.selectedTab = 'none';
     }
     
     // Continue processing the request and rendering the Nunjucks template

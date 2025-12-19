@@ -2,7 +2,7 @@
 
 <!-- ////// PRESETS ///// -->
 
-{% set tab_clicked = tab %}
+{% set tab_clicked = selectedTab %}
 {% set number_of_cases = "4" %}
 {% set active_cases = "2" %}
 {% set selected_view = "2" %}
@@ -58,10 +58,9 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
     <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
-      Finances for {{ active_cases }}  ** tab: {{ tab_clicked }}
+      Finances for {{ active_cases }}
       </h1>
       {# /////////////////////////////// #}
-      <form>
         <div class="govuk-tabs" data-module="govuk-tabs">
           <h2 class="govuk-tabs__title">
             Contents
@@ -85,7 +84,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         </ul>
 
           <div class="govuk-tabs__panel" id="total">
-            <h2 class="govuk-heading-m">Total for 2 cases</h2>
+            <h2 class="govuk-heading-m">Total for {{ active_cases }} active cases</h2>
             <p>Cases effective from <strong>8 December 2014</strong>.
           </p>
             {% include "includes/multicase/finance-amounts-case-all.html" %}
@@ -95,7 +94,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
               <strong class="govuk-tag govuk-tag--orange">Pay and collect</strong>
             </h2>
-            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
+            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong>.
           </p>
             {% include "includes/multicase/finance-amounts-case-1" %}
           </div>
@@ -104,12 +103,11 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
               <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
             </h2>
-            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
+            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong>.
           </p>
             {% include "includes/multicase/finance-amounts-case-2" %}
           </div>
         </div>
-      </form>
     </div>
   </div>
 
