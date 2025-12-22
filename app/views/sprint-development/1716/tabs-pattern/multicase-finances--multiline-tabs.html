@@ -88,25 +88,25 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           <li class="govuk-tabs__list-item{% if tab_clicked == '0' %} govuk-tabs__list-item--selected{% endif %}" style="flex-wrap: wrap !important;
 	padding-bottom: 16px !important;">
             <a class="govuk-tabs__tab" href="#total" data-menukey="0" onclick="handleTab(this)">
-            Total
+            Mary Anne Sorensensson-Johansson
           </a>
           </li>
           <li class="govuk-tabs__list-item{% if tab_clicked == '1' %} govuk-tabs__list-item--selected{% endif %}" style="flex-wrap: wrap !important;
 	padding-bottom: 16px !important;">
             <a class="govuk-tabs__tab" href="#daria" data-menukey="1" onclick="handleTab(this)">
-              Daria Oblonskaya
+              Alexandra Whitley
             </a>
           </li>
           <li class="govuk-tabs__list-item{% if tab_clicked == '2' %} govuk-tabs__list-item--selected{% endif %}" style="flex-wrap: wrap !important;
 	padding-bottom: 16px !important;">
             <a class="govuk-tabs__tab" href="#ruth" data-menukey="2" onclick="handleTab(this)">
-              Ruth Slater
+              Olivia Featherstonehaugh
             </a>
           </li>
           <li class="govuk-tabs__list-item{% if tab_clicked == '0' %} govuk-tabs__list-item--selected{% endif %}" style="flex-wrap: wrap !important;
 	padding-bottom: 16px !important;">
             <a class="govuk-tabs__tab" href="#total" data-menukey="0" onclick="handleTab(this)">
-            Total
+            Paula Campbell
           </a>
           </li>
           <li class="govuk-tabs__list-item{% if tab_clicked == '1' %} govuk-tabs__list-item--selected{% endif %}" style="flex-wrap: wrap !important;
@@ -118,7 +118,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           <li class="govuk-tabs__list-item{% if tab_clicked == '2' %} govuk-tabs__list-item--selected{% endif %}" style="flex-wrap: wrap !important;
 	padding-bottom: 16px !important;">
             <a class="govuk-tabs__tab" href="#ruth" data-menukey="2" onclick="handleTab(this)">
-              Ruth Slater
+              Elisabeth Norman
             </a>
           </li>
         </ul>
@@ -148,6 +148,30 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </p>
             {% include "includes/multicase/finance-amounts-case-2" %}
           </div>
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+            <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
+              <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+            </h2>
+            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
+          </p>
+            {% include "includes/multicase/finance-amounts-case-2" %}
+          </div>
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+            <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
+              <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+            </h2>
+            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
+          </p>
+            {% include "includes/multicase/finance-amounts-case-2" %}
+          </div>
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+            <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
+              <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+            </h2>
+            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
+          </p>
+            {% include "includes/multicase/finance-amounts-case-2" %}
+          </div>
         </div>
       </form>
     </div>
@@ -160,7 +184,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       const selectedTab = el.getAttribute('data-menukey');
       const anchorHref = el.getAttribute('href');
       // Instead of sessionStorage, redirect to the URL with a query parameter
-      window.location.href = '/sprint-development/multicase/tabs-pattern/multicase-finances' + anchorHref + '?tab=' + selectedTab;
+      window.location.href = '/sprint-development/1716/tabs-pattern/multicase-finances--multiline-tabs.html' + anchorHref + '?tab=' + selectedTab;
     };
   </script>
   {# //////////////// #}

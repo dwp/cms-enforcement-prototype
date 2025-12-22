@@ -57,15 +57,15 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
-      Finances for {{ active_cases }}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+      Finances
       </h1>
       {# /////////////////////////////// #}
-        <div class="govuk-tabs" data-module="govuk-tabs">
-          <h2 class="govuk-tabs__title">
+      <div class="govuk-tabs" data-module="govuk-tabs">
+        <h2 class="govuk-tabs__title">
             Contents
           </h2>
-          <ul class="govuk-tabs__list">
+        <ul class="govuk-tabs__list">
           <li class="govuk-tabs__list-item{% if tab_clicked == '0' %} govuk-tabs__list-item--selected{% endif %}">
             <a class="govuk-tabs__tab" href="#total" data-menukey="0" onclick="handleTab(this)">
             Total
@@ -73,41 +73,40 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </li>
           <li class="govuk-tabs__list-item{% if tab_clicked == '1' %} govuk-tabs__list-item--selected{% endif %}">
             <a class="govuk-tabs__tab" href="#daria" data-menukey="1" onclick="handleTab(this)">
-              Daria Oblonskaya
+              Daria Oblonskaya 1-2345999
             </a>
           </li>
           <li class="govuk-tabs__list-item{% if tab_clicked == '2' %} govuk-tabs__list-item--selected{% endif %}">
             <a class="govuk-tabs__tab" href="#ruth" data-menukey="2" onclick="handleTab(this)">
-              Ruth Slater
+              Ruth Slater 1-2345112
             </a>
           </li>
         </ul>
 
-          <div class="govuk-tabs__panel" id="total">
-            <h2 class="govuk-heading-m">Total for {{ active_cases }} active cases</h2>
-            <p>Cases effective from <strong>8 December 2014</strong>.
-          </p>
-            {% include "includes/multicase/finance-amounts-case-all.html" %}
-          </div>
-
-          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
-            <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
-              <strong class="govuk-tag govuk-tag--orange">Pay and collect</strong>
-            </h2>
-            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong>.
-          </p>
-            {% include "includes/multicase/finance-amounts-case-1" %}
-          </div>
-
-          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
-            <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
-              <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
-            </h2>
-            <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong>.
-          </p>
-            {% include "includes/multicase/finance-amounts-case-2" %}
-          </div>
+        <div class="govuk-tabs__panel" id="total">
+          <h2 class="govuk-heading-m">Total for {{ active_cases }} active cases</h2>
+          <p>Effective from <strong>8 December 2014</strong>. The next annual review will be on <strong>8 December 2026</strong>.</p>
+          {% include "includes/multicase/ur19/finance-amounts-case-all.html" %}
         </div>
+
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
+          <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
+            <strong class="govuk-tag govuk-tag--orange">Pay and collect</strong>
+          </h2>
+          <p>Case ID: <strong>1-2345999</strong>.</br> Effective from <strong>8 March 2014</strong>. The next annual review will be on <strong>8 March 2026</strong>.
+          </p>
+          {% include "includes/multicase/ur19/finance-amounts-case-1" %}
+        </div>
+
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+          <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
+            <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+          </h2>
+          <p>Case ID: <strong>1-2345112</strong>.</br> Effective from <strong>21 December 2016</strong>. The next annual review will be on <strong>21 December 2026</strong>.
+          </p>
+          {% include "includes/multicase/ur19/finance-amounts-case-2" %}
+        </div>
+      </div>
     </div>
   </div>
 
