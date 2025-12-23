@@ -2,8 +2,8 @@
 
 <!-- ////// PRESETS ///// -->
 
-{% set tab_clicked = tab %}
-{% set number_of_cases = "4" %}
+{% set tab_clicked = selectedTab %}
+{% set number_of_cases = "9" %}
 {% set active_cases = "2" %}
 {% set selected_view = "2" %}
 
@@ -30,20 +30,20 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances.html">Finances</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-financesFinances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statements.html">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statementsStatement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-allocation.html">Payment allocation</a>
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocationPayment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-plan.html">Payment
+              <a class="moj-primary-navigation__link" href="multicase-payment-planPayment
               plans</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-information.html">Cases ({{  number_of_cases }})</a>
+              <a class="moj-primary-navigation__link" href="multicase-case-informationCases ({{  number_of_cases }})</a>
             </li>
           </ul>
         </nav>
@@ -58,7 +58,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
     <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
-      Finances for {{ active_cases }}  ** tab: {{ tab_clicked }}
+      Finances
       </h1>
       {# /////////////////////////////// #}
       <form>
@@ -178,13 +178,13 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   </div>
 
   {# //////////////// #}
-  <script>
+    <script>
     function handleTab(el) {
       // Find the HTML element and update its content
       const selectedTab = el.getAttribute('data-menukey');
       const anchorHref = el.getAttribute('href');
       // Instead of sessionStorage, redirect to the URL with a query parameter
-      window.location.href = '/sprint-development/1716/tabs-pattern/multicase-finances--multiline-tabs.html' + anchorHref + '?tab=' + selectedTab;
+      window.location.href = '/sprint-development/1716/tabs-pattern/multicase-finances--multiline-tabs' + anchorHref + '?tab=' + selectedTab;
     };
   </script>
   {# //////////////// #}
