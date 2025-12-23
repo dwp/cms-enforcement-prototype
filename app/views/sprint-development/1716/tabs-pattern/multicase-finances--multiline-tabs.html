@@ -30,20 +30,20 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-financesFinances</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances"</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statementsStatement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-allocationPayment allocation</a>
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-planPayment
-              plans</a>
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment plan</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-informationCases ({{  number_of_cases }})</a>
+              <a class="moj-primary-navigation__link" href="multicase-case-information">Cases ({{ number_of_cases
+              }})</a>
             </li>
           </ul>
         </nav>
@@ -127,7 +127,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <h2 class="govuk-heading-m">Total for 2 cases</h2>
             <p>Cases effective from <strong>8 December 2014</strong>.
           </p>
-            {% include "includes/multicase/finance-amounts-case-all.html
+            {% include "includes/multicase/finance-amounts--case-all.html
           " %}
           </div>
 
@@ -137,7 +137,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             </h2>
             <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
           </p>
-            {% include "includes/multicase/finance-amounts-case-1" %}
+            {% include "includes/multicase/finance-amounts--case-1" %}
           </div>
 
           <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
@@ -146,7 +146,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             </h2>
             <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
           </p>
-            {% include "includes/multicase/finance-amounts-case-2" %}
+            {% include "includes/multicase/finance-amounts--case-2" %}
           </div>
           <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
             <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
@@ -154,7 +154,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             </h2>
             <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
           </p>
-            {% include "includes/multicase/finance-amounts-case-2" %}
+            {% include "includes/multicase/finance-amounts--case-2" %}
           </div>
           <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
             <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
@@ -162,7 +162,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             </h2>
             <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
           </p>
-            {% include "includes/multicase/finance-amounts-case-2" %}
+            {% include "includes/multicase/finance-amounts--case-2" %}
           </div>
           <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
             <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
@@ -170,7 +170,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             </h2>
             <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
           </p>
-            {% include "includes/multicase/finance-amounts-case-2" %}
+            {% include "includes/multicase/finance-amounts--case-2" %}
           </div>
         </div>
       </form>

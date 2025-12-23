@@ -43,7 +43,7 @@ router.post('/juggling-balls-answer', function (req, res) {
     // Continue processing the request and rendering the Nunjucks template
     next(); 
 });
-router.get('/sprint-development/1716/tabs-pattern/multicase-statements', function (req, res, next) {   
+router.get('/sprint-development/1716/tabs-pattern/multicase-statement', function (req, res, next) {   
     // Check if a 'tab' query parameter exists in the URL (e.g., ?tab=1 or ?tab=2)
     const activeTab = req.query.selectedTab;
 
@@ -70,7 +70,7 @@ router.get('/sprint-development/1716/tabs-pattern/multicase-statements', functio
 
 //     next(); 
 // });
-// router.get('/sprint-development/multicase/tabs-pattern/multicase-statements', function (req, res, next) {   
+// router.get('/sprint-development/multicase/tabs-pattern/multicase-statement', function (req, res, next) {   
 //     // Read the value from the cookies sent by the browser
 //     const tabFromCookie = req.cookies.selectedTabCookie;
 

@@ -28,20 +28,19 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-financesFinances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-statementsStatement</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-statement--all">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-allocationPayment allocation</a>
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-planPayment
-              plans</a>
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment plan</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-informationCases ({{ number_of_cases
+              <a class="moj-primary-navigation__link" href="multicase-case-information">Cases ({{ number_of_cases
               }})</a>
             </li>
           </ul>
@@ -55,7 +54,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
-      Statement {{ active_cases }}
+      Statement
       </h1>
 
       {# /////////////////////////////// #}
@@ -87,8 +86,8 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
           <h2 class="govuk-heading-m"> All transactions for {{ active_cases }} active cases</h2>
           <p>Cases effective from <strong>8 December 2014</strong>.
           </p>
-          {% include "includes/multicase/finance-summary-case-all" %}
-          {% include "includes/multicase/multicase-statements-case-all" %}
+          {% include "includes/multicase/finance-summary--case-all" %}
+          {% include "includes/multicase/multicase-statement--case-all" %}
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
@@ -97,8 +96,8 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong>.
           </p>
-          {% include "includes/multicase/finance-summary-case-all" %}
-          {% include "includes/multicase/multicase-statements-case-1" %}
+          {% include "includes/multicase/finance-summary--case-all" %}
+          {% include "includes/multicase/multicase-statement--case-1" %}
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
@@ -107,13 +106,12 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong>.
           </p>
-          {% include "includes/multicase/finance-summary-case-all" %}
-          {% include "includes/multicase/multicase-statements-case-2" %}
+          {% include "includes/multicase/finance-summary--case-all" %}
+          {% include "includes/multicase/multicase-statement--case-2" %}
         </div>
       </div>
 
     </div>
-
   </div>
 </div>
 
@@ -128,31 +126,13 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 </script>
 
 {# //////////////// #}
-{# <script>
-  const tabNum = window
-    .sessionStorage
-    .getItem('tab')
-
-  const tabList = Array.from(document.getElementsByClassName('govuk-tabs__list-item'))
-  console.log(tabList)
-  console.log(tabList.map(tab => tab.childNodes[1].getAttribute('data-menukey')))
-  const selectedTab = (tabList.find(tab => tab.childNodes[1].getAttribute('data-menukey') == tabNum))
-  console.log(selectedTab.childNodes[1])
-
-  tabList[0].childNodes[1].setAttribute('tabindex', -1)
-  selectedTab.childNodes[1].setAttribute('tabindex', 0)
-
-  console.log(tabList.map(tab => tab.childNodes[1].getAttribute('tabindex')))
- #}
-
-{# //////////////// #}
   <script>
     function handleTab(el) {
       // Find the HTML element and update its content
       const selectedTab = el.getAttribute('data-menukey');
       const anchorHref = el.getAttribute('href');
       //Redirect to the URL with a query parameter
-      window.location.href = '/sprint-development/1716/tabs-pattern/multicase-statements' + anchorHref + '?tab=' + selectedTab;
+      window.location.href = '/sprint-development/1716/tabs-pattern/multicase-statement' + anchorHref + '?tab=' + selectedTab;
     };
   </script>
 {# //////////////// #}

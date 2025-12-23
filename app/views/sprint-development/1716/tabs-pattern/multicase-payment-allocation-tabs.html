@@ -29,7 +29,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
               <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statements">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" aria-current="page" href="multicase-payment-allocation">Payment
@@ -87,7 +87,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
           <h2 class="govuk-heading-m">Total for 2 cases</h2>
           <p>Cases effective from <strong>8 December 2014</strong>.
           </p>
-          {% include "includes/multicase/multicase-payment-allocation-case-all.html
+          {% include "includes/multicase/multicase-payment-allocation--case-all.html
           " %}
         </div>
 
@@ -97,7 +97,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
           </p>
-          {% include "includes/multicase/multicase-payment-allocation-case-1" %}
+          {% include "includes/multicase/multicase-payment-allocation--case-1" %}
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
@@ -106,7 +106,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
           </p>
-          {% include "includes/multicase/multicase-payment-allocation-case-2" %}
+          {% include "includes/multicase/multicase-payment-allocation--case-2" %}
         </div>
       </div>
     </div>
