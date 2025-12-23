@@ -1,7 +1,7 @@
 {% extends "layouts/internal-service.html" %}
 
 <!-- ////// PRESETS ///// -->
-{% set number_of_cases = "4" %}
+{% set number_of_cases = "2" %}
 {% set selected_view = "2" %}
 {% set rp1 = "Daria Oblonskaya 1&#8209;2345999" %}
 {% set rp2 = "Ruth Slater 1&#8209;2345703" %}
@@ -32,7 +32,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
+              <a class="moj-primary-navigation__link" href="tabs-pattern/multicase-statement--all">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
@@ -56,14 +56,10 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
-      Finances for case ID 1-2345703
+      Finances total for {{ number_of_cases }} active cases
     </h1>
-      <p>
-        <span class="govuk-body govuk-!-font-size-19">
-          <strong>Paying to:</strong> Ruth Slater</span>
-        <strong
-        class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
-      </p>
+      <h2 class="govuk-heading-m"></h2>
+          <p>The next annual review will be on <strong>8 February 2026</strong>.</p>
 
       {% from "govuk/components/select/macro.njk" import govukSelect %}
 
