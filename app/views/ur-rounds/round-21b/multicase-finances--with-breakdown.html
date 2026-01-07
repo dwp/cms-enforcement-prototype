@@ -1,0 +1,634 @@
+{% extends "layouts/internal-service.html" %}
+
+<!-- ////// PRESETS ///// -->
+{% set number_of_cases = "2" %}
+{% set selected_view = "2" %}
+{% set rp1 = "Daria Oblonskaya 1&#8209;2345999" %}
+{% set rp2 = "Ruth Slater 1&#8209;2345703" %}
+
+<!-- //////////////////// -->
+
+{% block pageTitle %}
+Finances – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/dwp-internal-service-header" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "includes/govuk-beta-banner" %}
+
+  {% include "includes/dwp-quick-reference-multicase" %}
+
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-information">Cases ({{ number_of_cases
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances--with-breakdown">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
+              plans</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- {% include "includes/moj-primary-navigation-multicase" %} -->
+  <!-- /////////////////////////////////// -->
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+      Finances total for {{ number_of_cases }} active cases
+    </h1>
+      <h2 class="govuk-heading-m"></h2>
+          <p>The next annual review will be on <strong>8 February 2026</strong>.</p>
+
+      {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+      {# <form>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="finances">
+          Select a different summary
+        </label>
+          <select class="govuk-select" id="finances" name="finances" aria-describedby="finances-hint">
+            {% if selected_view == "all" %}
+              <option value="Total" selected>All cases</option>
+              <option value="financesCase1">Daria Oblonskaya &ndash; 1-2345999</option>
+              <option value="financesCase2">Ruth Slater &ndash; 1-2345703</option>
+            {% elif selected_view == "1" %}
+              <option value="Total">All finances total</option>
+              <option value="financesCase1" selected>Daria Oblonskaya &ndash; 1-2345999</option>
+              <option value="financesCase2">Ruth Slater &ndash; 1-2345703</option>
+            {% elif selected_view == "2" %}
+              <option value="Total">All finances total</option>
+              <option value="financesCase1">Daria Oblonskaya &ndash; 1-2345999</option>
+              <option value="financesCase2" selected>Ruth Slater &ndash; 1-2345703</option>
+            {% endif %}
+          </select>
+        </div>
+
+      </form> #}
+
+      <!-- <p class="dateRange">
+      <span class="dateRange__text">
+        Case effective from <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
+      </span>
+    </p> -->
+    </div>
+
+    <!-- /////////////////////////// -->
+
+    <div class="govuk-grid-column-full">
+
+      {# ======================== #}
+      <div class="ef-card">
+        <div class="dfe-title-cash">
+          <h2 class="govuk-heading-m">Money still owed</h2>
+          <h2 class="value">£3,268.78</h2>
+          <span class="govuk-caption-m">Cash balance not included</span>
+          <dl class="govuk-summary-list">
+            <div style="display: inline-table; width: 47%; float: right; margin-right: 1.2em;">
+              <div class="govuk-summary-list__row" style="text-align: left;">
+                <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                  {{ rp1|safe }}
+                </dt>
+                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £1,267.65
+                </dd>
+              </div>
+
+              <div class="govuk-summary-list__row" style="text-align: left;">
+                <dt class="govuk-summary-list__key">
+                  {{ rp2|safe }}
+                </dt>
+                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £2,001.23
+                </dd>
+              </div>
+            </div>
+          </dl>
+        </div>
+        {# ======================== #}
+        <div class="ef-card-duo">
+          <article class="moj-ticket-panel-duo">
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Child maintenance</h2>
+              <dl class="govuk-summary-list" style="margin-left: 1.2em;">
+                <div style="display: inline-table; width: 100%; float: right; margin-right: 1.2em;">
+                  <div class="govuk-summary-list__row" style="text-align: left;">
+                    <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                  Total
+                </dt>
+                    <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                      <strong>£2,683.46</strong>
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row" style="text-align: left;">
+                    <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                      {{ rp1|safe }}
+                    </dt>
+                    <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £1,007.12
+                </dd>
+                  </div>
+                  <div class="govuk-summary-list__row" style="text-align: left;">
+                    <dt class="govuk-summary-list__key">
+                      {{ rp2|safe }}
+                    </dt>
+                    <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £1,676.34
+                </dd>
+                  </div>
+                </div>
+              </dl>
+            </section>
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Charges and debt</h2>
+              <dl class="govuk-summary-list" style="margin-left: 1.2em;">
+                <div style="display: inline-table; width: 100%; float: right; margin-right: 1.2em;">
+
+                  <div class="govuk-summary-list__row" style="text-align: left;">
+                    <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                  Total
+                </dt>
+                    <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                      <strong>£300.00</strong>
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row" style="text-align: left;">
+                    <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                      {{ rp1|safe }}
+                    </dt>
+                    <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £300.00
+                </dd>
+                  </div>
+
+                  <div class="govuk-summary-list__row" style="text-align: left;">
+                    <dt class="govuk-summary-list__key">
+                      {{ rp2|safe }}
+                    </dt>
+                    <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £0.00
+                </dd>
+                  </div>
+                </div>
+              </dl>
+            </section>
+          </article>
+        </div>
+      </div>
+
+      {# ======================== #}
+      <div class="ef-card">
+        <div class="dfe-title-cash">
+          <h2>Overpayments</h2>
+          <h2 class="value">£1,652.51</h2>
+          <span class="govuk-caption-m">Included in the payments made</span>
+          <dl class="govuk-summary-list">
+            <div style="display: inline-table; width: 47%; float: right; margin-right: 1.2em;">
+              <div class="govuk-summary-list__row" style="text-align: left;">
+                <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                  {{ rp1|safe }}
+                </dt>
+                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £966.87
+                </dd>
+              </div>
+
+              <div class="govuk-summary-list__row" style="text-align: left;">
+                <dt class="govuk-summary-list__key">
+                  {{ rp2|safe }}
+                </dt>
+                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £685.64
+                </dd>
+              </div>
+            </div>
+          </dl>
+        </div>
+        {# ======================== #}
+        <div class="ef-card-trio">
+          <article class="moj-ticket-panel-trio">
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Child maintenance</h2>
+              <dl class="govuk-summary-list" style="margin-left: 1.2em;">
+                <div style="display: inline-table; width: 100%; float: right; margin-right: 1.2em;">
+                  <div class="govuk-summary-list__row" style="text-align: left;">
+                    <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                  Total
+                </dt>
+                    <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £1,101.55
+                </dd>
+                  </div>
+                  <div class="govuk-summary-list__row" style="text-align: left;">
+                    <dt class="govuk-summary-list__key">
+                      {{ rp1|safe }}
+                    </dt>
+                    <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £755.07
+                </dd>
+                  </div>
+
+                  <div class="govuk-summary-list__row" style="text-align: left;">
+                    <dt class="govuk-summary-list__key">
+                      {{ rp2|safe }}
+                    </dt>
+                    <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £346.48
+                </dd>
+                  </div>
+                </section>
+                <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+
+                  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Charges and debt</h2>
+                  <dl class="govuk-summary-list" style="margin-left: 1.2em;">
+                    <div style="display: inline-table; width: 100%; float: right; margin-right: 1.2em;">
+                      <div class="govuk-summary-list__row" style="text-align: left;">
+                        <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                  Total
+                </dt>
+                        <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £220.35
+                </dd>
+                      </div>
+                      <div class="govuk-summary-list__row" style="text-align: left;">
+                        <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                          {{ rp1|safe }}
+                        </dt>
+                        <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £300.00
+                </dd>
+                      </div>
+
+                      <div class="govuk-summary-list__row" style="text-align: left;">
+                        <dt class="govuk-summary-list__key">
+                          {{ rp2|safe }}
+                        </dt>
+                        <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £0.00
+                </dd>
+                      </div>
+                    </section>
+                    <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+                      <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Cash balance</h2>
+                      <dl class="govuk-summary-list" style="margin-left: 1.2em;">
+                        <div style="display: inline-table; width: 100%; float: right; margin-right: 1.2em;">
+                          <div class="govuk-summary-list__row" style="text-align: left;">
+                            <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                  Total
+                </dt>
+                            <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £330.61
+                </dd>
+                          </div>
+                          <div class="govuk-summary-list__row" style="text-align: left;">
+                            <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                              {{ rp1|safe }}
+                            </dt>
+                            <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £300.00
+                </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row" style="text-align: left;">
+                            <dt class="govuk-summary-list__key">
+                              {{ rp2|safe }}
+                            </dt>
+                            <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £0.00
+                </dd>
+                          </div>
+                        </section>
+                      </article>
+                    </div>
+                  </div>
+
+                  {# ======================== #}
+                  <div class="ef-card">
+                    <div class="dfe-title-cash">
+                      <h2>Payments made</h2>
+                      <h2 class="value">£7,564.20</h2>
+                      <span class="govuk-caption-m">Includes cash balance and overpayments</span>
+                      <dl class="govuk-summary-list">
+                        <div style="display: inline-table; width: 47%; float: right; margin-right: 1.2em;">
+                          <div class="govuk-summary-list__row" style="text-align: left;">
+                            <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                              {{ rp1|safe }}
+                            </dt>
+                            <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £5,267.65
+                </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row" style="text-align: left;">
+                            <dt class="govuk-summary-list__key">
+                              {{ rp2|safe }}
+                            </dt>
+                            <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £2,296.55
+                </dd>
+                          </div>
+                        </div>
+                      </dl>
+                    </div>
+                    {# ======================== #}
+                    <div class="ef-card-duo">
+                      <article class="moj-ticket-panel-duo">
+                        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+                          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Child maintenance</h2>
+                          <dl class="govuk-summary-list" style="margin-left: 1.2em;">
+                            <div style="display: inline-table; width: 100%; float: right; margin-right: 1.2em;">
+                              <div class="govuk-summary-list__row" style="text-align: left;">
+                                <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                  Total
+                </dt>
+                                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £7,387.06
+                </dd>
+                              </div>
+                              <div class="govuk-summary-list__row" style="text-align: left;">
+                                <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                                  {{ rp1|safe }}
+                                </dt>
+                                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £1,267.65
+                </dd>
+                              </div>
+
+                              <div class="govuk-summary-list__row" style="text-align: left;">
+                                <dt class="govuk-summary-list__key">
+                                  {{ rp2|safe }}
+                                </dt>
+                                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £2,001.23
+                </dd>
+                              </div>
+                            </div>
+                          </dl>
+                        </section>
+                        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+                          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Charges and debt</h2>
+
+                          <dl class="govuk-summary-list" style="margin-left: 1.2em;">
+                            <div style="display: inline-table; width: 100%; float: right; margin-right: 1.2em;">
+                              <div class="govuk-summary-list__row" style="text-align: left;">
+                                <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                  Total
+                </dt>
+                                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £76.91
+                </dd>
+                              </div>
+                              <div class="govuk-summary-list__row" style="text-align: left;">
+                                <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                                  {{ rp1|safe }}
+                                </dt>
+                                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £1,267.65
+                </dd>
+                              </div>
+
+                              <div class="govuk-summary-list__row" style="text-align: left;">
+                                <dt class="govuk-summary-list__key">
+                                  {{ rp2|safe }}
+                                </dt>
+                                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £2,001.23
+                </dd>
+                              </div>
+                            </div>
+                          </dl>
+                        </section>
+                        <details class="govuk-details">
+                          <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                Cash balance £330.61
+              </span>
+                          </summary>
+                          <div class="govuk-details__text">
+              Money paid that cannot be allocated to child maintenance or charges yet.
+            </div>
+                        </details>
+                      </article>
+                    </div>
+                  </div>
+
+                  {# ======================== #}
+                  <div class="ef-card">
+                    <div class="dfe-title-i8">
+                      <h2>Amount written off</h2>
+                      <h2 class="value">£0.00</h2>
+                      <dl class="govuk-summary-list">
+                        <div style="display: inline-table; width: 47%; float: right; margin-right: 1.2em;">
+                          <div class="govuk-summary-list__row" style="text-align: left;">
+                            <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                              {{ rp1|safe }}
+                            </dt>
+                            <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £0.00
+                </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row" style="text-align: left;">
+                            <dt class="govuk-summary-list__key">
+                              {{ rp2|safe }}
+                            </dt>
+                            <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                  £0.00
+                </dd>
+                          </div>
+                        </div>
+                      </dl>
+                    </div>
+                  </div>
+
+                  {# ======================== #}
+                  <div class="ef-card">
+                    <div class="dfe-title-i8">
+                      <h2>Total expected</h2>
+                      <h2 class="value">£10,732.75</h2>
+                      <dl class="govuk-summary-list">
+                        <div style="display: inline-table; width: 47%; float: right; margin-right: 1.2em;">
+                          <div class="govuk-summary-list__row" style="text-align: left;">
+                            <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                              {{ rp1|safe }}
+                            </dt>
+                            <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                              £1,267.65
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row" style="text-align: left;">
+                            <dt class="govuk-summary-list__key">
+                              {{ rp2|safe }}
+                            </dt>
+                            <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                              £2,001.23
+                            </dd>
+                          </div>
+                        </div>
+                      </dl>
+                    </div>
+                    {# ======================== #}
+                    <div class="ef-card">
+                      <article class="moj-ticket-panel-duo">
+                        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+                          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Child maintenance</h2>
+                          <dl class="govuk-summary-list" style="margin-left: 1.2em;">
+                            <div style="display: inline-table; width: 100%; float: right; margin-right: 1.2em;">
+                              <div class="govuk-summary-list__row" style="text-align: left;">
+                                <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                                  Total
+                                </dt>
+                                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                                  £10,070.52
+                                </dd>
+                              </div>
+                              <div class="govuk-summary-list__row" style="text-align: left;">
+                                <dt class="govuk-summary-list__key govuk-!-width-two-thirds">
+                                  {{ rp1|safe }}
+                                </dt>
+                                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                                  £1,267.65
+                                </dd>
+                              </div>
+
+                              <div class="govuk-summary-list__row" style="text-align: left;">
+                                <dt class="govuk-summary-list__key">
+                                  {{ rp2|safe }}
+                                </dt>
+                                <dd class="govuk-summary-list__value govuk-!-text-align-right">
+                                  £2,001.23
+                                </dd>
+                              </div>
+                            </div>
+                          </dl>
+                        </section>
+
+                        {# //////// TABLE  /////////// #}
+
+                        <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 2" style="display: inline-table;">
+                              <table class="govuk-table" style="min-width: 45em;">
+                                <caption class="govuk-table__caption govuk-table__caption--m">Charges and debt</caption>
+                                <thead class="govuk-table__head">
+                                  <tr class="govuk-table__row">
+                                    <th scope="col" class="govuk-table__header govuk-!-width-one-half">Breakdown</th>
+                                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">Total</th>
+                                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">{{ rp1|safe }}</th>
+                                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">{{ rp2|safe }}</th>
+                                  </tr>
+                                </thead>
+                                <tbody class="govuk-table__body">
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Collection charges</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£1,124.33</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Enforcement charges</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£350.00</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£55</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Enforcement costs</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£160.00</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">CSA debt</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£63.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">DNA costs</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£87.23</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Subject access request costs</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£19.00</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Interest</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£30.67</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Fees</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£22.87</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Judicial review costs</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£107.89</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Appeal costs</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£43.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">CMS administration costs</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£26.89</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                  <tr class="govuk-table__row">
+                                    <th scope="row" class="govuk-table__header">Liability order administration costs</th>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£3,334.45</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£54.00</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                        </section>
+
+
+                      </div>
+
+                      <!-- //////////////////////////// -->
+                      <!-- /////////////////////////// -->
+
+                      <!-- ////////////////////////////////// -->
+                      <!-- ////////////////////////////////// -->
+                      <!-- ////////////////////////////////// -->
+
+                    </div>
+                    <!-- ////////////////////////////////// -->
+                    <!-- ////////////////////////////////// -->
+                    <!-- ////////////////////////////////// -->
+
+                  {% endblock %}
