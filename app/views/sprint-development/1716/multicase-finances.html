@@ -10,7 +10,7 @@
 {% elif case_number == '1' %}
 {% set other_parent = 'Daria Oblonskaya' %}
 {% set case_id = '1-2345999' %}
-{% set case_type = 'Collect and pay' %}
+{% set case_type = 'Pay and collect' %}
 {% set effective_from = '8 December 2014' %}
 {% set effective_to = '6 May 2025' %}
 {% elif case_number == '2' %}
@@ -88,7 +88,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
     <p><span class="govuk-body govuk-!-font-size-19"> Paying to <strong>{{ other_parent }}</strong></span>
       {% if case_type == 'Arrears only' %}
         <strong class="govuk-tag govuk-tag--orange">{{ case_type }}</strong>
-        {% elif case_type == 'Collect and pay' %}
+        {% elif case_type == 'Pay and collect' %}
         <strong class="govuk-tag govuk-tag--turquoise">{{ case_type }}</strong>
       {% endif %}
     </p>
