@@ -54,43 +54,13 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
-      Payment allocation for case ID 1-2345703
+      Payment allocation
     </h1>
-
-
-    <p><span class="govuk-body govuk-!-font-size-19"> Paying to <strong>Daria Oblonskaya</strong> </span><strong class="govuk-tag govuk-tag--orange">Collect and pay</strong>
-    </p>
-    <p>The next annual review will be on <strong>8 February 2026</strong>.</p>
-    </p>
-{# 
-    {% from "internal-service-header/macro.njk" import dwpHeader %}
-
-    <form>
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="finances">
-          Select case
-        </label>
-        <!-- <div id="finances-hint" class="govuk-hint">
-        This can be different to where you went before </div> -->
-        <select class="govuk-select" id="finances" name="finances" aria-describedby="finances-hint">
-          {% if selected_view == "all" %}
-          <option value="Total" selected>All cases</option>
-          <option value="financesCase1">Daria Oblonskaya &ndash; 1-2345999</option>
-          <option value="financesCase2">Ruth Slater &ndash; 1-2345703</option>
-          {% elif selected_view == "1" %}
-          <option value="Total">All cases</option>
-          <option value="financesCase1" selected>Daria Oblonskaya &ndash; 1-2345999</option>
-          <option value="financesCase2">Ruth Slater &ndash; 1-2345703</option>
-          {% elif selected_view == "2" %}
-          <option value="Total">All cases</option>
-          <option value="financesCase1">Daria Oblonskaya &ndash; 1-2345999</option>
-          <option value="financesCase2" selected>Ruth Slater &ndash; 1-2345703</option>
-          {% endif %}
-        </select>
-      </div>
-
-    </form> #}
-
+    <p class="dateRange">
+      <span class="govuk-!-font-size-24">
+        Includes payment allocations from <strong>7 October 2021</strong>.
+       </span>
+     </p>
 
     <details class="govuk-details" style="margin-bottom: 40px;">
       <summary class="govuk-details__summary">
@@ -131,8 +101,8 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
         <option value="payment-allocation/18 Jun 2022">18 Jun 2022 - 18 Dec 2022</option>
       </select>
     </div>
-
-    <!--<div class="moj-button-group moj-button-group--inline">
+{# 
+    <div class="moj-button-group moj-button-group--inline">
       <div class="moj-button-menu" data-module="moj-button-menu" data-button-text="21 Dec 2023 - 21 Jun 2024" data-button-classes="toggle-button">
         
         <a href="payment-allocation/20 Jun 2023.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button" style="width: 260px;">
@@ -145,7 +115,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
           18 Jun 2022 - 18 Dec 2022
         </a>
       </div>
-    </div>-->
+    </div> #}
 
     <!-- 2024-->
     <h3 class="govuk-notification-banner__heading">
@@ -506,16 +476,18 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
       <!-- END ALLOCATION ROW -->
     </table>
 
+</div>
+</div>
 
-    <ic-back-to-top target="main" style="margin-top: 80px;"></ic-back-to-top>
-    <script defer>
-      import('https://unpkg.com/@ukic/web-components@3.1.0/loader').then((module) => {
-        module.defineCustomElements();
-      });
-      // The ICDS has types available if your JavaScript framework allows for use with TypeScript
-      // Below is an example of how to import an ICDS type
-      // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
-    </script>
+<ic-back-to-top target="main"></ic-back-to-top>
+<script defer>
+  import('https://unpkg.com/@ukic/web-components@3.1.0/loader').then((module) => {
+    module.defineCustomElements();
+  });
+  // The ICDS has types available if your JavaScript framework allows for use with TypeScript
+  // Below is an example of how to import an ICDS type
+  // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
+</script>
 </div>
 {% endblock %}
 

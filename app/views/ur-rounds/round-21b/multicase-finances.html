@@ -38,7 +38,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances--with-breakdown">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
@@ -68,18 +68,18 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             Contents
           </h2>
         <ul class="govuk-tabs__list">
-          <li class="govuk-tabs__list-item{% if tab_clicked == '0' %} govuk-tabs__list-item--selected{% endif %}">
-            <a class="govuk-tabs__tab" href="#total" data-menukey="0" onclick="handleTab(this)">
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#total">
             Total
           </a>
           </li>
-          <li class="govuk-tabs__list-item{% if tab_clicked == '1' %} govuk-tabs__list-item--selected{% endif %}">
-            <a class="govuk-tabs__tab" href="#daria" data-menukey="1" onclick="handleTab(this)">
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#daria">
               Daria Oblonskaya 1-2345999
             </a>
           </li>
-          <li class="govuk-tabs__list-item{% if tab_clicked == '2' %} govuk-tabs__list-item--selected{% endif %}">
-            <a class="govuk-tabs__tab" href="#ruth" data-menukey="2" onclick="handleTab(this)">
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#ruth">
               Ruth Slater 1-2345112
             </a>
           </li>
@@ -113,15 +113,15 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   </div>
 
   {# //////////////// #}
-  <script>
-    function handleTab(el) {
-      // Find the HTML element and update its content
-      const selectedTab = el.getAttribute('data-menukey');
-      const anchorHref = el.getAttribute('href');
-      // Instead of sessionStorage, redirect to the URL with a query parameter
-      window.location.href = '/sprint-development/1716/tabs-pattern/multicase-finances' + anchorHref + '?tab=' + selectedTab;
-    };
-  </script>
+<ic-back-to-top target="main" style="margin-top: 80px;"></ic-back-to-top>
+<script defer>
+  import('https://unpkg.com/@ukic/web-components@3.1.0/loader').then((module) => {
+    module.defineCustomElements();
+  });
+  // The ICDS has types available if your JavaScript framework allows for use with TypeScript
+  // Below is an example of how to import an ICDS type
+  // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
+</script>
   {# //////////////// #}
 
 {% endblock %}
