@@ -10,59 +10,61 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
-{% include "includes/dwp-internal-service-header" %}
+  {% include "includes/dwp-internal-service-header" %}
 {% endblock %}
 
 {% block content %}
 
-{% include "includes/govuk-beta-banner" %}
+  {% include "includes/govuk-beta-banner" %}
 
-{% include "includes/dwp-quick-reference-multicase" %}
+  {% include "includes/dwp-quick-reference-multicase" %}
 
-<!-- /////// NAVIGATION PRIMARY /////// -->
-<div class="moj-primary-navigation govuk-!-margin-bottom-5">
-  <div class="moj-primary-navigation__container">
-    <div class="moj-primary-navigation__nav">
-      <nav class="moj-primary-navigation" aria-label="Primary navigation">
-        <ul class="moj-primary-navigation__list">
-          
-          <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="multicase-case-information">Cases ({{ number_of_cases
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-information">Cases ({{ number_of_cases
               }})</a>
-          </li>
-          <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="multicase-finances--with-breakdown">Finances</a>
-          </li>
-          <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
-          </li>
-          <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" aria-current="page" href="multicase-payment-allocation">Payment
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-finances--with-breakdown">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-payment-allocation">Payment
               allocation</a>
-          </li>
-          <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
               plans</a>
-          </li>
-        </ul>
-      </nav>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
-</div>
-<!-- {% include "includes/moj-primary-navigation-multicase" %} -->
-<!-- /////////////////////////////////// -->
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
+  <!-- {% include "includes/moj-primary-navigation-multicase" %} -->
+  <!-- /////////////////////////////////// -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
       Payment allocation for case ID 1-2345703
     </h1>
 
-
-    <p><span class="govuk-body govuk-!-font-size-19"> Paying to <strong>Daria Oblonskaya</strong> </span><strong class="govuk-tag govuk-tag--orange">Collect and pay</strong>
+      <p>
+        <span class="govuk-body govuk-!-font-size-19"> Paying to <strong>Daria Oblonskaya</strong>
+        </span>
+        <strong class="govuk-tag govuk-tag--orange">Collect and pay</strong>
+      </p>
+      <p>The next annual review will be on <strong>8 February 2026</strong>.</p>
     </p>
-    <p>The next annual review will be on <strong>8 February 2026</strong>.</p>
-    </p>
-{# 
+    {# 
     {% from "internal-service-header/macro.njk" import dwpHeader %}
 
     <form>
@@ -91,7 +93,6 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
 
     </form> #}
 
-
     <details class="govuk-details" style="margin-bottom: 40px;">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
@@ -103,7 +104,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
       </div>
     </details>
 
-      </div>
+  </div>
 
   <div class="govuk-grid-column-full">
     <div class="govuk-form-group">
@@ -160,7 +161,6 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
           <th scope="col" class="govuk-table__header statement_end">Amount (£)</th>
         </tr>
       </thead>
-
 
       <!-- NEW DATE ROW -->
       <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6; border-top: 1px solid #b1b4b6;">
@@ -368,7 +368,6 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
         </tr>
       </thead>
 
-
       <!-- START ALLOCATION ROW -->
       <tbody class="govuk-table__body" style="border-bottom: 1px solid #b1b4b6;">
         <tr class="govuk-table__row">
@@ -397,8 +396,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
                   <table class="govuk-table">
                     <tbody class="govuk-table__body">
                       <tr class="govuk-table__row">
-                        <td class="govuk-table__cell" style="width: 480px;">Child maintenance (123456789101 - Rachel
-                          Smith)</td>
+                        <td class="govuk-table__cell" style="width: 480px;">Child maintenance (123456789101 - Daria Oblonskaya)</td>
                         <td class="govuk-table__cellEnd">£400.00</td>
                       </tr>
                       <tr class="govuk-table__row">
@@ -414,8 +412,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
                         <td class="govuk-table__cellEnd">£100.00</td>
                       </tr>
                       <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">Child maintenance arrears (123456789101 - Rachel
-                          Smith)
+                        <td class="govuk-table__cell">Child maintenance arrears (123456789101 - Daria Oblonskaya)
                         </td>
                         <td class="govuk-table__cellEnd">£234.45</td>
                       </tr>
@@ -430,34 +427,34 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
         <tr class="govuk-table__row" style="width: 100px; padding-left: 200px; display: block;">
           <td class="govuk-table__cell statement_description" style="border-bottom: none;"">
             <details class=" govuk-details">
-            <summary class="govuk-details__summary" style="width: 760px;">
-              <span class="govuk-details__summary-text">Collection charges</span>
-              <span class="govuk-details__summary-textend">100.00</span>
-            </summary>
-            <div class="govuk-details__text" style="width:760px;">
-              <div class="moj-scrollable-pane">
-                <table class="govuk-table">
-                  <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Collection charges</td>
-                      <td class="govuk-table__cellEnd">£30.00</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Collection charges - liability order</td>
-                      <td class="govuk-table__cellEnd">£50.00</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Collection charges - lump sum deduction order</td>
-                      <td class="govuk-table__cellEnd">£15.00</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Collection charges arrears </td>
-                      <td class="govuk-table__cellEnd">£5.00</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <summary class="govuk-details__summary" style="width: 760px;">
+                <span class="govuk-details__summary-text">Collection charges</span>
+                <span class="govuk-details__summary-textend">100.00</span>
+              </summary>
+              <div class="govuk-details__text" style="width:760px;">
+                <div class="moj-scrollable-pane">
+                  <table class="govuk-table">
+                    <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Collection charges</td>
+                        <td class="govuk-table__cellEnd">£30.00</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Collection charges - liability order</td>
+                        <td class="govuk-table__cellEnd">£50.00</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Collection charges - lump sum deduction order</td>
+                        <td class="govuk-table__cellEnd">£15.00</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Collection charges arrears </td>
+                        <td class="govuk-table__cellEnd">£5.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
             </details>
           </td>
         </tr>
@@ -465,40 +462,39 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
         <tr class="govuk-table__row" style="width: 100px; padding-left: 200px; display: block;">
           <td class="govuk-table__cell statement_description" style="border-bottom: none;"">
             <details class=" govuk-details">
-            <summary class="govuk-details__summary" style="width: 760px;">
-              <span class="govuk-details__summary-text">CSA debt</span>
-              <span class="govuk-details__summary-textend">200.00</span>
-            </summary>
-            <div class="govuk-details__text" style="width:760px;">
-              <div class="moj-scrollable-pane">
-                <table class="govuk-table">
-                  <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell" style="width: 480px;">Child support agency - liability order
-                        (123456789101 - Ruth Slater)</td>
-                      <td class="govuk-table__cell"></td>
-                      <td class="govuk-table__cellEnd">£100.00</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Child Support Agency - lump sum deduction order (123456789101 -
-                        Ruth Slater)</td>
-                      <td class="govuk-table__cell"></td>
-                      <td class="govuk-table__cellEnd">£60.00</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Child Support Agency - secretary of state</td>
-                      <td class="govuk-table__cell"></td>
-                      <td class="govuk-table__cellEnd">£30.00</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Child Support Agency - (123456789101 - Ruth Slater)</td>
-                      <td class="govuk-table__cell"></td>
-                      <td class="govuk-table__cellEnd">£10.00</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <summary class="govuk-details__summary" style="width: 760px;">
+                <span class="govuk-details__summary-text">CSA debt</span>
+                <span class="govuk-details__summary-textend">200.00</span>
+              </summary>
+              <div class="govuk-details__text" style="width:760px;">
+                <div class="moj-scrollable-pane">
+                  <table class="govuk-table">
+                    <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell" style="width: 480px;">Child support agency - liability order
+                        (123456789101 - Daria Oblonskaya)</td>
+                        <td class="govuk-table__cell"></td>
+                        <td class="govuk-table__cellEnd">£100.00</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Child Support Agency - lump sum deduction order (123456789101 - Daria Oblonskaya)</td>
+                        <td class="govuk-table__cell"></td>
+                        <td class="govuk-table__cellEnd">£60.00</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Child Support Agency - secretary of state</td>
+                        <td class="govuk-table__cell"></td>
+                        <td class="govuk-table__cellEnd">£30.00</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Child Support Agency - (123456789101 - Ruth Slater)</td>
+                        <td class="govuk-table__cell"></td>
+                        <td class="govuk-table__cellEnd">£10.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
             </details>
           </td>
         </tr>
@@ -506,199 +502,197 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
       <!-- END ALLOCATION ROW -->
     </table>
 
-
     <ic-back-to-top target="main" style="margin-top: 80px;"></ic-back-to-top>
     <script defer>
-      import('https://unpkg.com/@ukic/web-components@3.1.0/loader').then((module) => {
+      import ('https://unpkg.com/@ukic/web-components@3.1.0/loader').then((module) => {
         module.defineCustomElements();
       });
       // The ICDS has types available if your JavaScript framework allows for use with TypeScript
       // Below is an example of how to import an ICDS type
       // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
     </script>
-</div>
+  </div>
 {% endblock %}
 
 {% block footer %}
 
-<footer class="enforcement-footer" role="contentinfo">
-  <div class="govuk-width-container">
-    <div class="govuk-footer__meta">
-      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
-        <h2 class="govuk-visually-hidden">Footer links</h2>
-        <ul class="govuk-footer__inline-list">
-          <li class="govuk-footer__inline-list-item">
-            <a class="govuk-footer__link" href="ef-accessibility">
+  <footer class="enforcement-footer" role="contentinfo">
+    <div class="govuk-width-container">
+      <div class="govuk-footer__meta">
+        <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <h2 class="govuk-visually-hidden">Footer links</h2>
+          <ul class="govuk-footer__inline-list">
+            <li class="govuk-footer__inline-list-item">
+              <a class="govuk-footer__link" href="ef-accessibility">
               Accessibility statement
             </a>
-          </li>
-          <li class="govuk-footer__inline-list-item">
-            <a class="govuk-footer__link" href="#">
+            </li>
+            <li class="govuk-footer__inline-list-item">
+              <a class="govuk-footer__link" href="#">
               Privacy policy
             </a>
-          </li>
-        </ul>
+            </li>
+          </ul>
 
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<style>
-  .govuk-footer {
-    display: none;
-  }
+  <style>
+    .govuk-footer {
+      display: none;
+    }
 
-  .enforcement-footer {
-    font-family: "GDS Transport", arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 1.1428571429;
-    padding-top: 25px;
-    padding-bottom: 15px;
-    border-top: 1px solid #b1b4b6;
-    color: #0b0c0c;
-    background: #f3f2f1;
-  }
-
-  @media (min-width: 40.0625em) {
     .enforcement-footer {
-      padding-bottom: 25px;
+      font-family: "GDS Transport", arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.1428571429;
+      padding-top: 25px;
+      padding-bottom: 15px;
+      border-top: 1px solid #b1b4b6;
+      color: #0b0c0c;
+      background: #f3f2f1;
     }
-  }
 
-  @media (min-width: 40.0625em) {
-    .enforcement-footer {
-      padding-top: 40px;
+    @media (min-width: 40.0625em) {
+      .enforcement-footer {
+        padding-bottom: 25px;
+      }
     }
-  }
 
-  @media (min-width: 40.0625em) {
-    .enforcement-footer {
-      font-size: 1rem;
-      line-height: 1.25;
+    @media (min-width: 40.0625em) {
+      .enforcement-footer {
+        padding-top: 40px;
+      }
     }
-  }
 
-  .govuk-tableallocation__cell {
-    padding: 10px 20px 10px 0;
-    vertical-align: top;
-  }
-
-  .govuk-details {
-    margin-bottom: 0px;
-    width: auto;
-  }
-
-  .govuk-details__summary {
-    position: relative;
-    width: -webkit-fit-content;
-    width: fit-content;
-    padding-left: 0px;
-    color: #1d70b8;
-    cursor: pointer;
-  }
-
-  span.govuk-details__summary-textend {
-    float: right;
-  }
-
-  .govuk-details__text {
-    padding-top: 5px;
-  }
-
-  .govuk-table {
-    margin-bottom: 0px;
-  }
-
-  .govuk-details__text {
-    padding-bottom: 0px;
-  }
-
-  .govuk-table__cellEnd {
-    padding: 10px 20px 10px 0;
-    border-bottom: 1px solid #b1b4b6;
-    text-align: right;
-    vertical-align: top;
-  }
-
-  @supports not (-ms-ime-align: auto) {
-    .govuk-details__summary-text::after {
-      content: "";
-      /* position: absolute; */
-      top: -1px;
-      bottom: 0;
-      left: 0;
-      margin-left: 15px;
-      display: block;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-color: transparent;
-      -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-      clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-      border-width: 7px 0 7px 12.124px;
-      border-left-color: inherit;
-      display: inline-block;
+    @media (min-width: 40.0625em) {
+      .enforcement-footer {
+        font-size: 1rem;
+        line-height: 1.25;
+      }
     }
-  }
 
-  @supports not (-ms-ime-align: auto) {
-    .govuk-details[open]>.govuk-details__summary-text::after {
-      top: -1px;
-      bottom: 0;
-      left: 0;
-      margin-left: 15px;
-      display: block;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-color: transparent;
-      -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-      clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-      border-width: 7px 0 7px 12.124px;
-      border-left-color: inherit;
-      display: inline-block;
+    .govuk-tableallocation__cell {
+      padding: 10px 20px 10px 0;
+      vertical-align: top;
     }
-  }
 
-  @supports not (-ms-ime-align: auto) {
-    .govuk-details__summary-text {
+    .govuk-details {
+      margin-bottom: 0;
+      width: auto;
+    }
+
+    .govuk-details__summary {
       position: relative;
       width: -webkit-fit-content;
       width: fit-content;
-      padding-left: 0px;
+      padding-left: 0;
       color: #1d70b8;
       cursor: pointer;
     }
-  }
 
-  @supports not (-ms-ime-align: auto) {
-    .govuk-details[open]>.govuk-details__summary::before {
-      display: block;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-color: transparent;
-      -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-      clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-      border-width: 12.124px 7px 0 7px;
-      border-top-color: inherit;
+    span.govuk-details__summary-textend {
+      float: right;
     }
-  }
 
-  .govuk-details__summary::before {
-    display: none;
-  }
+    .govuk-details__text {
+      padding-top: 5px;
+    }
 
-  @supports not (-ms-ime-align: auto) {
-    .govuk-details[open]>.govuk-details__summary::before {
+    .govuk-table {
+      margin-bottom: 0;
+    }
+
+    .govuk-details__text {
+      padding-bottom: 0;
+    }
+
+    .govuk-table__cellEnd {
+      padding: 10px 20px 10px 0;
+      border-bottom: 1px solid #b1b4b6;
+      text-align: right;
+      vertical-align: top;
+    }
+
+    @supports not (-ms-ime-align: auto) {
+      .govuk-details__summary-text::after {
+        content: "";
+        /* position: absolute; */
+        top: -1px;
+        bottom: 0;
+        left: 0;
+        margin-left: 15px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+        -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+        clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+        border-width: 7px 0 7px 12.124px;
+        border-left-color: inherit;
+        display: inline-block;
+      }
+    }
+
+    @supports not (-ms-ime-align: auto) {
+      .govuk-details[open] > .govuk-details__summary-text::after {
+        top: -1px;
+        bottom: 0;
+        left: 0;
+        margin-left: 15px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+        -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+        clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+        border-width: 7px 0 7px 12.124px;
+        border-left-color: inherit;
+        display: inline-block;
+      }
+    }
+
+    @supports not (-ms-ime-align: auto) {
+      .govuk-details__summary-text {
+        position: relative;
+        width: -webkit-fit-content;
+        width: fit-content;
+        padding-left: 0;
+        color: #1d70b8;
+        cursor: pointer;
+      }
+    }
+
+    @supports not (-ms-ime-align: auto) {
+      .govuk-details[open] > .govuk-details__summary::before {
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+        -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+        clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+        border-width: 12.124px 7px 0 7px;
+        border-top-color: inherit;
+      }
+    }
+
+    .govuk-details__summary::before {
       display: none;
     }
-  }
-</style>
 
+    @supports not (-ms-ime-align: auto) {
+      .govuk-details[open] > .govuk-details__summary::before {
+        display: none;
+      }
+    }
+  </style>
 
 {% endblock %}
