@@ -14,26 +14,7 @@
 {% endblock %}
 
 {% block header %}
-  <!-- Blank header with no service name for the start page -->
-  <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.2/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-39e9UaGkm/+yp6spIsVfzcs3j7ac7G2cg0hzmDvtG11pT1d7YMnOC26w4wMPhzsL" crossorigin="anonymous">
-  <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@ukic/fonts/dist/fonts.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@ukic/web-components/dist/core/core.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@ukic/web-components/dist/core/normalize.css"
-      crossorigin="anonymous"
-    />
+  {% include "includes/ukic-components-source.html" %}
   {% from "internal-service-header/macro.njk" import dwpHeader %}
 
   <header>
