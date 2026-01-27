@@ -1,0 +1,35 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+
+      {% include "includes/back-link.html" %}
+      <span class="govuk-caption-m">
+        <a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-1820'>SAE-1820</a>
+      </span>
+      <h1 class="govuk-heading-l">
+          Payment Allocation -- page structure, fix accessibility
+      </h1>
+
+      <h2 class="govuk-heading-s">Description:</h2>
+
+      <p>Amend page HTML structure so that it can be read and navigated correctly by the assistive tech tools.</p>
+
+      <h3 class="govuk-heading-s">Page:</h3>
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          <a href="ef-payment-allocation">
+          Payment allocation
+        </a>
+        </li>
+      </ul>
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+    </div>
+  </div>
+
+{% endblock %}
