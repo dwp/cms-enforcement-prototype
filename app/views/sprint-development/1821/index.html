@@ -9,30 +9,34 @@
 
       {% include "includes/back-link.html" %}
       <span class="govuk-caption-m">
-        <a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-1822'>SAE-1822</a>
+        <a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-1821'>SAE-1821</a>
       </span>
       <h1 class="govuk-heading-l">
-          Payment plan -- page structure, fix accessibility
+          Statement -- page structure, fix accessibility
       </h1>
 
       <h2 class="govuk-heading-s">Description:</h2>
 
       <p>Amend page HTML structure so that it can be read and navigated correctly by the assistive tech tools.</p>
-
       <p>Changes made: </p>
             <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
         <li>
-          Added table caption to help screen readers recognise the table.
+          Replace H2 above tables with table captions. 
         </li>
         <li>
-          Add an empty non-breaking spaces (&amp;nbsp;) to all empty cells to improve screen-reader interpretation.
+          In the case of an empty table (eg 2023), replace H2 with table but without headers. Then add the explanation "No transactions" on a new line inside the table caption.
+        </li>
+
+        <li>
+          Add an empty non-breaking spaces (<strong>&amp;nbsp;</strong> ) to all empty cells to improve screen-reader interpretation.
         </li>
       </ul>
+
       <h3 class="govuk-heading-s">Page:</h3>
       <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
         <li>
-          <a href="ef-payment-plan">
-          Payment plan
+          <a href="ef-statements">
+          Statement
         </a>
         </li>
       </ul>
