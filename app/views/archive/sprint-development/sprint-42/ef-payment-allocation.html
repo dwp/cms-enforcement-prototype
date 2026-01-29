@@ -522,15 +522,7 @@
 </div>
 </div>
 
-<ic-back-to-top target="main" style="margin-top: 80px;"></ic-back-to-top>
-<script defer>
-  import('https://unpkg.com/@ukic/web-components@3.1.0/loader').then((module) => {
-    module.defineCustomElements();
-  });
-  // The ICDS has types available if your JavaScript framework allows for use with TypeScript
-  // Below is an example of how to import an ICDS type
-  // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
-</script>
+{% include "includes/back-to-top-link" %}
 {% endblock %}
 
 {% block footer %}
