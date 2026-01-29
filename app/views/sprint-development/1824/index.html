@@ -1,0 +1,45 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+
+      {% include "includes/back-link.html" %}
+      <span class="govuk-caption-m">
+        <a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-1824'>SAE-1824</a>
+      </span>
+      <h1 class="govuk-heading-l">
+          Design iteration based on UR round 21 triage for multicase
+      </h1>
+
+      <h2 class="govuk-heading-s">Changes made:</h2>
+
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          Increase card differentiation between PP, RP and closed cases.
+        </li>
+        <li>
+          Remove parent type tag from blue banner.
+        </li>
+
+        <li>
+          and more ...
+        </li>
+      </ul>
+      <h2 class="govuk-heading-s">Page:</h2>
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          <a href="multicase-case">
+          Case
+        </a>
+        </li>
+      </ul>
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+    </div>
+  </div>
+
+{% endblock %}

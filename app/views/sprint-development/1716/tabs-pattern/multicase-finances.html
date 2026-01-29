@@ -21,7 +21,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
   {% include "includes/govuk-beta-banner" %}
 
-  {% include "includes/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation govuk-!-margin-bottom-5">
@@ -31,7 +31,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           <ul class="moj-primary-navigation__list">
             
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-information">Cases ({{ number_of_cases
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ number_of_cases
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
@@ -53,7 +53,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   </div>
 </div>
 
-  <!-- {% include "includes/moj-primary-navigation-multicase" %} -->
+  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
   <!-- /////////////////////////////////// -->
 
   <div class="govuk-grid-row">
@@ -88,7 +88,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <div class="govuk-tabs__panel" id="total">
           <h2 class="govuk-heading-m">Total for {{ active_cases }} active cases</h2>
           <p>The next annual review will be on <strong>8 February 2026</strong>.</p>
-          {% include "includes/multicase/ur19/finance-amounts--case-all.html" %}
+          {% include "includes/vpf/ur19/finance-amounts--case-all.html" %}
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
@@ -97,7 +97,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345999</strong>.</br> Effective from <strong>8 March 2014</strong>. The next annual review will be on <strong>8 March 2026</strong>.
           </p>
-          {% include "includes/multicase/ur19/finance-amounts--case-1" %}
+          {% include "includes/vpf/ur19/finance-amounts--case-1" %}
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
@@ -106,7 +106,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345112</strong>.</br> Effective from <strong>21 December 2016</strong>. The next annual review will be on <strong>21 December 2026</strong>.
           </p>
-          {% include "includes/multicase/ur19/finance-amounts--case-2" %}
+          {% include "includes/vpf/ur19/finance-amounts--case-2" %}
         </div>
       </div>
     </div>

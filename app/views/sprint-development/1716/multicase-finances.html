@@ -37,7 +37,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% include "includes/govuk-beta-banner" %}
 
-{% include "includes/dwp-quick-reference-multicase" %}
+{% include "includes/vpf/dwp-quick-reference-multicase" %}
 
 <!-- /////// NAVIGATION PRIMARY /////// -->
 <div class="moj-primary-navigation govuk-!-margin-bottom-5">
@@ -59,14 +59,14 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               plans</a>
           </li>
           <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="multicase-case-information">Cases ({{  number_of_cases }})</a>
+            <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{  number_of_cases }})</a>
           </li>
         </ul>
       </nav>
     </div>
   </div>
 </div>
-<!-- {% include "includes/moj-primary-navigation-multicase" %} -->
+<!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
 <!-- /////////////////////////////////// -->
 
 <div class="govuk-grid-row">
@@ -129,9 +129,9 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   <!-- /////////////////////////// -->
 
 {% if case_number == '0' %}
-{% include "includes/multicase/finance-amounts--case-all" %}
+{% include "includes/vpf/finance-amounts--case-all" %}
 {% elif case_number == '1' or '2' %}
-{% include "includes/multicase/finance-amounts--case-1" %}
+{% include "includes/vpf/finance-amounts--case-1" %}
 {% endif %}
 
   </div>

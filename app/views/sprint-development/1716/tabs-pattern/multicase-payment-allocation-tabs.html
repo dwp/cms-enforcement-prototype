@@ -17,7 +17,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
 
   {% include "includes/govuk-beta-banner" %}
 
-  {% include "includes/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation govuk-!-margin-bottom-5">
@@ -27,7 +27,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
           <ul class="moj-primary-navigation__list">
             
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-information">Cases ({{ number_of_cases
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ number_of_cases
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
@@ -50,7 +50,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
     </div>
   </div>
 
-  <!-- {% include "includes/moj-primary-navigation-multicase" %} -->
+  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
   <!-- /////////////////////////////////// -->
 
   <div class="govuk-grid-row">
@@ -88,7 +88,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
           <h2 class="govuk-heading-m">Total for 2 cases</h2>
           <p>Cases effective from <strong>8 December 2014</strong>.
           </p>
-          {% include "includes/multicase/multicase-payment-allocation--case-all.html
+          {% include "includes/vpf/multicase-payment-allocation--case-all.html
           " %}
         </div>
 
@@ -98,7 +98,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
           </p>
-          {% include "includes/multicase/multicase-payment-allocation--case-1" %}
+          {% include "includes/vpf/multicase-payment-allocation--case-1" %}
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
@@ -107,7 +107,7 @@ Allocation – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345999</strong>. Effective from <strong>21 December 2016</strong> to <strong>6 May 2025</strong>.
           </p>
-          {% include "includes/multicase/multicase-payment-allocation--case-2" %}
+          {% include "includes/vpf/multicase-payment-allocation--case-2" %}
         </div>
       </div>
     </div>

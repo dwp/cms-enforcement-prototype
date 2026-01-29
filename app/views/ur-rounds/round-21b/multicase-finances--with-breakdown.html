@@ -21,7 +21,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
   {% include "includes/govuk-beta-banner" %}
 
-  {% include "includes/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation govuk-!-margin-bottom-5">
@@ -30,7 +30,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-information">Cases ({{ number_of_cases
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ number_of_cases
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
@@ -51,7 +51,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       </div>
     </div>
   </div>
-  <!-- {% include "includes/moj-primary-navigation-multicase" %} -->
+  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
   <!-- /////////////////////////////////// -->
 
   {% from "govuk/components/select/macro.njk" import govukSelect %}
