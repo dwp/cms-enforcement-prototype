@@ -1,11 +1,11 @@
 {% extends "layouts/internal-service.html" %}
 
 <!-- ////// PRESETS ///// -->
-
-{% set tab_clicked = selectedTab %}
 {% set number_of_cases = "4" %}
 {% set active_cases = "2" %}
 {% set selected_view = "2" %}
+{% set rp1 = "Daria Oblonskaya 1&#8209;2345999" %}
+{% set rp2 = "Ruth Slater 1&#8209;2345703" %}
 
 <!-- //////////////////// -->
 
@@ -22,21 +22,20 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
   {% include "includes/govuk-beta-banner" %}
 
-  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-manual" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation govuk-!-margin-bottom-5">
-  <div class="moj-primary-navigation__container">
-    <div class="moj-primary-navigation__nav">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
-            
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ number_of_cases
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances">Finances</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances--with-breakdown">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
@@ -51,11 +50,11 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </ul>
         </nav>
       </div>
+    </div>
   </div>
-</div>
-
   <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
   <!-- /////////////////////////////////// -->
+
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
@@ -74,7 +73,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             Total
           </a>
           </li>
-          <li class="govuk-tabs__list-item">
+          {# <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#daria">
               Daria Oblonskaya 1-2345999
             </a>
@@ -83,13 +82,13 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <a class="govuk-tabs__tab" href="#ruth">
               Ruth Slater 1-2345112
             </a>
-          </li>
+          </li> #}
         </ul>
 
         <div class="govuk-tabs__panel" id="total">
           <h2 class="govuk-heading-m">Total for {{ active_cases }} active cases</h2>
           <p>The next annual review will be on <strong>7 October 2026</strong>.</p>
-          {% include "includes/vpf/ur19/finance-amounts--case-all.html" %}
+          {% include "includes/vpf/ur21/finance-amounts--case-all--with-breakdown" %}
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
@@ -98,7 +97,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345999</strong>.</br> Effective from <strong>7 October 2021</strong>. The next annual review will be on <strong>7 October 2026</strong>.
           </p>
-          {% include "includes/vpf/ur19/finance-amounts--case-1" %}
+          {% include "includes/vpf/ur21/finance-amounts--case-1" %}
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
@@ -107,10 +106,14 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </h2>
           <p>Case ID: <strong>1-2345112</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
           </p>
-          {% include "includes/vpf/ur19/finance-amounts--case-2" %}
+          {% include "includes/vpf/ur21/finance-amounts--case-2" %}
         </div>
       </div>
     </div>
   </div>
+
+  <!-- ////////////////////////////////// -->
+{% include "includes/back-to-top-link" %}
+  <!-- ////////////////////////////////// -->
 
 {% endblock %}

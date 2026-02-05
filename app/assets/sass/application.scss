@@ -248,7 +248,7 @@ a.navActive {
 }
 .moj-ticket-panel-duo {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(447px, 0fr));
+  grid-template-columns: auto auto;
   gap: 19px;
   padding: 22px;
 }
