@@ -1,8 +1,8 @@
 {% extends "layouts/old-main.html" %}
 
-{% block pageTitle %}
+{# {% block pageTitle %}
   Finances – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
+{% endblock %} #}
 
 {% block header %}
   {% include "includes/ukic-components-source.html"%}
@@ -21,27 +21,28 @@
     </p>
   </div>
 
-  <div class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+  <section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
     <dl class="dwp-quick-reference__block">
-      <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+      <dt class="dwp-quick-reference__label govuk-visually-hidden">Parent name:</dt>
       <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
+      <dt class="dwp-quick-reference__label govuk-visually-hidden">Case type:</dt>
       <dd class="dwp-quick-reference__status">
         <strong class="govuk-tag govuk-tag--turquoise">
-          Paying parent
-        </strong>
+      Paying parent
+    </strong>
         <strong class="govuk-tag govuk-tag--blue">
-          Single case
-        </strong>
+      Single case
+    </strong>
         <strong class="govuk-tag govuk-tag--yellow">
-          Manual allocation
-        </strong>
+      Manual allocation
+    </strong>
       </dd>
       <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
       <dd class="dwp-quick-reference__secondary">121323454232</dd>
       <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
       <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
     </dl>
-  </div>
+  </section>
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
@@ -90,14 +91,14 @@
       <section class="ef-card">
         <div class="dfe-title-cash">
           <h2 id="money-still-owed">Money still owed</h2>
-          <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="money-still-owed" style="float:right;margin-top:.7em;margin-right:.7em;">£34,921.80</p>
+          <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="money-still-owed" style="float:right;margin-top:.7em;margin-right:.7em;">£29,055.99</p>
           <span class="govuk-caption-m">Cash balance not included</span>
         </div>
         <div class="ef-card-duo">
           <div class="moj-ticket-panel-duo">
             <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
               <h3 class="govuk-body">Child maintenance</h3>
-              <p class="govuk-heading-m govuk-!-margin-bottom-2">£31,545.95</p>
+              <p class="govuk-heading-m govuk-!-margin-bottom-2">£25,680.14</p>
             </div>
             <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
               <h3 class="govuk-body">Charges and debt</h3>
@@ -148,7 +149,7 @@
               <p class="govuk-heading-m govuk-!-margin-bottom-2">£1,100.10</p>
             </div>
           </div>
-          <div class="moj-ticket-panel-duo" style="padding-top: 0;">
+          <div class="moj-ticket-panel-duo" style="padding-top: 0;" role="text">
             <details class="govuk-details">
               <summary class="govuk-details__summary">
                 <span class="govuk-details__summary-text">
@@ -166,7 +167,7 @@
       <section class="ef-card">
         <div class="dfe-title-i8">
           <h2 id="amount-written-off">Amount written off</h2>
-          <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="amount-written-off" style="float:right;margin-top:.7em;margin-right:.7em;">£0</p>
+          <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="amount-written-off" style="float:right;margin-top:.7em;margin-right:.7em;">£0.00</p>
         </div>
       </section>
 
@@ -187,7 +188,7 @@
 
               {# ///////// SUMMARY LIST /////////// #}
 
-              <h4 class="govuk-heading-m govuk-!-margin-top-6">Charges and debt breakdown</h4>
+              <h4 class="govuk-heading-m govuk-!-margin-top-6">Charges and debt details</h4>
               <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key" style="width:70%">
@@ -200,16 +201,16 @@
                   <dt class="govuk-summary-list__key">Enforcement charges</dt>
                   <dd class="govuk-summary-list__value govuk-!-text-align-right">£300.00</dd>
                 </div>
-                <section class="govuk-summary-list__row" role="contentinfo" aria="Enforcement charges breakdown">
-                  <dt  aria-label="breakdown of £300">
-                    <ul class="govuk-list">
-                    <li>£20.00 Regular deduction order</li>
-                    <li>£100.00 Lump sum deduction order</li>
-                    <li>£150.00 Liability order</li>
-                    <li>£30.00 Deduction from earnings order or request</li>
-                  </ul>
+                <section class="govuk-summary-list__row govuk-!-padding-bottom-8" role="contentinfo" aria="Enforcement charges">
+                  <dt aria-label="Charges included in £300">
+                    <ul class="govuk-list" role="list">
+                      <li>£20.00 Regular deduction order</li>
+                      <li>£100.00 Lump sum deduction order</li>
+                      <li>£150.00 Liability order</li>
+                      <li class="govuk-!-margin-bottom-3">£30.00 Deduction from earnings order or request</li>
+                    </ul>
                   </dt>
-                  <dd>&nbsp;</dd>
+                  <dd class="govuk-summary-list__value">&nbsp;</dd>
                 </section>
 
                 <div class="govuk-summary-list__row">
