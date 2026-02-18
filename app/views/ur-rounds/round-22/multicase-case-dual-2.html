@@ -1,0 +1,248 @@
+{% extends "layouts/internal-service.html" %}
+
+{% set number_of_cases = "5" %}
+
+{% block pageTitle %}
+Finances – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/ukic-components-source.html" %}
+  {% include "includes/dwp-internal-service-header.html"%}
+{% endblock %}
+
+{% block content %}
+
+  {% include "includes/govuk-beta-banner" %}
+
+  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
+
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="ef-case">Cases ({{ number_of_cases }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment plans</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
+  <!-- /////////////////////////////////// -->
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+  Cases
+</h1>
+      <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
+        <strong>3 active:</strong> 2 paying, 1 receiving. <strong>2 closed</strong>.</p>
+      <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">
+      Paying cases
+    </h2>
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h3 class="govuk-summary-card__title">
+          Paying to Daria Oblonskaya
+        </h3>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="multicase-finances?selected_view=1">View finances<span
+                class="govuk-visually-hidden"> for case 1-2345999</span></a>
+            </li>
+            <!-- <li class="govuk-summary-card__action">
+        <a class="govuk-link" href="#">Withdraw<span class="govuk-visually-hidden"> from University of Gloucestershire (University of Gloucestershire)</span></a>
+      </li> -->
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Qualifying children
+            </dt>
+              <dd class="govuk-summary-list__value">
+              Lily Oblonskaya<br>Tatiana Oblonskaya
+            </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Case
+            </dt>
+              <dd class="govuk-summary-list__value">
+              1-2345999
+            </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Service type
+            </dt>
+              <dd class="govuk-summary-list__value">
+              Collect and pay
+            </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Case effective from
+            </dt>
+              <dd class="govuk-summary-list__value">
+              7 October 2021
+            </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- ////////////////////// -->
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h3 class="govuk-summary-card__title">Paying to Ruth Slater</h3>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="multicase-finances?selected_view=2">View finances<span
+                class="govuk-visually-hidden"> for case 1-2345703</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Qualifying children</dt>
+              <dd class="govuk-summary-list__value">
+              Olivia Slater
+            </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Case
+            </dt>
+              <dd class="govuk-summary-list__value">
+              1-2345703
+            </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Service type
+            </dt>
+              <dd class="govuk-summary-list__value">
+              Collect and pay &ndash; Arrears only
+            </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Case effective from
+            </dt>
+              <dd class="govuk-summary-list__value">
+              21 Nov 2022
+            </dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+
+      <!-- //////// RP CASE //////// -->
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">
+      Receiving cases
+    </h2>
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+          Receiving from Ruth Slater
+        </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <p class="govuk-!-margin-bottom-0">See in CMS2012</p>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <p>
+              Case <span class="govuk-!-font-weight-bold">1-2245868</span> effective from <span class="govuk-!-font-weight-bold">28 Jun 2024</span>.
+            </p>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- //////// CASES CLOSED //////// -->
+{# 
+      <h2 class="govuk-heading-m">
+      Closed cases
+    </h2>
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h3 class="govuk-summary-card__title">
+          Paying to Ruth Slater
+        </h3>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <p class="govuk-!-margin-bottom-2">
+              Case <span class="govuk-!-font-weight-bold">1-2348743</span> was closed on <span class="govuk-!-font-weight-bold">20 Nov 2025</span>.
+            </p>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+          Receiving from Ruth Slater
+        </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <p class="govuk-!-margin-bottom-2">
+              Case <span class="govuk-!-font-weight-bold">1-2311178</span> was closed on <span class="govuk-!-font-weight-bold">3 Jun 2020</span>.
+            </p>
+            </div>
+          </dl>
+        </div>
+      </div> #}
+
+
+      <!-- //////// CASES CLOSED LIST//////// -->
+
+      <h2 class="govuk-heading-m">
+      Closed cases
+    </h2>
+
+              <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <p class="govuk-!-margin-bottom-2">
+              Case <span class="govuk-!-font-weight-bold">1-2348743</span> with Ruth Slater was closed on <span class="govuk-!-font-weight-bold">20 Nov 2025</span>.
+            </p>
+            </li>
+                        <li>
+              <p class="govuk-!-margin-bottom-2">
+              Case <span class="govuk-!-font-weight-bold">1-2311178</span> with Ruth Slater was closed on <span class="govuk-!-font-weight-bold">3 Jun 2020</span>.
+            </p>
+            </li>
+          </ul>
+    {% endblock %}
