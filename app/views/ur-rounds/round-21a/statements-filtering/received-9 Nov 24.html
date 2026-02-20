@@ -1,11 +1,7 @@
 {% extends "layouts/internal-service.html" %}
 
 <!-- ////// PRESETS ///// -->
-{% set number_of_cases = "4" %}
-{% set active_cases = "2" %}
-{% set selected_view = "2" %}
-{% set rp1 = "Daria Oblonskaya 1&#8209;2345999" %}
-{% set rp2 = "Ruth Slater 1&#8209;2345703" %}
+{% set number_of_cases = "5" %}
 
 <!-- //////////////////// -->
 
@@ -17,28 +13,7 @@
   {% include "includes/ukic-components-source.html" %}
   {% from "internal-service-header/macro.njk" import dwpHeader %}
 
-  <header>
-    <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
-      <div class="govuk-header__container govuk-width-container ">
-        <div class="govuk-header__content">
-          <a href="/index.html" class="govuk-header__link govuk-header__service-name">
-            View parent finances
-          </a>
-        </div>
-        <nav class="hmrc-sign-out-nav">
-          <ul class="moj-header__navigation-list">
-            <li class="moj-header__navigation-item">
-              <a class="moj-header__navigation-link" href="../ef-whats-new.html" aria-current="page"><span id="notifications" class="moj-notification-badge">5</span>
-                What’s new</a>
-            </li>
-            <li class="moj-header__navigation-item">
-              <a class="moj-header__navigation-link" href="../ef-about.html">About</a>
-            </li>
-          </ul>
-        </nav>
-  </div>
-    </div>
-  </header>
+{% include "includes/dwp-internal-service-header" %}
 
 {% endblock %}
 

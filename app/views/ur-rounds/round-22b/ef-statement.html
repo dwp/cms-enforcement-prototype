@@ -1,4 +1,6 @@
-{% extends "layouts/old-main.html" %}
+{% extends "layouts/internal-service.html" %}
+
+{% set number_of_cases = 5 %}
 
 {% block pageTitle %}
   Statement – {{ serviceName }} – GOV.UK Prototype Kit
@@ -6,43 +8,14 @@
 
 {% block header %}
   {% include "includes/ukic-components-source.html" %}
-  {% include "includes/dwp-internal-service-header.html"%}
-
+  {% include "includes/dwp-internal-service-header" %}
+  {% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-      Beta
-    </strong>
-      <span class="govuk-phase-banner__text">
-      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>.
-    </span>
-    </p>
-  </div>
+{% include "includes/govuk-beta-banner" %}
 
-  <section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
-    <dl class="dwp-quick-reference__block">
-      <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-      <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
-      <dd class="dwp-quick-reference__status">
-        <strong class="govuk-tag govuk-tag--turquoise">
-      Paying parent
-    </strong>
-        <strong class="govuk-tag govuk-tag--blue">
-      Single case
-    </strong>
-        <strong class="govuk-tag govuk-tag--yellow">
-      Manual allocation
-    </strong>
-      </dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
-      <dd class="dwp-quick-reference__secondary">121323454232</dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
-      <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
-    </dl>
-  </section>
+  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
@@ -50,22 +23,23 @@
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-finances.html">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-case-dual-2">Cases ({{ number_of_cases
+              }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page"  href="ef-statements.html">Statement</a>
+              <a class="moj-primary-navigation__link" href="ef-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-allocation.html">Payment allocation</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="ef-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-plan.html">Payment plan</a>
+              <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-calculations.html">Calculations</a>
+              <a class="moj-primary-navigation__link" href="ef-calculations">Calculations</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-case">Case</a>
+              <a class="moj-primary-navigation__link" href="ef-payment-plan">Payment plan</a>
             </li>
           </ul>
         </nav>
@@ -118,10 +92,10 @@
       <div class="moj-button-group moj-button-group--inline">
         <div class="moj-button-menu" data-module="moj-button-menu" data-button-text="All transactions" data-button-classes="toggle-button">
 
-          <a href="statements-filtering/ef-statements-recieved.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+          <a href="statements-filtering/ef-statement-recieved.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
           Payments received
         </a>
-          <a href="statements-filtering/ef-statements-credits.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+          <a href="statements-filtering/ef-statement-credits.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
           All credits
         </a>
         </div>
@@ -160,7 +134,7 @@
             <td class="govuk-table__cell">19 Nov 2024</td>
             <td class="govuk-table__cell_last">Payment received from you - DDR</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">24.61</a>
+              <a class="govuk-link" href="statements-filtering/credits-19 Nov 24">24.61</a>
             </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             <td class="govuk-table__cell statement_end">-220.46</td>
@@ -170,7 +144,7 @@
             <td class="govuk-table__cell">9 Nov 2024</td>
             <td class="govuk-table__cell_last">Payment received from you - DDR</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a class="govuk-link" href="statements-filtering/credits-9 Nov 24.html">73.84</a>
+              <a class="govuk-link" href="statements-filtering/credits-9 Nov 24">73.84</a>
             </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             <td class="govuk-table__cell statement_end">-245.07</td>

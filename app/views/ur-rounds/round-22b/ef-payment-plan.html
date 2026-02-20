@@ -1,0 +1,463 @@
+{% extends "layouts/internal-service.html" %}
+
+{% set number_of_cases = 5 %}
+
+{% block pageTitle %}
+  Payment plans – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/ukic-components-source.html"%}
+  {% include "includes/dwp-internal-service-header" %}
+  {% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/govuk-beta-banner" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
+
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-dual-2">Cases ({{ number_of_cases
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-finances">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-statement">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-calculations">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="ef-payment-plan">Payment plan</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+    Payment plans
+  </h1>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <p>
+          Payments scheduled up to the next annual review and those from the past year.
+          </p>
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+      <!--<div class="ef-card">
+        <div class="dfe-title-i8">
+          <h2>Expected amount</h2>
+        </div>
+        <div class="ef-card-trio-v2">
+          <article class="moj-ticket-panel-trio-v2" aria-label="Sub navigation 1">
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+              <p class="govuk-body" style="min-height: 50px;">Child maintenance</p>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£69.56</h2>
+            </section>
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+              <p class="govuk-body" style="min-height: 50px;">Collection charges</p>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£13.97</h2>
+            </section>
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+              <p class="govuk-body">Unpaid maintenance and charges</p>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£23.12</h2>
+            </section>
+          </article>
+        </div>
+      </div> -->
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Recent and upcoming payments</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header schedule_date">Date</th>
+            <th scope="col" class="govuk-table__header">Version</th>
+            <th scope="col" class="govuk-table__header schedule_method">Method</th>
+            <th scope="col" class="govuk-table__header schedule_due">Due (£)</th>
+            <th scope="col" class="govuk-table__header schedule_paid">Paid (£)</th>
+            <!--<th scope="col" class="govuk-table__header">Status</th>-->
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Oct 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Oct 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Sep 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Sep 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Aug 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Aug 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Jul 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Jul 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Jun 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Jun 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 May 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 May 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Apr 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Apr 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Mar 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Mar 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Feb 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Feb 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Jan 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Jan 25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Dec 2024</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Deduction from earnings</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19 Dec 24">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">27 Sep 2024</td>
+            <td class="govuk-table__cell">11</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">17.65</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">20 Sep 2024</td>
+            <td class="govuk-table__cell">11</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">17.65</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">13 Sep 2024</td>
+            <td class="govuk-table__cell">11</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">17.65</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">06 Sep 2024</td>
+            <td class="govuk-table__cell">11</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">17.65</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">30 Aug 2024</td>
+            <td class="govuk-table__cell">11</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">17.65</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <!-- Removed due to API limitations -->
+          <!--
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">23 Aug 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">16 Aug 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">09 Aug 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">02 Aug 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">26 Jul 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Jul 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">12 Jul 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">05 Jul 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">28 Jun 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">21 Jun 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">14 Jun 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">07 Jun 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">31 May 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">24 May 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">17 May 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">10 May 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">03 May 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">26 Apr 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Apr 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">12 Apr 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">05 Apr 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">29 Mar 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">22 Mar 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">15 Mar 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">08 Mar 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">01 Mar 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">23 Feb 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">16 Feb 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">09 Feb 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">02 Feb 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">26 Jan 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">19 Jan 2024</td>
+            <td class="govuk-table__cell">10</td>
+            <td class="govuk-table__cell">Direct pay</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>-->
+
+        </tbody>
+      </table>
+    </div>
+
+    <script defer>
+      import ('https://unpkg.com/@ukic/web-components/loader').then((module) => {
+        module.defineCustomElements();
+      });
+      // The ICDS has types available if your JavaScript framework allows for use with TypeScript
+      // Below is an example of how to import an ICDS type
+      // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
+    </script>
+  </div>
+</div>
+
+{% endblock %}

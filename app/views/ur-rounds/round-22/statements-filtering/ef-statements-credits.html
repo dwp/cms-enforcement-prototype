@@ -1,11 +1,7 @@
 {% extends "layouts/internal-service.html" %}
 
 <!-- ////// PRESETS ///// -->
-{% set number_of_cases = "4" %}
-{% set active_cases = "2" %}
-{% set selected_view = "2" %}
-{% set rp1 = "Daria Oblonskaya 1&#8209;2345999" %}
-{% set rp2 = "Ruth Slater 1&#8209;2345703" %}
+{% set number_of_cases = "5" %}
 
 <!-- //////////////////// -->
 
@@ -17,62 +13,14 @@
   {% include "includes/ukic-components-source.html" %}
   {% from "internal-service-header/macro.njk" import dwpHeader %}
 
-  <header>
-    <div class="dwp-header govuk-header hmrc-header hmrc-header--with-additional-navigation " data-module="govuk-header">
-      <div class="govuk-header__container govuk-width-container ">
-        <div class="govuk-header__content">
-          <a href="/index.html" class="govuk-header__link govuk-header__service-name">
-            View parent finances
-          </a>
-        </div>
-        <nav class="hmrc-sign-out-nav">
-          <ul class="moj-header__navigation-list">
-            <li class="moj-header__navigation-item">
-              <a class="moj-header__navigation-link" href="../ef-whats-new.html" aria-current="page"><span id="notifications" class="moj-notification-badge">5</span>
-                What’s new</a>
-            </li>
-            <li class="moj-header__navigation-item">
-              <a class="moj-header__navigation-link" href="../ef-about.html">About</a>
-            </li>
-          </ul>
-        </nav>
-  </div>
-    </div>
-  </header>
+{% include "includes/dwp-internal-service-header" %}
 
 {% endblock %}
 
 {% block content %}
-<div class="govuk-phase-banner">
-  <p class="govuk-phase-banner__content">
-    <strong class="govuk-tag govuk-phase-banner__content__tag">
-      Beta
-    </strong>
-    <span class="govuk-phase-banner__text">
-      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="../ef-feedback.html">give your feedback (opens in new tab)</a>.
-    </span>
-  </p>
-</div>
+{% include "includes/govuk-beta-banner" %}
 
-<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
-  <dl class="dwp-quick-reference__block">
-  <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-  <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
-  <dd class="dwp-quick-reference__status">
-    <strong class="govuk-tag govuk-tag--turquoise">
-      Paying parent
-    </strong>
-
-    <strong class="govuk-tag govuk-tag--yellow">
-      Manual allocation
-    </strong>
-  </dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
-  <dd class="dwp-quick-reference__secondary">121323454232</dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
-  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
-  </dl>
-</section>
+  {% include "includes/vpf/dwp-quick-reference-single-manual" %}
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
@@ -83,7 +31,7 @@
               <a class="moj-primary-navigation__link" href="../ef-finances.html">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-statements.html">Statement</a>
+              <a class="moj-primary-navigation__link" href="../ef-statement.html">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="../ef-payment-allocation.html">Payment allocation</a>
@@ -149,10 +97,10 @@
 
     <div class="moj-button-group moj-button-group--inline">
       <div class="moj-button-menu" data-module="moj-button-menu" data-button-text="All credits" data-button-classes="toggle-button">
-        <a href="../multicase-finances--with-breakdown" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+        <a href="../ef-finances" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
           All transactions
         </a> 
-        <a href="ef-statements-recieved.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+        <a href="ef-statement-recieved.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
           Payments received
         </a>
       </div>

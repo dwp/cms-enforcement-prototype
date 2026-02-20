@@ -1,0 +1,240 @@
+{% extends "layouts/internal-service.html" %}
+
+{% set number_of_cases = 5 %}
+
+{% block pageTitle %}
+  Statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% include "includes/ukic-components-source.html"%}
+{% include "includes/dwp-internal-service-header.html"%}
+{% endblock %}
+
+{% block content %}
+{% include "includes/govuk-beta-banner" %}
+
+  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
+
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-dual-2">Cases ({{ number_of_cases
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-finances">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-statement">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="ef-calculations">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-payment-plan">Payment plan</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+    Calculations
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <p class="govuk-!-font-size-24">
+        Effective from <strong>19 October 2020</strong>.
+        The next annual review will be on <strong>19 October 2025</strong>.
+      </p>
+    
+ <!-- 2024-->
+
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculation details<br>
+        <span class="govuk-body">
+        Select a calculation reason to view more details about how it affects the case.
+      </span></caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly income (£)</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly liability (£)</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly charge (£)</th>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell  cell_reason">
+            <a href="maintenance-calcs/annual-review">Annual review</a>
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">24 Oct 24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">19 Oct 24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">19 Oct 25</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">383.56</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">127.02</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">25.40</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell  cell_reason">
+            <a href="maintenance-calcs/stays-increased">Number of overnight stays increased</a>
+            
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">26 Dec 24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">11 Dec 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">18 Oct 24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">383.56</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">127.02</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">25.40</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="maintenance-calcs/children-increased">Annual review</a>
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">27 Oct 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">19 Oct 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">10 Dec 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">383.56</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">136.79</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">27.36</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="maintenance-calcs/children-increased">Service type changed</a>
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">13 Jul 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">02 Jul 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">18 Oct 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">345.21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">133.49</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">26.70</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="maintenance-calcs/children-increased">Income increased</a>
+            
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">25 Oct 24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">05 Feb 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">01 Jul 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">345.21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">133.49</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="maintenance-calcs/children-increased">Annual review</a>
+            
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">20 Oct 24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">19 Oct 22</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">04 Feb 23</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">287.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">128.54</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="maintenance-calcs/children-increased">Off benefit</a>
+            
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">06 Mar 24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">04 Mar 22</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">18 Oct 22</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">287.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">128.54</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell  cell_reason">
+            <a href="maintenance-calcs/children-increased">Number of children living with you increased</a>
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">14 Dec 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">11 Dec 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">03 Mar 22</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="maintenance-calcs/children-increased">On benefit</a>
+            
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">12 Dec 22</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">02 Dec 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">10 Dec 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="maintenance-calcs/children-increased">Annual review</a>
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">20 Oct 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">19 Oct 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">01 Dec 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">287.67</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">145.99</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="maintenance-calcs/children-increased">Variation increased</a>
+            
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">19 Oct 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">03 Jan 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">18 Oct 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">230.14</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">140.24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="maintenance-calcs/first-calculation">Income increased</a>
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">28 Nov 20</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">26 Nov 20</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">02 Jan 21</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">230.14</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">29.15</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell  cell_reason">
+            <a href="maintenance-calcs/first-calculation">First calculation</a>
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">25 Oct 20</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">19 Oct 20</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">25 Nov 20</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">51.00</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+{% include "includes/back-to-top-link" %}
+
+{% endblock %}
+

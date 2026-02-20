@@ -1,9 +1,9 @@
 {% extends "layouts/internal-service.html" %}
 
-{% set number_of_cases = "5" %}
+{% set number_of_cases = 5 %}
 
 {% block pageTitle %}
-Finances – {{ serviceName }} – GOV.UK Prototype Kit
+Cases – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -15,28 +15,32 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
   {% include "includes/govuk-beta-banner" %}
 
-  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
+    {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
+
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="ef-case">Cases ({{ number_of_cases }})</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-case-dual-2">Cases ({{ number_of_cases }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances--with-breakdown">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+              <a class="moj-primary-navigation__link" href="ef-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment plans</a>
+              <a class="moj-primary-navigation__link" href="ef-calculations">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-payment-plan">Payment plans</a>
             </li>
           </ul>
         </nav>
@@ -48,12 +52,13 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+        <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
   Cases
 </h1>
       <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
       <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
-        <strong>3 active:</strong> 2 paying, 1 receiving. <strong>2 closed</strong>.</p>
+        {# <strong>3 active:</strong> 2 paying, 1 receiving. <strong>2 closed</strong>.</p> #}
+        Paying: 2 <span class="govuk-!-padding-left-2 govuk-!-padding-right-2">|</span> Receiving: 1 <span class="govuk-!-padding-left-2 govuk-!-padding-right-2">|</span> Closed: 2</p>
       <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
 
       <h2 class="govuk-heading-m govuk-!-margin-top-5">

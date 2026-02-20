@@ -1,0 +1,379 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block pageTitle %}
+  Statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/ukic-components-source.html" %}
+  {% from "internal-service-header/macro.njk" import dwpHeader %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>.
+    </span>
+  </p>
+</div>
+
+  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
+
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../multicase-case-dual-2">Cases ({{ number_of_cases
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../multicase-finances--with-breakdown">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-multicase-statements">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-payment-allocation">Payment
+              allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-calculations">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-payment-plan">Payment
+              plans</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+{% include "includes/back-link.html" %}
+
+<h1 class="govuk-heading-xl">
+  Number of children living with you increased
+</h1>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <p class="govuk-!-font-size-24 govuk-!-margin-bottom-4">
+        <strong>Parent SR number:</strong> 1-123456789
+     </p>
+
+     <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header cell_calDate">Perform date</th>
+          <th scope="col" class="govuk-table__header cell_calDate">Effective from</th>
+          <th scope="col" class="govuk-table__header cell_calDate">Effective<br>to</th>
+          <th scope="col" class="govuk-table__header">Weekly income (£)</th>
+          <th scope="col" class="govuk-table__header">Weekly liability (£)</th>
+          <th scope="col" class="govuk-table__header">Weekly charge (£)</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">06 Jan 2022</td>
+          <td class="govuk-table__cell">11 Dec 2021</td>
+          <td class="govuk-table__cell">03 Mar 2022</td>
+          <td class="govuk-table__cell">0</td>
+          <td class="govuk-table__cell">0</td>
+          <td class="govuk-table__cell">0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br><br>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              Assessable weekly income - £0.00
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key mcTitle">
+                 Daily liability
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £0
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Daily collection charge
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £0
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Income amount
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £15,000.00
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Income source
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  HMRC
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  HMRC income tax year
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  6 April 2020 - 5 April 2021
+                </dd>
+              </div> 
+                <div class="govuk-summary-list__row" style="border-bottom: 0px;">
+                  <dt class="govuk-summary-list__key">
+                  Variation
+                </dt>
+                  <dd class="govuk-summary-list__value">
+                  £50,000.00
+                </dd>
+                </div>
+              <div class="govuk-summary-list__row" style="border-bottom: 0px;">
+                <dt class="govuk-summary-list__key" style="font-weight: 100;">
+                  Additional income
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £50,000.00
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" style="font-weight: 100;">
+                  Special expense
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £0
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row" style="border-bottom: 0px;">
+                <dt class="govuk-summary-list__key">
+                  Benefit
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Employment support allowance
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" style="font-weight: 100;">
+                  Partner household
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Yes
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Pension
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £0
+                </dd>
+              </div> 
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Foreign exchange costs
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £0
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Special circumstance
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  None
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Rate applied
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Nil rate
+                </dd>
+              </div>      
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              Qualifying child 1
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key mcTitle">
+                  Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  John Oblonsky
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Date of birth
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  3 May 2016
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Overnight stays
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  0 night per week
+                </dd>
+              </div> 
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Local authority stays
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  0 night per week
+                </dd>
+              </div> 
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              Qualifying child 2
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key mcTitle">
+                  Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  James Oblonsky
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Date of birth
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  6 Aug 2022
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Overnight stays
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  0 night per week
+                </dd>
+              </div> 
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Local authority stays
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  0 night per week
+                </dd>
+              </div> 
+            </dl>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              Other children
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key mcTitle">
+                  Relevant other child
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  2
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Children in family based arrangements
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  1
+                </dd>
+              </div> 
+            </dl>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+    
+
+ 
+      
+
+
+ 
+</div>
+</div>
+
+<ic-back-to-top target="main"></ic-back-to-top>
+<script defer>
+  import('https://unpkg.com/@ukic/web-components@3.1.0/loader').then((module) => {
+    module.defineCustomElements();
+  });
+  // The ICDS has types available if your JavaScript framework allows for use with TypeScript
+  // Below is an example of how to import an ICDS type
+  // import type { IcAlignment } from 'https://unpkg.com/@ukic/web-components/';
+</script>
+{% endblock %}
+
+
+
+
+

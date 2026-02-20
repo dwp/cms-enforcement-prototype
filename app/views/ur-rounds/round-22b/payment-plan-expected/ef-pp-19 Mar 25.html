@@ -1,0 +1,201 @@
+{% extends "layouts/internal-service.html" %}
+
+<!-- ////// PRESETS ///// -->
+
+{% set tab_clicked = selectedTab %}
+{% set number_of_cases = "4" %}
+{% set active_cases = "2" %}
+{% set selected_view = "2" %}
+
+<!-- //////////////////// -->
+
+{% block pageTitle %}
+  Case – {{ serviceName }} – GOV.UK Prototype Kit
+  <script>
+    const $subNavTabs = document.querySelector('[data-module="dl-subnav"]')
+    const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
+  </script>
+{% endblock %}
+
+{% block header %}
+  {% include "includes/ukic-components-source.html" %}
+
+     {% include "includes/dwp-internal-service-header" %}
+
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>.
+    </span>
+  </p>
+</div>
+
+  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
+
+
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../multicase-case-dual-2">Cases ({{ number_of_cases
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../multicase-finances--with-breakdown">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-multicase-statements">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-payment-allocation">Payment
+              allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-calculations">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-payment-plan">Payment
+              plans</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  {% include "includes/back-link.html" %}
+
+  <h1 class="govuk-heading-l">
+    What makes up the payment
+    </h1>
+    <div class="govuk-grid-row">
+      <!--<div class="govuk-grid-column-full">
+        <p class="dateRange">
+          <span class="dateRange__text">
+            From the case effective date <strong>23 August 2021</strong> to <strong>22 November 2024</strong>.
+           </span>
+         </p>
+      </div>-->
+ 
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          £106.65 due 19 March 2025
+        </h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Child maintenance
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £69.56
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Collection charges
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £13.97
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key expectedTitle">
+              Unpaid child maintenance and charges
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £23.12
+            </dd>
+          </div> 
+        </dl>
+      </div>
+    </div>
+   
+
+    
+    
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+
+<footer class="enforcement-footer" role="contentinfo">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <h2 class="govuk-visually-hidden">Footer links</h2>
+            <ul class="govuk-footer__inline-list">
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="ef-accessibility">
+                    Accessibility statement
+                  </a>
+                </li>
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="#">
+                    Privacy policy
+                  </a>
+                </li>
+            </ul>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .statement_end {
+    width: 160px;
+}
+  .govuk-footer {
+    display: none;
+  }
+  .enforcement-footer {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.1428571429;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    border-top: 1px solid #b1b4b6;
+    color: #0b0c0c;
+    background: #f3f2f1;
+  }
+  @media (min-width: 40.0625em) {
+    .enforcement-footer {
+        padding-bottom: 25px;
+    }
+}
+@media (min-width: 40.0625em) {
+    .enforcement-footer {
+        padding-top: 40px;
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .enforcement-footer {
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+}
+</style>
+
+
+{% endblock %}

@@ -1,8 +1,7 @@
 {% extends "layouts/internal-service.html" %}
 
 <!-- ////// PRESETS ///// -->
-{% set number_of_cases = "4" %}
-{% set selected_view = "all" %}
+{% set number_of_cases = "5" %}
 <!-- //////////////////// -->
 
 {% block pageTitle %}
@@ -18,29 +17,32 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 
   {% include "includes/govuk-beta-banner" %}
 
-  {% include "includes/vpf/dwp-quick-reference-multicase-manual" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-case">Cases ({{ number_of_cases
+              <a class="moj-primary-navigation__link" href="multicase-case-dual-2">Cases ({{ number_of_cases
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-statement--all">Statement</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="ef-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
+              <a class="moj-primary-navigation__link" href="ef-calculations">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-payment-plan">Payment
               plans</a>
             </li>
           </ul>
@@ -123,10 +125,10 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
         <div class="moj-button-group moj-button-group--inline">
           <div class="moj-button-menu" data-module="moj-button-menu" data-button-text="All transactions" data-button-classes="toggle-button">
 
-            <a href="statements-filtering/ef-statements-recieved.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+            <a href="statements-filtering/ef-statement-recieved.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
           Payments received
         </a>
-            <a href="statements-filtering/ef-statements-credits.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+            <a href="statements-filtering/ef-statement-credits.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
           All credits
         </a>
           </div>

@@ -1,7 +1,7 @@
 {% extends "layouts/internal-service.html" %}
 
 <!-- ////// PRESETS ///// -->
-{% set number_of_cases = "4" %}
+{% set number_of_cases = "5" %}
 {% set active_cases = "2" %}
 {% set selected_view = "2" %}
 {% set rp1 = "Daria Oblonskaya 1&#8209;2345999" %}
@@ -22,29 +22,32 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
   {% include "includes/govuk-beta-banner" %}
 
-  {% include "includes/vpf/dwp-quick-reference-multicase-manual" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-case">Cases ({{ number_of_cases
+              <a class="moj-primary-navigation__link" href="multicase-case-dual-2">Cases ({{ number_of_cases
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances--with-breakdown">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+              <a class="moj-primary-navigation__link" href="ef-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
+              <a class="moj-primary-navigation__link" href="ef-calculations">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-payment-plan">Payment
               plans</a>
             </li>
           </ul>
@@ -59,38 +62,13 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
       Finances
       </h1>
       {# /////////// TABS ////////////// #}
-      <div class="govuk-tabs" data-module="govuk-tabs">
-        <h2 class="govuk-tabs__title">
-            Contents
-          </h2>
-        <ul class="govuk-tabs__list">
-          <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#total">
-            Total
-          </a>
-          </li>
-          {# <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#daria">
-              Daria Oblonskaya 1-2345999
-            </a>
-          </li>
-          <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#ruth">
-              Ruth Slater 1-2345112
-            </a>
-          </li> #}
-        </ul>
-
-        <div class="govuk-tabs__panel" id="total">
-          <h2 class="govuk-heading-m">Total for {{ active_cases }} active cases</h2>
-          <p>The next annual review will be on <strong>7 October 2026</strong>.</p>
+      <p>The next annual review will be on <strong>7 October 2026</strong>.</p>
           {% include "includes/vpf/ur21/finance-amounts--case-all--with-breakdown" %}
-        </div>
-
+        
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
           <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
             <strong class="govuk-tag govuk-tag--orange">Collect and pay</strong>
@@ -108,7 +86,6 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </p>
           {% include "includes/vpf/ur21/finance-amounts--case-2" %}
         </div>
-      </div>
     </div>
   </div>
 
