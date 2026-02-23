@@ -4,6 +4,10 @@
 Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{# ////// VARIABLES ////// #}
+{% set change_reason = data['reason'] %}
+{# ////// VARIABLES ////// #}
+
 {% block header %}
   {% include "includes/ukic-components-source.html" %}
   {% from "internal-service-header/macro.njk" import dwpHeader %}
@@ -63,7 +67,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                   Reason
                 </dt>
               <dd class="govuk-summary-list__value">
-                  Number of children living with you increased
+                  {{ change_reason }}
                 </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -92,168 +96,194 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
             </div>
           </dl>
 
-          <table class="govuk-table govuk-!-margin-top-7">
-            <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-0">Liability and charges<p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">Basic Plus rate (15%) applied</p>
-            </caption>
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header govuk-!-width-one-third">&nbsp;</th>
-                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Liability</th>
-                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Charges</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Total weekly</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£241.36</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£36.61</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Total daily</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£34.48</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£5.23</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper" style="display:block;" aria-hidden="true">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+                Liability and charges
+              </h2>
+              <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">Basic Plus rate (15%) applied</p>
+            </div>
+            <div class="govuk-summary-card__content">
+              <table class="govuk-table govuk-!-margin-bottom-0">
+                <caption class="govuk-table__caption govuk-visually-hidden">Liability and charges<br><span>Basic Plus rate (15%) applied</span>
+                </caption>
+                <thead class="govuk-table__head govuk-!-margin-top-0">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-third">&nbsp;</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Liability</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Charges</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Total weekly</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£241.36</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£36.61</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header" style="border-bottom: none;">Total daily</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£34.48</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£5.23</td>
+                  </tr>
+                </tbody>
+              </table>
+              {# ///////////// MULTICASE ///////////// #}
+              {# <hr class="govuk-section-break govuk-section-break--visible">
 
-          {# <table class="govuk-table govuk-!-margin-top-7">
-            <caption class="govuk-table__caption govuk-table__caption--s">Multicase daily</caption>
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header govuk-!-width-one-half">&nbsp;</th>
-                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Liability</th>
-                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Charges</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Daria Oblonsky</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£8.15</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£2.63</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Ruth Slater</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£10.00</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£1.00</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Jane Fairburn-Armstrong</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£16.33</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£1.60</td>
-              </tr>
-            </tbody>
-          </table> #}
+              <table class="govuk-table govuk-!-margin-top-5">
+                <caption class="govuk-table__caption govuk-table__caption--s">Multicase daily</caption>
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-third">&nbsp;</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Liability</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Charges</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Daria Oblonsky</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£8.15</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£2.63</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Ruth Slater</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£10.00</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£1.00</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Jane Fairburn-Armstrong</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£16.33</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£1.60</td>
+                  </tr>
+                </tbody>
+              </table> #}
+            </div>
 
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
+          </div>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
         Gross income details
       </h2>
-          <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            </div>
+            <div class="govuk-summary-card__content">
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
                   Weekly gross income
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   £383.56
                 </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
                   HMRC tax year
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   6 April 2023 - 5 April 2024
                 </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
                  Income source
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   HMRC
                 </dd>
+                </div>
+              </dl>
             </div>
-          </dl>
+          </div>
 
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
 Assessable income details</h2>
+            </div>
+            <div class="govuk-summary-card__content">
 
-          <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
                   Assessable weekly income
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   £1,342.47
                 </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
                   Benefits
                 </dt>
-              <dd class="govuk-summary-list__value">
-                  Jobseekers allowance<br>
-                  Partner household: Yes
+                  <dd class="govuk-summary-list__value">
+                    <ul class="govuk-list">
+                      <li>Jobseekers allowance</li>
+                      <li>Partner household: No</li>
+                    </ul>
                 </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                  Annual pension contributions (HMRC) 
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                  Annual pension contributions (HMRC/Current) 
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   £120.00
                 </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
                   Annual gross income (pension deducted)
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   £20,000.00
                 </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
                   Foreign exchange costs
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   £0.00
                 </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
                   Special circumstance
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   None
                 </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
                   Relevant other children
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   2
                 </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
                   Children in family based arrangements
                 </dt>
-              <dd class="govuk-summary-list__value">
+                  <dd class="govuk-summary-list__value">
                   1
                 </dd>
+                </div>
+              </dl>
             </div>
-          </dl>
+          </div>
 
-
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
 Qualifying children: 2</h2>
 
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
-              <h2 class="govuk-summary-card__title">
+              <h3 class="govuk-summary-card__title">
               Qualifying child 1
-            </h2>
+            </h3>
             </div>
             <div class="govuk-summary-card__content">
               <dl class="govuk-summary-list">
@@ -297,9 +327,9 @@ Qualifying children: 2</h2>
         <div class="govuk-grid-column-two-thirds">
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
-              <h2 class="govuk-summary-card__title">
+              <h3 class="govuk-summary-card__title">
               Qualifying child 2
-            </h2>
+            </h3>
             </div>
             <div class="govuk-summary-card__content">
               <dl class="govuk-summary-list">
