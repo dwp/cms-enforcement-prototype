@@ -1,5 +1,9 @@
 {% extends "layouts/internal-service.html" %}
 
+{# ////// VARIABLES ////// #}
+{% set calcReason = data['calc_details'][0]['reason']| default("value missing", true) %}
+{# ////// VARIABLES ////// #}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -22,10 +26,17 @@
       <h3 class="govuk-heading-s">Page:</h3>
       <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
         <li>
-          <a href="ef-calculation-details?reason=Number of overnight stays increased">
+          <a href="ef-calculation-details?calcReason={{ calcReason }}">
           Calculation details
         </a>
         </li>
+      
+        <li>
+          <a href="ef-calculation-details-data?reason_index=0">
+          Calculation details -- using stored data: {{ calcReason }}
+        </a>
+        </li>
+        
       </ul>
 
     </div>
