@@ -6,7 +6,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 
 {# ////// VARIABLES ////// #}
 {% set change_reason = data['reason'] %}
-{% set test = data['multicase']['total_cases'] %}
+{% set test = data['multicase']['all_cases'] %}
 {# ////// VARIABLES ////// #}
 
 {% block header %}
@@ -226,7 +226,7 @@ Assessable income details</h2>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                  Annual pension contributions (HMRC) 
+                  Annual pension contributions (HMRC/Current) 
                 </dt>
                   <dd class="govuk-summary-list__value">
                   £120.00
