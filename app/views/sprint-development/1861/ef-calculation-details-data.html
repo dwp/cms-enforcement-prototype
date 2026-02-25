@@ -6,9 +6,8 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 
 {# ////// VARIABLES ////// #}
 {% set change_reason = data['reason'] %}
-
 {% set i = data['reason_index'] %}
-{% set calcReason = data['calc_details'][0]['reason'] | default("value missing", true) %}
+{% set calcReason = data['calc_details'][i]['calc_reason'] | default("value missing", true) %}
 {% set performDate = data['calc_details'][i]['perform_date'] %}
 {% set effectiveFrom = data['calc_details'][i]['effective_from'] %}
 {% set effectiveTo = data['calc_details'][i]['effective_to'] %}
@@ -37,14 +36,11 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% block header %}
   {% include "includes/ukic-components-source.html" %}
   {% from "internal-service-header/macro.njk" import dwpHeader %}
-
   {% include "includes/dwp-internal-service-header" %}
-
 {% endblock %}
 
 {% block content %}
   {% include "includes/govuk-beta-banner" %}
-
   {% include "includes/vpf/dwp-quick-reference-single-manual" %}
 
   <div class="moj-primary-navigation">

@@ -23,10 +23,10 @@ module.exports = {
   'calc_details': [
     {
       'reason_index': '0',
-      'reason': 'Annual review',
-      'perform_date': '19 Oct 2024',
-      'effective_from': '19 Oct 2024',
-      'effective_to': '19 Oct 2025',
+      'calc_reason': 'Annual review',
+      'perform_date': '19 Oct 24',
+      'effective_from': '19 Oct 24',
+      'effective_to': '19 Oct 25',
       'rate_applied_name': 'Basic Plus',
       'rate_applied_percentage': '15%',
       'total_weekly_liability': '241.36',
@@ -48,14 +48,14 @@ module.exports = {
       'cifba': '1',
       'qualifying_children': [
         {
-          'child_name': 'John Oblonsky',
-          'dob': '3 May 2016',
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
           'overnight_stays': '1',
           'local_auth_stays': '0'
         },
         {
-          'child_name': 'James Oblonsky',
-          'dob': '6 Aug 2022',
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
         }
@@ -63,7 +63,7 @@ module.exports = {
     },
     {
       'reason_index': '1',
-      'reason': 'Number of overnight stays increased',
+      'calc_reason': 'Number of overnight stays increased',
       'perform_date': '20 Dec 23',
       'effective_from': '11 Dec 23',
       'effective_to': '18 Oct 24',
@@ -88,14 +88,14 @@ module.exports = {
       'cifba': '1',
       'qualifying_children': [
         {
-          'child_name': 'John Oblonsky',
-          'dob': '3 May 2016',
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
           'overnight_stays': '1',
           'local_auth_stays': '0'
         },
         {
-          'child_name': 'James Oblonsky',
-          'dob': '6 Aug 2022',
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
         }
@@ -103,7 +103,7 @@ module.exports = {
     },
     {
       'reason_index': '2',
-      'reason': 'Annual review',
+      'calc_reason': 'Annual review',
       'perform_date': '27 Oct 23',
       'effective_from': '19 Oct 23',
       'effective_to': '10 Dec 23',
@@ -127,14 +127,14 @@ module.exports = {
       'cifba': '0',
       'qualifying_children': [
         {
-          'child_name': 'John Oblonsky',
-          'dob': '3 May 2016',
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
           'overnight_stays': '1',
           'local_auth_stays': '0'
         },
         {
-          'child_name': 'James Oblonsky',
-          'dob': '6 Aug 2022',
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
         }
@@ -142,7 +142,7 @@ module.exports = {
     },
     {
       'reason_index': '3',
-      'reason': 'Service type changed',
+      'calc_reason': 'Service type changed',
       'perform_date': '27 Oct 23',
       'effective_from': '2 Jul 23',
       'effective_to': '18 Oct 23',
@@ -167,22 +167,22 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '4',
-      'reason': 'Income increased',
+      'calc_reason': 'Income increased',
       'perform_date': '25 Oct 24',
       'effective_from': '05 Feb 23',
       'effective_to': '01 Jul 23',
@@ -207,22 +207,22 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '5',
-      'reason': 'Annual review',
+      'calc_reason': 'Annual review',
       'perform_date': '20 Oct 24',
       'effective_from': '19 Oct 22',
       'effective_to': '04 Feb 23',
@@ -247,29 +247,29 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '6',
-      'reason': 'Off benefit',
-      'perform_date': '06 march 24',
+      'calc_reason': 'Off benefit',
+      'perform_date': '06 Mar 24',
       'effective_from': '04 Mar 22',
       'effective_to': '18 Oct 22',
       'rate_applied_name': 'Basic Plus',
       'rate_applied_percentage': '15%',
-      'total_weekly_liability': '',
-      'total_weekly_charge': '',
+      'total_weekly_liability': '99.99',
+      'total_weekly_charge': '8.00',
       'total_daily_liability': '34.48',
       'total_daily_charge': '5.23',
       'assessable_weekly_income': '',
@@ -287,22 +287,22 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '7',
-      'reason': 'Number of children living with you increased',
+      'calc_reason': 'Number of children living with you increased',
       'perform_date': '14 Dec 21',
       'effective_from': '11 Dec 21',
       'effective_to': '03 Mar 22',
@@ -327,22 +327,22 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '8',
-      'reason': 'on benefit',
+      'calc_reason': 'On benefit',
       'perform_date': '12 Dec 22',
       'effective_from': '02 Dec 21',
       'effective_to': '10 Dec 21',
@@ -367,22 +367,22 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '9',
-      'reason': 'Annual review',
+      'calc_reason': 'Annual review',
       'perform_date': '20 Oct 21',
       'effective_from': '19 Oct 21',
       'effective_to': '01 Dec 21',
@@ -407,22 +407,22 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '10',
-      'reason': 'Variation increased',
+      'calc_reason': 'Variation increased',
       'perform_date': '19 Oct 21',
       'effective_from': '03 Jan 21',
       'effective_to': '18 Oct 21',
@@ -447,22 +447,22 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '11',
-      'reason': 'Variation increased',
+      'calc_reason': 'Variation increased',
       'perform_date': '19 Oct 21',
       'effective_from': '03 Jan 21',
       'effective_to': '18 Oct 21',
@@ -487,22 +487,22 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '12',
-      'reason': 'Income increased',
+      'calc_reason': 'Income increased',
       'perform_date': '28 Nov 20',
       'effective_from': '26 Nov 20',
       'effective_to': '02 Jan 21',
@@ -527,22 +527,22 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '13',
-      'reason': 'First calculation',
+      'calc_reason': 'First calculation',
       'perform_date': '25 Oct 20',
       'effective_from': '19 Oct 20',
       'effective_to': '25 Nov 20',
@@ -567,16 +567,16 @@ module.exports = {
       'cifba': '',
       'qualifying_children': [
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Lily Oblonskaya',
+          'dob': '7 Oct 2021',
+          'overnight_stays': '1',
+          'local_auth_stays': '0'
         },
         {
-          'child_name': '',
-          'dob': '',
-          'overnight_stays': '',
-          'local_auth_stays': ''
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     }

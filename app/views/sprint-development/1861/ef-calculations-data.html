@@ -1,0 +1,108 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block pageTitle %}
+  Statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{# ////// VARIABLES ////// #}
+{% set change_reason = data['reason'] %}
+
+{# {% set i = data['calc_details'][0]['reason_index'] %} #}
+{% set i = 'loop.index0' %}
+{# ////// VARIABLES ////// #}
+
+
+{% block header %}
+{% include "includes/ukic-components-source.html"%}
+{% include "includes/dwp-internal-service-header.html"%}
+{% endblock %}
+
+{% block content %}
+{% include "includes/govuk-beta-banner" %}
+
+    {% include "includes/vpf/dwp-quick-reference-single-manual" %}
+
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-finances.html">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-statement.html">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-payment-allocation.html">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-payment-plan.html">Payment plan</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="ef-calculations.html">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-case">Case</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+    Calculations
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <p class="govuk-!-font-size-24">
+        Effective from <strong>19 October 2020</strong>.
+        The next annual review will be on <strong>19 October 2025</strong>.
+      </p>
+    
+ <!-- 2024-->
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculation details<br>
+        <span class="govuk-body">
+        Select a calculation reason to view more details about how it affects the case.
+      </span></caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly income (£)</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly liability (£)</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly charge (£)</th>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        {% for row in data['calc_details'] %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell cell_reason">
+            <a href="ef-calculation-details-data?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+{% include "includes/back-to-top-link" %}
+
+{% endblock %}
+
