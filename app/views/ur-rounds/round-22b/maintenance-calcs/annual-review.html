@@ -4,17 +4,18 @@
 Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{# ////// VARIABLES ////// #}
+{% set number_of_cases = 5 %}
+{# ////// VARIABLES ////// #}
+
 {% block header %}
   {% include "includes/ukic-components-source.html" %}
   {% from "internal-service-header/macro.njk" import dwpHeader %}
-
   {% include "includes/dwp-internal-service-header" %}
-
 {% endblock %}
 
 {% block content %}
   {% include "includes/govuk-beta-banner" %}
-
   {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
 
   <div class="moj-primary-navigation">
