@@ -183,6 +183,10 @@ module.exports = {
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
@@ -219,6 +223,10 @@ module.exports = {
           'local_auth_stays': '0'
         },
         {
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
           'child_name': 'Tatiana Oblonskaya',
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
@@ -263,6 +271,10 @@ module.exports = {
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
@@ -299,6 +311,10 @@ module.exports = {
           'local_auth_stays': '0'
         },
         {
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
           'child_name': 'Tatiana Oblonskaya',
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
@@ -343,6 +359,10 @@ module.exports = {
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
@@ -379,6 +399,10 @@ module.exports = {
           'local_auth_stays': '0'
         },
         {
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
           'child_name': 'Tatiana Oblonskaya',
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
@@ -423,6 +447,10 @@ module.exports = {
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
@@ -459,6 +487,10 @@ module.exports = {
           'local_auth_stays': '0'
         },
         {
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
           'child_name': 'Tatiana Oblonskaya',
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
@@ -503,11 +535,16 @@ module.exports = {
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
         }
       ]
     },
     {
       'reason_index': '12',
+      'calc_reason': 'Income increased',
       'calc_reason': 'Income increased',
       'perform_date': '28 Nov 20',
       'effective_from': '26 Nov 20',
@@ -539,6 +576,10 @@ module.exports = {
           'local_auth_stays': '0'
         },
         {
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
           'child_name': 'Tatiana Oblonskaya',
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
