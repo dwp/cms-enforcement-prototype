@@ -263,10 +263,6 @@ module.exports = {
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
-          'child_name': 'Tatiana Oblonskaya',
-          'dob': '21 Nov 2022',
-          'overnight_stays': '0',
-          'local_auth_stays': '0'
         }
       ]
     },
