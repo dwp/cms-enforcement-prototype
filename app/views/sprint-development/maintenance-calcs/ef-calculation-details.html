@@ -5,21 +5,42 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {# ////// VARIABLES ////// #}
-{% set change_reason = data['reason'] %}
-{% set test = data['multicase']['total_cases'] %}
+{# {% set change_reason = data['reason'] %} #}
+{% set i = data['reason_index'] %}
+{% set calcReason = data['calc_details'][i]['calc_reason'] | default("value missing", true) %}
+{% set performDate = data['calc_details'][i]['perform_date'] %}
+{% set effectiveFrom = data['calc_details'][i]['effective_from'] %}
+{% set effectiveTo = data['calc_details'][i]['effective_to'] %}
+{% set rateName = data['calc_details'][i]['rate_applied_name'] %}
+{% set ratePercent = data['calc_details'][i]['rate_applied_percentage'] %}
+{% set totalWeeklyLiable = data['calc_details'][i]['total_weekly_liability'] %}
+{% set totalWeeklyCharge = data['calc_details'][i]['total_weekly_charge'] %}
+{% set totalDailyLiable = data['calc_details'][i]['total_daily_liability'] %}
+{% set totalDailyCharge = data['calc_details'][i]['total_daily_charge'] %}
+{% set assessableWeeklyIncome = data['calc_details'][i]['assessable_weekly_income'] %}
+{% set benefitsType = data['calc_details'][i]['benefits_type'] %}
+{% set partnerHousehold = data['calc_details'][i]['partner_household:'] %}
+{% set annualPensionContrib = data['calc_details'][i]['annual_pension_contrib'] %}
+{% set pensionInfoSource = data['calc_details'][i]['pension_info_source'] %}
+{% set incomeInfoSource = data['calc_details'][i]['income_info_source'] %}
+{% set weeklyGrossIncome = data['calc_details'][i]['weekly_gross_income'] %}
+{% set taxYear = data['calc_details'][i]['tax_year_hmrc'] %}
+{% set annualGrossIncome = data['calc_details'][i]['annual_gross_income'] %}
+{% set foreignExchangeIncome = data['calc_details'][i]['foreign_exchange_cost'] %}
+{% set specialCircs = data['calc_details'][i]['special_circs'] %}
+{% set roc = data['calc_details'][i]['roc'] %}
+{% set cifba = data['calc_details'][i]['cifba'] %}
+{% set qualifyingChildren = data['calc_details'][i]['qualifying_children'] | length %}
 {# ////// VARIABLES ////// #}
 
 {% block header %}
   {% include "includes/ukic-components-source.html" %}
   {% from "internal-service-header/macro.njk" import dwpHeader %}
-
   {% include "includes/dwp-internal-service-header" %}
-
 {% endblock %}
 
 {% block content %}
   {% include "includes/govuk-beta-banner" %}
-
   {% include "includes/vpf/dwp-quick-reference-single-manual" %}
 
   <div class="moj-primary-navigation">
@@ -28,22 +49,22 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-finances">Finances</a>
+              <a class="moj-primary-navigation__link" href="ef-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-statement">Statement</a>
+              <a class="moj-primary-navigation__link" href="ef-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-payment-allocation">Payment allocation</a>
+              <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-payment-plan">Payment plan</a>
+              <a class="moj-primary-navigation__link" href="ef-payment-plan">Payment plan</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-calculations">Calculations</a>
+              <a class="moj-primary-navigation__link" href="ef-calculations">Calculations</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-case">Case</a>
+              <a class="moj-primary-navigation__link" href="ef-case">Case</a>
             </li>
           </ul>
         </nav>
@@ -68,31 +89,32 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                   Reason
                 </dt>
               <dd class="govuk-summary-list__value">
-                  {{ change_reason }}
+                {{ calcReason }}
+              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                   Perform date
                 </dt>
               <dd class="govuk-summary-list__value">
-                  19 Oct 2024
-                </dd>
+                {{ performDate }}
+              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                  Effective from
                 </dt>
               <dd class="govuk-summary-list__value">
-                  19 Oct 2024
-                </dd>
+                {{ effectiveFrom }}
+              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                   Effective to
                 </dt>
               <dd class="govuk-summary-list__value">
-                  19 Oct 2025
-                </dd>
+                {{ effectiveTo }}
+              </dd>
             </div>
           </dl>
 
@@ -101,11 +123,12 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
               <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
                 Liability and charges
               </h2>
-              <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">Basic Plus rate (15%) applied</p>
+              <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ rateName }} rate ({{ ratePercent }}) applied</p>
             </div>
             <div class="govuk-summary-card__content">
               <table class="govuk-table govuk-!-margin-bottom-0">
-                <caption class="govuk-table__caption govuk-visually-hidden">Liability and charges<br><span>Basic Plus rate (15%) applied</span>
+                <caption class="govuk-table__caption govuk-visually-hidden">Liability and charges<br>
+                  <span>{{ rateName }} rate ({{ ratePercent }}) applied</span>
                 </caption>
                 <thead class="govuk-table__head govuk-!-margin-top-0">
                   <tr class="govuk-table__row">
@@ -117,13 +140,13 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                 <tbody class="govuk-table__body">
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Total weekly</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£241.36</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£36.61</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalWeeklyLiable }}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalWeeklyCharge }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header" style="border-bottom: none;">Total daily</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£34.48</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£5.23</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£{{ totalDailyLiable }}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£{{ totalDailyCharge }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -174,24 +197,24 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                   Weekly gross income
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  £383.56
-                </dd>
+                  £{{ weeklyGrossIncome }}
+                  </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                   HMRC tax year
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  6 April 2023 - 5 April 2024
-                </dd>
+                    {{ taxYear }}
+                  </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                  Income source
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  HMRC
-                </dd>
+                    {{ incomeInfoSource }}
+                  </dd>
                 </div>
               </dl>
             </div>
@@ -210,8 +233,8 @@ Assessable income details</h2>
                   Assessable weekly income
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  £1,342.47
-                </dd>
+                  £{{ assessableWeeklyIncome }}
+                  </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
@@ -219,156 +242,116 @@ Assessable income details</h2>
                 </dt>
                   <dd class="govuk-summary-list__value">
                     <ul class="govuk-list">
-                      <li>Jobseekers allowance</li>
-                      <li>Partner household: No</li>
+                      <li>{{ benefitsType }}</li>
+                      <li>Partner household: {{ partnerHousehold }}</li>
                     </ul>
-                </dd>
+                  </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                  Annual pension contributions (HMRC) 
+                  Annual pension contributions ({{ pensionInfoSource }}) 
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  £120.00
-                </dd>
+                  £{{ annualPensionContrib }}
+                  </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                   Annual gross income (pension deducted)
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  £20,000.00
-                </dd>
+                  £{{ annualGrossIncome }}
+                  </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                   Foreign exchange costs
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  £0.00
-                </dd>
+                  £{{ foreignExchangeIncome }}
+                  </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                   Special circumstance
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  None
-                </dd>
+                    {{ specialCircs }}
+                  </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                   Relevant other children
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  2
-                </dd>
+                    {{ roc }}
+                  </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                   Children in family based arrangements
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  1
-                </dd>
+                    {{ cifba }}
+                  </dd>
                 </div>
               </dl>
             </div>
           </div>
 
           <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
-Qualifying children: 2</h2>
+Qualifying children: {{ qualifyingChildren }}</h2>
 
-          <div class="govuk-summary-card">
-            <div class="govuk-summary-card__title-wrapper">
-              <h3 class="govuk-summary-card__title">
-              Qualifying child 1
-            </h3>
-            </div>
-            <div class="govuk-summary-card__content">
-              <dl class="govuk-summary-list">
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          {% for child in data['calc_details'][i]['qualifying_children'] %}
+
+            <div class="govuk-summary-card">
+              <div class="govuk-summary-card__title-wrapper">
+                <h3 class="govuk-summary-card__title">
+                  Qualifying child {{ loop.index }}
+                </h3>
+              </div>
+              <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key govuk-!-width-one-half">
                   Name
                 </dt>
-                  <dd class="govuk-summary-list__value">
-                  John Oblonsky
-                </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
+                    <dd class="govuk-summary-list__value">
+                      {{ child.child_name }}
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
                   Date of birth
                 </dt>
-                  <dd class="govuk-summary-list__value">
-                  3 May 2016
-                </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
+                    <dd class="govuk-summary-list__value">
+                      {{ child.dob }}
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
                   Overnight stays
                 </dt>
-                  <dd class="govuk-summary-list__value">
-                  1 night per week
+                    <dd class="govuk-summary-list__value">
+                      {{ child.overnight_stays }} night per week
                 </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
                   Local authority stays
                 </dt>
-                  <dd class="govuk-summary-list__value">
-                  0 night per week
+                    <dd class="govuk-summary-list__value">
+                      {{ child.local_auth_stays }} night per week
                 </dd>
-                </div>
-              </dl>
+                  </div>
+                </dl>
+              </div>
             </div>
+            {% endfor %}
           </div>
-        </div>
+        
 
-        <div class="govuk-grid-column-two-thirds">
-          <div class="govuk-summary-card">
-            <div class="govuk-summary-card__title-wrapper">
-              <h3 class="govuk-summary-card__title">
-              Qualifying child 2
-            </h3>
-            </div>
-            <div class="govuk-summary-card__content">
-              <dl class="govuk-summary-list">
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
-                  Name
-                </dt>
-                  <dd class="govuk-summary-list__value">
-                  James Oblonsky
-                </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                  Date of birth
-                </dt>
-                  <dd class="govuk-summary-list__value">
-                  6 Aug 2022
-                </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                  Overnight stays
-                </dt>
-                  <dd class="govuk-summary-list__value">
-                  0 night per week
-                </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                  Local authority stays
-                </dt>
-                  <dd class="govuk-summary-list__value">
-                  0 night per week
-                </dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </div>
+        
 
       </div>
 
