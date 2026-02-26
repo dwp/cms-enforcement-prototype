@@ -333,7 +333,9 @@ Qualifying children: {{ qualifyingChildren }}</h2>
                   Overnight stays
                 </dt>
                     <dd class="govuk-summary-list__value">
-                      {{ child.overnight_stays }} night per week
+                      {{ child.overnight_stays }}
+                      {% if child.overnight_stays == '1' %} night per week
+                      {% else %} nights per week {% endif %}
                 </dd>
                   </div>
                   <div class="govuk-summary-list__row">
@@ -341,7 +343,9 @@ Qualifying children: {{ qualifyingChildren }}</h2>
                   Local authority stays
                 </dt>
                     <dd class="govuk-summary-list__value">
-                      {{ child.local_auth_stays }} night per week
+                      {{ child.local_auth_stays }}
+                      {% if child.local_auth_stays == '1' %} night per week
+                      {% else %} nights per week {% endif %}
                 </dd>
                   </div>
                 </dl>
