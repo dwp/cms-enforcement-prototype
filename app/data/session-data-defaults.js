@@ -181,6 +181,46 @@ module.exports = {
         {
           'child_name': 'Tatiana Oblonskaya',
           'dob': '21 Nov 2022',
+          'overnight_stays': '2',
+          'local_auth_stays': '0'
+        }
+      ]
+    },
+    {
+      'reason_index': '3',
+      'calc_reason': 'Annual review',
+      'perform_date': '19 Oct 23',
+      'effective_from': '19 Oct 23',
+      'effective_to': '10 Dec 23',
+      'rate_applied_name': 'Basic',
+      'rate_applied_percentage': '19%',
+      'total_weekly_liability': '43.96',
+      'total_weekly_charge': '8.79',
+      'total_daily_liability': '6.28',
+      'total_daily_charge': '1.26',
+      'weekly_gross_income': '470.80',
+      'tax_year_hmrc': '6 April 2022 - 5 April 2023',
+      'income_info_source': 'HMRC',
+      'assessable_weekly_income': '470.80',
+      'benefits_type': 'N/A',
+      'partner_household:': 'No',
+      'annual_pension_contrib': '0.00',
+      'pension_info_source': 'HMRC',
+      'annual_gross_income': '24,549.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '2',
+      'cifba': '1',
+      'qualifying_children': [
+        {
+          'child_name': 'Lily Oblonskaya',
+          'dob': '3 May 2016',
+          'overnight_stays': '2',
+          'local_auth_stays': '0'
+        },
+        {
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
           'overnight_stays': '0',
           'local_auth_stays': '0'
         }
@@ -219,6 +259,10 @@ module.exports = {
           'local_auth_stays': '0'
         },
         {
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
           'child_name': 'Tatiana Oblonskaya',
           'dob': '21 Nov 2022',
           'overnight_stays': '0',
