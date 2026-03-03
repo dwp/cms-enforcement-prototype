@@ -1,17 +1,31 @@
 /*
+
 Provide default values for user session data. These are automatically added
 via the `autoStoreData` middleware. Values will only be added to the
 session if a value doesn't already exist. This may be useful for testing
 journeys where users are returning or logging in to an existing application.
+
 ============================================================================
+
 Example usage:
+
 "full-name": "Sarah Philips",
+
 "options-chosen": [ "foo", "bar" ]
+
 ============================================================================
+
 */
+
 module.exports = {
 
+  // Require other data store files
+
+  'multicase': require('./multicase.js'),
+  'children': require('./children.js'),
+
   // Insert values here
+
   'calc_details': [
     {
       'reason_index': '0',
@@ -33,10 +47,7 @@ module.exports = {
       'partner_household:': 'No',
       'annual_pension_contrib': '0.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '383.56',
-      'tax_year_hmrc': '6 April 2023 - 5 April 2024',
-      'annual_gross_income': '20,000.00',
+      'annual_gross_income': '26,878.00',
       'foreign_exchange_cost': '0.00',
       'special_circs': 'None',
       'roc': '2',
@@ -76,10 +87,7 @@ module.exports = {
       'partner_household:': 'No',
       'annual_pension_contrib': '0.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '383.56',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '20,000.00',
+      'annual_gross_income': '26,878.00',
       'foreign_exchange_cost': '0.00',
       'special_circs': 'None',
       'roc': '2',
@@ -144,21 +152,21 @@ module.exports = {
       'perform_date': '19 Oct 23',
       'effective_from': '19 Oct 23',
       'effective_to': '10 Dec 23',
-      'rate_applied_name': 'Basic Plus',
-      'rate_applied_percentage': '15%',
-      'total_weekly_liability': '136.79',
-      'total_weekly_charge': '27.36',
-      'total_daily_liability': '19.54',
-      'total_daily_charge': '3.90',
-      'assessable_weekly_income': '911.93',
-      'benefits_type': 'Universal credit',
-      'partner_household:': 'Yes',
-      'annual_pension_contrib': '90.00',
-      'income_info_source': 'NRP',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '303.80',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '15,841',
+      'rate_applied_name': 'Basic',
+      'rate_applied_percentage': '19%',
+      'total_weekly_liability': '43.96',
+      'total_weekly_charge': '8.79',
+      'total_daily_liability': '6.28',
+      'total_daily_charge': '1.26',
+      'weekly_gross_income': '470.80',
+      'tax_year_hmrc': '6 April 2022 - 5 April 2023',
+      'income_info_source': 'HMRC',
+      'assessable_weekly_income': '470.80',
+      'benefits_type': 'None',
+      'partner_household:': 'No',
+      'annual_pension_contrib': '0.00',
+      'pension_info_source': 'HMRC',
+      'annual_gross_income': '24,549.00',
       'foreign_exchange_cost': '0.00',
       'special_circs': 'None',
       'roc': '2',
@@ -179,7 +187,7 @@ module.exports = {
       ]
     },
     {
-      'reason_index': '3',
+      'reason_index': '4',
       'calc_reason': 'Annual review',
       'perform_date': '19 Oct 23',
       'effective_from': '19 Oct 23',
@@ -198,55 +206,11 @@ module.exports = {
       'partner_household:': 'No',
       'annual_pension_contrib': '0.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '345.21',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
-      'qualifying_children': [
-        {
-          'child_name': 'Lily Oblonskaya',
-          'dob': '3 May 2016',
-          'overnight_stays': '2',
-          'local_auth_stays': '0'
-        },
-        {
-          'child_name': 'Tatiana Oblonskaya',
-          'dob': '21 Nov 2022',
-          'overnight_stays': '0',
-          'local_auth_stays': '0'
-        }
-      ]
-    },
-    {
-      'reason_index': '4',
-      'reason': 'Income increased',
-      'perform_date': '25 Oct 24',
-      'effective_from': '05 Feb 23',
-      'effective_to': '01 Jul 23',
-      'rate_applied_name': 'Basic Plus',
-      'rate_applied_percentage': '15%',
-      'total_weekly_liability': '133.49',
-      'total_weekly_charge': '26.77',
-      'total_daily_liability': '34.48',
-      'total_daily_charge': '5.23',
-      'assessable_weekly_income': '',
-      'benefits_type': '',
-      'partner_household:': '',
-      'annual_pension_contrib': '',
-      'income_info_source': 'HMRC',
-      'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '345.21',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
+      'annual_gross_income': '24,549.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '2',
+      'cifba': '1',
       'qualifying_children': [
         {
           'child_name': 'Lily Oblonskaya',
@@ -264,30 +228,29 @@ module.exports = {
     },
     {
       'reason_index': '5',
-      'reason': 'Annual review',
-      'perform_date': '20 Oct 24',
-      'effective_from': '19 Oct 22',
-      'effective_to': '04 Feb 23',
-      'rate_applied_name': '',
-      'rate_applied_percentage': '15%',
-      'total_weekly_liability': '128.54',
-      'total_weekly_charge': '24.79',
-      'total_daily_liability': '34.48',
-      'total_daily_charge': '5.23',
-      'assessable_weekly_income': '',
-      'benefits_type': '',
-      'partner_household:': '',
-      'annual_pension_contrib': '',
-      'income_info_source': 'HMRC',
-      'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '287.67',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
+      'calc_reason': 'Service type changed',
+      'perform_date': '25 Jul 23',
+      'effective_from': '2 Jul 23',
+      'effective_to': '18 Oct 23',
+      'rate_applied_name': 'Basic',
+      'rate_applied_percentage': '19%',
+      'total_weekly_liability': '44.77',
+      'total_weekly_charge': '8.95',
+      'total_daily_liability': '6.40',
+      'total_daily_charge': '1.28',
+      'weekly_gross_income': '536.99',
+      'tax_year_hmrc': '6 April 2022 - 5 April 2023',
+      'income_info_source': 'Current',
+      'assessable_weekly_income': '479.45',
+      'benefits_type': 'None',
+      'partner_household:': 'No',
+      'annual_pension_contrib': '3,000.00',
+      'pension_info_source': 'HMRC/Current',
+      'annual_gross_income': '25,000.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '2',
+      'cifba': '1',
       'qualifying_children': [
         {
           'child_name': 'Lily Oblonskaya',
@@ -305,6 +268,46 @@ module.exports = {
     },
     {
       'reason_index': '6',
+      'calc_reason': 'Income increased',
+      'perform_date': '10 Mar 23',
+      'effective_from': '5 Feb 23',
+      'effective_to': '1 Jul 23',
+      'rate_applied_name': 'Basic',
+      'rate_applied_percentage': '19%',
+      'total_weekly_liability': '44.77',
+      'total_weekly_charge': '0.00',
+      'total_daily_liability': '6.40',
+      'total_daily_charge': '0.00',
+      'weekly_gross_income': '536.99',
+      'tax_year_hmrc': '6 April 2022 - 5 April 2023',
+      'income_info_source': 'Current',
+      'assessable_weekly_income': '479.45',
+      'benefits_type': 'None',
+      'partner_household:': 'No',
+      'annual_pension_contrib': '3,000.00',
+      'pension_info_source': 'HMRC/Current',
+      'annual_gross_income': '25,000.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '2',
+      'cifba': '1',
+      'qualifying_children': [
+        {
+          'child_name': 'Lily Oblonskaya',
+          'dob': '3 May 2016',
+          'overnight_stays': '2',
+          'local_auth_stays': '0'
+        },
+        {
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
+        }
+      ]
+    },
+    {
+      'reason_index': '7',
       'calc_reason': 'Annual review',
       'perform_date': '19 Oct 22',
       'effective_from': '19 Oct 22',
@@ -323,14 +326,11 @@ module.exports = {
       'partner_household:': 'No',
       'annual_pension_contrib': '0.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '383.56',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
+      'annual_gross_income': '22,000.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '2',
+      'cifba': '1',
       'qualifying_children': [
         {
           'child_name': 'Lily Oblonskaya',
@@ -347,7 +347,7 @@ module.exports = {
       ]
     },
     {
-      'reason_index': '7',
+      'reason_index': '8',
       'calc_reason': 'Off benefit',
       'perform_date': '6 Mar 22',
       'effective_from': '4 Mar 22',
@@ -366,14 +366,11 @@ module.exports = {
       'partner_household:': 'No',
       'annual_pension_contrib': '3,000.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '383.56',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
+      'annual_gross_income': '32,000.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '2',
+      'cifba': '1',
       'qualifying_children': [
         {
           'child_name': 'Lily Oblonskaya',
@@ -390,7 +387,7 @@ module.exports = {
       ]
     },
     {
-      'reason_index': '8',
+      'reason_index': '9',
       'calc_reason': 'Number of overnight stays increased',
       'perform_date': '14 Dec 21',
       'effective_from': '11 Dec 21',
@@ -409,14 +406,11 @@ module.exports = {
       'partner_household:': 'No',
       'annual_pension_contrib': '3,000.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '383.56',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
+      'annual_gross_income': '32,000.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '2',
+      'cifba': '1',
       'qualifying_children': [
         {
           'child_name': 'Lily Oblonskaya',
@@ -433,7 +427,7 @@ module.exports = {
       ]
     },
     {
-      'reason_index': '9',
+      'reason_index': '10',
       'calc_reason': 'On benefit',
       'perform_date': '12 Dec 21',
       'effective_from': '2 Dec 21',
@@ -452,14 +446,11 @@ module.exports = {
       'partner_household:': 'No',
       'annual_pension_contrib': '3000.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '383.56',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
+      'annual_gross_income': '32,000.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '0',
+      'cifba': '1',
       'qualifying_children': [
         {
           'child_name': 'Lily Oblonskaya',
@@ -476,7 +467,7 @@ module.exports = {
       ]
     },
     {
-      'reason_index': '10',
+      'reason_index': '11',
       'calc_reason': 'Annual review',
       'perform_date': '19 Oct 21',
       'effective_from': '19 Oct 21',
@@ -495,55 +486,11 @@ module.exports = {
       'partner_household:': 'No',
       'annual_pension_contrib': '3,000.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '383.56',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
-      'qualifying_children': [
-        {
-          'child_name': 'Lily Oblonskaya',
-          'dob': '3 May 2016',
-          'overnight_stays': '2',
-          'local_auth_stays': '0'
-        },
-        {
-          'child_name': 'Tatiana Oblonskaya',
-          'dob': '21 Nov 2022',
-          'overnight_stays': '0',
-          'local_auth_stays': '0'
-        }
-      ]
-    },
-    {
-      'reason_index': '11',
-      'calc_reason': 'Number of overnight stays increased',
-      'perform_date': '1 Mar 21',
-      'effective_from': '3 Jan 21',
-      'effective_to': '18 Oct 21',
-      'rate_applied_name': '',
-      'rate_applied_percentage': '15%',
-      'total_weekly_liability': '',
-      'total_weekly_charge': '',
-      'total_daily_liability': '34.48',
-      'total_daily_charge': '5.23',
-      'assessable_weekly_income': '',
-      'benefits_type': '',
-      'partner_household:': '',
-      'annual_pension_contrib': '',
-      'income_info_source': 'HMRC',
-      'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '383.56',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
+      'annual_gross_income': '32,000.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '0',
+      'cifba': '1',
       'qualifying_children': [
         {
           'child_name': 'Lily Oblonskaya',
@@ -561,6 +508,46 @@ module.exports = {
     },
     {
       'reason_index': '12',
+      'calc_reason': 'Number of overnight stays increased',
+      'perform_date': '1 Mar 21',
+      'effective_from': '3 Jan 21',
+      'effective_to': '18 Oct 21',
+      'rate_applied_name': 'Basic',
+      'rate_applied_percentage': '19%',
+      'total_weekly_liability': '58.30',
+      'total_weekly_charge': '0.00',
+      'total_daily_liability': '8.33',
+      'total_daily_charge': '0.00',
+      'weekly_gross_income': '536.99',
+      'tax_year_hmrc': '6 April 2020 - 5 April 2021',
+      'income_info_source': 'Current',
+      'assessable_weekly_income': '536.99',
+      'benefits_type': 'None',
+      'partner_household:': 'No',
+      'annual_pension_contrib': '0.00',
+      'pension_info_source': 'HMRC/Current',
+      'annual_gross_income': '28,000.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '0',
+      'cifba': '1',
+      'qualifying_children': [
+        {
+          'child_name': 'Lily Oblonskaya',
+          'dob': '3 May 2016',
+          'overnight_stays': '2',
+          'local_auth_stays': '0'
+        },
+        {
+          'child_name': 'Tatiana Oblonskaya',
+          'dob': '21 Nov 2022',
+          'overnight_stays': '0',
+          'local_auth_stays': '0'
+        }
+      ]
+    },
+    {
+      'reason_index': '13',
       'calc_reason': 'Income increased',
       'calc_reason': 'Income increased',
       'perform_date': '28 Nov 20',
@@ -577,14 +564,14 @@ module.exports = {
       'income_info_source': 'Current',
       'annual_pension_contrib': '0.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
-      'weekly_gross_income': '383.56',
-      'tax_year_hmrc': '',
-      'annual_gross_income': '',
-      'foreign_exchange_cost': '',
-      'special_circs': '',
-      'roc': '',
-      'cifba': '',
+      'assessable_weekly_income': '536.99',
+      'benefits_type': 'None',
+      'partner_household:': 'No',
+      'annual_gross_income': '28,000.00',
+      'foreign_exchange_cost': '0.00',
+      'special_circs': 'None',
+      'roc': '0',
+      'cifba': '0',
       'qualifying_children': [
         {
           'child_name': 'Lily Oblonskaya',
@@ -601,7 +588,7 @@ module.exports = {
       ]
     },
     {
-      'reason_index': '12',
+      'reason_index': '14',
       'calc_reason': 'Initial',
       'perform_date': '25 Oct 20',
       'effective_from': '19 Oct 20',
@@ -614,7 +601,6 @@ module.exports = {
       'total_daily_charge': '5.23',
       'annual_pension_contrib': '4,000.00',
       'pension_info_source': 'HMRC',
-      'annual_gross_income_1': '26,878.00',
       'weekly_gross_income': '383.56',
       'tax_year_hmrc': '6 April 2019 - 5 April 2020',
       'income_info_source': 'HMRC',

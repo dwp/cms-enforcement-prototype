@@ -5,7 +5,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {# ////// VARIABLES ////// #}
-{% set change_reason = data['reason'] %}
+{% set calcReason = data['calc_reason'] %}
 {% set test = data['multicase']['total_cases'] %}
 {# ////// VARIABLES ////// #}
 
@@ -68,7 +68,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                   Reason
                 </dt>
               <dd class="govuk-summary-list__value">
-                  {{ change_reason }}
+                  {{ calcReason }}
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">

@@ -5,7 +5,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {# ////// VARIABLES ////// #}
-{# {% set change_reason = data['reason'] %} #}
+{# {% set calcReason = data['calc_reason'] %} #}
 {% set i = data['reason_index'] %}
 {% set calcReason = data['calc_details'][i]['calc_reason'] | default("value missing", true) %}
 {% set performDate = data['calc_details'][i]['perform_date'] %}

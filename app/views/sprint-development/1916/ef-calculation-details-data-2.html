@@ -5,7 +5,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {# ////// VARIABLES ////// #}
-{# {% set change_reason = data['reason'] %} #}
+{# {% set calcReason = data['calc_reason'] %} #}
 {% set i = data['reason_index'] %}
 {% set calcReason = data['calc_details'][i]['calc_reason'] | default("value missing", true) %}
 {% set performDate = data['calc_details'][i]['perform_date'] %}
@@ -23,7 +23,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% set annualPensionContrib = data['calc_details'][i]['annual_pension_contrib'] %}
 {% set pensionInfoSource = data['calc_details'][i]['pension_info_source'] %}
 {% set incomeInfoSource = data['calc_details'][i]['income_info_source'] %}
-{% set annualGrossIncome1 = data['calc_details'][i]['annual_gross_income_1'] %}
+
 {% set weeklyGrossIncome = data['calc_details'][i]['weekly_gross_income'] %}
 {% set taxYear = data['calc_details'][i]['tax_year_hmrc'] %}
 {% set annualGrossIncome = data['calc_details'][i]['annual_gross_income'] %}
