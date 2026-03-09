@@ -25,19 +25,19 @@
 
       <h3 class="govuk-heading-s">Page:</h3>
       <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
-        <li>
+        {# <li>
           <a href="ef-calculation-details?calcReason={{ calcReason }}">
           Calculation details
         </a>
-        </li>
+        </li> #}
         <li>
-          <a href="ef-calculations-data">
-          Calculation summary -- using stored data
+          <a href="ef-calculations-data?reason_index=0">
+          Calculation summary
         </a>
         </li>
         <li>
           <a href="ef-calculation-details-data?reason_index=0">
-          Calculation details -- using stored data. Reason:  {{ calcReason }}
+          Calculation details
         </a>
         </li>
         
