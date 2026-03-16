@@ -1,4 +1,4 @@
-{% extends "layouts/internal-service.html" %}
+{% extends "layouts/internal-service" %}
 
 {% set pageName = "Home" %}
 {% block content %}
@@ -6,64 +6,38 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-
-      <h1 class="govuk-heading-l">
-      VPF prototype
+      <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-0">
+      Prototype
     </h1>
+      <span class="govuk-caption-xl govuk-!-margin-bottom-5">As in Live service (Sep 2025)</span>
 
+      <p class="govuk-!-margin-bottom-0">
+        <a href="sprint-development/sept-2025/ef-finances" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+          Start now
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+          </svg>
+        </a>
+      </p>
+
+      <p>Start journey from 
+        <a href="sprint-development/sept-2025/ef-contact-summary">
+          CMS 2012 &mdash; Contact summary page</a>.
+      </p>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-l">
+      Design in progress
+    </h2>
       <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-        {# //////////////////////// #}
 
-        <div class="govuk-accordion__section">
-          <div class="govuk-accordion__section-header">
-            <h2 class="govuk-accordion__section-heading">
-              <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-          VPF live &mdash; since September 2025
-        </span>
-            </h2>
-          </div>
-          <div id="accordion-default-content-1" class="govuk-accordion__section-content">
-            <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
-              <li>
-                <a href="sprint-development/sept-2025/ef-finances.html">
-          Finances
-        </a>
-              </li>
-              <li>
-                <a href="sprint-development/sept-2025/ef-statements.html">
-          Statements
-        </a>
-              </li>
-              <li>
-                <a href="sprint-development/sept-2025/ef-payment-allocation.html">
-          Payment allocations
-        </a>
-              </li>
-              <li>
-                <a href="sprint-development/sept-2025/ef-payment-plan.html">
-          Payment plans
-        </a>
-              </li>
-              <li>
-                <a href="sprint-development/sept-2025/ef-case-information.html">
-          Case
-        </a>
-              </li>
-              <li>
-                <a href="sprint-development/sept-2025/ef-contact-summary.html">
-          CMS 2012 Contact summary
-        </a>
-              </li>
-            </ul>
-          </div>
-        </div>
         {# //////////////////////// #}
 
         <div class="govuk-accordion__section">
           <div class="govuk-accordion__section-header">
             <h2 class="govuk-accordion__section-heading">
               <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
-          VPF design in progress
+          VPF service improvements
         </span>
             </h2>
           </div>
@@ -76,28 +50,28 @@
               </li>
               <li>
                 <a href="sprint-development/1818/index">
-                  SAE-1818 &ndash; Finance -- A11y fix
+                  SAE-1818 &ndash; Finance &mdash; A11y fix
                 </a>
               </li>
               <li>
                 <a href="sprint-development/1820/index">
-                  SAE-1820 &ndash; Payment allocation -- A11y fix
+                  SAE-1820 &ndash; Payment allocation &mdash; A11y fix
                 </a>
               </li>
               <li>
                 <a href="sprint-development/1821/index">
-                  SAE-1821 &ndash; Statement -- A11y fix
+                  SAE-1821 &ndash; Statement &mdash; A11y fix
                 </a>
               </li>
 
               <li>
                 <a href="sprint-development/1822/index">
-                  SAE-1822 &ndash; Payment plan -- A11y fix
+                  SAE-1822 &ndash; Payment plan &mdash; A11y fix
                 </a>
               </li>
               <li>
                 <a href="sprint-development/1883/index">
-                  SAE-1883 &ndash; Finance -- A11y fix for 'total expected charges and debt' table 
+                  SAE-1883 &ndash; Finance &mdash; A11y fix for 'total expected charges and debt' table 
                 </a>
               </li>
             </ul>
@@ -108,7 +82,7 @@
           <div class="govuk-accordion__section-header">
             <h2 class="govuk-accordion__section-heading">
               <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-          Maintenance calculations -- in discovery
+          Maintenance calculations &mdash; in discovery
         </span>
             </h2>
           </div>
@@ -151,7 +125,7 @@
               </li>
               <li>
                 <a href="sprint-development/1916/index">
-                  SAE-1916 &ndash; Calc Details -- add Current Income and HMRC income
+                  SAE-1916 &ndash; Calc Details &mdash; add Current Income and HMRC income
                 </a>
               </li>
             </ul>
@@ -163,7 +137,7 @@
           <div class="govuk-accordion__section-header">
             <h2 class="govuk-accordion__section-heading">
               <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
-          Multicase finances -- in discovery
+          Multicase finances &mdash; in discovery
         </span>
             </h2>
           </div>
@@ -171,12 +145,12 @@
             <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
               <li>
                 <a href="sprint-development/1716/index">
-                  SEA-1716 -- Initial draft prototype based on UR round 18 triage for multicase
+                  SEA-1716 &mdash; Initial draft prototype based on UR round 18 triage for multicase
                 </a>
               </li>
               <li>
                 <a href="sprint-development/1824/index">
-                  SEA-1824 -- Design iteration based on UR round 21 triage for multicase
+                  SEA-1824 &mdash; Design iteration based on UR round 21 triage for multicase
                 </a>
               </li>
             </ul>
@@ -206,30 +180,79 @@
               </li>
               <li>
                 <a href="ur-rounds/round-22/ef-finances">
-                  Round-22a &mdash; Feb 2026 -- Single case
+                  Round-22a &mdash; Feb 2026 &mdash; Single case
                 </a>
               </li>
-                <li>
-                  <a href="ur-rounds/round-22b/multicase-case-dual-2">
-                    Round-22b &mdash; Feb 2026 -- Multicase
+              <li>
+                <a href="ur-rounds/round-22b/multicase-case-dual-2">
+                    Round-22b &mdash; Feb 2026 &mdash; Multicase
                   </a>
-                </li>
+              </li>
             </ul>
           </div>
         </div>
+        {# //////////////////////// #}
+        {# 
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+          Archived prototype
+        </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+            <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+              <li>
+                <a href="archive/ur-round">
+                  UR rounds archive
+                </a>
+              </li>
+              <li>
+                <a href="archive/iterations">
+                  Design iterations archive
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> #}
+
+        {# //////////////////////// #}
       </div>
 
-      <p class="govuk-!-margin-top-3">
+      <div class="govuk-inset-text">
         <a class="govuk-link" href="archive/index">
-        Archived history
+        Archived prototype pages
       </a>
-      </p>
-      <hr class="govuk-section-break govuk-section-break--visible">
-      <!--<p>
-  <a href="access/ef-v1-sign-in.html">
-      Access via web browser
-  </a>
-</p>-->
+      </div>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <div>
+        <h2 class="govuk-heading-l">
+          Design lab
+        </h2>
+        <p>The place where silly ideas inspire serious ones.</p>
+
+        <p>Open to all, no skills, no judgments, no questions asked.</p>
+        
+        <p>
+          Simply propose a design idea for VPF and see it prototyped by our interaction designer. Credited or anonymous is up to you. Contact our interaction designer</a> at 
+          <strong>asier.dequadra@engineering.digital.dwp.gov.uk</strong>
+        </p>
+        <p>
+          Ideas:
+        </p>
+      </div>
+      <div>
+        <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+          <li>
+            
+                  Currently empty <span style="font-size: 1.5em;">&#128556;</span>
+                
+          </li>
+        </ul>
+      </div>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
     </div>
   </div>
