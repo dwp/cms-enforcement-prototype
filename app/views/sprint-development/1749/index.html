@@ -1,0 +1,41 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+
+      {% include "includes/back-link.html" %}
+      <span class="govuk-caption-m govuk-!-margin-bottom-2">
+        <a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-1741'>SAE-1741</a>
+      </span>
+      <h1 class="govuk-heading-l">
+          Make table rows sortable by date
+      </h1>
+
+      <h2 class="govuk-heading-s">Description:</h2>
+
+      <p>Allow VPF table rows to be sorted by ascending or descencing date order. To be used in Statement, Payment plan, Payment allocation and Maintenance calc pages.</p>
+      <p>Pages: </p>
+
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          <a href="ef-statement-current-tables">
+                  Statement -- separate tables, one for each year, as in current Live
+                </a>
+        </li>
+        <li>
+
+          <a href="ef-statement-single-table">
+                  Statement -- join all years into a single table
+                </a>
+        </li>
+      </ul>
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+    </div>
+  </div>
+
+{% endblock %}
