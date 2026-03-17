@@ -42,6 +42,12 @@ a.navActive {
   border-bottom: 0px;
 }
 
+// MoJ button-menu
+// remove margin gap
+.moj-button-menu__wrapper > li {
+margin-bottom: 0px;
+}
+
 // Notification badge
 .moj-notification-badge {
   padding: 3px 8px 2px 8px;
