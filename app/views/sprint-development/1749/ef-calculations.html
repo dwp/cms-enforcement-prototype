@@ -65,8 +65,8 @@
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
             <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right" data-sort-type="Numeric" aria-sort="descending">Effective<br> from</th>
-            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
             <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
             <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly income (£)</th>
             <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly liability (£)</th>
             <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly charge (£)</th>
@@ -80,9 +80,9 @@
           <td class="govuk-table__cell">
             <a href="ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
           </td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="{{ data['calc_details'][loop.index0]['reason_index'] }}">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
