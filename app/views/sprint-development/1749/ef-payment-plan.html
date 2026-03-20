@@ -50,19 +50,19 @@
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-finances.html">Finances</a>
+              <a class="moj-primary-navigation__link" href="ef-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-statements.html">Statement</a>
+              <a class="moj-primary-navigation__link" href="ef-statements">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-allocation.html">Payment allocation</a>
+              <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="ef-payment-plan.html">Payment plan</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="ef-payment-plan">Payment plan</a>
             </li>
             <!--<li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-calculations-1.html">Calculations</a>
+              <a class="moj-primary-navigation__link" href="ef-calculations-1">Calculations</a>
             </li>-->
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="case">Case</a>
@@ -76,7 +76,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+  <h1 id="tableName" class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
     Payment plans
   </h1>
 
@@ -84,9 +84,8 @@
             Payments scheduled up to the next annual review and those from the past year.
            </p>
 
-
-      <table class="govuk-table" data-module="moj-sortable-table">
-        <caption class="govuk-table__caption govuk-table__caption--m">Recent and upcoming payments</caption>
+      <table class="govuk-table" data-module="moj-sortable-table" aria-describedby="tableName">
+        {# <caption class="govuk-table__caption govuk-table__caption--m">Recent and upcoming payments</caption> #}
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header schedule_date" data-sort-type="date" aria-sort="descending">Date</th>
