@@ -70,9 +70,9 @@
             <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
             <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
             <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
-            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly income (£)</th>
-            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly liability (£)</th>
-            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly charge (£)</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>charge<br>(£)</th>
           </th>
         </tr>
       </thead>
@@ -81,7 +81,7 @@
         {% for row in data['calc_details'] %}
         {% if (loop.index > 0) and (loop.index <= 23) %}
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">{{loop.index0}}
+            <td class="govuk-table__cell">
               <a href="ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
             </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
@@ -112,9 +112,9 @@
           <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
           <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
           <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
-          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly income (£)</th>
-          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly liability (£)</th>
-          <th scope="col" class="govuk-table__header govuk-!-text-align-right">* Weekly charge<br>(£)</th>
+          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
+          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
+          <th scope="col" class="govuk-table__header govuk-!-text-align-right">*&nbsp;Weekly<br>charge<br>(£)</th>
         </th>
       </tr>
     </thead>
@@ -123,7 +123,7 @@
       {% for row in data['calc_details'] %}
       {% if (loop.index > 23) and (loop.index < 29) %}
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">{{loop.index0}}
+          <td class="govuk-table__cell">
             <a href="ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
           </td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
@@ -154,9 +154,9 @@
         <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
         <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
         <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
-        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly income (£)</th>
-        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly liability (£)</th>
-        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly charge (£)</th>
+        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
+        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
+        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>charge<br>(£)</th>
       </th>
     </tr>
   </thead>
@@ -165,7 +165,7 @@
     {% for row in data['calc_details'] %}
      {% if (loop.index >= 29) %}
       <tr class="govuk-table__row">
-        <td class="govuk-table__cell">{{loop.index0}}
+        <td class="govuk-table__cell">
           <a href="ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
         </td>
         <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
