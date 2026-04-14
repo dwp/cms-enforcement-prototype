@@ -11,24 +11,34 @@
       <span class="govuk-caption-m govuk-!-margin-bottom-2">
         <a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-1979'>SAE-1979</a>
       </span>
-      <h1 class="govuk-heading-l">Page header - 'Skip to main content' link
+      <h1 class="govuk-heading-l">Page header - 'What's new' link and counter
       </h1>
 
       <h2 class="govuk-heading-s">Description:</h2>
 
-      <p>When the screen reader shows the ”Skip to main content" link, clicking it takes you to the Beta banner, case details and service navigation. It should skip them.</p>
+      <p>"What's new" link in the header is announced by screen reader in an unclear way, for example:
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+          <li>"Current page link what's new" if not visited</li>
 
-      <h3 class="govuk-heading-s">Page:</h3>
+          <li>"Current page visited link what's new" if visited</li>
+
+          <li>“Current page link three what’s new” if it has 3 updates for example
+
+        </li>
+      </ul>
+      <p>And the link is available to all VPF pages so “current page” is not helpful.</p>
+
+      <h3 class="govuk-heading-s">New design:</h3>
       <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
         <li>
           <a href="ef-finances">
-          Finances
-        </a>
+        Finances
+      </a>
         </li>
       </ul>
 
-      <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+        <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+      </div>
     </div>
-  </div>
 
-{% endblock %}
+  {% endblock %}
