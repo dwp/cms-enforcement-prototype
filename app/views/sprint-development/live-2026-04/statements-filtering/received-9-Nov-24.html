@@ -4,43 +4,16 @@
   Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+
 {% block header %}
   {% include "includes/ukic-components-source.html" %}
   {% from "internal-service-header/macro.njk" import dwpHeader %}
+  {% include "includes/dwp-internal-service-header" %}
 {% endblock %}
 
 {% block content %}
-<div class="govuk-phase-banner">
-  <p class="govuk-phase-banner__content">
-    <strong class="govuk-tag govuk-phase-banner__content__tag">
-      Beta
-    </strong>
-    <span class="govuk-phase-banner__text">
-      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="../ef-feedback.html">give your feedback (opens in new tab)</a>.
-    </span>
-  </p>
-</div>
-<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
-  <dl class="dwp-quick-reference__block">
-  <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-  <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
-  <dd class="dwp-quick-reference__status">
-    <strong class="govuk-tag govuk-tag--turquoise">
-      Paying parent
-    </strong>
-    <strong class="govuk-tag govuk-tag--blue">
-      Single case
-    </strong>
-    <strong class="govuk-tag govuk-tag--yellow">
-      Manual allocation
-    </strong>
-  </dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
-  <dd class="dwp-quick-reference__secondary">121323454232</dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
-  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
-  </dl>
-  </section>
+  {% include "includes/govuk-beta-banner" %}
+  {% include "includes/vpf/dwp-quick-reference-single-manual" %}
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
@@ -48,19 +21,22 @@
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-finances.html">Finances</a>
+              <a class="moj-primary-navigation__link" href="../ef-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="../ef-statements.html">Statement</a>
+              <a class="moj-primary-navigation__link" href="../ef-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-payment-allocation.html">Payment allocation</a>
+              <a class="moj-primary-navigation__link" href="../ef-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-payment-plan.html">Payment plan</a>
+              <a class="moj-primary-navigation__link" href="../ef-payment-plan">Payment plan</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="../ef-case-information.html">Case</a>
+              <a class="moj-primary-navigation__link" href="../ef-calculations">Calculations</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="../ef-case">Case</a>
             </li>
           </ul>
         </nav>
@@ -68,7 +44,9 @@
     </div>
   </div>
 
-  {% include "includes/back-link.html" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {% include "includes/back-link.html" %}
 
 <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
   Payment allocation
