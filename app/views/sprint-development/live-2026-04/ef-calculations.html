@@ -82,7 +82,7 @@
         {% if (loop.index > 0) and (loop.index <= 23) %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a href="ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+              <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
             </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
@@ -119,12 +119,11 @@
       </tr>
     </thead>
     <tbody class="govuk-table__body">
-
       {% for row in data['calc_details'] %}
       {% if (loop.index > 23) and (loop.index < 29) %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+            <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
           </td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
@@ -166,7 +165,7 @@
      {% if (loop.index >= 29) %}
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
-          <a href="ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+          <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
         </td>
         <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
         <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
