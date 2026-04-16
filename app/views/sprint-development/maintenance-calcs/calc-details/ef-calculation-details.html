@@ -197,7 +197,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
               <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
-Assessable income details</h2>
+                Assessable income details</h2>
             </div>
             <div class="govuk-summary-card__content">
 
@@ -290,7 +290,7 @@ Assessable income details</h2>
                   Name
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  {{ data['calc_details'][calcReasonIndex]['qualifying_children'][0]['child_name'] }}
+                  {{ data['calc_details'][calcReasonIndex]['qualifying_children'][loop.index0]['child_name'] }}
                 </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -298,7 +298,7 @@ Assessable income details</h2>
                   Date of birth
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  {{ data['calc_details'][calcReasonIndex]['qualifying_children'][0]['dob'] }}
+                  {{ data['calc_details'][calcReasonIndex]['qualifying_children'][loop.index0]['dob'] }}
                 </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -306,7 +306,7 @@ Assessable income details</h2>
                   Overnight stays
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  {{ data['calc_details'][calcReasonIndex]['qualifying_children'][0]['overnight_stays'] }} night per week
+                  {{ data['calc_details'][calcReasonIndex]['qualifying_children'][loop.index0]['overnight_stays'] }} night per week
                 </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -314,7 +314,7 @@ Assessable income details</h2>
                   Local authority stays
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  {{ data['calc_details'][calcReasonIndex]['qualifying_children'][0]['local_auth_stays'] }} night per week
+                  {{ data['calc_details'][calcReasonIndex]['qualifying_children'][loop.index0]['local_auth_stays'] }} night per week
                 </dd>
                 </div>
               </dl>
