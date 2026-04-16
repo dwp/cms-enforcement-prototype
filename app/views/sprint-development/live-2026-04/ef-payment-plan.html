@@ -10,7 +10,7 @@
 
 {% endblock %}
 
-{% block content %}
+{% block beforeContent %}
 <div class="govuk-phase-banner">
   <p class="govuk-phase-banner__content">
     <strong class="govuk-tag govuk-phase-banner__content__tag">
@@ -75,6 +75,8 @@
 
 
 
+{% endblock %}
+{% block content %}
   <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
     Payment plans
   </h1>
@@ -112,10 +114,11 @@
         </div>
       </div> -->
     
-      <table class="govuk-table">
+      <table class="govuk-table" data-module="moj-sortable-table" aria-labelled="tableName">
+        {# <caption class="govuk-table__caption govuk-table__caption--m">Recent and upcoming payments</caption> #}
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header schedule_date">Collection</th>
+            <th scope="col" class="govuk-table__header schedule_date" data-sort-type="date" aria-sort="descending">Date</th>
             <th scope="col" class="govuk-table__header">Version</th>
             <th scope="col" class="govuk-table__header schedule_method">Method</th>
             <th scope="col" class="govuk-table__header schedule_due">Due (£)</th>
@@ -124,348 +127,358 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-          
+
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Oct 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-10-19">19 Oct 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-oct-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-oct-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Sep 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-09-19">19 Sep 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-sep-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-sep-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Aug 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-08-19">19 Aug 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-aug-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-aug-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Jul 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-07-19">19 Jul 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-jul-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jul-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Jun 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-06-19">19 Jun 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-jun-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jun-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 May 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-05-19">19 May 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-may-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-may-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Apr 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-04-19">19 Apr 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-apr-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-apr-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Mar 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-03-19">19 Mar 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-mar-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-mar-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Feb 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-02-19">19 Feb 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-feb-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-feb-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Jan 2025</td>
+            <td class="govuk-table__cell" data-sort-value="2025-01-19">19 Jan 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-jan-25">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jan-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Dec 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-12-19">19 Dec 2024</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="payment-plan-expected/ef-pp-19-dec-24">106.65</a></td>
-            <td class="govuk-table__cell schedule_paid"></td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-dec-24">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
-  
+
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">27 Sep 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-09-27">27 Sep 2024</td>
             <td class="govuk-table__cell">11</td>
             <td class="govuk-table__cell">Direct pay</td>
             <td class="govuk-table__cell">17.65</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">20 Sep 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-09-20">20 Sep 2024</td>
             <td class="govuk-table__cell">11</td>
             <td class="govuk-table__cell">Direct pay</td>
             <td class="govuk-table__cell">17.65</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">13 Sep 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-09-13">13 Sep 2024</td>
             <td class="govuk-table__cell">11</td>
             <td class="govuk-table__cell">Direct pay</td>
             <td class="govuk-table__cell">17.65</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">06 Sep 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-09-06">6 Sep 2024</td>
             <td class="govuk-table__cell">11</td>
             <td class="govuk-table__cell">Direct pay</td>
             <td class="govuk-table__cell">17.65</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">30 Aug 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-08-30">30 Aug 2024</td>
             <td class="govuk-table__cell">11</td>
             <td class="govuk-table__cell">Direct pay</td>
             <td class="govuk-table__cell">17.65</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <!-- Removed due to API limitations -->
           <!--
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">23 Aug 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">23 Aug 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">16 Aug 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">16 Aug 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">09 Aug 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">09 Aug 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">02 Aug 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">02 Aug 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">26 Jul 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">26 Jul 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Jul 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">19 Jul 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">12 Jul 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">12 Jul 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">05 Jul 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">05 Jul 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">28 Jun 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">28 Jun 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">21 Jun 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">21 Jun 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">14 Jun 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">14 Jun 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">07 Jun 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">07 Jun 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">31 May 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">31 May 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">24 May 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">24 May 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">17 May 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">17 May 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">10 May 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">10 May 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">03 May 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">03 May 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">26 Apr 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">26 Apr 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Apr 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">19 Apr 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">12 Apr 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">12 Apr 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">05 Apr 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">05 Apr 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">29 Mar 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">29 Mar 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">22 Mar 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">22 Mar 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">15 Mar 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">15 Mar 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">08 Mar 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">08 Mar 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">01 Mar 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">01 Mar 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">23 Feb 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">23 Feb 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">16 Feb 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">16 Feb 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">09 Feb 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">09 Feb 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">02 Feb 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">02 Feb 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">26 Jan 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">26 Jan 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">19 Jan 2024</td>
+            <td class="govuk-table__cell" data-sort-value="2024-11-22">19 Jan 2024</td>
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">Direct pay</td>
-            <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell schedule_paid">0</td>
+            <td class="govuk-table__cell">0.00</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>-->
-  
-  
+
         </tbody>
       </table>
     </div>
