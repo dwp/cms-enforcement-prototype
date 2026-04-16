@@ -1,4 +1,4 @@
-{% extends "layouts/old-main.html" %}
+{% extends "layouts/internal-service" %}
 
 {# {% block pageTitle %}
   Finances – {{ serviceName }} – GOV.UK Prototype Kit
@@ -9,7 +9,8 @@
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
 
-{% block content %}
+{% block beforeContent %}
+
   <div class="govuk-phase-banner">
     <p class="govuk-phase-banner__content">
       <strong class="govuk-tag govuk-phase-banner__content__tag">
@@ -61,9 +62,9 @@
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="ef-payment-plan.html">Payment plan</a>
             </li>
-            <!--<li class="moj-primary-navigation__item">
+            <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="ef-calculations-1.html">Calculations</a>
-            </li>-->
+            </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="case">Case</a>
             </li>
@@ -72,6 +73,8 @@
       </div>
     </div>
   </div>
+{% endblock %}
+{% block content %}
 
   <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
     Finances
