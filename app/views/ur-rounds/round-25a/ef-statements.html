@@ -1,5 +1,9 @@
 {% extends "layouts/internal-service.html" %}
 
+{# ////// VARIABLES ////// #}
+{% set financeSummary = data['finance_summary'] %}
+{# ////// VARIABLES ////// #}
+
 {% block pageTitle %}
   Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
@@ -84,6 +88,7 @@
        </span>
       </p>
     </div>
+    {% if financeSummary == 'yes' %}
     <div class="govuk-grid-column-full">
       <div class="ef-card">
         <div class="dfe-title-i8">
@@ -114,6 +119,7 @@
           </article>
         </div>
       </div>
+      {% endif %}
 
       <div class="govuk-grid-column-full">
         <div class="moj-button-group moj-button-group--inline">
