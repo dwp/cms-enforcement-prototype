@@ -1,5 +1,43 @@
 {% extends "layouts/internal-service.html" %}
 
+{# ////// VARIABLES ////// #}
+{# Note: make sure raw data does not contain commas #}
+{# Fallback to '0' if the data path is missing, undefined, or empty #}
+
+{% set overpaymentsCM = data['finances']['overpayments_child_maintenance'] | default('0', true) %}
+{% set overpaymentsCD = data['finances']['overpayments_charges_debt'] | default('0', true) %}
+{% set cashBalance = data['finances']['cash_balance'] | default('0', true) %}
+{% set operpaymentsTotal = ((overpaymentsCM * 1) + (overpaymentsCD * 1) + (cashBalance * 1)) %}
+{% set paymentsMadeCM = data['finances']['payments_made_child_maintenance'] | default('0', true) %}
+{% set paymentsMadeCD = data['finances']['payments_made_charges_debt'] | default('0', true) %}
+{% set paymentsMadeTotal = ((paymentsMadeCM * 1) + (paymentsMadeCD * 1)) %}
+{% set writtenOff = data['finances']['written_off'] | default('0', true) %}
+{% set expectedCM = data['finances']['expected_child_maintenance'] | default('0', true) %}
+{% set expectedCollCharges = data['finances']['expected_collection_charges'] | default('0', true) %}
+
+{% set regularDeductionOrder = data['finances']['regular_deduction_order'] | default('0', true) %}
+{% set lumpSumDeductionOrder = data['finances']['lump_sum_deduction_order'] | default('0', true) %}
+{% set liabilityOrder = data['finances']['liability-order'] | default('0', true) %}
+{% set deductionEarningsOrder = data['finances']['deduction_from_earnings_order'] | default('0', true) %}
+{% set expectedEnfCharges = ((regularDeductionOrder * 1) + (lumpSumDeductionOrder * 1) + (liabilityOrder * 1) + (deductionEarningsOrder * 1)) %}
+{% set expectedEnforcementCost = data['finances']['expected_enforcement_cost'] | default('0', true) %}
+{% set expectedCSADebt = data['finances']['expected_CSA_debt'] | default('0', true) %}
+{% set expectedDNACost = data['finances']['expected_DNA_debt'] | default('0', true) %}
+{% set expectedSubjectAccessRequestCost = data['finances']['expected_subject_access_request_cost'] | default('0', true) %}
+{% set expectedInterest = data['finances']['expected_interest'] | default('0', true) %}
+{% set expectedFees = data['finances']['expected_fees'] | default('0', true) %}
+{% set expectedJudRevCost = data['finances']['expected_judicial_review_cost'] | default('0', true) %}
+{% set expectedAppealCost = data['finances']['expected_appeal_cost'] | default('0', true) %}
+{% set expectedCMSAdminCost = data['finances']['expected_cms_admin_cost'] | default('0', true) %}
+{% set expectedLiabOrderCost = data['finances']['expected_liability_order_cost'] | default('0', true) %}
+{% set expectedCD = ((expectedCollCharges * 1) + (expectedEnfCharges * 1) + (expectedEnforcementCost * 1) + (expectedCSADebt * 1) + ( expectedDNACost * 1) + ( expectedSubjectAccessRequestCost * 1) + ( expectedInterest * 1) + ( expectedFees * 1) + ( expectedJudRevCost * 1) + ( expectedAppealCost * 1) + ( expectedCMSAdminCost * 1) + ( expectedLiabOrderCost * 1)) %}
+{% set expectedTotal = ((expectedCM * 1) + (expectedCD * 1)) %}
+{% set stillOwedCM = ((expectedCM * 1) - (paymentsMadeCM * 1))  %}
+{% set stillOwedCD = ((expectedCD * 1) - (paymentsMadeCD * 1))  %}
+{% set stillOwedTotal = ((stillOwedCM * 1) + (stillOwedCD * 1)) %}
+
+{# ////// END VARIABLES  ////// #}
+
 {% block pageTitle %}
   Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
@@ -93,24 +131,24 @@
           <article class="moj-ticket-panel-trio-v2" aria-label="key amounts">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <h3 class="govuk-body">Money still owed</h3>
-              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£34,921.80</p>
+              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£{{ stillOwedTotal | currency }}</p>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 2">
               <h3 class="govuk-body">Payments made</h3>
-              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£4,213.30</p>
+              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£{{ paymentsMadeTotal | currency }}</p>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 3">
               <h3 class="govuk-body">Total expected</h3>
-              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£34,921.80</p>
+              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£{{ expectedTotal | currency }}</p>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 4">
               <h3 class="govuk-body">Amount written off</h3>
-              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£19.34</p>
+              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£{{ writtenOff | currency }}</p>
             </section>
-            <!--<section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 5">
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 5">
             <h3 class="govuk-body">Overpayments</h3>
-            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">25.43</p>
-          </section>-->
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£{{ operpaymentsTotal | currency }}</p>
+          </section>
           </article>
         </div>
       </div>
@@ -149,14 +187,14 @@
            <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">14.57</td>
-           <td class="govuk-table__cell statement_end">-307.57</td>
+           <td class="govuk-table__cell statement_end">-{{ stillOwedTotal | currency }}</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">22 Nov 2024</td>
            <td class="govuk-table__cell_last">Child maintenance due </td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">72.54</td>
-           <td class="govuk-table__cell statement_end">-293.00</td>
+           <td class="govuk-table__cell statement_end">-2,293.00</td>
            
          </tr>
          <tr class="govuk-table__row">
@@ -164,7 +202,7 @@
            <td class="govuk-table__cell_last">Payment received from you - DDR</td>
            <td class="govuk-table__cell statement_amount"><a class="govuk-link" href="statements-filtering/credits-19-Nov-24">24.61</a></td>
            <td class="govuk-table__cell statement_amount"></td>
-           <td class="govuk-table__cell statement_end">-220.46</td>
+           <td class="govuk-table__cell statement_end">-2,220.46</td>
            
          </tr>
          <tr class="govuk-table__row">
@@ -172,14 +210,14 @@
            <td class="govuk-table__cell_last">Payment received from you - DDR</td>
            <td class="govuk-table__cell statement_amount"><a class="govuk-link" href="statements-filtering/credits-9-nov-24">73.84</a></td>
            <td class="govuk-table__cell statement_amount"></td>
-           <td class="govuk-table__cell statement_end">-245.07</td>
+           <td class="govuk-table__cell statement_end">-2,245.07</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">22 Oct 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">10.81</td>
-           <td class="govuk-table__cell statement_end">-318.91</td>
+           <td class="govuk-table__cell statement_end">-2,318.91</td>
            
          </tr>
          <tr class="govuk-table__row">
@@ -187,7 +225,7 @@
            <td class="govuk-table__cell_last">Child maintenance due </td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">53.82</td>
-           <td class="govuk-table__cell statement_end">-308.10</td>
+           <td class="govuk-table__cell statement_end">-2,308.10</td>
            
          </tr>
          <tr class="govuk-table__row">
@@ -195,98 +233,105 @@
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">3.29</td>
-           <td class="govuk-table__cell statement_end">-254.28</td>
+           <td class="govuk-table__cell statement_end">-2,254.28</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">3.29</td>
-           <td class="govuk-table__cell statement_end">-250.99</td>
+           <td class="govuk-table__cell statement_end">-2,250.99</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">3.29</td>
-           <td class="govuk-table__cell statement_end">-247.70</td>
+           <td class="govuk-table__cell statement_end">-2,247.70</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">3.29</td>
-           <td class="govuk-table__cell statement_end">-244.41</td>
+           <td class="govuk-table__cell statement_end">-2,244.41</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">3.29</td>
-           <td class="govuk-table__cell statement_end">-241.12</td>
+           <td class="govuk-table__cell statement_end">-2,241.12</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">1.41</td>
-           <td class="govuk-table__cell statement_end">-237.83</td>
+           <td class="govuk-table__cell statement_end">-2,237.83</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">2.04</td>
-           <td class="govuk-table__cell statement_end">-236.42</td>
+           <td class="govuk-table__cell statement_end">-2,236.42</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">0.09</td>
-           <td class="govuk-table__cell statement_end">-234.38</td> 
+           <td class="govuk-table__cell statement_end">-2,234.38</td> 
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">3.53</td>
-           <td class="govuk-table__cell statement_end">-216.64</td>
+           <td class="govuk-table__cell statement_end">-2,216.64</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">3.53</td>
-           <td class="govuk-table__cell statement_end">-195.46</td>
+           <td class="govuk-table__cell statement_end">-2,195.46</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">3.53</td>
-           <td class="govuk-table__cell statement_end">-174.28</td>
+           <td class="govuk-table__cell statement_end">-2,174.28</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Collect and pay fee added</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">3.53</td>
-           <td class="govuk-table__cell statement_end">-153.10</td>
+           <td class="govuk-table__cell statement_end">-2,153.10</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">Unpaid direct pay payment</td>
            <td class="govuk-table__cell statement_amount">-88.25</td>
            <td class="govuk-table__cell statement_amount"></td>
-           <td class="govuk-table__cell statement_end">-220.17</td>
+           <td class="govuk-table__cell statement_end">-2,220.17</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">30 Sep 2024</td>
            <td class="govuk-table__cell_last">DEO enforcement charge due</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_amount">50.00</td>
-           <td class="govuk-table__cell statement_end">-131.92</td>
+           <td class="govuk-table__cell statement_end">-2,131.92</td>
+         </tr>
+                  <tr class="govuk-table__row">
+           <td class="govuk-table__cell">29 Sep 2024</td>
+           <td class="govuk-table__cell_last">Direct pay amount adjusted</td>
+           <td class="govuk-table__cell statement_amount"></td>
+           <td class="govuk-table__cell statement_amount">2,017.60</td>
+           <td class="govuk-table__cell statement_end">-2,099.52</td>
          </tr>
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">29 Sep 2024</td>

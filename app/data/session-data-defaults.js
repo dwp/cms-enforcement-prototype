@@ -26,6 +26,33 @@ module.exports = {
 
   // Insert values here
 
+  'finances': {
+      'still_owed_child_maintenance': '31545.95',
+      'still_owed_charges_debt': '3375.85',
+      'overpayments_child_maintenance': '0',
+      'overpayments_charges_debt': '0',
+      'cash_balance': '30.61',
+      'payments_made_child_maintenance': '1113.20',
+      'payments_made_charges_debt': '1739.39',
+      'written_off': '0',
+      'expected_child_maintenance': '1206.34',
+      'expected_collection_charges': '3075.85',
+      'expected_enforcement_charges': '300.00',
+      'regular_deduction_order': '21.00',
+      'lump_sum_deduction_order': '100.00',
+      'liability-order': '150.00',
+      'deduction_from_earnings_order': '30.00',
+      'expected_enforcement_cost': '122.41',
+      'expected_CSA_debt': '63.45',
+      'expected_DNA_debt': '87.23',
+      'expected_subject_access_request_cost': '19.00',
+      'expected_interest': '30.67',
+      'expected_fees': '22.87',
+      'expected_judicial_review_cost': '107.89',
+      'expected_appeal_cost': '43.45',
+      'expected_cms_admin_cost': '26.00',
+      'expected_liability_order_cost': '54.00'
+    },
   'calc_details': [
     {
       'reason_index': '0',
@@ -1144,7 +1171,7 @@ module.exports = {
           'local_auth_stays': '0'
         }
       ]
-    },{
+    }, {
       'reason_index': '28',
       'calc_reason': 'Income increased',
       'perform_date': '28 Nov 14',

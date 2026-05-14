@@ -1,199 +1,195 @@
 {% extends "layouts/internal-service.html" %}
 
-{% set pageName="Home" %}
+{% set pageName = "Home" %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
-    <a onclick="history.back()" class="govuk-back-link">Back</a>
-    <h1 class="govuk-heading-xl">
-      Archive
-    </h1>
-
-    <h2 class="govuk-heading-l">
-      Design iterations
-    </h2>
-    <h3>Iteration 10</h3>
-    <ul class="govuk-list"><li>
-        <a href="iteration-10/ef-calculations-2.html">
-          Maintenance calculations 2 &mdash; perform date column
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+      <a onclick="history.back()" class="govuk-back-link">Back</a>
+      <h1 class="govuk-heading-l">
+        Archive
+      </h1>
+      <h2 class="govuk-heading-m">
+        Design iterations
+      </h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="iteration-10/ef-calculations-2.html">
+          Design iteration 10 &mdash; Maint calc 2 &ndash; perform date column
         </a>
-      </li>
-      <li>
-        <a href="iteration-10/ef-calculations-3.html">
-          Maintenance calculations 3 &mdash; suffix "(adjusted)"
+        </li>
+        <li>
+          <a href="iteration-10/ef-calculations-3.html">
+          Design iteration 10 &mdash; Maint calc 3 &ndash; suffix "(adjusted)"
         </a>
-      </li>
-      <li>
-        <a href="iteration-10/ef-calculations-4.html">
-          Maintenance calculations 4 &mdash; tag "adjusted"
+        </li>
+        <li>
+          <a href="iteration-10/ef-calculations-4.html">
+          Design iteration 10 &mdash; Maint calc 4 &ndash; tag "adjusted"
         </a>
-      </li>
-      <li>
-        <a href="iteration-10/ef-calculations-5.html">
-          Maintenance calculations 5 &mdash; visual marker
+        </li>
+        <li>
+          <a href="iteration-10/ef-calculations-5.html">
+          Design iteration 10 &mdash; Maint calc 5 &ndash; visual marker
         </a>
-      </li>
-    </ul>
-      
-    <h3>Iteration 9</h3>
-    <p>
-      <a href="iteration-9/refunds/ef-finances.html">
-        Design iteration 9
-      </a>
-    </p>
-    <h3>Iteration 8</h3>
-    <p>
-      <a href="iteration-8/v1/ef-finances.html">
+        </li>
+        <li>
+          <a href="iteration-9/refunds/ef-finances.html">
+          Design iteration 9
+        </a>
+        </li>
+        <li>
+          <a href="iteration-8/v1/ef-finances.html">
         Design iteration 8
       </a>
-    </p>
-    <h3>Iteration 7</h3>
-    <p>
-      <a href="iteration-7/v1/ef-v7-case-information.html">
+        </li>
+        <li>
+          <a href="iteration-7/v1/ef-v7-case-information.html">
         Design iteration 7 &mdash; Version 1 : 25 September 2024
       </a>
-    </p>
-    <p>
-      <a href="iteration-7/v2/ef-v7-case-information.html">
+        </li>
+        <li>
+          <a href="iteration-7/v2/ef-v7-case-information.html">
         Design iteration 7 &mdash; Version 2
       </a>
-    </p>
-    <h3>Iteration 6</h3>
-    <p>
-      <a href="iteration-6/ef-v6-case-overview-wholecase.html">
+        </li>
+        <li>
+          <a href="iteration-6/ef-v6-case-overview-wholecase.html">
         Design iteration 6 : September 2024
       </a>
-    </p>
+        </li>
 
-    <h3>Iteration 5</h3>
-    <p>
-      <a href="iteration-5/v1/ef-v5-case-overview-wholecase.html">
+        <li>
+          <a href="iteration-5/v1/ef-v5-case-overview-wholecase.html">
         Design iteration 5 &mdash; Version 1 : 19 August 2024
       </a>
-    </p>
-    <p>
-      <a href="iteration-5/v2/ef-v5-case-overview-wholecase.html">
+        </li>
+        <li>
+          <a href="iteration-5/v2/ef-v5-case-overview-wholecase.html">
         Design iteration 5 &mdash; Version 2
       </a>
-    </p>
-
-    <h3>Iteration 4</h3>
-    <p>
-      <a href="v1/ef-v1-case-overview-wholecase.html">
+        </li>
+        <li>
+          <a href="v1/ef-v1-case-overview-wholecase.html">
         Design iteration 4 &mdash; Version 1 : August 2024 &mdash; HEROKU TEST
       </a>
-    </p>
-    <p>
-      <a href="v2/ef-v2-timeframe.html">
+        </li>
+        <li>
+          <a href="v2/ef-v2-timeframe.html">
         Design iteration 4 &mdash; Version 2
       </a>
-    </p>
+        </li>
+      </ul>
 
-    <h2>sprint-developments</h2>
-
-    <p>
-      <a href="sprint-development/sprint-41/ef-finances.html">
+      <h2 class="govuk-heading-m">Sprint developments</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="sprint-development/sprint-41/ef-finances.html">
         sprint-41 &mdash; 30th June 2025
       </a>
-    </p>
+        </li>
 
-    <p>
-      <a href="sprint-development/sprint-40/no-plan/ef-payment-plan.html">
+        <li>
+          <a href="sprint-development/sprint-40/no-plan/ef-payment-plan.html">
         sprint-40 (No payment plan availible) &mdash; 2nd June 2025
       </a>
-    </p>
-    <p>
-      <a href="sprint-development/sprint-40/ef-finances.html">
+        </li>
+        <li>
+          <a href="sprint-development/sprint-40/ef-finances.html">
         sprint-40 &mdash; 2nd June 2025
       </a>
-    </p>
-    <!--<p>
+        </li>
+        <!--<li>
   <a href="sprint-development/sprint-38-multiple/ef-finances.html">
       sprint-38-multiple payment schedules
   </a>
-</p>-->
-    <!--<p>
+</li>-->
+        <!--<li>
   <a href="sprint-development/sprinsprint-38-no-plan/ef-payment-plan.html">
       sprint-38-(No payment plan)
   </a>
-</p>-->
-    <p>
-      <a href="sprint-development/sprint-39/ef-finances.html">
+</li>-->
+        <li>
+          <a href="sprint-development/sprint-39/ef-finances.html">
         sprint-39 &mdash; March 2025
       </a>
-    </p>
+        </li>
 
-    <p>
-      <a href="sprint-development/sprint-38/ef-finances.html">
+        <li>
+          <a href="sprint-development/sprint-38/ef-finances.html">
         sprint-38 &mdash; January 2025
       </a>
-    </p>
+        </li>
 
-    <p>
-      <a href="sprint-development/sprint-37/ef-finances.html">
+        <li>
+          <a href="sprint-development/sprint-37/ef-finances.html">
         sprint-37
       </a>
-    </p>
-
-    <h3>UR rounds</h3>
-        <p>
-      <a href="ur-rounds/round-22/ef-finances">
+        </li>
+      </ul>
+      <h2 class="govuk-heading-m">UR rounds</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="ur-rounds/round-22/ef-finances">
         Round-22a &mdash; Feb 2026 &mdash; Single case
       </a>
-    </p>
-    <p>
-      <a href="ur-rounds/round-22b/multicase-case-dual-2">
+        </li>
+        <li>
+          <a href="ur-rounds/round-22b/multicase-case-dual-2">
           Round-22b &mdash; Feb 2026 &mdash; Multicase
         </a>
-    </p>
-    <p>
-      <a href="ur-rounds/round-12/ef-contact-summary.html">
-        round-12
+        </li>
+        <li>
+          <a href="ur-rounds/round-12/ef-contact-summary.html">
+        Round-12
       </a>
-    </p>
-    <p>
-      <a href="ur-rounds/round-11/ef-contact-summary.html">
-        round-11 &mdash; January 2025
+        </li>
+        <li>
+          <a href="ur-rounds/round-11/ef-contact-summary.html">
+        Round-11 &mdash; January 2025
       </a>
-    </p>
-    <p>
-      <a href="ur-rounds/round-10/multiple-payments/ef-payment-plan.html">
+        </li>
+        <li>
+          <a href="ur-rounds/round-10/multiple-payments/ef-payment-plan.html">
         Multiple methods of payment
       </a>
-    </p>
-    <p>
-      <a href="ur-rounds/round-10/ef-contact-summary.html">
-        round-10 &mdash; December 2024
+        </li>
+        <li>
+          <a href="ur-rounds/round-10/ef-contact-summary.html">
+        Round-10 &mdash; December 2024
       </a>
-    </p>
-    <p>
-      <a href="mvp/refunds/ef-finances.html">
-        round-9
+        </li>
+        <li>
+          <a href="mvp/refunds/ef-finances.html">
+        Round-9
       </a>
-    </p>
+        </li>
 
-    <h3>How do you find our service?</h3>
-    <p>
-      <a href="access/ef-v1-sign-in.html">
+      </ul>
+      <h2 class="govuk-heading-m">How do you find our service?</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="access/ef-v1-sign-in.html">
         CMS 2012 to browser window
       </a>
-    </p>
-    <!--<p>
+        </li>
+        <!--<li>
   <a href="access/ef-v1-sign-in.html">
       Access via web browser
   </a>
-</p>-->
-    <p>
-      <a href="access/ef-v1-cms-contact-summary.html">
-        CMS 2012 : Contact summary to browser window.....
+</li>-->
+        <li>
+          <a href="access/ef-v1-cms-contact-summary.html">
+        CMS 2012 : Contact summary to browser window
       </a>
-    </p>
-    <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}--->
+        </li>
+
+      </ul>
+      <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+    </div>
   </div>
-</div>
 
 {% endblock %}
