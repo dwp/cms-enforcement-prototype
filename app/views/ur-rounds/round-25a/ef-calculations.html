@@ -1,5 +1,9 @@
 {% extends "layouts/internal-service.html" %}
 
+{# ////// VARIABLES ////// #}
+{% set performDateColumn = '2' %}
+{# ////// VARIABLES ////// #}
+
 {% block pageTitle %}
   Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
@@ -60,76 +64,45 @@
 
       <table class="govuk-table">
         <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-0">Calculation details<br>
-        <p class="govuk-!-margin-bottom-0">Select a calculation reason to view more details about how it affects the case.</br>Calculations with the same perform date may be caused by a backdated change. See CMS2012 to confirm.</p>
-     </caption>
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
-            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
-            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
+          <p class="govuk-!-margin-bottom-0">Select a calculation reason to view more details about how it affects the case.</br>Calculations with the same perform date may be caused by a backdated change. See CMS2012 to confirm.</p>
+      </caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+          {% if performDateColumn == "2" %}
             <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
-            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
-            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
-            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>charge<br>(£)</th>
-          </th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
+          {% endif %}
+          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
+          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
+          {% if performDateColumn == "4" %}
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+          {% endif %}
+          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
+          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
+          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>charge<br>(£)</th>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
 
-        {% for row in data['calc_details'] %}
+      {% for row in data['calc_details'] %}
         {% if (loop.index > 0) and (loop.index <= 23) %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
               <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
             </td>
+            {% if performDateColumn == "2" %}
+              <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+            {% endif %}
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+            {% if performDateColumn == "4" %}
+              <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+            {% endif %}
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
           </tr>
-          {% endif %}
-        {% endfor %}
-
-      </tbody>
-    </table>
-
-  </div>
-
-  {# ======================== BEFORE 2016 ======================== #}
-
-  <div class="govuk-grid-column-full">
-    <table class="govuk-table">
-      <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculations from August 2014 to December 2016<br>
-        <span class="govuk-body">* Weekly charges may not match the service type. See in CMS 2012 for details.</span>
-      </caption>
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
-          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
-          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
-          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
-          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
-          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
-          <th scope="col" class="govuk-table__header govuk-!-text-align-right">*&nbsp;Weekly<br>charge<br>(£)</th>
-        </th>
-      </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-      {% for row in data['calc_details'] %}
-      {% if (loop.index > 23) and (loop.index < 29) %}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
-          </td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
-        </tr>
         {% endif %}
       {% endfor %}
 
@@ -138,46 +111,106 @@
 
 </div>
 
-{# ======================== BEFORE 2014 ======================== #}
+{# ======================== BEFORE 2016 ======================== #}
 
 <div class="govuk-grid-column-full">
   <table class="govuk-table">
-    <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculations before August 2014<br>
-      <span class="govuk-body">No charges were applied before August 2014.</span>
+    <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculations from August 2014 to December 2016<br>
+      <span class="govuk-body">* Weekly charges may not match the service type. See in CMS 2012 for details.</span>
     </caption>
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+        {% if performDateColumn == "2" %}
+          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+        {% endif %}
         <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
         <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
-        <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+        {% if performDateColumn == "4" %}
+          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+        {% endif %}
         <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
         <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
-        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>charge<br>(£)</th>
+        <th scope="col" class="govuk-table__header govuk-!-text-align-right">*&nbsp;Weekly<br>charge<br>(£)</th>
       </th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-
     {% for row in data['calc_details'] %}
-     {% if (loop.index >= 29) %}
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell">
-          <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
-        </td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
-      </tr>
+      {% if (loop.index > 23) and (loop.index < 29) %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+          </td>
+          {% if performDateColumn == "2" %}
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+          {% endif %}
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
+          {% if performDateColumn == "4" %}
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+          {% endif %}
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
+        </tr>
       {% endif %}
     {% endfor %}
 
   </tbody>
 </table>
 
+</div>
+
+{# ======================== BEFORE 2014 ======================== #}
+
+<div class="govuk-grid-column-full">
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculations before August 2014<br>
+    <span class="govuk-body">No charges were applied before August 2014.</span>
+  </caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+      {% if performDateColumn == "2" %}
+        <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+      {% endif %}
+      <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
+      <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
+      {% if performDateColumn == "4" %}
+        <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+      {% endif %}
+      <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
+      <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
+      <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>charge<br>(£)</th>
+    </th>
+  </tr>
+</thead>
+<tbody class="govuk-table__body">
+
+  {% for row in data['calc_details'] %}
+    {% if (loop.index >= 29) %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+        </td>
+        {% if performDateColumn == "2" %}
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+        {% endif %}
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
+        {% if performDateColumn == "4" %}
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+        {% endif %}
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+
+</tbody>
+</table>
 
 </div>
 </div>
