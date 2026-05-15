@@ -1,5 +1,44 @@
 {% extends "layouts/internal-service.html" %}
 
+
+{# ////// VARIABLES ////// #}
+{# Note: make sure raw data does not contain commas #}
+{# Fallback to '0' if the data path is missing, undefined, or empty #}
+
+{% set overpaymentsCM = data['finances']['overpayments_child_maintenance'] | default('0', true) %}
+{% set overpaymentsCD = data['finances']['overpayments_charges_debt'] | default('0', true) %}
+{% set cashBalance = data['finances']['cash_balance'] | default('0', true) %}
+{% set operpaymentsTotal = ((overpaymentsCM * 1) + (overpaymentsCD * 1) + (cashBalance * 1)) %}
+{% set paymentsMadeCM = data['finances']['payments_made_child_maintenance'] | default('0', true) %}
+{% set paymentsMadeCD = data['finances']['payments_made_charges_debt'] | default('0', true) %}
+{% set paymentsMadeTotal = ((paymentsMadeCM * 1) + (paymentsMadeCD * 1)) %}
+{% set writtenOff = data['finances']['written_off'] | default('0', true) %}
+{% set expectedCM = data['finances']['expected_child_maintenance'] | default('0', true) %}
+{% set expectedCollCharges = data['finances']['expected_collection_charges'] | default('0', true) %}
+
+{% set regularDeductionOrder = data['finances']['regular_deduction_order'] | default('0', true) %}
+{% set lumpSumDeductionOrder = data['finances']['lump_sum_deduction_order'] | default('0', true) %}
+{% set liabilityOrder = data['finances']['liability-order'] | default('0', true) %}
+{% set deductionEarningsOrder = data['finances']['deduction_from_earnings_order'] | default('0', true) %}
+{% set expectedEnfCharges = ((regularDeductionOrder * 1) + (lumpSumDeductionOrder * 1) + (liabilityOrder * 1) + (deductionEarningsOrder * 1)) %}
+{% set expectedEnforcementCost = data['finances']['expected_enforcement_cost'] | default('0', true) %}
+{% set expectedCSADebt = data['finances']['expected_CSA_debt'] | default('0', true) %}
+{% set expectedDNACost = data['finances']['expected_DNA_debt'] | default('0', true) %}
+{% set expectedSubjectAccessRequestCost = data['finances']['expected_subject_access_request_cost'] | default('0', true) %}
+{% set expectedInterest = data['finances']['expected_interest'] | default('0', true) %}
+{% set expectedFees = data['finances']['expected_fees'] | default('0', true) %}
+{% set expectedJudRevCost = data['finances']['expected_judicial_review_cost'] | default('0', true) %}
+{% set expectedAppealCost = data['finances']['expected_appeal_cost'] | default('0', true) %}
+{% set expectedCMSAdminCost = data['finances']['expected_cms_admin_cost'] | default('0', true) %}
+{% set expectedLiabOrderCost = data['finances']['expected_liability_order_cost'] | default('0', true) %}
+{% set expectedCD = ((expectedCollCharges * 1) + (expectedEnfCharges * 1) + (expectedEnforcementCost * 1) + (expectedCSADebt * 1) + ( expectedDNACost * 1) + ( expectedSubjectAccessRequestCost * 1) + ( expectedInterest * 1) + ( expectedFees * 1) + ( expectedJudRevCost * 1) + ( expectedAppealCost * 1) + ( expectedCMSAdminCost * 1) + ( expectedLiabOrderCost * 1)) %}
+{% set expectedTotal = ((expectedCM * 1) + (expectedCD * 1)) %}
+{% set stillOwedCM = ((expectedCM * 1) - (paymentsMadeCM * 1))  %}
+{% set stillOwedCD = ((expectedCD * 1) - (paymentsMadeCD * 1))  %}
+{% set stillOwedTotal = ((stillOwedCM * 1) + (stillOwedCD * 1)) %}
+
+{# ////// END VARIABLES  ////// #}
+
 {% block pageTitle %}
   Finances – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
@@ -75,7 +114,7 @@
 {% endblock%}
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
-    Finances
+    Finances 
   </h1>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
@@ -92,18 +131,18 @@
       <div class="ef-card">
         <div class="dfe-title-cash">
           <h2>Money still owed</h2>
-          <h2 class="value">£34,921.80</h2>
+          <h2 class="value">£{{ stillOwedTotal | currency }}</h2>
           <span class="govuk-caption-m">Cash balance not included</span>
         </div>
         <div class="ef-card-duo">
           <article class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Child maintenance</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£31,545.95</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ stillOwedCM | currency }}</h2>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Charges and debt</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£3,375.85</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ stillOwedCD | currency }}</h2>
             </section>
           </article>
         </div>
@@ -112,22 +151,22 @@
       <div class="ef-card">
         <div class="dfe-title-cash">
           <h2>Overpayments</h2>
-          <h2 class="value">£1,652.51</h2>
+          <h2 class="value">£{{ operpaymentsTotal | currency }}</h2>
           <span class="govuk-caption-m">Included in the payments made</span>
         </div>
         <div class="ef-card-duo">
           <article class="moj-ticket-panel-trio" aria-label="Sub navigation 1">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Child maintenance</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£1,101.55</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ overpaymentsCM | currency }}</h2>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Charges and debt</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£220.35</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ overpaymentsCD | currency }}</h2>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Cash balance</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£330.61</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ cashBalance | currency }}</h2>
             </section>
           </article>
         </div>
@@ -136,25 +175,25 @@
       <div class="ef-card">
         <div class="dfe-title-cash">
           <h2>Payments made</h2>
-          <h2 class="value">£4,213.30</h2>
+          <h2 class="value">£{{ paymentsMadeTotal | currency }}</h2>
           <span class="govuk-caption-m">Includes cash balance and overpayments</span>
         </div>
         <div class="ef-card-duo">
           <article class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Child maintenance</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£3,113.20</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ paymentsMadeCM | currency }}</h2>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Charges and debt</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£1,100.10</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ paymentsMadeCD | currency }}</h2>
             </section>
           </article>
           <div class="moj-ticket-panel-duo" style="padding-top: 0;">
             <details class="govuk-details">
               <summary class="govuk-details__summary">
                 <span class="govuk-details__summary-text">
-                  Cash balance £330.61
+                  Cash balance £{{ cashBalance }}
                 </span>
               </summary>
               <div class="govuk-details__text">
@@ -168,24 +207,24 @@
       <div class="ef-card">
         <div class="dfe-title-i8">
           <h2>Amount written off</h2>
-          <h2 class="value">£0.00</h2>
+          <h2 class="value">£{{ writtenOff }}</h2>
         </div>
       </div>
 
       <div class="ef-card">
         <div class="dfe-title-i8">
           <h2>Total expected</h2>
-          <h2 class="value">£34,921.80</h2>
+          <h2 class="value">£{{ expectedTotal | currency }}</h2>
         </div>
         <div class="ef-card-duo">
           <article class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Child maintenance</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£31,545.95</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ expectedCM | currency }}</h2>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <p class="govuk-body">Charges and debt</p>
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£3,375.85</h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ expectedCD | currency }}</h2>
               <table class="govuk-table">
                 <thead class="govuk-table__head"></thead>
                 <tbody class="govuk-table__body">
@@ -203,55 +242,55 @@
                         <li>Deduction from earnings order or request</li>
                       </ul>
                     </td>
-                    <th scope="row" class="govuk-table__header">£300.00
+                    <th scope="row" class="govuk-table__header">£{{ expectedEnfCharges | currency }}
                       <ul class="govuk-list enforcement-charges govuk-body-s">
-                        <li>£20.00</li>
-                        <li>£100.00</li>
-                        <li>£150.00</li>
-                        <li>£30.00</li>
+                        <li>£{{ regularDeductionOrder | currency }}</li>
+                        <li>£{{ lumpSumDeductionOrder | currency }}</li>
+                        <li>£{{ liabilityOrder | currency }}</li>
+                        <li>£{{ deductionEarningsOrder | currency }}</li>
                       </ul>
                     </th>
                   </tr>
 
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Enforcement costs</td>
-                    <th scope="row" class="govuk-table__header">£160.00</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedEnforcementCost | currency }}</th>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">CSA debt</td>
-                    <th scope="row" class="govuk-table__header">£63.45</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedCSADebt | currency }}</th>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">DNA costs</td>
-                    <th scope="row" class="govuk-table__header">£87.23</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedDNACost | currency }}</th>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Subject access request costs</td>
-                    <th scope="row" class="govuk-table__header">£19.00</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedSubjectAccessRequestCost | currency }}</th>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Interest</td>
-                    <th scope="row" class="govuk-table__header">£30.67</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedInterest | currency }}</th>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Fees</td>
-                    <th scope="row" class="govuk-table__header">£22.87</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedFees | currency }}</th>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Judicial review costs</td>
-                    <th scope="row" class="govuk-table__header">£107.89</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedJudRevCost | currency }}</th>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Appeal costs</td>
-                    <th scope="row" class="govuk-table__header">£43.45</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedAppealCost | currency }}</th>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">CMS administration costs</td>
-                    <th scope="row" class="govuk-table__header">£26.89</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedCMSAdminCost | currency }}</th>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Liability order administration costs</td>
-                    <th scope="row" class="govuk-table__header">£54.00</th>
+                    <th scope="row" class="govuk-table__header">£{{ expectedLiabOrderCost | currency }}</th>
                   </tr>
                 </tbody>
               </table>
