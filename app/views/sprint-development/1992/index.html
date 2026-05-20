@@ -1,0 +1,48 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+
+      {% include "includes/back-link.html" %}
+      <span class="govuk-caption-m govuk-!-margin-bottom-2">
+        <a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-1992'>SAE-1992</a>
+      </span>
+      <h1 class="govuk-heading-l">
+          Statement -- Statement MoJ button off-pattern
+      </h1>
+
+      <h2 class="govuk-heading-s">Description:</h2>
+
+      <p>The current filtering component using the MoJ "Button menu" needs replacing for a more usable and accessible one. The "Button menu" component is designed to cluster and hide multiple disparate buttons which perform on-click actions and have lables that explain their outcome. </p>
+      <p>The current implementation however uses button labels that describe table data type instead. It does not describe an action (filtering) or the functionality (action is triggered when clicking the label). </p>
+      <p>The GOVUK Select components has better usability and accessibility for a filtering function.</p>
+      <p>Changes made: </p>
+            <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          Replace 'MoJ button menu' with 'GOVUK select' 
+        </li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Page:</h3>
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          <a href="ef-statement">
+          Statement
+        </a>
+        </li>
+      </ul>
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+    </div>
+  </div>
+
+{% endblock %}
+
+            {% if filterTableBy == 'all'  %}
+            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+            <td class="govuk-table__cell statement_end">-66.81</td>
+            {% endif %}
