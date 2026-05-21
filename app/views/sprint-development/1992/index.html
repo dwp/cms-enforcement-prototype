@@ -17,10 +17,10 @@
 
       <h2 class="govuk-heading-s">Description:</h2>
 
-      <p>The current filtering component using the MoJ "Button menu" needs replacing for a more usable and accessible one. The "Button menu" component is designed to cluster and hide multiple disparate buttons which perform on-click actions and have lables that explain their outcome. </p>
-      <p>The current implementation however uses button labels that describe table data type instead. It does not describe an action (filtering) or the functionality (action is triggered when clicking the label). </p>
+      <p>The current design for filtering the page has usability and accessibility issues. It is an off-pattern modification of the MoJ "button menu" which was intended to group and hide multiple disparate buttons, each one clearly labeled with the action it performs. Instead the current implementation labels the button with category descriptions without providing information about the expected funtionality. </p>
       <p>The GOVUK Select components has better usability and accessibility for a filtering function.</p>
-      <p>Changes made: </p>
+            <h3 class="govuk-heading-s">Changes:</h3>
+
             <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
         <li>
           Replace 'MoJ button menu' with 'GOVUK select' 
@@ -31,7 +31,17 @@
       <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
         <li>
           <a href="ef-statement">
-          Statement
+          Statement A - with finance summary
+        </a>
+        </li>
+        <li>
+          <a href="ef-statement-1">
+          Statement B - without finance summary
+        </a>
+        </li>
+        <li>
+          <a href="ef-statement-2">
+          Statement C - with finance summary as a table
         </a>
         </li>
       </ul>
