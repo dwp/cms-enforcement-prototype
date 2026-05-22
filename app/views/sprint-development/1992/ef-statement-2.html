@@ -46,39 +46,10 @@
   {% include "includes/ukic-components-source.html" %}
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
-{% block beforeContent %}
-<div class="govuk-phase-banner">
-  <p class="govuk-phase-banner__content">
-    <strong class="govuk-tag govuk-phase-banner__content__tag">
-      Beta
-    </strong>
-    <span class="govuk-phase-banner__text">
-      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>.
-    </span>
-  </p>
-</div>
 
-<section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
-  <dl class="dwp-quick-reference__block">
-  <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-  <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
-  <dd class="dwp-quick-reference__status">
-    <strong class="govuk-tag govuk-tag--turquoise">
-      Paying parent
-    </strong>
-    <strong class="govuk-tag govuk-tag--blue">
-      Single case
-    </strong>
-    <strong class="govuk-tag govuk-tag--yellow">
-      Manual allocation
-    </strong>
-  </dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
-  <dd class="dwp-quick-reference__secondary">121323454232</dd>
-  <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
-  <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
-  </dl>
-</section>
+{% block beforeContent %}
+{% include "includes/govuk-beta-banner" %}
+{% include "includes/vpf/dwp-quick-reference-single-manual" %}
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
@@ -125,7 +96,7 @@
     {# ///////TOTAL SUMMARY TABLE /////////// #}
     <table class="govuk-table">
       <caption class="govuk-table__caption govuk-table__caption--m">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Current total</h3>
+        <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Finance summary</h3>
       </caption>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -142,7 +113,7 @@
 
           <tr class="govuk-table__row">
             <td class="govuk-table__cell statement_date">Today</td>
-            <td class="govuk-table__cell statement_description">Current finances summary</td>
+            <td class="govuk-table__cell statement_description">Current total amounts</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">£{{ paymentsMadeTotal | currency }}</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">£3,160.16</td>

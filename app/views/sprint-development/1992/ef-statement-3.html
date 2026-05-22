@@ -13,7 +13,6 @@
 {% set writtenOff = data['finances']['written_off'] | default('0', true) %}
 {% set expectedCM = data['finances']['expected_child_maintenance'] | default('0', true) %}
 {% set expectedCollCharges = data['finances']['expected_collection_charges'] | default('0', true) %}
-
 {% set regularDeductionOrder = data['finances']['regular_deduction_order'] | default('0', true) %}
 {% set lumpSumDeductionOrder = data['finances']['lump_sum_deduction_order'] | default('0', true) %}
 {% set liabilityOrder = data['finances']['liability-order'] | default('0', true) %}
@@ -46,6 +45,7 @@
   {% include "includes/ukic-components-source.html" %}
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
+
 {% block beforeContent %}
 {% include "includes/govuk-beta-banner" %}
 {% include "includes/vpf/dwp-quick-reference-single-manual" %}
@@ -92,8 +92,6 @@
        </span>
       </p>
 
-    {# /////////////////////////// #}
-
     <form method="get" action="#" aria-label="Filter transactions">
       <div class="govuk-form-group govuk-!-margin-bottom-0">
         <label class="govuk-label" for="filterTableBy">
@@ -130,6 +128,47 @@
       </thead>
 
       <tbody class="govuk-table__body">
+
+        {# //////// Finance summary totals //////// #}
+        {% if filterTableBy == 'all' or filterTableBy == 'credits' or filterTableBy == 'received' %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Today</td>
+            <td class="govuk-table__cell_last">Current total amounts</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">£{{ paymentsMadeTotal | currency }}</td>
+            {% if filterTableBy == 'all' %}
+              <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">£3,160.16</td>
+              <td class="govuk-table__cell statement_end govuk-!-font-weight-bold">£307.57</td>
+            {% endif %}
+          </tr>
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Today</td>
+            <td class="govuk-table__cell_last">Cash balance pending allocation</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ cashBalance }}</td>
+            {% if filterTableBy == 'all' %}
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              <td class="govuk-table__cell statement_end">&nbsp;</td>
+            {% endif %}
+          </tr> #}
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Today</td>
+            <td class="govuk-table__cell_last">Overpayments</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+            {% if filterTableBy == 'all' %}
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              <td class="govuk-table__cell statement_end">&nbsp;</td>
+            {% endif %}
+          </tr> #}
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Today</td>
+            <td class="govuk-table__cell_last">Amount written off</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+            {% if filterTableBy == 'all' %}
+              <td class="govuk-table__cell govuk-table__cell--numeric">-13.70</td>
+              <td class="govuk-table__cell statement_end">&nbsp;</td>
+            {% endif %}
+          </tr> #}
+        {% endif %}
+
         {# Only if "all" selected #}
         {% if filterTableBy == 'all' %}
           <tr class="govuk-table__row">
