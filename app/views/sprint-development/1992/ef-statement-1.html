@@ -97,7 +97,7 @@
     <form method="get" action="#" aria-label="Filter transactions">
       <div class="govuk-form-group govuk-!-margin-bottom-0">
         <label class="govuk-label" for="filterTableBy">
-            Filter statement by
+            Filter by
           </label>
         <select class="govuk-select" id="filterTableBy" name="filterTableBy">
           <option value="all" {% if filterTableBy == 'all' or not filterTableBy %}{% set tableTitle = 'All transactions' %} selected{% endif %}>All transactions</option>
