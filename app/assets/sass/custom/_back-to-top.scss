@@ -1,0 +1,85 @@
+// GOV.UK GDS Design System Tokens
+$govuk-blue: #1a65a6;
+$govuk-hover-blue: #0f385c;
+$govuk-focus-yellow: #ffdd00;
+$govuk-text-black: #0b0c0c;
+$govuk-body-background: #ffffff;
+
+// Responsive Breakpoint Tracker
+$layout-max-width: 960px;
+
+/* 1. The Fixed Alignment Wrapper */
+.btt-container {
+  position: fixed;
+  bottom: 30px; 
+  width: 100%;
+  max-width: $layout-max-width; 
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none; 
+  z-index: 1000;
+  height: 1px; 
+}
+
+/* 2. The Absolute Anchored Button */
+.back-to-top {
+  position: absolute;
+  bottom: 0;
+  left: calc(100% + 1.5em); 
+  pointer-events: auto; 
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px 10px 14px;
+  
+  background-color: $govuk-body-background;
+  color: $govuk-blue; 
+  border: 2px solid $govuk-blue;
+  border-radius: 24px;
+  white-space: nowrap; 
+  font-family: sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+
+  &[hidden] {
+    display: none !important;
+  }
+
+  .btn-text {
+    color: inherit; // Synchronizes color with the parent link
+  }
+
+  svg {
+    fill: currentColor; // Matches the icon color to the parent link
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // Unified Hover Interactions (Icon and text match identically)
+  &:hover {
+    color: $govuk-hover-blue;
+    border-color: $govuk-hover-blue;
+
+    .btn-text {
+      text-decoration: underline;
+      text-decoration-thickness: 3px; // Heavy GDS layout line token
+      text-underline-offset: 4px;
+    }
+  }
+
+  // GOV.UK GDS Focus State
+  &:focus-visible {
+    outline: none; 
+    color: $govuk-text-black;
+    background-color: $govuk-focus-yellow;
+    border-color: transparent;
+    box-shadow: 0 -2px $govuk-focus-yellow, 0 4px $govuk-text-black;
+    text-decoration: none; 
+
+    .btn-text {
+      color: $govuk-text-black;
+      text-decoration: none;
+    }
+  }
+}
