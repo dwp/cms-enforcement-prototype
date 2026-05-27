@@ -45,8 +45,8 @@
       <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
     </dl>
   </section>
-
-  <div class="moj-primary-navigation">
+  {#  'pageTop' destination target id for the back-to-top link #}
+  <div class="moj-primary-navigation" id="pageTop" tabindex="-1" >
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
@@ -76,12 +76,11 @@
   </div>
 {% endblock %}
 {% block content %}
-  {#  'pageTop' destination target id for the back-to-top link #}
-  <div id="pageTop" tabindex="-1">
-    <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+
+
+  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
       Statement
     </h1>
-  </div>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">

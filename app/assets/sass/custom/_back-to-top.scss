@@ -27,17 +27,15 @@ $layout-max-width: 960px;
   bottom: 0;
   left: calc(100% + 1.5em); 
   pointer-events: auto; 
-  
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 10px 20px 10px 14px;
-  
   background-color: $govuk-body-background;
   color: $govuk-blue; 
   border: 2px solid $govuk-blue;
   border-radius: 24px;
-  white-space: nowrap; 
+  white-space: nowrap;
   font-family: sans-serif;
   font-size: 16px;
   text-decoration: none;
@@ -52,8 +50,11 @@ $layout-max-width: 960px;
 
   svg {
     fill: currentColor; // Matches the icon color to the parent link
+    width: 26px;
+    height: 26px;
     display: inline-block;
     vertical-align: middle;
+    flex-shrink: 0;
   }
 
   // Unified Hover Interactions (Icon and text match identically)
@@ -81,5 +82,34 @@ $layout-max-width: 960px;
       color: $govuk-text-black;
       text-decoration: none;
     }
+  }
+
+    // Zoom / Responsive Variant:
+  // Converts to a compact icon-only wrapper to eliminate content overlap
+  @media (max-width: 1300px) {
+    padding: 11px; // Creates a clear, evenly balanced tap-target box
+    width: 24px;
+    height: 24px;
+
+    .btn-text {
+      // Visually hidden helper class to retain screen-reader visibility
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+
+}
+
+// Motion compliance configuration
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important; // Ensures instant navigation without shifting layouts
   }
 }
