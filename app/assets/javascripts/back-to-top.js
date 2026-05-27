@@ -62,3 +62,34 @@ backToTopBtn.addEventListener('click', function(e) {
     target.focus({ preventScroll: true });
   }
 });
+
+// Floating sticky footer variant of the link for narrow viewports that will float above any main content but if the footer is on view it will dock right above it.
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".btt-container");
+  const footer = document.querySelector("footer"); // Ensure this matches your footer element
+
+  if (!container || !footer) return;
+
+  // Configuration options for the observer
+  const observerOptions = {
+    root: null,      // Tracks intersection relative to the browser window viewport
+    rootMargin: "0px", 
+    threshold: 0     // Fires the exact frame the footer's top edge peaks onto the screen
+  };
+
+  const observerCallback = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Footer has entered view; lock the component right above it
+        container.classList.add("is-docked");
+      } else {
+        // Footer is out of sight; restore floating/sticky mode
+        container.classList.remove("is-docked");
+      }
+    });
+  };
+
+  const footerObserver = new IntersectionObserver(observerCallback, observerOptions);
+  footerObserver.observe(footer);
+});
+
