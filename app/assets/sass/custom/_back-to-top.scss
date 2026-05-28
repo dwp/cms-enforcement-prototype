@@ -3,7 +3,7 @@ $govuk-blue: #1a65a6;
 $govuk-hover-blue: #0f385c;
 $govuk-focus-yellow: #ffdd00;
 $govuk-text-black: #0b0c0c;
-$govuk-body-background: #ffffff;
+$govuk-body-background: #f4f8fb;
 
 // Responsive Breakpoint Tracker
 $layout-max-width: 960px;
@@ -55,8 +55,8 @@ main, .page-wrapper {
   bottom: 0;
   left: calc(100% + 1.5em); 
   pointer-events: auto; 
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  align-items: self-end;
   gap: 6px;
   padding: 10px 20px 10px 14px;
   background-color: $govuk-body-background;

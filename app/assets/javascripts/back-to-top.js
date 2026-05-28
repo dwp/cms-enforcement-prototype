@@ -4,7 +4,7 @@ const target = document.getElementById('pageTop');
 let lastScrollTop = 0;
 let downScrollDistance = 0; // Tracks consecutive downward movement
 let hasBeenTriggered = false; // Tracks if the button's initial 2-screen condition was met
-const DOWN_TOLERANCE = 500; // Pixels allowed down before hiding again
+const DOWN_TOLERANCE = 300; // Pixels allowed down before hiding again
 
 window.addEventListener('scroll', () => {
   // Fixed: Replaced deprecated pageYOffset with modern window.scrollY
@@ -12,8 +12,8 @@ window.addEventListener('scroll', () => {
   const viewportHeight = window.innerHeight;
   
   // Dynamic thresholds based on your viewport requirements
-  const upperActivationLimit = viewportHeight * 2; // 2 screens to turn ON
-  const lowerDeactivationLimit = viewportHeight * 1; // 1 screen to turn OFF completely
+  const upperActivationLimit = viewportHeight * 3; // 3 screens to turn ON
+  const lowerDeactivationLimit = viewportHeight * 2; // 2 screen to turn OFF completely
   
   const isScrollingUp = scrollTop < lastScrollTop;
 
