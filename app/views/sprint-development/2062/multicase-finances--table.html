@@ -1,0 +1,168 @@
+{% extends "layouts/internal-service.html" %}
+
+<!-- ////// PRESETS ///// -->
+
+<!-- ////// PRESETS ///// -->
+{# Count case status types #}
+{% set allCases = data['multicase']['cases'] %}
+{% set activeCount = 0 %}
+{% set closedCount = 0 %}
+{% set payingCount = 0 %}
+{% set receivingCount = 0 %}
+{% for case in allCases %}
+  {% if case.case_status == 'active' %}{% set activeCount = activeCount + 1 %}
+  {% endif %}
+  {% if case.case_status == 'closed' %}{% set closedCount = closedCount + 1 %}
+  {% endif %}
+  {% if case.role == 'paying' %}{% set payingCount = payingCount + 1 %}
+  {% endif %}
+  {% if case.role == 'receiving' %}{% set receivingCount = receivingCount + 1 %}
+  {% endif %}
+{% endfor %}
+
+<!-- //////////////////// -->
+
+{% block pageTitle %}
+Finances – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/ukic-components-source.html" %}
+  {% include "includes/dwp-internal-service-header.html"%}
+{% endblock %}
+
+{% block content %}
+
+  {% include "includes/govuk-beta-banner" %}
+
+  {% include "includes/vpf/dwp-quick-reference-multicase-manual" %}
+
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activeCount
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances--with-breakdown">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
+              plans</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
+  <!-- /////////////////////////////////// -->
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+      Finances
+      </h1>
+      {# /////////// TABS ////////////// #}
+
+     <table class="govuk-table">
+       <thead class="govuk-table__head">
+         <tr class="govuk-table__row">
+           <th scope="col" class="govuk-table__header">Receiving parent</th>
+           <th scope="col" class="govuk-table__header numerical">Money still owed</th>
+           <th scope="col" class="govuk-table__header numerical">Child maintenance</th>
+           <th scope="col" class="govuk-table__header numerical">Charges and debt</th>
+         </tr>
+       </thead>
+       <tbody class="govuk-table__body">
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell statement_date">Total</td>
+           <td class="govuk-table__cell statement_description"></td>
+           <td class="govuk-table__cell statement_amount"><a class="govuk-link" href="payment-allocation/ef-pb-19 Nov 24.html">24.61</a></td>
+           <td class="govuk-table__cell statement_amount"></td>
+         </tr>
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell statement_date">{{ rp1 }}</td>
+           <td class="govuk-table__cell statement_description"></td>
+           <td class="govuk-table__cell statement_amount"><a class="govuk-link" href="payment-allocation/ef-pb-19 Nov 24.html">24.61</a></td>
+           <td class="govuk-table__cell statement_amount"></td>
+         </tr>
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell statement_date">{{ rp2 }}</td>
+           <td class="govuk-table__cell statement_description"></td>
+           <td class="govuk-table__cell statement_amount"><a class="govuk-link" href="payment-allocation/ef-pb-9 Nov 24.html">73.84</a></td>
+           <td class="govuk-table__cell statement_amount"></td>
+         </tr>
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell statement_date">27 Sep 2024</td>
+           <td class="govuk-table__cell statement_description">Direct pay payment</td>
+           <td class="govuk-table__cell statement_amount">17.65</td>
+           <td class="govuk-table__cell statement_amount"></td>
+         </tr>
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell statement_date">20 Sep 2024</td>
+           <td class="govuk-table__cell statement_description">Direct pay payment</td>
+           <td class="govuk-table__cell statement_amount">17.65</td>
+           <td class="govuk-table__cell statement_amount"></td>
+         </tr>
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell statement_date">13 Sep 2024</td>
+           <td class="govuk-table__cell statement_description">Direct pay payment</td>
+           <td class="govuk-table__cell statement_amount">17.65</td>
+           <td class="govuk-table__cell statement_amount"></td>
+         </tr>
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell statement_date">6 Sep 2024</td>
+           <td class="govuk-table__cell statement_description">Direct pay payment</td>
+           <td class="govuk-table__cell statement_amount">17.65</td>
+           <td class="govuk-table__cell statement_amount"></td>
+         </tr>
+         <tr class="govuk-table__row">
+           <td class="govuk-table__cell statement_date">30 Aug 2024</td>
+           <td class="govuk-table__cell statement_description">Direct pay payment</td>
+           <td class="govuk-table__cell statement_amount">17.65</td>
+           <td class="govuk-table__cell statement_amount"></td>
+         </tr>
+       </tbody>
+     </table>
+
+      <div>
+        <h2 class="govuk-heading-m">Total for {{ active_cases }} active cases</h2>
+        <p>The next annual review will be on <strong>7 October 2026</strong>.</p>
+        {% include "includes/vpf/ur21/finance-amounts--case-all--with-breakdown" %}
+      </div>
+
+      <div>
+        <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
+          <strong class="govuk-tag govuk-tag--orange">Collect and pay</strong>
+        </h2>
+        <p>Case ID: <strong>1-2345999</strong>.</br> Effective from <strong>7 October 2021</strong>. The next annual review will be on <strong>7 October 2026</strong>.
+          </p>
+      {% include "includes/vpf/ur21/finance-amounts--case-1" %}
+    </div>
+
+    <div>
+      <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
+        <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+      </h2>
+      <p>Case ID: <strong>1-2345112</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+    {% include "includes/vpf/ur21/finance-amounts--case-2" %}
+  </div>
+
+<!-- ////////////////////////////////// -->
+{% include "includes/back-to-top-link" %}
+<!-- ////////////////////////////////// -->
+
+{% endblock %}

@@ -18,17 +18,14 @@ Example usage:
 */
 
 module.exports = {
-
-  'multicase': {
-    'total_cases': '5',
-    'cases': [
+'cases': [
       {
         'case_index': '0',
-        'case_status': 'Active',
+        'case_status': 'active',
         'case_id': '1-2345999',
-        'case_type': 'Collect and pay',
+        'service_type': 'Collect and pay',
         'effective_from': '7 October 2021',
-        'role': 'Paying parent',
+        'role': 'paying',
         'other_parent': 'Daria Oblonskaya',
         'qualifying_children': [
           {
@@ -44,15 +41,14 @@ module.exports = {
             'local_auth_stays': '0'
           }
         ]
-
       },
       {
         'case_index': '1',
-        'case_status': 'Active',
+        'case_status': 'active',
         'case_id': '1-2245868',
-        'case_type': 'Collect and pay – Arrears only',
+        'service_type': 'Collect and pay – Arrears only',
         'effective_from': '21 November 2022',
-        'role': 'Paying parent',
+        'role': 'paying',
         'other_parent': 'Ruth Slater',
         'qualifying_children': [
           {
@@ -65,10 +61,11 @@ module.exports = {
       },
       {
         'case_index': '2',
-        'case_status': 'Active',
+        'case_status': 'active',
         'case_id': '1-2245868',
+        'service_type': 'Collect and pay – Arrears only',
         'effective_from': '28 June 2024',
-        'role': 'Receiving parent',
+        'role': 'receiving',
         'other_parent': 'Ruth Slater',
         'qualifying_children': [
           {
@@ -81,18 +78,17 @@ module.exports = {
       },
       {
         'case_index': '3',
-        'case_status': 'Closed',
+        'case_status': 'closed',
         'date_closed': '20 Nov 2025',
         'case_id': '1-2348743',
         'other_parent': 'Ruth Slater'
       },
       {
         'case_index': '4',
-        'case_status': 'Closed',
+        'case_status': 'closed',
         'date_closed': '3 Jun 2020',
         'case_id': '1-2311178',
         'other_parent': 'Ruth Slater'
       }
     ]
   }
-}

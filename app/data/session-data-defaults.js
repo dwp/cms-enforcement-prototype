@@ -22,7 +22,6 @@ module.exports = {
   // Require other data store files
 
   'multicase': require('./multicase.js'),
-  'children': require('./children.js'),
 
   // Insert values here
 

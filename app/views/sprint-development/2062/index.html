@@ -1,0 +1,63 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+
+      {% include "includes/back-link.html" %}
+      <span class="govuk-caption-m govuk-!-margin-bottom-2">
+        <a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-2062'>SAE-2062</a>
+      </span>
+      <h1 class="govuk-heading-l">
+          Design iteration based on UR round 21 triage for multicase
+      </h1>
+      <p>To have a design prototyped based on the data requirements for Finances/cases page only. 
+
+2 options
+
+tabbed approach
+
+table approach
+
+Next steps to usability test both approaches with a view to baselining a design. </p>
+
+      <h2 class="govuk-heading-m">Changes:</h2>
+
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          Case page
+        </li>
+        <li>
+          Statement page
+        </li>
+        <li>
+          Finance page
+        </li>
+      </ul>
+      <h2 class="govuk-heading-m">Pages and design variants:</h2>
+
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          <a href="multicase-case">
+          Cases page
+        </a>
+        </li>
+        <li>
+          <a href="multicase-finances--table">
+          Finances A - table
+        </a>
+        <li>
+          <a href="multicase-finances--tabs">
+          Finances B -  tabs
+        </a>
+        </li>
+      </ul>
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+    </div>
+  </div>
+
+{% endblock %}
