@@ -1,12 +1,16 @@
+
 {
+  
   "engines": {
     "node": "22.x",
     "npm": "10.x"
   },
+
   "scripts": {
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start"
+
   },
   "dependencies": {
     "22": "0.0.0",
@@ -15,11 +19,11 @@
     "@govuk-prototype-kit/step-by-step": "2.2.3",
     "@x-govuk/govuk-prototype-filters": "2.1.0",
     "govuk-frontend": "5.14.0",
+    "govuk-prototype-kit": "13.20.0",
     "dfe-frontend": "2.0.1",
     "@ministryofjustice/frontend": "8.0.1",
     "@ukic/fonts": "3.2.9",
-    "@ukic/web-components": "3.21.0",
-    "@dwp-govuk/govuk-prototype-kit": "latest"
+    "@ukic/web-components": "3.21.0"
   },
   "overrides": {
     "qs": "6.14.1",
