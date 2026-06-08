@@ -41,8 +41,10 @@ module.exports = {
             'local_auth_stays': '0'
           }
         ],
-        'paid_child_maintenance': '300.00',
-        'owed_child_maintenance': '900.00',
+        'child_maintenance_expected': '1200.00',
+        'child_maintenance_paid': '800.00',
+        'charges_debt_expected': '120.00',
+        'charges_debt_paid': '10.00',
       },
       {
         'case_index': '1',
@@ -60,8 +62,10 @@ module.exports = {
             'local_auth_stays': '0'
           }
         ],
-        'paid_child_maintenance': '200.00',
-        'owed_child_maintenance': '400.00',
+        'child_maintenance_expected': '3000.00',
+        'child_maintenance_paid': '2000.00',
+        'charges_debt_expected': '300.00',
+        'charges_debt_paid': '20.00',
       },
       {
         'case_index': '2',
