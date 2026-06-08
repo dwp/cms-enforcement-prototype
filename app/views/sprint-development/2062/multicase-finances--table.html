@@ -16,6 +16,8 @@
     £{{ amount | currency }}
   {% endif %}
 {% endmacro %}
+{# Example use;
+{{ format_currency(caseArrearsCM) }} #}
 
 {# Set link urls #}
 {% set paymentDetails = "payment-allocation/ef-pb-19 Nov 24" %}
@@ -193,7 +195,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           {% set totalArrearsCD = 0 %}
 
           {% for case in allCases %}
-            {% set i = loop.index0 %}
+            {# {% set i = loop.index0 %} #}
 
             {% set expectedCM = case.child_maintenance_expected | default(0) | float %}
             {% set paidCM = case.child_maintenance_paid | default(0) | float %}
