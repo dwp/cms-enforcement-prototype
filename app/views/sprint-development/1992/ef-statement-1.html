@@ -16,7 +16,7 @@
 
 {% set regularDeductionOrder = data['finances']['regular_deduction_order'] | default('0', true) %}
 {% set lumpSumDeductionOrder = data['finances']['lump_sum_deduction_order'] | default('0', true) %}
-{% set liabilityOrder = data['finances']['liability-order'] | default('0', true) %}
+{% set liabilityOrder = data['finances']['liability_order'] | default('0', true) %}
 {% set deductionEarningsOrder = data['finances']['deduction_from_earnings_order'] | default('0', true) %}
 {% set expectedEnfCharges = ((regularDeductionOrder * 1) + (lumpSumDeductionOrder * 1) + (liabilityOrder * 1) + (deductionEarningsOrder * 1)) %}
 {% set expectedEnforcementCost = data['finances']['expected_enforcement_cost'] | default('0', true) %}
