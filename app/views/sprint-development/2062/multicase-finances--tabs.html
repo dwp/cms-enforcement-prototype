@@ -30,6 +30,7 @@
 {% set closedCount = 0 %}
 {% set payingCount = 0 %}
 {% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
 
 {# set case totals before the loop #}
 {% set totalCasesExpectedCM = 0 %}
@@ -41,21 +42,25 @@
 {% for case in allCases %}
 
   {# Count case status types #}
-  {% if case.case_status == 'active' %}
-    {% set activeCount = activeCount + 1 %}
-  {% endif %}
+{% if case.case_status == 'active' %}
+  {% set activeCount = (activeCount | default(0)) + 1 %}
+{% endif %}
 
-  {% if case.case_status == 'closed' %}
-    {% set closedCount = closedCount + 1 %}
-  {% endif %}
+{% if case.case_status == 'closed' %}
+  {% set closedCount = (closedCount | default(0)) + 1 %}
+{% endif %}
 
-  {% if case.role == 'paying' %}
-    {% set payingCount = payingCount + 1 %}
-  {% endif %}
+{% if case.role == 'paying' %}
+  {% set payingCount = (payingCount | default(0)) + 1 %}
+{% endif %}
 
-  {% if case.role == 'receiving' %}
-    {% set receivingCount = receivingCount + 1 %}
-  {% endif %}
+{% if case.role == 'receiving' %}
+  {% set receivingCount = (receivingCount | default(0)) + 1 %}
+{% endif %}
+
+{% if case.case_status == 'active' and case.role == 'paying' %}
+{% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+{% endif %}
 
   {# set finances amounts #}
 
@@ -136,7 +141,6 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 {% block content %}
 
   {% include "includes/govuk-beta-banner" %}
-
   {% include "includes/vpf/dwp-quick-reference-multicase-manual" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
@@ -147,7 +151,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           <ul class="moj-primary-navigation__list">
 
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ payingCount }})</a>
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activePayingCount }})</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances">Finances</a>
@@ -183,31 +187,31 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             Contents
           </h2>
         <ul class="govuk-tabs__list">
-          <li class="govuk-tabs__list-item">
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
             <a class="govuk-tabs__tab" href="#total">
             Total
           </a>
           </li>
-          <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#daria">
-              Daria Oblonskaya 1-2345999
-            </a>
-          </li>
-          <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#ruth">
-              Ruth Slater 1-2345112
-            </a>
-          </li>
+          {% for case in allCases %}
+            {% if case.case_status == 'active' and case.role == 'paying' %}
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#case-{{ case.case_id }}">
+                  {{ case.other_parent }}
+                  {{ case.case_id }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
         </ul>
+
+      {# /////////// Totals tab panel ////////////// #}
 
         <div class="govuk-tabs__panel" id="total">
           {# <h2 class="govuk-heading-m">Total for {{ payingCount }} receiving parents</h2> #}
           <p>The next annual review will be on <strong>7 October 2026</strong>.</p>
 
-          {# /////////// Arrears owed ////////////// #}
-
-          <table class="govuk-table govuk-!-margin-top-6">
-            <caption class="govuk-table__caption govuk-table__caption--m">Total for {{ payingCount }} receiving parents</caption>
+          <table class="govuk-table govuk-!-margin-top-4">
+            <caption class="govuk-table__caption govuk-table__caption--m">Totals for {{ payingCount }} cases</caption>
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header">&nbsp;</th>
@@ -223,6 +227,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               {% set totalArrearsCD = 0 %}
 
               {% for case in allCases %}
+              {% if case.case_status == 'active' and case.role == 'paying' %}
 
                 {% set expectedCM = case.child_maintenance_expected | default(0) | float %}
                 {% set paidCM = case.child_maintenance_paid | default(0) | float %}
@@ -235,6 +240,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                 {% set totalArrearsCM = totalArrearsCM + caseArrearsCM %}
                 {% set totalArrearsCD = totalArrearsCD + caseArrearsCD %}
 
+              {% endif %}
               {% endfor %}
 
               {% set totalArrears = totalArrearsCM + totalArrearsCD %}
@@ -263,31 +269,99 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                 <td class="govuk-table__cell govuk-table__cell--numeric">
                   <a class="govuk-link" href="paymentDetails">£{{ totalArrearsCM | default(0) | float | currency }}</a>
                 </td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">{{ totalArrearsCD | currency }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  {{ totalArrearsCD | currency }}</td>
               </tr>
             </tbody>
           </table>
-
+          <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Cash balance £{{ cashBalance }}
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                Money paid that cannot be allocated to child maintenance or charges yet. 
+              </div>
+            </details>
         </div>
-        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
-          <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
-            <strong class="govuk-tag govuk-tag--orange">Collect and pay</strong>
-          </h2>
-          <p>Case ID: <strong>1-2345999</strong>.</br> Effective from <strong>7 October 2021</strong>. The next annual review will be on <strong>7 October 2026</strong>.
-          </p>
-        {% include "includes/vpf/ur21/finance-amounts--case-1" %}
-      </div>
 
-      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
-        <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
-          <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
-        </h2>
-        <p>Case ID: <strong>1-2345112</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
-          </p>
-      {% include "includes/vpf/ur21/finance-amounts--case-2" %}
+        {# /////////// Receiving parents tabs panel loop ////////////// #}
+
+        {% for case in allCases %}
+        {% if case.case_status == 'active' and case.role == 'paying' %}
+
+          {% set expectedCM = case.child_maintenance_expected | default(0) | float %}
+          {% set paidCM = case.child_maintenance_paid | default(0) | float %}
+          {% set caseArrearsCM = expectedCM - paidCM %}
+          {% set expectedCD = case.charges_debt_expected | default(0) | float %}
+          {% set paidCD = case.charges_debt_paid | default(0) | float %}
+          {% set caseArrearsCD = expectedCD - paidCD %}
+
+          {% set caseTotalExpected = expectedCM + expectedCD %}
+          {% set caseTotalPaid = paidCM + paidCD %}
+          {% set caseTotalArrears = caseArrearsCM + caseArrearsCD %}
+
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="case-{{ case.case_id }}">
+            <table class="govuk-table govuk-!-margin-top-4">
+              <caption class="govuk-table__caption govuk-table__caption--m">Paying to {{ case.other_parent }}
+                <strong class="govuk-tag govuk-tag--orange">{{ case.service_type }}</strong>
+              </caption>
+
+              <p>Case effective from <strong>{{ case.effective_from }}</strong>. The next annual review will be on <strong>{{ case.next_annual_review }}</strong>.
+            </p>
+
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">&nbsp;</th>
+                  <th scope="col" class="govuk-table__header numerical">Total amount</th>
+                  <th scope="col" class="govuk-table__header numerical">Child maintenance</th>
+                  <th scope="col" class="govuk-table__header numerical">Charges and debt</th>
+                </tr>
+              </thead>
+
+              <tbody class="govuk-table__body">
+
+                {% set totalArrears = totalArrearsCM + totalArrearsCD %}
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Total expected</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ caseTotalExpected | currency }}</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link" href="paymentDetails">£{{ case.child_maintenance_expected | default(0) | float | currency }}</a>
+                  </td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    {# {{ case.charges_debt_expected | default(0) | float | currency }} #}&mdash;
+                  </td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Payments made</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ caseTotalPaid | currency }}</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link" href="paymentDetails">£{{ case.child_maintenance_paid | default(0) | float | currency }}</a>
+                  </td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    {# {{ case.charges_debt_paid | default(0) | float | currency }} #}&mdash;
+                  </td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Arrears owed</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ caseTotalArrears | currency }}</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <a class="govuk-link" href="paymentDetails">£{{ caseArrearsCM | default(0) | float | currency }}</a>
+                  </td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    {# {{ caseArrearsCD | currency }} #}&mdash;
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
   </div>
-</div>
-</div>
-
 {% endblock %}

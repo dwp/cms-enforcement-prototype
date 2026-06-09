@@ -30,6 +30,7 @@
 {% set closedCount = 0 %}
 {% set payingCount = 0 %}
 {% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
 
 {# set case totals before the loop #}
 {% set totalCasesExpectedCM = 0 %}
@@ -41,21 +42,25 @@
 {% for case in allCases %}
 
   {# Count case status types #}
-  {% if case.case_status == 'active' %}
-    {% set activeCount = activeCount + 1 %}
-  {% endif %}
+{% if case.case_status == 'active' %}
+  {% set activeCount = (activeCount | default(0)) + 1 %}
+{% endif %}
 
-  {% if case.case_status == 'closed' %}
-    {% set closedCount = closedCount + 1 %}
-  {% endif %}
+{% if case.case_status == 'closed' %}
+  {% set closedCount = (closedCount | default(0)) + 1 %}
+{% endif %}
 
-  {% if case.role == 'paying' %}
-    {% set payingCount = payingCount + 1 %}
-  {% endif %}
+{% if case.role == 'paying' %}
+  {% set payingCount = (payingCount | default(0)) + 1 %}
+{% endif %}
 
-  {% if case.role == 'receiving' %}
-    {% set receivingCount = receivingCount + 1 %}
-  {% endif %}
+{% if case.role == 'receiving' %}
+  {% set receivingCount = (receivingCount | default(0)) + 1 %}
+{% endif %}
+
+{% if case.case_status == 'active' and case.role == 'paying' %}
+{% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+{% endif %}
 
   {# set finances amounts #}
 
@@ -74,6 +79,8 @@
   {% endif %}
 
 {% endfor %}
+
+
 
 {# =========================
    FINANCES
@@ -146,7 +153,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activeCount
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activePayingCount
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
@@ -176,6 +183,85 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
       Finances
       </h1>
+
+
+      {# /////////// Total expected ////////////// #}
+
+      <table class="govuk-table govuk-!-margin-top-6">
+        <caption class="govuk-table__caption govuk-table__caption--m">Total expected</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Parents</th>
+            <th scope="col" class="govuk-table__header numerical">Expected</th>
+            <th scope="col" class="govuk-table__header numerical">Child maintenance</th>
+            <th scope="col" class="govuk-table__header numerical">Charges and debt</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for case in allCases %}
+            {# {% set i = loop.index0 %} #}
+            {% if case.case_status == 'active' and case.role == 'paying' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ case.other_parent }}
+                  {{ case.case_id }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&mdash;</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="paymentDetails">£{{ case.child_maintenance_expected | default(0) | float | currency }}</a>
+                </td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&mdash;</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell ">Total</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalExpected | abs | currency }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="paymentDetails">£{{ totalCasesExpectedCM | abs | currency }}</a>
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalCasesExpectedCD | abs | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+
+      {# /////////// Payments made ////////////// #}
+
+      <table class="govuk-table govuk-!-margin-top-6">
+        <caption class="govuk-table__caption govuk-table__caption--m">Payments made</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Parents</th>
+            <th scope="col" class="govuk-table__header numerical">Paid</th>
+            <th scope="col" class="govuk-table__header numerical">Child maintenance</th>
+            <th scope="col" class="govuk-table__header numerical">Charges and debt</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for case in allCases %}
+            {# {% set i = loop.index0 %} #}
+            {% if case.case_status == 'active' and case.role == 'paying' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ case.other_parent }}
+                  {{ case.case_id }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&mdash;</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="paymentDetails">£{{ case.child_maintenance_paid | default(0) | float | currency }}</a>
+                </td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&mdash;</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell ">Total</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalPaid | currency }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="paymentDetails">£{{ totalCasesPaidCM | currency }}</a>
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalCasesPaidCD | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
       {# /////////// Arrears owed ////////////// #}
 
       <table class="govuk-table govuk-!-margin-top-6">
@@ -233,84 +319,10 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         </tbody>
       </table>
 
-      {# /////////// Payments made ////////////// #}
 
-      <table class="govuk-table govuk-!-margin-top-6">
-        <caption class="govuk-table__caption govuk-table__caption--m">Payments made</caption>
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Parents</th>
-            <th scope="col" class="govuk-table__header numerical">Arrears owed</th>
-            <th scope="col" class="govuk-table__header numerical">Child maintenance</th>
-            <th scope="col" class="govuk-table__header numerical">Charges and debt</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          {% for case in allCases %}
-            {# {% set i = loop.index0 %} #}
-            {% if case.case_status == 'active' and case.role == 'paying' %}
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">{{ case.other_parent }}
-                  {{ case.case_id }}</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">&mdash;</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">
-                  <a class="govuk-link" href="paymentDetails">£{{ case.child_maintenance_paid | default(0) | float | currency }}</a>
-                </td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">&mdash;</td>
-              </tr>
-            {% endif %}
-          {% endfor %}
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell ">Total</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalPaid | currency }}</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a class="govuk-link" href="paymentDetails">£{{ totalCasesPaidCM | currency }}</a>
-            </td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalCasesPaidCD | currency }}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      {# /////////// Total expected ////////////// #}
-
-      <table class="govuk-table govuk-!-margin-top-6">
-        <caption class="govuk-table__caption govuk-table__caption--m">Total expected</caption>
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Parents</th>
-            <th scope="col" class="govuk-table__header numerical">Arrears owed</th>
-            <th scope="col" class="govuk-table__header numerical">Child maintenance</th>
-            <th scope="col" class="govuk-table__header numerical">Charges and debt</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          {% for case in allCases %}
-            {# {% set i = loop.index0 %} #}
-            {% if case.case_status == 'active' and case.role == 'paying' %}
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">{{ case.other_parent }}
-                  {{ case.case_id }}</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">&mdash;</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">
-                  <a class="govuk-link" href="paymentDetails">£{{ case.child_maintenance_expected | default(0) | float | currency }}</a>
-                </td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">&mdash;</td>
-              </tr>
-            {% endif %}
-          {% endfor %}
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell ">Total</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalExpected | abs | currency }}</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a class="govuk-link" href="paymentDetails">£{{ totalCasesExpectedCM | abs | currency }}</a>
-            </td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalCasesExpectedCD | abs | currency }}</td>
-          </tr>
-        </tbody>
-      </table>
 
       <!-- ////////////////////////////////// -->
-      {% include "includes/back-to-top-link" %}
+      {# {% include "includes/back-to-top-link" %} #}
       <!-- ////////////////////////////////// -->
 
     {% endblock %}
