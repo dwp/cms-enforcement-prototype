@@ -11,25 +11,25 @@
 
 {% for case in allCases %}
   {# Count case status types #}
-{% if case.case_status == 'active' %}
-  {% set activeCount = (activeCount | default(0)) + 1 %}
-{% endif %}
+  {% if case.case_status == 'active' %}
+    {% set activeCount = (activeCount | default(0)) + 1 %}
+  {% endif %}
 
-{% if case.case_status == 'closed' %}
-  {% set closedCount = (closedCount | default(0)) + 1 %}
-{% endif %}
+  {% if case.case_status == 'closed' %}
+    {% set closedCount = (closedCount | default(0)) + 1 %}
+  {% endif %}
 
-{% if case.role == 'paying' %}
-  {% set payingCount = (payingCount | default(0)) + 1 %}
-{% endif %}
+  {% if case.role == 'paying' %}
+    {% set payingCount = (payingCount | default(0)) + 1 %}
+  {% endif %}
 
-{% if case.role == 'receiving' %}
-  {% set receivingCount = (receivingCount | default(0)) + 1 %}
-{% endif %}
+  {% if case.role == 'receiving' %}
+    {% set receivingCount = (receivingCount | default(0)) + 1 %}
+  {% endif %}
 
-{% if case.case_status == 'active' and case.role == 'paying' %}
-{% set activePayingCount = (activePayingCount | default(0)) + 1 %}
-{% endif %}
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+  {% endif %}
 
 {% endfor %}
 
@@ -85,7 +85,8 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       </h1>
       <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
       <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
-        <strong>{{ activePayingCount }} paying,  {{ receivingCount }} receiving and {{ closedCount }} closed.</strong></p>
+        <strong>{{ activePayingCount }} paying,  {{ receivingCount }} receiving and {{ closedCount }} closed.</strong>
+      </p>
       <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
 
       {# Example of displaying and setting loop-scoped data #}
@@ -142,20 +143,24 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                    Service type
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    {{ case.service_type }}
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                    Sub status
+                    Substatus
                   </dt>
                   <dd class="govuk-summary-list__value">
                     {{ case.sub_status }}
                   </dd>
                 </div>
+
+                {% if case.sub_status != 'Contact and Gather Other Party Information' %}
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                    Service type
+                  </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{ case.service_type }}
+                    </dd>
+                  </div>
+                {% endif %}
+
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                     Case effective from
