@@ -47,7 +47,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
   {% include "includes/govuk-beta-banner" %}
 
-  {% include "includes/vpf/dwp-quick-reference-multicase-dual" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-manual" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation govuk-!-margin-bottom-5">
@@ -85,7 +85,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       </h1>
       <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
       <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
-        <strong>{{ activePayingCount }} paying,  {{ receivingCount }} receiving and {{ closedCount }} closed.</strong>
+        <strong>{{ activePayingCount }} paying,  {{ closedCount }} closed.</strong>
       </p>
       <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
 
@@ -150,7 +150,6 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                   </dd>
                 </div>
 
-                {% if case.sub_status != 'Contact and Gather Other Party Information' %}
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                     Service type
@@ -159,7 +158,6 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                       {{ case.service_type }}
                     </dd>
                   </div>
-                {% endif %}
 
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
@@ -176,7 +174,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         {% endif %}
       {% endfor %}
       <!-- //////// RP CASE //////// -->
-      <h2 class="govuk-heading-m govuk-!-margin-top-5">
+      {# <h2 class="govuk-heading-m govuk-!-margin-top-5">
       Receiving cases
     </h2>
 
@@ -205,7 +203,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </div>
 
         {% endif %}
-      {% endfor %}
+      {% endfor %} #}
 
       <!-- //////// CASES CLOSED LIST//////// -->
 

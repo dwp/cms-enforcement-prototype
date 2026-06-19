@@ -23,8 +23,8 @@ module.exports = {
         'case_index': '0',
         'case_status': 'active',
         'case_id': '1-2345999',
-        'service_type': '--',
-        'sub_status': 'Contact and Gather Other Party Information',
+        'service_type': 'Collect and pay',
+        'sub_status': 'Perform Calculation',
         'effective_from': '7 October 2021',
         'next_annual_review': '7 October 2026',
         'role': 'paying',
@@ -44,9 +44,9 @@ module.exports = {
           }
         ],
         'child_maintenance_expected': '1200.00',
-        'child_maintenance_paid': '800.00',
+        'child_maintenance_paid': '1050.06',
         'charges_debt_expected': '120.00',
-        'charges_debt_paid': '10.00',
+        'charges_debt_paid': '20.00',
       },
       {
         'case_index': '1',
@@ -67,9 +67,9 @@ module.exports = {
           }
         ],
         'child_maintenance_expected': '3000.00',
-        'child_maintenance_paid': '2000.00',
+        'child_maintenance_paid': '2604.00',
         'charges_debt_expected': '300.00',
-        'charges_debt_paid': '20.00',
+        'charges_debt_paid': '23.30',
       },
       {
         'case_index': '2',
@@ -124,7 +124,7 @@ module.exports = {
           }
         ],
         'child_maintenance_expected': '1000.00',
-        'child_maintenance_paid': '2000.00',
+        'child_maintenance_paid': '200.00',
         'charges_debt_expected': '100.00',
         'charges_debt_paid': '20.00',
       }
