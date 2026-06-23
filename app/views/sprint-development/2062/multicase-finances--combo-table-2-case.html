@@ -4,6 +4,21 @@
    PRESETS
 ========================= #}
 
+{# Add macro for dealing with negative amounts #}
+{% macro format_currency(value) %}
+  {% set amount = value | default(0) | float %}
+  {% if amount < 0 %}
+    <span>
+      <span class="govuk-visually-hidden">Minus </span>
+      &minus;£{{ amount | abs | currency }}
+    </span>
+  {% else %}
+    £{{ amount | currency }}
+  {% endif %}
+{% endmacro %}
+{# Example use;
+{{ format_currency(caseArrearsCM) }} #}
+
 {# Set link urls #}
 {% set paymentDetails = "payment-allocation/ef-pb-19 Nov 24" %}
 
@@ -183,8 +198,36 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <tbody class="govuk-table__body">
 
           {# Initialise totals before the for loop #}
+          
           <tr class="govuk-table__row">
-            <th class="govuk-table__header">Child maintenance</th>
+            <th class="govuk-table__header"  colspan="2">
+              
+             <details class="govuk-details govuk-!-margin-top-1 govuk-!-margin-bottom-1">
+                <summary class="govuk-details__summary" style="width: auto;">
+                  <span class="govuk-details__summary-text">
+                    Child maintenance</span>
+                  {# <span class="govuk-!-text-align-right" style="float: right;">32.58</span> #}
+                </summary>
+
+                <div class="govuk-details__text">
+                  <table class="govuk-table">
+                    <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell" colspan="2">Daria Oblonskaya 1-2345999</td>
+                        <td class="govuk-table__cell" style="width:15%;">&nbsp;</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">£10.00</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell" colspan="2">Ruth Slater 1-2245868</td>
+                        <td class="govuk-table__cell" style="width:15%;">&nbsp;</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">£5.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+                    
+                    </th>
             <td class="govuk-table__cell govuk-table__cell--numeric">£{{ stillOwedCMFinance | default(0) | float | currency }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalPaidCMFinance | default(0) | float | currency }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
@@ -244,7 +287,6 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           {% set totalCasesExpectedCM = 0 %}
 
           {% for case in allCases %}
-            {# {% set i = loop.index0 %} #}
             {% if case.case_status == 'active' and case.role == 'paying' %}
 
               {% set expectedCaseCM = case.child_maintenance_expected | default(0) | float %}

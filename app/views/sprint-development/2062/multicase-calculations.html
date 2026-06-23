@@ -1,0 +1,190 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block pageTitle %}
+  Statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/ukic-components-source.html"%}
+  {% include "includes/dwp-internal-service-header.html"%}
+{% endblock %}
+
+
+{% block content %}
+  {% include "includes/govuk-beta-banner" %}
+
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-2">Cases ({{ activePayingCount
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances--table-2-case">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
+              plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-calculations">Calculations</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+    Calculations
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    {# ======================== FROM 2016 to NOW ======================== #}
+
+    <div class="govuk-grid-column-full">
+      <p class="govuk-!-font-size-24">
+        Effective from <strong>19 October 2012</strong>.
+        The next annual review will be on <strong>19 October 2025</strong>.
+      </p>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculation details<br>
+          <span class="govuk-body">
+        Select a calculation reason to view more details about how it affects the case.
+        {# <br>There is no weekly charge while the service type is Direct Pay. #}
+      </span></caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
+            <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
+            <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>charge<br>(£)</th>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        {% for row in data['calc_details'] %}
+        {% if (loop.index > 0) and (loop.index <= 23) %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="multicase-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+  </div>
+
+  {# ======================== BEFORE 2016 ======================== #}
+
+  <div class="govuk-grid-column-full">
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculations from August 2014 to December 2016<br>
+        <span class="govuk-body">* Weekly charges may not match the service type. See in CMS 2012 for details.</span>
+      </caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
+          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
+          <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
+          <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
+          <th scope="col" class="govuk-table__header govuk-!-text-align-right">*&nbsp;Weekly<br>charge<br>(£)</th>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for row in data['calc_details'] %}
+      {% if (loop.index > 23) and (loop.index < 29) %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="multicase-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
+        </tr>
+        {% endif %}
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+</div>
+
+{# ======================== BEFORE 2014 ======================== #}
+
+<div class="govuk-grid-column-full">
+  <table class="govuk-table">
+    <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculations before August 2014<br>
+      <span class="govuk-body">No charges were applied before August 2014.</span>
+    </caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
+        <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>from</th>
+        <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Effective<br>to</th>
+        <th scope="col" class="govuk-table__header cell_calDate govuk-!-text-align-right">Perform<br>date</th>
+        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>income<br>(£)</th>
+        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>liability<br>(£)</th>
+        <th scope="col" class="govuk-table__header govuk-!-text-align-right">Weekly<br>charge<br>(£)</th>
+      </th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+    {% for row in data['calc_details'] %}
+     {% if (loop.index >= 29) %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <a href="multicase-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+        </td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_charge'] }}</td>
+      </tr>
+      {% endif %}
+    {% endfor %}
+
+  </tbody>
+</table>
+
+</div>
+</div>
+
+{% include "includes/back-to-top-link" %}
+
+{% endblock %}
