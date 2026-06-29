@@ -23,33 +23,34 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% set totalCasesPaidCM = 0 %}
 {% set totalCasesExpectedCD = 0 %}
 {% set totalCasesPaidCD = 0 %}
+{% set totalCasesExpectedCDFinance = 0 %}
+
 
 {# begin loop #}
 {% for case in allCases %}
 
   {# Count case status types #}
   {% if case.case_status == 'active' %}
-    {% set activeCount = (activeCount | default(0)) + 1 %}
+    {% set activeCount = (activeCount) + 1 %}
   {% endif %}
 
   {% if case.case_status == 'closed' %}
-    {% set closedCount = (closedCount | default(0)) + 1 %}
+    {% set closedCount = (closedCount) + 1 %}
   {% endif %}
 
   {% if case.role == 'paying' %}
-    {% set payingCount = (payingCount | default(0)) + 1 %}
+    {% set payingCount = (payingCount) + 1 %}
   {% endif %}
 
   {% if case.role == 'receiving' %}
-    {% set receivingCount = (receivingCount | default(0)) + 1 %}
+    {% set receivingCount = (receivingCount) + 1 %}
   {% endif %}
 
   {% if case.case_status == 'active' and case.role == 'paying' %}
-    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+    {% set activePayingCount = (activePayingCount) + 1 %}
   {% endif %}
 
   {# set finances amounts #}
-
   {% if case.case_status == 'active' and case.role == 'paying' %}
 
     {% set expectedCaseCM = case.child_maintenance_expected | default(0) | float %}
@@ -78,10 +79,10 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% set cashBalance = finances['cash_balance'] | default('0', true) | float %}
 
 {% set totalOverpayments = overpaymentsCM + overpaymentsCD + cashBalance %}
-{% set totalPaidCMFinance = data['finances']['payments_made_child_maintenance'] | default('0', true) %}
+{% set totalPaidCMFinance = data['finances']['payments_made_child_maintenance'] | default('0', true) | float %}
 {% set totalPaidCDFinance = finances['payments_made_charges_debt'] | default('0', true) | float %}
 {% set writtenOff = finances['written_off'] | default('0', true) | float %}
-{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) %}
+{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) | float %}
 
 {# //////// Charges + debt //////// #}
 {% set expectedCollCharges = finances['expected_collection_charges'] | default('0', true) | float %}
@@ -111,7 +112,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% set stillOwedCDFinance = ((totalExpectedCDFinance * 1) - (totalPaidCDFinance * 1))  %}
 {% set stillOwedTotalFinance = ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
 
-{% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %}
+{# {% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %} #}
 {# ////// END VARIABLES  ////// #}
 {# ////// VARIABLES ////// #}
 
@@ -161,7 +162,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
       {% include "includes/back-link.html" %}
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-        Calculation details
+        Calculation details</pre>
       </h1>
 
       <div class="govuk-grid-row">
@@ -174,6 +175,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                 </dt>
               <dd class="govuk-summary-list__value">
                 {{ reason['calc_reason'] }}
+                </dd>
               </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -236,13 +238,13 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                         {# add incremental value at each loop #}
                         {% set totalCasesLiabilityWeekly = totalCasesLiabilityWeekly + caseWeeklyLiability %}
                         {% set totalCasesLiabilityDaily = totalCasesLiabilityDaily + caseDailyLiability %}
-                        {% set casesTotalLiabilityChargesWeekly = totalCasesLiabilityWeekly + casesTotalLiabilityWeekly %}
+                        {# {% set casesTotalLiabilityChargesWeekly = totalCasesLiabilityWeekly + casesTotalLiabilityWeekly %} #}
 
                         <tr class="govuk-table__row">
                           <th class="govuk-table__header">{{ case.other_parent }}<br>
                             {{ case.case_id }}</th>
-                          <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseWeeklyLiability }}</td>
-                          <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseDailyLiability }}</td>
+                          <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseWeeklyLiability | currency }}</td>
+                          <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseDailyLiability | currency }}</td>
                         </tr>
                       {% endif %}
                     {% endfor %}
@@ -435,12 +437,10 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
               <tbody class="govuk-table__body">
                 {% for children in reason['qualifying_children'] %}
                   <tr class="govuk-table__row">
-                    <th class="govuk-table__header">{{ reason['qualifying_children'][loop.index0]['child_name'] }}</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ reason['qualifying_children'][loop.index0]['dob'] }}</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ reason['qualifying_children'][loop.index0]['overnight_stays'] }}</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">
-                      {{ reason['qualifying_children'][loop.index0]['local_auth_stays'] }}
-                    </td>
+                    <th class="govuk-table__header">{{ children.child_name }}</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ children.dob }}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ children.overnight_stays }}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ children.local_auth_stays }}</td>
                   </tr>
                 {% endfor %}
               </tbody>
@@ -475,5 +475,5 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
         </div>
       </div>
 
-      {% include "includes/back-to-top-link" %}
+      {# {% include "includes/back-to-top-link" %} #}
     {% endblock %}
