@@ -69,7 +69,7 @@
    FINANCES
 ========================= #}
 
-{% set finances = data['finances'] %}
+{% set finances = data['finances']['finances'] %}
 
 {% set overpaymentsCM = finances['overpayments_child_maintenance'] | default('0', true) | float %}
 {% set overpaymentsCD = finances['overpayments_charges_debt'] | default('0', true) | float %}
@@ -167,6 +167,10 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
       Finances
       </h1>
+      <p class="govuk-!-font-size-24">
+          From the case effective date <strong>8 December 2014</strong> to <strong>6 May 2026</strong>.
+
+      </p>
 
       {# /////////// Total expected ////////////// #}
 
@@ -203,7 +207,9 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
           <tr class="govuk-table__row">
             <th class="govuk-table__header">Total</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£{{ stillOwedTotalFinance | abs | currency }}</strong></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <strong>£{{ stillOwedTotalFinance | abs | currency }}</strong>
+            </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
               <strong>£{{ totalPaidFinance | abs | currency }}</strong>
             </td>
@@ -213,16 +219,11 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </tr>
         </tbody>
       </table>
-      <details class="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-                  Cash balance £{{ cashBalance }}
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-                Money paid that cannot be allocated to child maintenance or charges yet. 
-              </div>
-      </details>
+      <div class="govuk-inset-text">
+        <p>
+          Cash balance not included £{{ cashBalance | currency }}
+        </p>
+      </div>
 
       {# /////////// Total parents ////////////// #}
 
@@ -279,17 +280,16 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
         <tbody class="govuk-table__body">
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Collection charges</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedCollCharges }}</dd>
           </div>
 
           <div class="govuk-summary-list__row" style="border-bottom:none;">
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Enforcement charges</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£300.00</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedEnforcementCharges | currency }}</dd>
           </div>
           <section class="govuk-summary-list__row govuk-!-padding-bottom-8" role="contentinfo" aria="Enforcement charges">
-            <dt aria-label="Charges included in £300">
+            <dt aria-label="Charges included in £expectedEnforcementCharges">
               <ul class="govuk-list govuk-list--bullet govuk-!-width-full" role="list">
                 <li>£{{ regularDeductionOrder | currency }} Regular deduction order</li>
                 <li>£{{ lumpSumDeductionOrder | currency }} Lump sum deduction order</li>
@@ -300,47 +300,52 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <dd class="govuk-summary-list__value">&nbsp;</dd>
           </section>
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Enforcement costs</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedEnforcementCost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">CSA debt</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedCSADebt | currency }}</dd>
           </div>
+          {# ////// CSA DEBT BREAKDOWN  //////// #}
+          {% set expectedCSADebtRP1 = 20 | float %}
+          {% set expectedCSADebtRP2 = expectedCSADebt - expectedCSADebtRP1 %}
+          <section class="govuk-summary-list__row govuk-!-padding-bottom-8" role="contentinfo" aria="Enforcement charges">
+            <dt aria-label="Charges included in £300">
+              <ul class="govuk-list govuk-list--bullet govuk-!-width-full" role="list">
+                <li>£{{ expectedCSADebtRP1 | currency }} &ndash; {{ allCases[0]['other_parent'] }}
+                  {{ allCases[0]['case_id'] }}</li>
+                <li>£{{ expectedCSADebtRP2 | currency }} &ndash; {{ allCases[1]['other_parent'] }}
+                  {{ allCases[0]['case_id'] }}</li>
+              </ul>
+            </dt>
+            <dd class="govuk-summary-list__value">&nbsp;</dd>
+          </section>
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">DNA costs</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedDNACost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Subject access request costs</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedSubjectAccessRequestCost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Interest</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedInterest | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Fees</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedFees | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Judicial review costs</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedJudRevCost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Appeal costs</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedAppealCost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
-
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">CMS administration costs</dt>
             <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedCMSAdminCost | currency }}</dd>
           </div>
@@ -350,7 +355,9 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Total</dt>
-            <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right"><strong>£{{ totalExpectedCDFinance | currency }}</strong></dd>
+            <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">
+              <strong>£{{ totalExpectedCDFinance | currency }}</strong>
+            </dd>
           </div>
         </tbody>
       </dl>

@@ -84,7 +84,7 @@
    FINANCES
 ========================= #}
 
-{% set finances = data['finances'] %}
+{% set finances = data['finances']['finances'] %}
 
 {% set overpaymentsCM = finances['overpayments_child_maintenance'] | default('0', true) | float %}
 {% set overpaymentsCD = finances['overpayments_charges_debt'] | default('0', true) | float %}

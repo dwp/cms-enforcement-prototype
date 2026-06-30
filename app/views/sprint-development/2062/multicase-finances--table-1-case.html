@@ -81,7 +81,7 @@
    FINANCES
 ========================= #}
 
-{% set finances = data['finances'] %}
+{% set finances = data['finances']['finances'] %}
 
 {% set overpaymentsCM = finances['overpayments_child_maintenance'] | default('0', true) | float %}
 {% set overpaymentsCD = finances['overpayments_charges_debt'] | default('0', true) | float %}
@@ -179,6 +179,9 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
       Finances
       </h1>
+            <p class="govuk-!-font-size-24">
+          From the case effective date <strong>8 December 2014</strong> to <strong>6 May 2026</strong>.
+      </p>
 
       {# /////////// Total expected ////////////// #}
 

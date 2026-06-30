@@ -12,6 +12,65 @@
   {# Default fallback if period1 or if selectPeriod is empty #}
   {% set tableTitle = '21 Dec 2023 &ndash; 21 Jun 2024' %}
 {% endif %}
+
+
+{# Set dataset source for looping #}
+{% set allCases = data['multicase']['cases'] %}
+
+{# Set case status types before the loop #}
+{% set activeCount = 0 %}
+{% set closedCount = 0 %}
+{% set payingCount = 0 %}
+{% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
+
+{# set case totals before the loop #}
+{% set totalCasesExpectedCM = 0 %}
+{% set totalCasesPaidCM = 0 %}
+{% set totalCasesExpectedCD = 0 %}
+{% set totalCasesPaidCD = 0 %}
+
+{# begin loop #}
+{% for case in allCases %}
+
+  {# Count case status types #}
+  {% if case.case_status == 'active' %}
+    {% set activeCount = (activeCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'closed' %}
+    {% set closedCount = (closedCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'paying' %}
+    {% set payingCount = (payingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'receiving' %}
+    {% set receivingCount = (receivingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {# set finances amounts #}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+
+    {% set expectedCaseCM = case.child_maintenance_expected | default(0) | float %}
+    {% set paidCaseCM = case.child_maintenance_paid | default(0) | float %}
+    {% set expectedCaseCD = case.charges_debt_expected | default(0) | float %}
+    {% set paidCaseCD = case.charges_debt_paid | default(0) | float %}
+
+    {% set totalCasesExpectedCM = totalCasesExpectedCM + expectedCaseCM %}
+    {% set totalCasesPaidCM = totalCasesPaidCM + paidCaseCM %}
+    {% set totalCasesExpectedCDFinance = totalCasesExpectedCDFinance + expectedCaseCD %}
+    {% set totalCasesPaidCD = totalCasesPaidCD + paidCaseCD %}
+
+  {% endif %}
+
+{% endfor %}
 ////////////////////
 
 {% block pageTitle %}
@@ -22,41 +81,15 @@
   {% include "includes/ukic-components-source.html" %}
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
-{% block beforeContent %}
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-      Beta
-    </strong>
-      <span class="govuk-phase-banner__text">
-      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>.
-    </span>
-    </p>
-  </div>
 
-  <section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information" style="height: auto; width: 100%; min-height: auto;">
-  <dl class="dwp-quick-reference__block" style="display: flow-root;">
-      <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-      <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
-      <dd class="dwp-quick-reference__status">
-        <strong class="govuk-tag govuk-tag--turquoise">
-      Paying parent
-    </strong>
-        <strong class="govuk-tag govuk-tag--blue">
-      Single case
-    </strong>
-        <strong class="govuk-tag govuk-tag--yellow">
-      Manual allocation
-    </strong>
-      </dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
-      <dd class="dwp-quick-reference__secondary">121323454232</dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
-      <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
-    </dl>
-  </section>
+{% block content %}
 
-  <div class="moj-primary-navigation">
+  {% include "includes/govuk-beta-banner" %}
+
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
@@ -66,13 +99,13 @@
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances--table-2-case">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation" aria-current="page">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
@@ -86,14 +119,16 @@
       </div>
     </div>
   </div>
-{% endblock %}
-{% block content %}
+  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
+  <!-- /////////////////////////////////// -->
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
   <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
         Payment allocation
       </h1>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
       <p class="govuk-!-font-size-24">
         Includes payment allocations from <strong>18 June 2022</strong> to <strong>21 June 2024</strong>.
      </p>
