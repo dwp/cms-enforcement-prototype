@@ -17,6 +17,10 @@
 {# Set dataset source for looping #}
 {% set allCases = data['multicase']['cases'] %}
 
+{# Get parent anme and case id #}
+{% set parent1 = allCases[0].other_parent  ~ ' ' ~  allCases[0].case_id %}
+{% set parent2 = allCases[1].other_parent  ~ ' ' ~  allCases[1].case_id %}
+
 {# Set case status types before the loop #}
 {% set activeCount = 0 %}
 {% set closedCount = 0 %}
@@ -71,6 +75,12 @@
   {% endif %}
 
 {% endfor %}
+
+{# =========================
+   FINANCES
+========================= #}
+{% set finances = data['finances']['finances'] %}
+{% set cashBalance = finances['cash_balance'] | default('0', true) | float %}
 ////////////////////
 
 {% block pageTitle %}
@@ -78,18 +88,15 @@
 {% endblock %}
 
 {% block header %}
-  {% include "includes/ukic-components-source.html" %}
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
 
-{% block content %}
-
+{% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-
   {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
@@ -100,11 +107,13 @@
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation" aria-current="page">Payment allocation</a>
               <a class="moj-primary-navigation__link" href="multicase-payment-allocation" aria-current="page">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
@@ -119,29 +128,29 @@
       </div>
     </div>
   </div>
-  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
-  <!-- /////////////////////////////////// -->
-
+{% endblock %}
+<!-- /////////////////////////////////// -->
+{% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-
-  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
         Payment allocation
       </h1>
 
       <p class="govuk-!-font-size-24">
         Includes payment allocations from <strong>18 June 2022</strong> to <strong>21 June 2024</strong>.
      </p>
-      <details class="govuk-details" style="margin-bottom: 40px;">
-        <summary class="govuk-details__summary" style="width: auto;">
-          <span class="">
-          Cash balance £34.38
-        </span>
-        </summary>
-        <div class="govuk-details__text">
-        Money paid that cannot be allocated to child maintenance or charges yet. 
-      </div>
-      </details>
+
+                <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+              Cash balance £{{ cashBalance }}
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+            Money paid that cannot be allocated to child maintenance or charges yet. 
+          </div>
+          </details>
 
       <form method="get" action="#">
         <div class="govuk-form-group govuk-!-margin-bottom-0">
@@ -174,7 +183,6 @@
 
     </div>
   </div>
-  {% include "includes/back-to-top-link" %}
 
   <style>
     .govuk-table__cell {

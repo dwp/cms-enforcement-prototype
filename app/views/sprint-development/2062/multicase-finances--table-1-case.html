@@ -4,21 +4,6 @@
    PRESETS
 ========================= #}
 
-{# Add macro for dealing with negative amounts #}
-{% macro format_currency(value) %}
-  {% set amount = value | default(0) | float %}
-  {% if amount < 0 %}
-    <span>
-      <span class="govuk-visually-hidden">Minus </span>
-      &minus;£{{ amount | abs | currency }}
-    </span>
-  {% else %}
-    £{{ amount | currency }}
-  {% endif %}
-{% endmacro %}
-{# Example use;
-{{ format_currency(caseArrearsCM) }} #}
-
 {# Set link urls #}
 {% set paymentDetails = "payment-allocation/ef-pb-19 Nov 24" %}
 
@@ -59,6 +44,9 @@
     {% set receivingCount = (receivingCount | default(0)) + 1 %}
   {% endif %}
 
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+  {% endif %}
   {# set finances amounts #}
 
   {% if case.case_status == 'active' and case.role == 'paying' %}
@@ -133,14 +121,12 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
 
-{% block content %}
-
+{% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-
   {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
@@ -150,10 +136,10 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances--table-1-case">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances--table-1-case" aria-current="page">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
@@ -170,12 +156,11 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       </div>
     </div>
   </div>
-  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
   <!-- /////////////////////////////////// -->
-
+{% endblock %}
+{% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
       Finances
       </h1>

@@ -40,15 +40,12 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 {% block header %}
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
-
-{% block content %}
-
+{% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-
   {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
@@ -61,7 +58,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               <a class="moj-primary-navigation__link" href="multicase-finances--table-1-case">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
@@ -78,33 +75,24 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       </div>
     </div>
   </div>
-  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
-  <!-- /////////////////////////////////// -->
-  <div class="govuk-grid-row">
 
+  <!-- /////////////////////////////////// -->
+
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
         Cases
       </h1>
-      <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
-      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
-        <strong>{{ activePayingCount }} paying,  {{ closedCount }} closed.</strong>
-      </p>
-      <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
+        <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
+          <strong>{{ activePayingCount }} paying,  {{ closedCount }} closed.</strong>
+        </p>
+        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
 
-      {# Example of displaying and setting loop-scoped data #}
-      {# {% for case in activeCases %}
-      {% set currentRole = case.role %}
-      {% set childrenCount = case.qualifying_children | length %}
-      
-      <p>Case {{ case.case_id }} role is {{ currentRole }} with {{ childrenCount }} children.</p>
-    {% endfor %} #}
-      {# 
-{% set activeCase = case.case_status %}
-  {% if activeCase == 'active' %} #}
-      {# {% set otherParent = data['case']['other_parent'] %}
-  {% set caseId = data['case']['case_id'] %} #}
-      <h2 class="govuk-heading-m govuk-!-margin-top-5">
+        <h2 class="govuk-heading-m govuk-!-margin-top-6">
           Paying cases
         </h2>
 
@@ -114,12 +102,6 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               <h3 class="govuk-summary-card__title">
               Paying to {{ allCases[0].other_parent }}
               </h3>
-              <ul class="govuk-summary-card__actions">
-                <li class="govuk-summary-card__action">
-                  <a class="govuk-link" href="multicase-finances?selected_view=1">View finances<span
-                class="govuk-visually-hidden"> for case {{ case.case_id }}</span></a>
-                </li>
-              </ul>
             </div>
             <div class="govuk-summary-card__content">
               <dl class="govuk-summary-list">
@@ -175,8 +157,8 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </div>
 
         {% endif %}
-      <!-- //////// RP CASE //////// -->
-      {# <h2 class="govuk-heading-m govuk-!-margin-top-5">
+        <!-- //////// RP CASE //////// -->
+        {# <h2 class="govuk-heading-m govuk-!-margin-top-5">
       Receiving cases
     </h2>
 
@@ -207,21 +189,21 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         {% endif %}
       {% endfor %} #}
 
-      <!-- //////// CASES CLOSED LIST//////// -->
+        <!-- //////// CASES CLOSED LIST//////// -->
 
-      <h2 class="govuk-heading-m">
+        <h2 class="govuk-heading-m">
       Closed cases
     </h2>
-      <ul class="govuk-list govuk-list--bullet">
-        {% for case in allCases %}
-          {% if case.case_status == 'closed' %}
-            <li>
-              <p class="govuk-!-margin-bottom-2">
+        <ul class="govuk-list govuk-list--bullet">
+          {% for case in allCases %}
+            {% if case.case_status == 'closed' %}
+              <li>
+                <p class="govuk-!-margin-bottom-2">
               Case <span class="govuk-!-font-weight-bold">{{ case.case_id }}</span> with {{ case.other_parent }} was closed on <span class="govuk-!-font-weight-bold">{{ case.date_closed }}</span>.
             </p>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
 
-    {% endblock %}
+      {% endblock %}

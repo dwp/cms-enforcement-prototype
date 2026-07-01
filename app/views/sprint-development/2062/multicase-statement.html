@@ -116,7 +116,8 @@
 {% include "includes/govuk-beta-banner" %}
 {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
-  <div class="moj-primary-navigation">
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
@@ -128,7 +129,7 @@
               <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement--all" aria-current="page">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement" aria-current="page">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
@@ -241,7 +242,7 @@
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">22 Nov 2024</td>
-            <td class="govuk-table__cell_last">Child maintenance due<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">72.54</td>
@@ -496,7 +497,7 @@
         {% if filterTableBy == 'all' %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">8 Sep 2024</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">16.38</td>
@@ -518,7 +519,7 @@
         {% if filterTableBy == 'all' %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">1 Sep 2024</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">16.38</td>
@@ -596,7 +597,7 @@
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">21 Aug 2022</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">71.47</td>
@@ -618,7 +619,7 @@
         {% if filterTableBy == 'all'%}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">14 Aug 2022</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">71.47</td>
@@ -640,7 +641,7 @@
         {% if filterTableBy == 'all'%}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">7 Aug 2022</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">71.47</td>
@@ -706,7 +707,7 @@
         {% if filterTableBy == 'all'%}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">17 Jul 2022</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">20.42</td>
@@ -750,7 +751,7 @@
         {% if filterTableBy == 'all'%}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">10 Jul 2022</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
@@ -772,7 +773,7 @@
         {% if filterTableBy == 'all'%}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">3 Jul 2022</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
@@ -882,7 +883,7 @@
         {% if filterTableBy == 'all'%}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">29 May 2022</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
@@ -926,7 +927,7 @@
         {% if filterTableBy == 'all'%}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">15 May 2022</td>
-            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent1 }}</td>
+            <td class="govuk-table__cell_last">Child maintenance due - 3020913856<br>{{ parent2 }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
             {% if filterTableBy == 'all' %}
               <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>

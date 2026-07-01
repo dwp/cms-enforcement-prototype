@@ -43,14 +43,12 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
 
-{% block content %}
-
+{% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-
   {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
@@ -63,7 +61,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
@@ -80,12 +78,13 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       </div>
     </div>
   </div>
-  <!-- {% include "includes/vpf/moj-primary-navigation-multicase" %} -->
   <!-- /////////////////////////////////// -->
+{% endblock %}
+{% block content %}
   <div class="govuk-grid-row">
-
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
         Cases
       </h1>
       <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
@@ -106,7 +105,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   {% if activeCase == 'active' %} #}
       {# {% set otherParent = data['case']['other_parent'] %}
   {% set caseId = data['case']['case_id'] %} #}
-      <h2 class="govuk-heading-m govuk-!-margin-top-5">
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
           Paying cases
         </h2>
       {% for case in allCases %}
@@ -116,12 +115,6 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               <h3 class="govuk-summary-card__title">
               Paying to {{ case.other_parent }}
               </h3>
-              <ul class="govuk-summary-card__actions">
-                <li class="govuk-summary-card__action">
-                  <a class="govuk-link" href="multicase-finances?selected_view=1">View finances<span
-                class="govuk-visually-hidden"> for case {{ case.case_id }}</span></a>
-                </li>
-              </ul>
             </div>
             <div class="govuk-summary-card__content">
               <dl class="govuk-summary-list">

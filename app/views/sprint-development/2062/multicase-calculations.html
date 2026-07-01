@@ -9,12 +9,11 @@
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
 
-
-{% block content %}
+{% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-
   {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
+  <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
@@ -25,10 +24,10 @@
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances--table-2-case">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
@@ -38,15 +37,16 @@
               plans</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-calculations">Calculations</a>
+              <a class="moj-primary-navigation__link" href="multicase-calculations" aria-current="page">Calculations</a>
             </li>
           </ul>
         </nav>
       </div>
     </div>
   </div>
-
-  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+{% endblock %}
+{% block content %}
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
     Calculations
   </h1>
 
@@ -84,7 +84,7 @@
         {% if (loop.index > 0) and (loop.index <= 23) %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a href="multicase-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+              <a href="multicase-calculation-details-2-case?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
             </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
