@@ -18,7 +18,6 @@
 
 {# Get parent anme and case id #}
 {% set parent1 = allCases[0].other_parent  ~ ' ' ~  allCases[0].case_id %}
-{% set parent2 = allCases[1].other_parent  ~ ' ' ~  allCases[1].case_id %}
 
 {# Set case status types before the loop #}
 {% set activeCount = 0 %}
@@ -110,9 +109,7 @@
               <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-payment-plan" aria-current="page">Payment
-              <a class="moj-primary-navigation__link" href="multicase-payment-plan" aria-current="page">Payment
-              plans</a>
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan" aria-current="page">Payment plans</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-calculations">Calculations</a>
