@@ -1,0 +1,205 @@
+{% extends "layouts/internal-service.html" %}
+
+///// VARIABLES /////
+{% set selectPeriod = data['selectPeriod'] | default("period1") %}
+{% if selectPeriod == 'period2' %}
+  {% set tableTitle = '20 Jun 2023 &ndash; 20 Dec 2023' %}
+{% elif selectPeriod == 'period3' %}
+  {% set tableTitle = '19 Dec 2022 &ndash; 19 Jun 2023' %}
+{% elif selectPeriod == 'period4' %}
+  {% set tableTitle = '18 Jun 2022 &ndash; 18 Dec 2022' %}
+{% else %}
+  {# Default fallback if period1 or if selectPeriod is empty #}
+  {% set tableTitle = '21 Dec 2023 &ndash; 21 Jun 2024' %}
+{% endif %}
+
+
+{# Set dataset source for looping #}
+{% set allCases = data['multicase']['cases'] %}
+
+{# Get parent anme and case id #}
+{% set parent1 = allCases[0].other_parent  ~ ' ' ~  allCases[0].case_id %}
+{% set parent2 = allCases[1].other_parent  ~ ' ' ~  allCases[1].case_id %}
+
+{# Set case status types before the loop #}
+{% set activeCount = 0 %}
+{% set closedCount = 0 %}
+{% set payingCount = 0 %}
+{% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
+
+{# set case totals before the loop #}
+{% set totalCasesExpectedCM = 0 %}
+{% set totalCasesPaidCM = 0 %}
+{% set totalCasesExpectedCD = 0 %}
+{% set totalCasesPaidCD = 0 %}
+
+{# begin loop #}
+{% for case in allCases %}
+
+  {# Count case status types #}
+  {% if case.case_status == 'active' %}
+    {% set activeCount = (activeCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'closed' %}
+    {% set closedCount = (closedCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'paying' %}
+    {% set payingCount = (payingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'receiving' %}
+    {% set receivingCount = (receivingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {# set finances amounts #}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+
+    {% set expectedCaseCM = case.child_maintenance_expected | default(0) | float %}
+    {% set paidCaseCM = case.child_maintenance_paid | default(0) | float %}
+    {% set expectedCaseCD = case.charges_debt_expected | default(0) | float %}
+    {% set paidCaseCD = case.charges_debt_paid | default(0) | float %}
+
+    {% set totalCasesExpectedCM = totalCasesExpectedCM + expectedCaseCM %}
+    {% set totalCasesPaidCM = totalCasesPaidCM + paidCaseCM %}
+    {% set totalCasesExpectedCDFinance = totalCasesExpectedCDFinance + expectedCaseCD %}
+    {% set totalCasesPaidCD = totalCasesPaidCD + paidCaseCD %}
+
+  {% endif %}
+
+{% endfor %}
+
+{# =========================
+   FINANCES
+========================= #}
+{% set finances = data['finances']['finances'] %}
+{% set cashBalance = finances['cash_balance'] | default('0', true) | float %}
+////////////////////
+
+{% block pageTitle %}
+  Payment allocation – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/dwp-internal-service-header.html"%}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/govuk-beta-banner" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-2">Cases ({{ activePayingCount
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation" aria-current="page">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-calculations">Calculations</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+<!-- /////////////////////////////////// -->
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        Payment allocation
+      </h1>
+
+      <p class="govuk-!-font-size-24">
+        Includes payment allocations from <strong>18 June 2022</strong> to <strong>21 June 2024</strong>.
+     </p>
+
+                <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+              Cash balance £{{ cashBalance }}
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+            Money paid that cannot be allocated to child maintenance or charges yet. 
+          </div>
+          </details>
+
+      <form method="get" action="#">
+        <div class="govuk-form-group govuk-!-margin-bottom-0">
+          <label class="govuk-label" for="selectPeriod">
+            Select a 6-month period
+          </label>
+          <select class="govuk-select" id="selectPeriod" name="selectPeriod">
+            <option value="period1" {% if selectPeriod == 'period1' or not selectPeriod %} selected{% endif %}>21 Dec 2023 &ndash; 21 Jun 2024</option>
+            <option value="period2" {% if selectPeriod == 'period2' %} selected{% endif %}>20 Jun 2023 &ndash; 20 Dec 2023</option>
+            <option value="period3" {% if selectPeriod == 'period3' %}selected{% endif %}>19 Dec 2022 &ndash; 19 Jun 2023</option>
+            <option value="period4" {% if selectPeriod == 'period4' %}selected{% endif %}>18 Jun 2022 &ndash; 18 Dec 2022</option>
+          </select>
+
+          <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Apply
+          </button>
+        </div>
+      </form>
+
+      {# ////////// TABLE /////////// #}
+      {% if selectPeriod == 'period1' or not selectPeriod %}
+        {% include "includes/vpf/payment-allocation-periods/period-1.html" %}
+      {% elif selectPeriod == 'period2' %}
+        {% include "includes/vpf/payment-allocation-periods/period-2.html" %}
+      {% elif selectPeriod == 'period3' %}
+        {% include "includes/vpf/payment-allocation-periods/period-3.html" %}
+      {% elif selectPeriod == 'period4' %}
+        {% include "includes/vpf/payment-allocation-periods/period-4.html" %}
+      {% endif %}
+
+    </div>
+  </div>
+
+  <style>
+    .govuk-table__cell {
+      border-bottom: none;
+
+      .govuk-details__text {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+    .govuk-table__cell:has(.govuk-details) {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .table-row-border-top {
+      border-top: 1px solid #b1b4b6;
+    }
+    .govuk-table__body:last-child {
+      border-bottom: 1px solid #b1b4b6;
+    }
+  </style>
+
+{% endblock %}
