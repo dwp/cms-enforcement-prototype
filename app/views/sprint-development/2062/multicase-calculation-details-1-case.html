@@ -250,23 +250,11 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                     <th scope="row" class="govuk-table__header">Charges and fees</th>
                     <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalWeeklyCharge | currency }}</td>
                     <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalDailyCharge | currency }}</td>
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header">Charges and fees</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalWeeklyCharge | currency }}</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalDailyCharge | currency }}</td>
-                  </tr>
+                  </tr
 
                   {% set totalCasesLiabilityChargesWeekly = totalCasesLiabilityWeekly + totalWeeklyCharge %}
                   {% set totalCasesLiabilityChargesDaily = totalCasesLiabilityDaily + totalDailyCharge %}
-                  {% set totalCasesLiabilityChargesWeekly = totalCasesLiabilityWeekly + totalWeeklyCharge %}
-                  {% set totalCasesLiabilityChargesDaily = totalCasesLiabilityDaily + totalDailyCharge %}
 
-                  <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header">Total</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalCasesLiabilityChargesWeekly | currency }}</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalCasesLiabilityChargesDaily | currency }}</td>
-                  </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Total</th>
                     <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalCasesLiabilityChargesWeekly | currency }}</td>
@@ -326,12 +314,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                   Assessable weekly income
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  <dd class="govuk-summary-list__value">
                   £{{ reason['assessable_weekly_income'] }}
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -347,24 +330,10 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                  <dd class="govuk-summary-list__value">
-                    <ul class="govuk-list">
-                      <li>{{ reason['benefits_type'] }}</li>
-                      <li>Partner household: {{ reason['partner_household'] }}</li>
-                    </ul>
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
                   Annual pension contributions (HMRC) 
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  <dd class="govuk-summary-list__value">
                   £{{ reason['annual_pension_contrib'] }}
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -372,12 +341,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                   Annual gross income (pension deducted)
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  <dd class="govuk-summary-list__value">
                   £{{ reason['annual_gross_income'] }}
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -385,12 +349,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                   Foreign exchange costs
                 </dt>
                   <dd class="govuk-summary-list__value">
-                  <dd class="govuk-summary-list__value">
                   £{{ reason['foreign_exchange_cost'] }}
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -403,20 +362,8 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                  <dd class="govuk-summary-list__value">
-                    {{ reason['special_circs'] }}
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
                   Relevant other children
                 </dt>
-                  <dd class="govuk-summary-list__value">
-                    {{ reason['roc'] }}
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
                   <dd class="govuk-summary-list__value">
                     {{ reason['roc'] }}
                   </dd>
@@ -473,7 +420,5 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
       </div>
     </div>
 
-    {# {% include "includes/back-to-top-link" %} #}
-  {% endblock %}
     {# {% include "includes/back-to-top-link" %} #}
   {% endblock %}

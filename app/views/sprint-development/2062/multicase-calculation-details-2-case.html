@@ -272,9 +272,9 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
               {% set totalCasesLiabilityChargesDaily = totalCasesLiabilityDaily + totalDailyCharge %}
 
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Total</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalCasesLiabilityChargesWeekly | currency }}</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalCasesLiabilityChargesDaily | currency }}</td>
+                <th scope="row" class="govuk-table__header" style="border-bottom: none;">Total</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£{{ totalCasesLiabilityChargesWeekly | currency }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£{{ totalCasesLiabilityChargesDaily | currency }}</td>
               </tr>
 
             </tbody>

@@ -18,6 +18,8 @@
 
 {# Get parent anme and case id #}
 {% set parent1 = allCases[0].other_parent  ~ ' ' ~  allCases[0].case_id %}
+{% set parent2 = allCases[1].other_parent  ~ ' ' ~  allCases[1].case_id %}
+
 
 {# Set case status types before the loop #}
 {% set activeCount = 0 %}
@@ -136,11 +138,9 @@
       </div>
     </div>
 
-
     <div class="govuk-grid-column-full">
 
       <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m">Recent and upcoming payments</caption>
         <caption class="govuk-table__caption govuk-table__caption--m">Recent and upcoming payments</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
@@ -233,8 +233,7 @@
             <td class="govuk-table__cell">Deduction from earnings</td>
             <td class="govuk-table__cell">
               <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jul-25">106.65</a>&nbsp;</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jul-25">106.65</a>&nbsp;</td>
+            
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
@@ -323,8 +322,6 @@
             <td class="govuk-table__cell">Deduction from earnings</td>
             <td class="govuk-table__cell">
               <a class="govuk-link" href="payment-plan-expected/ef-pp-19-feb-25">106.65</a>&nbsp;</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-feb-25">106.65</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
@@ -333,16 +330,12 @@
             <td class="govuk-table__cell">Deduction from earnings</td>
             <td class="govuk-table__cell">
               <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jan-25">106.65</a>&nbsp;</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jan-25">106.65</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Dec 2024</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-dec-24">106.65</a>&nbsp;</td>
             <td class="govuk-table__cell">
               <a class="govuk-link" href="payment-plan-expected/ef-pp-19-dec-24">106.65</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>

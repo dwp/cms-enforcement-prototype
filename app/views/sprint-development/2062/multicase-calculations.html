@@ -1,5 +1,61 @@
 {% extends "layouts/internal-service.html" %}
 
+///// VARIABLES /////
+{% set selectPeriod = data['selectPeriod'] | default("period1") %}
+{% if selectPeriod == 'period2' %}
+  {% set tableTitle = '20 Jun 2023 &ndash; 20 Dec 2023' %}
+{% elif selectPeriod == 'period3' %}
+  {% set tableTitle = '19 Dec 2022 &ndash; 19 Jun 2023' %}
+{% elif selectPeriod == 'period4' %}
+  {% set tableTitle = '18 Jun 2022 &ndash; 18 Dec 2022' %}
+{% else %}
+  {# Default fallback if period1 or if selectPeriod is empty #}
+  {% set tableTitle = '21 Dec 2023 &ndash; 21 Jun 2024' %}
+{% endif %}
+
+{# Set dataset source for looping #}
+{% set allCases = data['multicase']['cases'] %}
+
+{# Get parent anme and case id #}
+{% set parent1 = allCases[0].other_parent  ~ ' ' ~  allCases[0].case_id %}
+{% set parent2 = allCases[1].other_parent  ~ ' ' ~  allCases[1].case_id %}
+
+
+{# Set case status types before the loop #}
+{% set activeCount = 0 %}
+{% set closedCount = 0 %}
+{% set payingCount = 0 %}
+{% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
+
+{# begin loop #}
+{% for case in allCases %}
+
+  {# Count case status types #}
+  {% if case.case_status == 'active' %}
+    {% set activeCount = (activeCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'closed' %}
+    {% set closedCount = (closedCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'paying' %}
+    {% set payingCount = (payingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'receiving' %}
+    {% set receivingCount = (receivingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+  {% endif %}
+
+{% endfor %}
+////////////////////
+
+
 {% block pageTitle %}
   Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
