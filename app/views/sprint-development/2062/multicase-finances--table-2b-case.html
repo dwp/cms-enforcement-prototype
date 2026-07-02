@@ -76,7 +76,7 @@
 {% set cashBalance = finances['cash_balance'] | default('0', true) | float %}
 
 {% set totalOverpayments = overpaymentsCM + overpaymentsCD + cashBalance %}
-{% set totalPaidCMFinance = data['finances']['payments_made_child_maintenance'] | default('0', true) %}
+{% set totalPaidCMFinance = finances['payments_made_child_maintenance'] | default('0', true) %}
 {% set totalPaidCDFinance = finances['payments_made_charges_debt'] | default('0', true) | float %}
 {% set writtenOff = finances['written_off'] | default('0', true) | float %}
 {% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) %}
@@ -169,7 +169,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
       </p>
 
-      {# /////////// Total expected ////////////// #}
+      {# /////////// Total finances ////////////// #}
 
       <table class="govuk-table govuk-!-margin-top-6">
         <caption class="govuk-table__caption govuk-table__caption--m">Total finances</caption>
@@ -178,6 +178,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <th scope="col" class="govuk-table__header govuk-!-width-one-third"></th>
             <th scope="col" class="govuk-table__header numerical">Arrears owed</th>
             <th scope="col" class="govuk-table__header numerical">Payments made</th>
+            <th scope="col" class="govuk-table__header numerical">Overpayments</th>
             <th scope="col" class="govuk-table__header numerical">Total expected</th>
           </tr>
         </thead>
@@ -188,6 +189,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <th class="govuk-table__header">Child maintenance</th>
             <td class="govuk-table__cell govuk-table__cell--numeric">£{{ stillOwedCMFinance | default(0) | float | currency }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalPaidCMFinance | default(0) | float | currency }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£100.00</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
               £{{ expectedCMFinance | default(0) | float | currency }}
             </td>
@@ -197,6 +199,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <th class="govuk-table__header">Charges and debt</th>
             <td class="govuk-table__cell govuk-table__cell--numeric">£{{ stillOwedCDFinance | default(0) | float | currency }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalPaidCDFinance | default(0) | float | currency }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">£2.50</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
               £{{ totalExpectedCDFinance | default(0) | float | currency }}
             </td>
@@ -211,18 +214,24 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               <strong>£{{ totalPaidFinance | abs | currency }}</strong>
             </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
+              <strong>£102.50</strong>
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
               <strong>£{{ totalExpectedFinance | default(0) | float | currency }}</strong>
             </td>
           </tr>
         </tbody>
       </table>
-      <div class="govuk-inset-text">
 
-        <p>
-          Cash balance not included £{{ cashBalance | currency }}
-        <br>
-          Amount written off £{{ writtenOff | currency }}
-        </p>
+      
+      <div class="govuk-inset-text">
+       <div class='govuk-!-margin-bottom-2'>
+          Cash balance included in payments made <strong>£{{ cashBalance | currency }}</strong>
+          </div>
+          <div>
+        {% set writtenOff = 10.02 %}
+          Amount written off <strong>£{{ writtenOff | currency }}</strong>
+        </div>
 
       </div>
 
@@ -235,6 +244,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <th scope="col" class="govuk-table__header govuk-!-width-one-third">&nbsp;</th>
             <th scope="col" class="govuk-table__header numerical">Arrears owed</th>
             <th scope="col" class="govuk-table__header numerical">Payments made</th>
+            <th scope="col" class="govuk-table__header numerical">Overpayments</th>
             <th scope="col" class="govuk-table__header numerical">Total expected</th>
           </tr>
         </thead>
@@ -262,8 +272,8 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                 <th class="govuk-table__header">{{ case.other_parent }}
                   {{ case.case_id }}</th>
                 <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseArrearsCM | default(0) | float | currency }}</td>
-
                 <td class="govuk-table__cell govuk-table__cell--numeric">£{{ paidCaseCM | default(0) | float | currency }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£50.00</td>
                 <td class="govuk-table__cell govuk-table__cell--numeric">
                   £{{ expectedCaseCM | default(0) | float | currency }}
                 </td>
