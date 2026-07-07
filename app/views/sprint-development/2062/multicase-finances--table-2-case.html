@@ -76,10 +76,10 @@
 {% set cashBalance = finances['cash_balance'] | default('0', true) | float %}
 
 {% set totalOverpayments = overpaymentsCM + overpaymentsCD + cashBalance %}
-{% set totalPaidCMFinance = data['finances']['payments_made_child_maintenance'] | default('0', true) %}
+{% set totalPaidCMFinance = finances['payments_made_child_maintenance'] | default('0', true) | float %}
 {% set totalPaidCDFinance = finances['payments_made_charges_debt'] | default('0', true) | float %}
 {% set writtenOff = finances['written_off'] | default('0', true) | float %}
-{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) %}
+{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) | float %}
 
 {# //////// Charges + debt //////// #}
 {% set expectedCollCharges = finances['expected_collection_charges'] | default('0', true) | float %}
@@ -169,7 +169,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
       </p>
 
-        {# /////////// Total expected ////////////// #}
+        {# /////////// Total finances ////////////// #}
 
         <table class="govuk-table govuk-!-margin-top-6">
           <caption class="govuk-table__caption govuk-table__caption--m">Total finances</caption>
