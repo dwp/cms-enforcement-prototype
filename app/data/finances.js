@@ -34,7 +34,7 @@ module.exports = {
       'liability_order': '300.00',
       'deduction_from_earnings_order': '50.00',
       'expected_enforcement_cost': '122.41',
-      'expected_CSA_debt': '349.31',
+      'expected_CSA_debt': '63.45',
       'expected_DNA_debt': '87.23',
       'expected_subject_access_request_cost': '19.00',
       'expected_interest': '30.67',

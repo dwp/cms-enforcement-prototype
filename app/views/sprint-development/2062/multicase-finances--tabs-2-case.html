@@ -4,21 +4,6 @@
    PRESETS
 ========================= #}
 
-{# Add macro for dealing with negative amounts #}
-{% macro format_currency(value) %}
-  {% set amount = value | default(0) | float %}
-  {% if amount < 0 %}
-    <span>
-      <span class="govuk-visually-hidden">Minus </span>
-      &minus;£{{ amount | abs | currency }}
-    </span>
-  {% else %}
-    £{{ amount | currency }}
-  {% endif %}
-{% endmacro %}
-{# Example use;
-{{ format_currency(caseArrearsCM) }} #}
-
 {# Set link urls #}
 {% set paymentDetails = "payment-allocation/ef-pb-19 Nov 24" %}
 
@@ -91,10 +76,10 @@
 {% set cashBalance = finances['cash_balance'] | default('0', true) | float %}
 
 {% set totalOverpayments = overpaymentsCM + overpaymentsCD + cashBalance %}
-{% set totalPaidCMFinance = data['finances']['payments_made_child_maintenance'] | default('0', true) %}
+{% set totalPaidCMFinance = finances['payments_made_child_maintenance'] | default('0', true) | float %}
 {% set totalPaidCDFinance = finances['payments_made_charges_debt'] | default('0', true) | float %}
 {% set writtenOff = finances['written_off'] | default('0', true) | float %}
-{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) %}
+{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) | float %}
 
 {# //////// Charges + debt //////// #}
 {% set expectedCollCharges = finances['expected_collection_charges'] | default('0', true) | float %}
@@ -243,12 +228,14 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
                   <tr class="govuk-table__row">
                     <th class="govuk-table__header">Total</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric"><strong>£{{ stillOwedTotalFinance | abs | currency }}</strong></td>
                     <td class="govuk-table__cell govuk-table__cell--numeric">
-              <strong>£{{ totalPaidFinance | abs | currency }}</strong>
+                      <strong>£{{ stillOwedTotalFinance | abs | currency }}</strong>
                     </td>
                     <td class="govuk-table__cell govuk-table__cell--numeric">
-              <strong>£{{ totalExpectedFinance | default(0) | float | currency }}</strong>
+                      <strong>£{{ totalPaidFinance | abs | currency }}</strong>
+                    </td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">
+                      <strong>£{{ totalExpectedFinance | default(0) | float | currency }}</strong>
                     </td>
                   </tr>
                 </tbody>
@@ -304,6 +291,20 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                     <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">CSA debt</dt>
                     <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedCSADebt | currency }}</dd>
                   </div>
+                  {# ////// CSA DEBT BREAKDOWN  //////// #}
+                  {% set expectedCSADebtRP1 = 20 | float %}
+                  {% set expectedCSADebtRP2 = expectedCSADebt - expectedCSADebtRP1 %}
+                  <section class="govuk-summary-list__row" role="contentinfo" aria="Enforcement charges">
+                    <dt aria-label="Charges included in CSA debt">
+                      <ul class="govuk-list govuk-list--bullet govuk-!-width-full govuk-!-padding-top-3" role="list">
+                        <li>£{{ expectedCSADebtRP1 | currency }} &ndash; {{ allCases[0]['other_parent'] }}
+                          {{ allCases[0]['case_id'] }}</li>
+                        <li>£{{ expectedCSADebtRP2 | currency }} &ndash; {{ allCases[1]['other_parent'] }}
+                          {{ allCases[0]['case_id'] }}</li>
+                      </ul>
+                    </dt>
+                    <dd class="govuk-summary-list__value">&nbsp;</dd>
+                  </section>
                   <div class="govuk-summary-list__row">
 
                     <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">DNA costs</dt>
@@ -345,7 +346,9 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                   </div>
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">Total</dt>
-                    <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right"><strong>£{{ totalExpectedCDFinance | currency }}</strong></dd>
+                    <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">
+                      <strong>£{{ totalExpectedCDFinance | currency }}</strong>
+                    </dd>
                   </div>
                 </tbody>
               </dl>

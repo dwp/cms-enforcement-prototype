@@ -307,9 +307,9 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             {# ////// CSA DEBT BREAKDOWN  //////// #}
             {% set expectedCSADebtRP1 = 20 | float %}
             {% set expectedCSADebtRP2 = expectedCSADebt - expectedCSADebtRP1 %}
-            <section class="govuk-summary-list__row govuk-!-padding-bottom-8" role="contentinfo" aria="Enforcement charges">
-              <dt aria-label="Charges included in £300">
-                <ul class="govuk-list govuk-list--bullet govuk-!-width-full" role="list">
+            <section class="govuk-summary-list__row" role="contentinfo" aria="Enforcement charges">
+              <dt aria-label="Charges included in CSA debt">
+                <ul class="govuk-list govuk-list--bullet govuk-!-width-full govuk-!-padding-top-3" role="list">
                   <li>£{{ expectedCSADebtRP1 | currency }} &ndash; {{ allCases[0]['other_parent'] }}
                     {{ allCases[0]['case_id'] }}</li>
                   <li>£{{ expectedCSADebtRP2 | currency }} &ndash; {{ allCases[1]['other_parent'] }}
