@@ -22,6 +22,7 @@ module.exports = {
       {
         'case_index': '0',
         'case_status': 'active',
+        'parent_id': '121000111222',
         'case_id': '1-2345999',
         'service_type': 'Direct pay',
         'sub_status': 'Arrears only',
@@ -51,6 +52,7 @@ module.exports = {
       {
         'case_index': '1',
         'case_status': 'active',
+        'parent_id': '121000111223',
         'case_id': '1-2245868',
         'service_type': 'Collect and pay',
         'sub_status': 'Perform Calculation',
@@ -74,6 +76,7 @@ module.exports = {
       {
         'case_index': '2',
         'case_status': 'active',
+        'parent_id': '121000111223',
         'case_id': '1-2245868',
         'service_type': 'Collect and pay',
         'sub_status': 'Arrears only',
@@ -94,6 +97,7 @@ module.exports = {
         'case_index': '3',
         'case_status': 'closed',
         'date_closed': '20 Nov 2025',
+        'parent_id': '121000111223',
         'case_id': '1-2348743',
         'other_parent': 'Ruth Slater'
       },
@@ -101,6 +105,7 @@ module.exports = {
         'case_index': '4',
         'case_status': 'closed',
         'date_closed': '3 Jun 2020',
+        'parent_id': '121000111223',
         'case_id': '1-2311178',
         'other_parent': 'Ruth Slater'
       },
@@ -108,6 +113,7 @@ module.exports = {
         'case_index': '5',
         'case_status': 'closed',
         'date_closed': '3 Jun 2026',
+        'parent_id': '121000111224',
         'case_id': '1-2245772',
         'service_type': 'Collect and pay',
         'sub_status': 'Arrears only',

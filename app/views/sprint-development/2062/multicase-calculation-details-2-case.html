@@ -225,10 +225,10 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
             <tbody class="govuk-table__body">
 
               {# Initialise totals before the for loop #}
-              {% set caseWeeklyLiability1 = 26.74 | float %}
-              {% set caseDailyLiability1 = 3.82 | float %}
-              {% set caseWeeklyLiability2 = 53.48 | float %}
-              {% set caseDailyLiability2 = 7.64 | float %}
+              {% set caseWeeklyLiability1 = 53.48 | float %}
+              {% set caseDailyLiability1 = 7.64 | float %}
+              {% set caseWeeklyLiability2 = 26.74 | float %}
+              {% set caseDailyLiability2 = 3.82 | float %}
               {% set totalWeeklyCharge = reason['total_weekly_charge'] | default(0) | float %}
               {% set totalDailyCharge = reason['total_daily_charge'] | default(0) | float %}
               {% set totalCasesLiabilityWeekly = 0 %}

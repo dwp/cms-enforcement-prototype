@@ -76,10 +76,10 @@
 {% set cashBalance = finances['cash_balance'] | default('0', true) | float %}
 
 {% set totalOverpayments = overpaymentsCM + overpaymentsCD + cashBalance %}
-{% set totalPaidCMFinance = data['finances']['payments_made_child_maintenance'] | default('0', true) %}
+{% set totalPaidCMFinance = finances['payments_made_child_maintenance'] | default('0', true) | float %}
 {% set totalPaidCDFinance = finances['payments_made_charges_debt'] | default('0', true) | float %}
 {% set writtenOff = finances['written_off'] | default('0', true) | float %}
-{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) %}
+{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) | float %}
 
 {# //////// Charges + debt //////// #}
 {% set expectedCollCharges = finances['expected_collection_charges'] | default('0', true) | float %}
@@ -89,7 +89,11 @@
 {% set deductionEarningsOrder = finances['deduction_from_earnings_order'] | default('0', true) | float %}
 {% set expectedEnforcementCharges = regularDeductionOrder + lumpSumDeductionOrder + liabilityOrder + deductionEarningsOrder %}
 {% set expectedEnforcementCost = finances['expected_enforcement_cost'] | default('0', true) | float %}
-{% set expectedCSADebt = finances['expected_CSA_debt'] | default('0', true) | float %}
+{% set expectedCSAParent1 = finances['expected_CSA_debt_parent_1'] | default('0', true) | float %}
+{% set expectedCSAParent2 = finances['expected_CSA_debt_parent_2'] | default('0', true) | float %}
+{% set expectedSoS = finances['expected_secretary_of_state'] | default('0', true) | float %}
+{% set expectedCSADebt = expectedCSAParent1 + expectedCSAParent2 + expectedSoS %}
+expected_secretary_of_state
 {% set expectedDNACost = finances['expected_DNA_debt'] | default('0', true) | float %}
 {% set expectedSubjectAccessRequestCost = finances['expected_subject_access_request_cost'] | default('0', true) | float %}
 {% set expectedInterest = finances['expected_interest'] | default('0', true) | float %}
