@@ -1,0 +1,223 @@
+{% extends "layouts/internal-service.html" %}
+
+<!-- ////// PRESETS ///// -->
+{# Count case status types #}
+{% set allCases = data['multicase']['cases'] %}
+{% set activeCount = 0 %}
+{% set closedCount = 0 %}
+{% set payingCount = 0 %}
+{% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
+
+{% for case in allCases %}
+  {# Count case status types #}
+  {% if case.case_status == 'active' %}
+    {% set activeCount = (activeCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'closed' %}
+    {% set closedCount = (closedCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'paying' %}
+    {% set payingCount = (payingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'receiving' %}
+    {% set receivingCount = (receivingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+  {% endif %}
+
+{% endfor %}
+
+<!-- //////////////////// -->
+
+{% block pageTitle %}
+Finances – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/dwp-internal-service-header.html"%}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/govuk-beta-banner" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-2-table" aria-current="page">Cases ({{ activePayingCount
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
+              plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-calculations">Calculations</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- /////////////////////////////////// -->
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+        Cases
+      </h1>
+      <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
+        <strong>{{ activePayingCount }} paying,  {{ closedCount }} closed.</strong>
+      </p>
+      <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
+
+      {# Example of displaying and setting loop-scoped data #}
+      {# {% for case in activeCases %}
+      {% set currentRole = case.role %}
+      {% set childrenCount = case.qualifying_children | length %}
+      
+      <p>Case {{ case.case_id }} role is {{ currentRole }} with {{ childrenCount }} children.</p>
+    {% endfor %} #}
+      {# 
+{% set activeCase = case.case_status %}
+  {% if activeCase == 'active' %} #}
+      {# {% set otherParent = data['case']['other_parent'] %}
+  {% set caseId = data['case']['case_id'] %} #}
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+          Paying cases
+        </h2>
+      {% for case in allCases %}
+        {% if case.case_status == 'active' and case.role == 'paying' %}
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h3 class="govuk-summary-card__title">
+              Paying to {{ case.other_parent }}
+              </h3>
+            </div>
+            <div class="govuk-summary-card__content">
+              <dl class="govuk-summary-list">
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Qualifying children
+                  </dt>
+
+                  <dd class="govuk-summary-list__value">
+                    {% for child in case.qualifying_children %}
+                      {{ child.child_name }}
+                      <br>
+                    {% endfor %}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+              Case
+            </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ case.case_id }}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Substatus
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ case.sub_status }}
+                  </dd>
+                </div>
+
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                    Service type
+                  </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{ case.service_type }}
+                    </dd>
+                  </div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Case effective from
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ case.effective_from }}
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+        {% endif %}
+      {% endfor %}
+      <!-- //////// RP CASE //////// -->
+      {# <h2 class="govuk-heading-m govuk-!-margin-top-5">
+      Receiving cases
+    </h2>
+
+      {% for case in allCases %}
+        {% if case.case_status == 'active' and case.role == 'receiving' %}
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">
+          Receiving from {{ case.other_parent }}
+              </h2>
+              <ul class="govuk-summary-card__actions">
+                <li class="govuk-summary-card__action">
+                  <p class="govuk-!-margin-bottom-0">See in CMS2012</p>
+                </li>
+              </ul>
+            </div>
+            <div class="govuk-summary-card__content">
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <p>
+              Case <span class="govuk-!-font-weight-bold">{{ case.case_id }}</span> effective from <span class="govuk-!-font-weight-bold">{{ case.effective_from }}</span>.
+            </p>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+        {% endif %}
+      {% endfor %} #}
+
+      <!-- //////// CASES CLOSED LIST//////// -->
+
+      <h2 class="govuk-heading-m">
+      Closed cases
+    </h2>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for case in allCases %}
+          {% if case.case_status == 'closed' %}
+            <li>
+              <p class="govuk-!-margin-bottom-2">
+              Case <span class="govuk-!-font-weight-bold">{{ case.case_id }}</span> with {{ case.other_parent }}.
+            </p>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+    {% endblock %}

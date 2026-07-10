@@ -1,0 +1,464 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block pageTitle %}
+Statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{# ////// VARIABLES ////// #}
+{% set calcReasonIndex = data['reason_index'] %}
+{% set reason = data['calc_details'][calcReasonIndex] %}
+
+{# Set dataset source for looping #}
+{% set allCases = data['multicase']['cases'] %}
+
+{# Set case status types before the loop #}
+{% set activeCount = 0 %}
+{% set closedCount = 0 %}
+{% set payingCount = 0 %}
+{% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
+
+{# set case totals before the loop #}
+{% set totalCasesExpectedCM = 0 %}
+{% set totalCasesPaidCM = 0 %}
+{% set totalCasesExpectedCD = 0 %}
+{% set totalCasesPaidCD = 0 %}
+{% set totalCasesExpectedCDFinance = 0 %}
+
+{# begin loop #}
+{% for case in allCases %}
+
+  {# Count case status types #}
+  {% if case.case_status == 'active' %}
+    {% set activeCount = (activeCount) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'closed' %}
+    {% set closedCount = (closedCount) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'paying' %}
+    {% set payingCount = (payingCount) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'receiving' %}
+    {% set receivingCount = (receivingCount) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount) + 1 %}
+  {% endif %}
+
+  {# set finances amounts #}
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+
+    {% set expectedCaseCM = case.child_maintenance_expected | default(0) | float %}
+    {% set paidCaseCM = case.child_maintenance_paid | default(0) | float %}
+    {% set expectedCaseCD = case.charges_debt_expected | default(0) | float %}
+    {% set paidCaseCD = case.charges_debt_paid | default(0) | float %}
+
+    {% set totalCasesExpectedCM = totalCasesExpectedCM + expectedCaseCM %}
+    {% set totalCasesPaidCM = totalCasesPaidCM + paidCaseCM %}
+    {% set totalCasesExpectedCDFinance = totalCasesExpectedCDFinance + expectedCaseCD %}
+    {% set totalCasesPaidCD = totalCasesPaidCD + paidCaseCD %}
+
+  {% endif %}
+
+{% endfor %}
+
+{# =========================
+   FINANCES
+========================= #}
+
+{% set finances = data['finances']['finances'] %}
+
+{% set overpaymentsCM = finances['overpayments_child_maintenance'] | default('0', true) | float %}
+{% set overpaymentsCD = finances['overpayments_charges_debt'] | default('0', true) | float %}
+{% set cashBalance = finances['cash_balance'] | default('0', true) | float %}
+
+{% set totalOverpayments = overpaymentsCM + overpaymentsCD + cashBalance %}
+{% set totalPaidCMFinance = data['finances']['payments_made_child_maintenance'] | default('0', true) | float %}
+{% set totalPaidCMFinance = data['finances']['payments_made_child_maintenance'] | default('0', true) | float %}
+{% set totalPaidCDFinance = finances['payments_made_charges_debt'] | default('0', true) | float %}
+{% set writtenOff = finances['written_off'] | default('0', true) | float %}
+{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) | float %}
+{% set expectedCMFinance = finances['expected_child_maintenance'] | default('0', true) | float %}
+
+{# //////// Charges + debt //////// #}
+{% set expectedCollCharges = finances['expected_collection_charges'] | default('0', true) | float %}
+{% set regularDeductionOrder = finances['regular_deduction_order'] | default('0', true) | float %}
+{% set lumpSumDeductionOrder = finances['lump_sum_deduction_order'] | default('0', true) | float %}
+{% set liabilityOrder = finances['liability_order'] | default('0', true) | float %}
+{% set deductionEarningsOrder = finances['deduction_from_earnings_order'] | default('0', true) | float %}
+{% set expectedEnforcementCharges = regularDeductionOrder + lumpSumDeductionOrder + liabilityOrder + deductionEarningsOrder %}
+{% set expectedEnforcementCost = finances['expected_enforcement_cost'] | default('0', true) | float %}
+{% set expectedCSADebt = finances['expected_CSA_debt'] | default('0', true) | float %}
+{% set expectedDNACost = finances['expected_DNA_debt'] | default('0', true) | float %}
+{% set expectedSubjectAccessRequestCost = finances['expected_subject_access_request_cost'] | default('0', true) | float %}
+{% set expectedInterest = finances['expected_interest'] | default('0', true) | float %}
+{% set expectedFees = finances['expected_fees'] | default('0', true) | float %}
+{% set expectedJudRevCost = finances['expected_judicial_review_cost'] | default('0', true) | float %}
+{% set expectedAppealCost = finances['expected_appeal_cost'] | default('0', true) | float %}
+{% set expectedCMSAdminCost = finances['expected_cms_admin_cost'] | default('0', true) | float %}
+{% set expectedLiabOrderCost = finances['expected_liability_order_cost'] | default('0', true) | float %}
+{# {% set totalCasesExpectedCM = 0 %} #}
+
+{% set totalExpectedCDFinance = expectedCollCharges + expectedEnforcementCharges + expectedEnforcementCost + expectedCSADebt + expectedDNACost + expectedSubjectAccessRequestCost + expectedInterest + expectedFees + expectedJudRevCost + expectedAppealCost + expectedCMSAdminCost + expectedLiabOrderCost %}
+
+{% set totalExpectedFinance = ((expectedCMFinance * 1) + (totalExpectedCDFinance * 1)) %}
+
+{% set totalPaidFinance = ((totalPaidCDFinance * 1) + (totalPaidCMFinance * 1)) %}
+{% set stillOwedCMFinance = ((expectedCMFinance * 1) - (totalPaidCMFinance * 1))  %}
+{% set stillOwedCDFinance = ((totalExpectedCDFinance * 1) - (totalPaidCDFinance * 1))  %}
+{% set stillOwedTotalFinance = ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
+
+{# {% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %} #}
+{# {% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %} #}
+{# ////// END VARIABLES  ////// #}
+
+{% block header %}
+  {% from "internal-service-header/macro.njk" import dwpHeader %}
+  {% include "includes/dwp-internal-service-header" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/govuk-beta-banner" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+
+  <div class="moj-primary-navigation">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-2-tabs">Cases ({{ activePayingCount
+              }})</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-finances--tabs-2-case">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
+              plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-calculations" aria-current="page">Calculations</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        Calculation details
+    </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                  Reason
+                </dt>
+          <dd class="govuk-summary-list__value">
+            {{ reason['calc_reason'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+                  Perform date
+                </dt>
+          <dd class="govuk-summary-list__value">
+            {{ reason['perform_date'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+                 Effective from
+                </dt>
+          <dd class="govuk-summary-list__value">
+            {{ reason['effective_from'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+                  Effective to
+                </dt>
+          <dd class="govuk-summary-list__value">
+            {{ reason['effective_to'] }}
+          </dd>
+        </div>
+      </dl>
+
+      <section class="govuk-summary-card" aria-labelledby="liability-heading">
+        <div class="govuk-summary-card__title-wrapper" style="display:block;">
+          <h2 id="liability-heading" class="govuk-heading-m govuk-!-margin-bottom-0">
+                Liability and charges
+              </h2>
+          <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ reason['rate_applied_name'] }} rate ({{ reason['rate_applied_percentage'] }}) applied</p>
+        </div>
+        <div class="govuk-summary-card__content">
+          <table class="govuk-table govuk-!-margin-bottom-0">
+            <caption class="govuk-table__caption govuk-visually-hidden">
+              <div>Liability and charges</div>
+              <div>
+                {{ reason['rate_applied_name'] }} rate ({{ reason['rate_applied_percentage'] }}) applied
+              </div>
+            </caption>
+            <thead class="govuk-table__head govuk-!-margin-top-0">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-third" aria-hidden="true"></th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Weekly</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter govuk-table__cell--numeric">Daily</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+
+              {# Initialise totals before the for loop #}
+              {% set caseWeeklyLiability1 = 53.48 | float %}
+              {% set caseDailyLiability1 = 7.64 | float %}
+              {% set caseWeeklyLiability2 = 26.74 | float %}
+              {% set caseDailyLiability2 = 3.82 | float %}
+              {% set totalWeeklyCharge = reason['total_weekly_charge'] | default(0) | float %}
+              {% set totalDailyCharge = reason['total_daily_charge'] | default(0) | float %}
+              {% set totalCasesLiabilityWeekly = 0 %}
+              {% set totalCasesLiabilityDaily = 0 %}
+              {% set totalCasesLiabilityWeekly = caseWeeklyLiability1 + caseWeeklyLiability2 %}
+              {% set totalCasesLiabilityDaily = caseDailyLiability1 + caseDailyLiability2 %}
+              {# {% for case in allCases %}
+                    {% set i = loop.index0 %}
+                    {% if case.case_status == 'active' and case.role == 'paying' %} #}
+
+              {# {% set casesTotalLiabilityChargesWeekly = totalCasesLiabilityWeekly + casesTotalLiabilityWeekly %} #}
+
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header">
+                  <div>{{ allCases[0].other_parent }}</div>
+                  <div>{{ allCases[0].case_id }}
+                  </div>
+                </th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseWeeklyLiability1 | currency }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseDailyLiability1 | currency }}</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header">
+                  <div>{{ allCases[1].other_parent }}</div>
+                  <div>{{ allCases[1].case_id }}
+                  </div>
+                </th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseWeeklyLiability2 | currency }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseDailyLiability2 | currency }}</td>
+              </tr>
+              {# {% endif %}
+                  {% endfor %} #}
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Charges and fees</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalWeeklyCharge | currency }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£{{ totalDailyCharge | currency }}</td>
+              </tr>
+
+              {% set totalCasesLiabilityChargesWeekly = totalCasesLiabilityWeekly + totalWeeklyCharge %}
+              {% set totalCasesLiabilityChargesDaily = totalCasesLiabilityDaily + totalDailyCharge %}
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header" style="border-bottom: none;">Total</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£{{ totalCasesLiabilityChargesWeekly | currency }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom: none;">£{{ totalCasesLiabilityChargesDaily | currency }}</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="govuk-summary-card" aria-labelledby="gross-income-details-heading">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 id="gross-income-details-heading" class="govuk-heading-m govuk-!-margin-bottom-0">
+                  Gross income details
+                </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                  Weekly gross income
+                </dt>
+              <dd class="govuk-summary-list__value">
+                  £{{ reason['weekly_gross_income'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  HMRC tax year
+                </dt>
+              <dd class="govuk-summary-list__value">
+                {{ reason['tax_year_hmrc'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                 Income source
+                </dt>
+              <dd class="govuk-summary-list__value">
+                {{ reason['income_info_source'] }}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="govuk-summary-card" aria-labelledby="assessable-income-details-heading">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 id="assessable-income-details-heading" class="govuk-heading-m govuk-!-margin-bottom-0">
+                Assessable income details</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                  Assessable weekly income
+                </dt>
+              <dd class="govuk-summary-list__value">
+                  £{{ reason['assessable_weekly_income'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Benefits
+                </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list">
+                  <li>{{ reason['benefits_type'] }}</li>
+                  <li>Partner household: {{ reason['partner_household'] }}</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Annual pension contributions (HMRC) 
+                </dt>
+              <dd class="govuk-summary-list__value">
+                  £{{ reason['annual_pension_contrib'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Annual gross income (pension deducted)
+                </dt>
+              <dd class="govuk-summary-list__value">
+                  £{{ reason['annual_gross_income'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Foreign exchange costs
+                </dt>
+              <dd class="govuk-summary-list__value">
+                  £{{ reason['foreign_exchange_cost'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Special circumstance
+                </dt>
+              <dd class="govuk-summary-list__value">
+                {{ reason['special_circs'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Relevant other children
+                </dt>
+              <dd class="govuk-summary-list__value">
+                {{ reason['roc'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Children in family based arrangements
+                </dt>
+              <dd class="govuk-summary-list__value">
+                {{ reason['cifba'] }}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </div>
+    {# ////////////////////////////////// #}
+    {# ////////////////////////////////// #}
+    {# ////////////////////////////////// #}
+    <div class="govuk-grid-column-full">
+      <section class="govuk-summary-card" aria-labelledby="qualifying-children-heading">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 id="qualifying-children-heading" class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-0">
+            Qualifying children: 3</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {# /////////// RP1 children ////////////// #}
+          <table class="govuk-table govuk-!-margin-top-5">
+            <caption class="govuk-table__caption govuk-table__caption--m">Living with Daria Oblonskaya 1-2345999</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Qualifying child</th>
+                <th scope="col" class="govuk-table__header numerical govuk-!-width-one-quarter">Date of<br>birth</th>
+                <th scope="col" class="govuk-table__header numerical govuk-!-width-one-quarter">Overnight stays<br>per week</th>
+                <th scope="col" class="govuk-table__header numerical govuk-!-width-one-quarter">Local authority stays<br>per week</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              {% for children in reason['qualifying_children'] %}
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header">{{ children.child_name }}</th>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ children.dob }}</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ children.overnight_stays }}</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ children.local_auth_stays }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          {# /////////// RP2 children ////////////// #}
+
+          <table class="govuk-table govuk-!-margin-top-8">
+            <caption class="govuk-table__caption govuk-table__caption--m">Living with Ruth Slater 1-2245868</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Qualifying child</th>
+                <th scope="col" class="govuk-table__header numerical govuk-!-width-one-quarter">Date of<br>birth</th>
+                <th scope="col" class="govuk-table__header numerical govuk-!-width-one-quarter">Overnight stays<br>per week</th>
+                <th scope="col" class="govuk-table__header numerical govuk-!-width-one-quarter">Local authority stays<br>per week</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header">Olivia Slater</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">{{ reason['qualifying_children'][1]['dob'] }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                      1
+                    </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  {# {% include "includes/back-to-top-link" %} #}
+{% endblock %}

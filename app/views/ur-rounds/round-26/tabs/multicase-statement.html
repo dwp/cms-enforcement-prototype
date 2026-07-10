@@ -1,0 +1,2229 @@
+{% extends "layouts/internal-service.html" %}
+
+{# ////// VARIABLES ////// #}
+{# Get parent anme and case id #}
+{% set allCases = data['multicase']['cases'] %}
+{% set parent1 = allCases[0].other_parent ~ ' - ' ~ allCases[0].parent_id %}
+{% set parent2 = allCases[1].other_parent ~ ' - ' ~ allCases[1].parent_id %}
+
+{# Set dataset source for looping #}
+{% set allCases = data['multicase']['cases'] %}
+
+{# Set case status types before the loop #}
+{% set activeCount = 0 %}
+{% set closedCount = 0 %}
+{% set payingCount = 0 %}
+{% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
+
+{# set case totals before the loop #}
+{% set totalCasesExpectedCM = 0 %}
+{% set totalCasesPaidCM = 0 %}
+{% set totalCasesExpectedCD = 0 %}
+{% set totalCasesPaidCD = 0 %}
+
+{# begin loop #}
+{% for case in allCases %}
+
+  {# Count case status types #}
+  {% if case.case_status == 'active' %}
+    {% set activeCount = (activeCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'closed' %}
+    {% set closedCount = (closedCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'paying' %}
+    {% set payingCount = (payingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'receiving' %}
+    {% set receivingCount = (receivingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {# set finances amounts #}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+
+    {% set expectedCaseCM = case.child_maintenance_expected | default(0) | float %}
+    {% set paidCaseCM = case.child_maintenance_paid | default(0) | float %}
+    {% set expectedCaseCD = case.charges_debt_expected | default(0) | float %}
+    {% set paidCaseCD = case.charges_debt_paid | default(0) | float %}
+
+    {% set totalCasesExpectedCM = totalCasesExpectedCM + expectedCaseCM %}
+    {% set totalCasesPaidCM = totalCasesPaidCM + paidCaseCM %}
+    {% set totalCasesExpectedCDFinance = totalCasesExpectedCDFinance + expectedCaseCD %}
+    {% set totalCasesPaidCD = totalCasesPaidCD + paidCaseCD %}
+
+  {% endif %}
+
+{% endfor %}
+
+{# Note: make sure raw data does not contain commas #}
+{# Fallback to '0' if the data path is missing, undefined, or empty #}
+
+{% set finances = data['finances']['finances'] %}
+{% set overpaymentsCM = finances['overpayments_child_maintenance'] | default('0', true) %}
+{% set overpaymentsCD = finances['overpayments_charges_debt'] | default('0', true) %}
+{% set cashBalance = finances['cash_balance'] | default('0', true) %}
+{% set operpaymentsTotal = ((overpaymentsCM * 1) + (overpaymentsCD * 1) + (cashBalance * 1)) %}
+{% set paymentsMadeCM = finances['payments_made_child_maintenance'] | default('0', true) %}
+{% set paymentsMadeCD = finances['payments_made_charges_debt'] | default('0', true) %}
+{% set paymentsMadeTotal = ((paymentsMadeCM * 1) + (paymentsMadeCD * 1)) %}
+{% set writtenOff = finances['written_off'] | default('0', true) %}
+{% set expectedCM = finances['expected_child_maintenance'] | default('0', true) %}
+
+{# //////// Charges + debt //////// #}
+{% set expectedCollCharges = finances['expected_collection_charges'] | default('0', true) | float %}
+{% set regularDeductionOrder = finances['regular_deduction_order'] | default('0', true) | float %}
+{% set lumpSumDeductionOrder = finances['lump_sum_deduction_order'] | default('0', true) | float %}
+{% set liabilityOrder = finances['liability_order'] | default('0', true) | float %}
+{% set deductionEarningsOrder = finances['deduction_from_earnings_order'] | default('0', true) | float %}
+{% set expectedEnforcementCharges = regularDeductionOrder + lumpSumDeductionOrder + liabilityOrder + deductionEarningsOrder %}
+{% set expectedEnforcementCost = finances['expected_enforcement_cost'] | default('0', true) | float %}
+{% set expectedCSAParent1 = finances['expected_CSA_debt_parent_1'] | default('0', true) | float %}
+{% set expectedCSAParent2 = finances['expected_CSA_debt_parent_2'] | default('0', true) | float %}
+{% set expectedSoS = finances['expected_secretary_of_state'] | default('0', true) | float %}
+{% set expectedCSADebt = expectedCSAParent1 + expectedCSAParent2 + expectedSoS %}
+expected_secretary_of_state
+{% set expectedDNACost = finances['expected_DNA_debt'] | default('0', true) | float %}
+{% set expectedSubjectAccessRequestCost = finances['expected_subject_access_request_cost'] | default('0', true) | float %}
+{% set expectedInterest = finances['expected_interest'] | default('0', true) | float %}
+{% set expectedFees = finances['expected_fees'] | default('0', true) | float %}
+{% set expectedJudRevCost = finances['expected_judicial_review_cost'] | default('0', true) | float %}
+{% set expectedAppealCost = finances['expected_appeal_cost'] | default('0', true) | float %}
+{% set expectedCMSAdminCost = finances['expected_cms_admin_cost'] | default('0', true) | float %}
+{% set expectedLiabOrderCost = finances['expected_liability_order_cost'] | default('0', true) | float %}
+{# {% set totalCasesExpectedCM = 0 %} #}
+
+{% set expectedCD = ((expectedCollCharges * 1) + (expectedEnfCharges * 1) + (expectedEnforcementCost * 1) + (expectedCSADebt * 1) + (expectedDNACost * 1) + (expectedSubjectAccessRequestCost * 1) + (expectedInterest * 1) + (expectedFees * 1) + (expectedJudRevCost * 1) + (expectedAppealCost * 1) + (expectedCMSAdminCost * 1) + (expectedLiabOrderCost * 1)) %}
+{% set expectedTotal = ((expectedCM * 1) + (expectedCD * 1)) %}
+{% set stillOwedCM = ((expectedCM * 1) - (paymentsMadeCM * 1))  %}
+{% set stillOwedCD = ((expectedCD * 1) - (paymentsMadeCD * 1))  %}
+{% set stillOwedTotal = ((stillOwedCM * 1) + (stillOwedCD * 1)) %}
+{# ////// ////// #}
+{% set filterTableBy = data['filterTableBy'] | default("all") %}
+{# //////////////////// #}
+
+{% block pageTitle %}
+  Statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/ukic-components-source.html" %}
+  {% include "includes/dwp-internal-service-header.html"%}
+{% endblock %}
+{% block beforeContent %}
+  {% include "includes/govuk-beta-banner" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+
+  <!-- /////// NAVIGATION PRIMARY /////// -->
+  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
+        <nav class="moj-primary-navigation" aria-label="Primary navigation">
+          <ul class="moj-primary-navigation__list">
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-case-2-tabs">Cases (2)</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-finances--tabs-2-case">Finances</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-statement" aria-current="page">Statement</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
+              plans</a>
+            </li>
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="multicase-calculations">Calculations</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+  Statement
+</h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <p>
+        <span class="govuk-!-font-size-24">
+        From the case effective date <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
+       </span>
+      </p>
+
+      {# ////////// FINANCE SUMMARY //////////////// #}
+
+      <div class="ef-card">
+        <div class="dfe-title-i8">
+          <h2>Finance summary</h2>
+        </div>
+        <div class="ef-card-trio-v2">
+          <article class="moj-ticket-panel-trio-v2" aria-label="key amounts">
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+              <h3 class="govuk-body">Money still owed</h3>
+              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£307.58</p>
+            </section>
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 2">
+              <h3 class="govuk-body">Payments made</h3>
+              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£1,597.92</p>
+            </section>
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 3">
+              <h3 class="govuk-body">Total expected</h3>
+              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£1,905.49</p>
+            </section>
+            <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 4">
+              <h3 class="govuk-body">Amount written off</h3>
+              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£19.34</p>
+            </section>
+            {# <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 5">
+            <h3 class="govuk-body">Overpayments</h3>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">25.43</p>
+          </section> #}
+          </article>
+        </div>
+      </div>
+      {# /////////////////////////// #}
+
+      <form method="get" action="#" aria-label="Filter transactions">
+        <div class="govuk-form-group govuk-!-margin-bottom-0">
+          <label class="govuk-label" for="filterTableBy">
+            Filter by
+          </label>
+          <select class="govuk-select" id="filterTableBy" name="filterTableBy">
+            <option value="all" {% if filterTableBy == 'all' or not filterTableBy %}{% set tableTitle = 'All transactions' %} selected{% endif %}>All transactions</option>
+            <option value="received" {% if filterTableBy == 'received' %}{% set tableTitle = 'Payments received' %} selected{% endif %}>Payments received</option>
+            <option value="credits" {% if filterTableBy == 'credits' %}{% set tableTitle = 'All credits' %} selected{% endif %}>All credits</option>
+          </select>
+          <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Apply
+          </button>
+        </div>
+      </form>
+      {# /////////////////////////// #}
+
+      <!-- 2025-->
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">
+          <h3 class="govuk-heading-l">{{ tableTitle }}</h3>
+          2025</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Date</th>
+            <th scope="col" class="govuk-table__header">Description</th>
+            <th scope="col" class="govuk-table__header numerical">Credit&nbsp;(£)</th>
+            {% if filterTableBy == 'all' %}
+              <th scope="col" class="govuk-table__header numerical">Debit&nbsp;(£)</th>
+              <th scope="col" class="govuk-table__header statement_end">Balance&nbsp;(£)</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {# //////// Show for any of 3 filters //////// #}
+          {% if filterTableBy == 'all'%}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Nov 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">14.85</td>
+                <td class="govuk-table__cell statement_end">-6,068.78</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">22 Nov 2025</td>
+              <td class="govuk-table__cell_last">Child maintenance due<br>{{ parent2 }}</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">74.20</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">-6.053.87</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+            {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Nov 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">64.02</td>
+                <td class="govuk-table__cell statement_end">-5,979.63</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">22 Oct 2025</td>
+              <td class="govuk-table__cell_last">Child maintenance due<br>{{ parent1 }}</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">320.04</td>
+                <td class="govuk-table__cell statement_end">-5,915.61</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {# //////// Show for any of 3 filters //////// #}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' or filterTableBy == 'received' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">19 Oct 2025</td>
+              <td class="govuk-table__cell_last">Payment received from you - DEO</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">120.00</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-5,595.57</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">27 Sep 2025</td>
+              <td class="govuk-table__cell_last">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">86.92</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-5,715.57</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Nov 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-5.802.49</td>
+              {% endif %}
+            </tr>
+             {% endif %}
+            {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Sep 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">78.84</td>
+                <td class="govuk-table__cell statement_end">-5,786.29</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">22 Sep 2025</td>
+              <td class="govuk-table__cell_last">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">10.81</td>
+                <td class="govuk-table__cell statement_end">-5,707.45</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">22 Sep 2025</td>
+              <td class="govuk-table__cell_last">Child maintenance due<br>{{ parent1 }}</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">327.48</td>
+                <td class="govuk-table__cell statement_end">-5,641.95</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {# //////// Show for any of 3 filters //////// #}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' or filterTableBy == 'received' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">19 Sep 2025</td>
+              <td class="govuk-table__cell_last">Payment received from you - DEO</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">120.00</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.29</td>
+                <td class="govuk-table__cell statement_end">-5.314.47</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">9 Sep 2025</td>
+              <td class="govuk-table__cell_last">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="statements-filtering/credits-19-Nov-24.html">86.92</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-5.434.47</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">22 Aug 2025</td>
+              <td class="govuk-table__cell_last">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.20</td>
+                <td class="govuk-table__cell statement_end">-5,521.39</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Aug 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">78.85</td>
+                <td class="govuk-table__cell statement_end">-5,505.19</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">22 Aug 2025</td>
+              <td class="govuk-table__cell_last">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">65.5</td>
+                <td class="govuk-table__cell statement_end">-5,426.35</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Aug 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">327.48</td>
+                <td class="govuk-table__cell statement_end">-5,360.85</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {# //////// Show for any of 3 filters //////// #}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' or filterTableBy == 'received' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">19 Aug 2025</td>
+              <td class="govuk-table__cell statement_description">Payment received from you - DEO</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">120.00</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-5,033.37</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">09 Aug 2025</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">86.92</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-5,153.37</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jul 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.2</td>
+                <td class="govuk-table__cell statement_end">-5,240.29</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jul 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">78.84</td>
+                <td class="govuk-table__cell statement_end">-5,224.09</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jul 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">64.02</td>
+                <td class="govuk-table__cell statement_end">-5,145.25</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jul 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">320.02</td>
+                <td class="govuk-table__cell statement_end">-5,081.23</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {# //////// Show for any of 3 filters //////// #}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' or filterTableBy == 'received' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">19 Jul 2025</td>
+              <td class="govuk-table__cell statement_description">Payment received from you - DEO</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">120.00</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-4,761.21</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">09 Jul 2025</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">54.32</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-4,881.21</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jun 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.2</td>
+                <td class="govuk-table__cell statement_end">-4,935.53</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jun 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">78.84</td>
+                <td class="govuk-table__cell statement_end">-4,919.33</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jun 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">65.5</td>
+                <td class="govuk-table__cell statement_end">-4,840.49</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jun 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">327.48</td>
+                <td class="govuk-table__cell statement_end">-4,774.99</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">09 Jun 2025</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">54.32</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-4,447.51</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 May 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">14.85</td>
+                <td class="govuk-table__cell statement_end">-4,501.83</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 May 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">74.2024</td>
+                <td class="govuk-table__cell statement_end">-4,486.98</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 May 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">64.02</td>
+                <td class="govuk-table__cell statement_end">-4,412.74</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 May 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">320.08</td>
+                <td class="govuk-table__cell statement_end">-4,348.72</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">09 May 2025</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">54.32</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-4,028.70</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Apr 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.2</td>
+                <td class="govuk-table__cell statement_end">-4,083.02</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Apr 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">78.84</td>
+                <td class="govuk-table__cell statement_end">-4,066.82</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Apr 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">65.5</td>
+                <td class="govuk-table__cell statement_end">-3,987.98</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Apr 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">327.48</td>
+                <td class="govuk-table__cell statement_end">-3,922.48</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">09 Apr 2025</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">54.32</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-3,595.00</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Mar 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">14.85</td>
+                <td class="govuk-table__cell statement_end">-3,649.32</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Mar 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">74.2024</td>
+                <td class="govuk-table__cell statement_end">-3,634.47</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Mar 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">64.02</td>
+                <td class="govuk-table__cell statement_end">-3,560.23</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Mar 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">320.02</td>
+                <td class="govuk-table__cell statement_end">-3,496.21</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">09 Mar 2025</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">54.32</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-3,176.19</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Feb 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.2</td>
+                <td class="govuk-table__cell statement_end">-3,230.51</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Feb 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">78.84</td>
+                <td class="govuk-table__cell statement_end">-3,214.31</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Feb 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">65.5</td>
+                <td class="govuk-table__cell statement_end">-3,135.47</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Feb 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">327.48</td>
+                <td class="govuk-table__cell statement_end">-3,069.97</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">09 Feb 2025</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">54.32</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-2,742.49</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jan 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.2</td>
+                <td class="govuk-table__cell statement_end">-2,798.81</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jan 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">78.84</td>
+                <td class="govuk-table__cell statement_end">-2,780.61</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jan 2025</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">65.5</td>
+                <td class="govuk-table__cell statement_end">-2,701.77</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Jan 2025</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">327.48</td>
+                <td class="govuk-table__cell statement_end">-2,636.27</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">09 Jan 2025</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">54.32</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-2,308.79</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+
+      {# ///////// 2024 /////////////////////////////////// #}
+
+      {# ///////// 2024 /////////////////////////////////// #}
+
+      {# //////// Show 2024 table for 2 filters//////// #}
+
+      {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">
+          2024</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Date</th>
+            <th scope="col" class="govuk-table__header">Description</th>
+            <th scope="col" class="govuk-table__header numerical">Credit&nbsp;(£)</th>
+            {% if filterTableBy == 'all' %}
+              <th scope="col" class="govuk-table__header numerical">Debit&nbsp;(£)</th>
+              <th scope="col" class="govuk-table__header statement_end">Balance&nbsp;(£)</th>
+            {% endif %}
+          </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+          {# //////// Show for any of 3 filters //////// #}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Dec 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">14.85</td>
+                <td class="govuk-table__cell statement_end">-2,363.11</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Dec 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">74.2024</td>
+                <td class="govuk-table__cell statement_end">-2,348.26</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Dec 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">64.02</td>
+                <td class="govuk-table__cell statement_end">-2,274.02</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Dec 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">320.02</td>
+                <td class="govuk-table__cell statement_end">-2,210.00</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">09 Dec 2024</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">54.32</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-1,889.98</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Nov 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">14.57</td>
+                <td class="govuk-table__cell statement_end">-1,944.30</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Nov 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due<br/>Ruth Slater 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">72.54</td>
+                <td class="govuk-table__cell statement_end">-1,929.73</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Nov 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">65.5</td>
+                <td class="govuk-table__cell statement_end">-1,857.19</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Nov 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">327.48</td>
+                <td class="govuk-table__cell statement_end">-1,791.69</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Oct 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">14.85</td>
+                <td class="govuk-table__cell statement_end">-1,464.21</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Oct 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due<br/>Ruth Slater 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">74.2024</td>
+                <td class="govuk-table__cell statement_end">-1,449.36</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Oct 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">64.02</td>
+                <td class="govuk-table__cell statement_end">-1,375.12</td>
+              {% endif %}
+            </tr>
+            <tr height=68 style='height:51.0pt'>
+              <td class="govuk-table__cell statement_date">22 Oct 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due<br/>Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">320.02</td>
+                <td class="govuk-table__cell statement_end">-1,311.10</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.29</td>
+                <td class="govuk-table__cell statement_end">-991.08</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.29</td>
+                <td class="govuk-table__cell statement_end">-987.79</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.29</td>
+                <td class="govuk-table__cell statement_end">-984.50</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.29</td>
+                <td class="govuk-table__cell statement_end">-981.21</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.29</td>
+                <td class="govuk-table__cell statement_end">-977.92</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">1.41</td>
+                <td class="govuk-table__cell statement_end">-974.63</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">2.04</td>
+                <td class="govuk-table__cell statement_end">-973.22</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">0.09</td>
+                <td class="govuk-table__cell statement_end">-971.18</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.53</td>
+                <td class="govuk-table__cell statement_end">-971.09</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.53</td>
+                <td class="govuk-table__cell statement_end">-967.56</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.53</td>
+                <td class="govuk-table__cell statement_end">-964.03</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.53</td>
+                <td class="govuk-table__cell statement_end">-960.50</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Unpaid direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">-88.25</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-956.97</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">DEO enforcement charge due</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">50</td>
+                <td class="govuk-table__cell statement_end">-868.72</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">27 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">17.65</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-818.72</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">14.57</td>
+                <td class="govuk-table__cell statement_end">-836.37</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due<br/>Ruth Slater 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">72.54</td>
+                <td class="govuk-table__cell statement_end">-821.8</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">65.5</td>
+                <td class="govuk-table__cell statement_end">-749.26</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">22 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">327.48</td>
+                <td class="govuk-table__cell statement_end">-683.76</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">20 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">17.65</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-356.28</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">15 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">2.47</td>
+                <td class="govuk-table__cell statement_end">-373.93</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">15 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due<br/>Ruth Slater 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">12.34</td>
+                <td class="govuk-table__cell statement_end">-371.46</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">15 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.76</td>
+                <td class="govuk-table__cell statement_end">-359.12</td>
+              {% endif %}
+            </tr>
+            <tr height=68 style='height:51.0pt'>
+              <td class="govuk-table__cell statement_date">15 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due <br/>Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.38</td>
+                <td class="govuk-table__cell statement_end">-355.36</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">13 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">17.65</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-338.98</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">08 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">2.47</td>
+                <td class="govuk-table__cell statement_end">-356.63</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">08 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due<br/>Ruth Slater 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">12.34</td>
+                <td class="govuk-table__cell statement_end">-354.16</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">08 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.76</td>
+                <td class="govuk-table__cell statement_end">-341.82</td>
+              {% endif %}
+            </tr>
+            <tr height=68 style='height:51.0pt'>
+              <td class="govuk-table__cell statement_date">08 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due <br/>Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.38</td>
+                <td class="govuk-table__cell statement_end">-338.06</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">06 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">17.65</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-321.68</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">01 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">2.47</td>
+                <td class="govuk-table__cell statement_end">-339.33</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">01 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due<br/>Ruth Slater 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">12.34</td>
+                <td class="govuk-table__cell statement_end">-336.86</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">01 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.76</td>
+                <td class="govuk-table__cell statement_end">-324.52</td>
+              {% endif %}
+            </tr>
+            <tr height=68 style='height:51.0pt'>
+              <td class="govuk-table__cell statement_date">01 Sep 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due <br/>Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.38</td>
+                <td class="govuk-table__cell statement_end">-320.76</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">30 Aug 2024</td>
+              <td class="govuk-table__cell statement_description">Direct pay payment</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">17.65</a>
+              </td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                <td class="govuk-table__cell statement_end">-304.38</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+          {% if filterTableBy == 'all' %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">25 Aug 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">2.47</td>
+                <td class="govuk-table__cell statement_end">-322.03</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">25 Aug 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due<br/>Ruth Slater 121000111223</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">12.34</td>
+                <td class="govuk-table__cell statement_end">-319.56</td>
+              {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell statement_date">25 Aug 2024</td>
+              <td class="govuk-table__cell statement_description">Collect and pay fee added</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">3.76</td>
+                <td class="govuk-table__cell statement_end">-307.22</td>
+              {% endif %}
+            </tr>
+            <tr height=68 style='height:51.0pt'>
+              <td class="govuk-table__cell statement_date">25 Aug 2024</td>
+              <td class="govuk-table__cell statement_description">Child maintenance due <br/>Daria Oblonskaya 121000111222</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+              {% if filterTableBy == 'all' %}
+                <td class="govuk-table__cell govuk-table__cell--numeric">16.38</td>
+                <td class="govuk-table__cell statement_end">-303.46</td>
+              {% endif %}
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+      {% endif %}
+
+      {# ///////// 2023 /////////////////////////////////// #}
+
+      {% if filterTableBy == 'all' %}
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">2023<br>
+          <span class="govuk-caption-m">No transactions</span></caption>
+      </table>
+
+      {% endif %}
+      {# ///////// 2022 /////////////////////////////////// #}
+
+      {# ///////// 2022 /////////////////////////////////// #}
+
+      {# ///////// 2022 /////////////////////////////////// #}
+
+      {# //////// Show for any of 3 filters //////// #}
+      {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">2022</caption>
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Date</th>
+              <th scope="col" class="govuk-table__header">Description</th>
+              <th scope="col" class="govuk-table__header numerical">Credit (£)</th>
+              {% if filterTableBy == 'all' %}
+                <th scope="col" class="govuk-table__header numerical">Debit&nbsp;(£)</th>
+                <th scope="col" class="govuk-table__header statement_end">Balance&nbsp;(£)</th>
+              {% endif %}
+            </tr>
+          </thead>
+
+          {# //////// Show for any of 3 filters //////// #}
+
+          <tbody class="govuk-table__body">
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">22 Aug 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">10.21</td>
+                  <td class="govuk-table__cell statement_end">-287.08</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">19 Aug 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">48.37</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-276.87</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">14 Aug 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">32.23</td>
+                  <td class="govuk-table__cell statement_end">-325.2024</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">12 Aug 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">48.37</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-293.01</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">07 Aug 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">32.23</td>
+                  <td class="govuk-table__cell statement_end">-341.38</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">05 Aug 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">61.83</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-309.15</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">31 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">32.23</td>
+                  <td class="govuk-table__cell statement_end">-370.98</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">29 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">81.24</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-338.75</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">24 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">32.23</td>
+                  <td class="govuk-table__cell statement_end">-419.99</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">22 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-387.76</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">16 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay amount adjusted</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">9.21</td>
+                  <td class="govuk-table__cell statement_end">-394.49</td>
+                {% endif %}
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">16 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                  <td class="govuk-table__cell statement_end">-385.28</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">15 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-380.28</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">10 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-387.01</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">08 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-380.01</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">03 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-386.74</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">01 Jul 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-379.74</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">26 Jun 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-386.47</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">24 Jun 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-379.47</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">19 Jun 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-386.20</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">17 Jun 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-379.20</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">12 Jun 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-385.93</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">10 Jun 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-378.93</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">05 Jun 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-385.66</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">27 May 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-378.66</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">22 May 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-385.39</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">13 May 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-378.39</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">08 May 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-385.12</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">06 May 2022</td>
+                <td class="govuk-table__cell statement_description">Direct pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-378.12</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">01 May 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-384.85</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">29 Apr 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-377.85</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">24 Apr 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-384.58</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">22 Apr 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-377.58</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">17 Apr 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-384.31</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">15 Apr 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-377.31</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">10 Apr 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-384.04</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">08 Apr 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-377.04</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">03 Apr 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-383.77</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">01 Apr 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-376.77</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">27 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-383.50</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">25 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-376.50</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">20 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-383.23</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">18 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-376.23</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">13 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-382.96</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">11 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-375.96</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">06 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-382.69</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">04 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-375.69</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">27 Feb 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-382.42</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">25 Feb 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-375.42</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">20 Feb 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-382.15</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">18 Feb 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-375.15</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">13 Feb 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-381.88</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">11 Feb 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-374.88</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">06 Feb 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                  <td class="govuk-table__cell statement_end">-381.61</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">04 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">6.73</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">-376.61</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">02 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay amount adjusted</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">64.47</td>
+                  <td class="govuk-table__cell statement_end">-383.34</td>
+                {% endif %}
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">02 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay amount adjusted</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">64.47</td>
+                  <td class="govuk-table__cell statement_end">-318.87</td>
+                {% endif %}
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">02 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay amount adjusted</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">64.47</td>
+                  <td class="govuk-table__cell statement_end">-254.40</td>
+                {% endif %}
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">02 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay amount adjusted</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">64.47</td>
+                  <td class="govuk-table__cell statement_end">-189.93</td>
+                {% endif %}
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">02 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay amount adjusted</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">65.41</td>
+                  <td class="govuk-table__cell statement_end">-125.46</td>
+                {% endif %}
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">02 Mar 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay amount adjusted</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">46.05</td>
+                  <td class="govuk-table__cell statement_end">-60.05</td>
+                {% endif %}
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">02 Feb 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-14.00</td>
+                {% endif %}
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">30 Jan 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-7.00</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">28 Jan 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">7.00</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">0.00</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">23 Jan 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-7.00</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">21 Jan 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">7.00</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">0.00</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">16 Jan 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-7.00</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">14 Jan 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">7.00</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">0.00</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">09 Jan 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-7.00</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' or filterTableBy == 'credits' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">07 Jan 2022</td>
+                <td class="govuk-table__cell statement_description">Direct Pay payment</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="statements-filtering/credits-19 Nov 24.html">7.00</a>
+                </td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                  <td class="govuk-table__cell statement_end">0.00</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+            {% if filterTableBy == 'all' %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell statement_date">02 Jan 2022</td>
+                <td class="govuk-table__cell statement_description">Child maintenance due Daria Oblonskaya 121000111222</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                {% if filterTableBy == 'all' %}
+                  <td class="govuk-table__cell govuk-table__cell--numeric">7.00</td>
+                  <td class="govuk-table__cell statement_end">-7.00</td>
+                {% endif %}
+              </tr>
+            {% endif %}
+          </tbody>
+
+        </table>
+      {% endif %}
+
+    </div>
+  </div>
+
+  {% include "includes/back-to-top-link" %}
+
+{% endblock %}
