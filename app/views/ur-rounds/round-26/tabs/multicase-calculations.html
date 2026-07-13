@@ -181,7 +181,7 @@
       {% if (loop.index > 23) and (loop.index < 29) %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="multicase-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+            <a href="multicase-calculation-details-2-case?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
           </td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
@@ -223,7 +223,7 @@
      {% if (loop.index >= 29) %}
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
-          <a href="multicase-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+          <a href="multicase-calculation-details-2-case?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
         </td>
         <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
         <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>

@@ -9,7 +9,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% set reason = data['calc_details'][calcReasonIndex] %}
 
 {# Set dataset source for looping #}
-{% set allCases = data['multicase-2']['cases'] %}
+{% set allCases = data['multicase']['cases'] %}
 
 {# Set case status types before the loop #}
 {% set activeCount = 0 %}
@@ -123,7 +123,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-  {% include "includes/vpf/dwp-quick-reference-multicase-2" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
