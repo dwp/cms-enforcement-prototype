@@ -102,39 +102,6 @@ module.exports = {
         'parent_id': '121000111223',
         'case_id': '1-2348743',
         'other_parent': 'Ruth Slater'
-      },
-      {
-        'case_index': '4',
-        'case_status': 'closed',
-        'date_closed': '3 Jun 2020',
-        'parent_id': '121000111223',
-        'case_id': '1-2311178',
-        'other_parent': 'Ruth Slater'
-      },
-      {
-        'case_index': '5',
-        'case_status': 'closed',
-        'date_closed': '3 Jun 2026',
-        'parent_id': '121000111224',
-        'case_id': '1-2245772',
-        'service_type': 'Collect and pay',
-        'sub_status': 'Arrears only',
-        'effective_from': '2 May 2012',
-        'next_annual_review': '2 May 2026',
-        'role': 'paying',
-        'other_parent': 'Zara Fleetwood',
-        'qualifying_children': [
-          {
-            'child_name': 'Thomas Fleetwood-Oblonsky',
-            'dob': '14 Aug 2010',
-            'overnight_stays': '2',
-            'local_auth_stays': '0'
-          }
-        ],
-        'child_maintenance_expected': '1000.00',
-        'child_maintenance_paid': '200.00',
-        'charges_debt_expected': '100.00',
-        'charges_debt_paid': '20.00',
       }
     ]
   }

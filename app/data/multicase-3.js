@@ -29,16 +29,16 @@ module.exports = {
         'effective_from': '7 June 2021',
         'next_annual_review': '7 June 2026',
         'role': 'paying',
-        'other_parent': 'Mary Anne Tetley',
+        'other_parent': 'Chantel Perry',
         'qualifying_children': [
           {
-            'child_name': 'Thomas Tetley',
+            'child_name': 'Nicola Perry',
             'dob': '2 March 2019',
             'overnight_stays': '1',
             'local_auth_stays': '0'
           },
             {
-            'child_name': 'Peter Tetley',
+            'child_name': 'Simon Perry',
             'dob': '1 January 2025',
             'overnight_stays': '0',
             'local_auth_stays': '0'
@@ -60,10 +60,10 @@ module.exports = {
         'effective_from': '21 December 2021',
         'next_annual_review': '21 December 2024',
         'role': 'paying',
-        'other_parent': 'Maya Ali ',
+        'other_parent': 'Marina Ditton',
         'qualifying_children': [
           {
-            'child_name': 'Rohan Ali',
+            'child_name': 'Peter Ditton',
             'dob': '21 Nov 2022',
             'overnight_stays': '0',
             'local_auth_stays': '0'
@@ -85,10 +85,10 @@ module.exports = {
         'effective_from': '28 June 2024',
         'next_annual_review': '28 June 2026',
         'role': 'receiving',
-        'other_parent': 'Maya Ali',
+        'other_parent': 'Marina Ditton',
         'qualifying_children': [
           {
-            'child_name': 'Rohan Ali',
+            'child_name': 'Peter Ditton',
             'dob': '10 Sep 2023',
             'overnight_stays': '0',
             'local_auth_stays': '0'
@@ -101,15 +101,7 @@ module.exports = {
         'date_closed': '20 Nov 2024',
         'parent_id': '121000111223',
         'case_id': '1-2348743',
-        'other_parent': 'Maya Ali'
-      },
-      {
-        'case_index': '4',
-        'case_status': 'closed',
-        'date_closed': '20 Nov 2024',
-        'parent_id': '121000111223',
-        'case_id': '1-2348880',
-        'other_parent': 'Maya Ali'
+        'other_parent': 'Katie Smith'
       }
     ]
   }
