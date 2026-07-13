@@ -26,7 +26,7 @@ module.exports = {
       'payments_made_child_maintenance': '1278.34',
       'payments_made_charges_debt': '319.58',
       'written_off': '10.00',
-      'expected_child_maintenance': '5,678.03',
+      'expected_child_maintenance': '5678.03',
       'expected_collection_charges': '575.85',
       'expected_enforcement_charges': '600.00',
       'regular_deduction_order': '50.00',
