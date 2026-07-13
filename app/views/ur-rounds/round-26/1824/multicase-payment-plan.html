@@ -92,17 +92,17 @@
   {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-2">Cases ({{ activePayingCount
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activePayingCount
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
@@ -159,231 +159,230 @@
             <td class="govuk-table__cell">19 Oct 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-oct-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-oct-25">120.00</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">9 Oct 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-oct-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr> #}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">9 Oct 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-oct-25">106.65</a>&nbsp;</td>
-            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">9 Oct 2025</td>
-            <td class="govuk-table__cell">12</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-oct-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-oct-25">86.92</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Sep 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-sep-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-sep-25">120.00</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">10 Sep 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-sep-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr> #}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">10 Sep 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-sep-25">106.65</a>&nbsp;</td>
-            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">10 Sep 2025</td>
-            <td class="govuk-table__cell">12</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-sep-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-sep-25">86.92</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Aug 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-aug-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-aug-25">120.00</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">7 Aug 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-aug-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr> #}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">7 Aug 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-aug-25">106.65</a>&nbsp;</td>
-            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">7 Aug 2025</td>
-            <td class="govuk-table__cell">12</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-aug-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-aug-25">86.92</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Jul 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jul-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jul-25">120.00</a>&nbsp;</td>
             
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">9 Jul 2025</td>
             <td class="govuk-table__cell">12</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jul-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jul-25">86.92</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Jun 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jun-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jun-25">120.00</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">9 Jun 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jun-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr> #}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">9 Jun 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jun-25">106.65</a>&nbsp;</td>
-            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">9 Jun 2025</td>
-            <td class="govuk-table__cell">12</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jun-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jun-25">54.32</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Apr 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-apr-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-apr-25">120.00</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">9 Apr 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-apr-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr> #}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">9 Apr 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-apr-25">106.65</a>&nbsp;</td>
-            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">9 Apr 2025</td>
-            <td class="govuk-table__cell">12</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-apr-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-apr-25">54.32</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Mar 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-mar-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-mar-25">120.00</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">10 Mar 2025</td>
+            <td class="govuk-table__cell">12</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-mar-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr> #}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">10 Mar 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-mar-25">106.65</a>&nbsp;</td>
-            <td class="govuk-table__cell schedule_paid">&nbsp;</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">10 Mar 2025</td>
-            <td class="govuk-table__cell">12</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-mar-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-mar-25">54.32</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Feb 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-feb-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-feb-25">120.00</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">20 Sep 2024</td>
+            <td class="govuk-table__cell">11</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">54.32</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Jan 2025</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jan-25">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-jan-25">120.00</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">13 Sep 2024</td>
+            <td class="govuk-table__cell">11</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">54.32</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">19 Dec 2024</td>
             <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">Deduction from earnings</td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-dec-24">106.65</a>&nbsp;</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a class="govuk-link" href="payment-plan-expected/ef-pp-19-dec-24">120.00</a>&nbsp;</td>
             <td class="govuk-table__cell schedule_paid">&nbsp;</td>
           </tr>
 
-
-          <tr class="govuk-table__row">
+          {# <tr class="govuk-table__row">
             <td class="govuk-table__cell">27 Sep 2024</td>
             <td class="govuk-table__cell">11</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
             <td class="govuk-table__cell">17.65</td>
             <td class="govuk-table__cell schedule_paid">0.00</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">20 Sep 2024</td>
-            <td class="govuk-table__cell">11</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
-            <td class="govuk-table__cell">17.65</td>
-            <td class="govuk-table__cell schedule_paid">0.00</td>
-          </tr>
-          <tr class="govuk-table__row">
+          </tr> #}
+          {# <tr class="govuk-table__row">
             <td class="govuk-table__cell">20 Sep 2024</td>
             <td class="govuk-table__cell">11</td>
             <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
             <td class="govuk-table__cell">17.65</td>
             <td class="govuk-table__cell schedule_paid">0.00</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">13 Sep 2024</td>
-            <td class="govuk-table__cell">11</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
-            <td class="govuk-table__cell">17.65</td>
-            <td class="govuk-table__cell schedule_paid">0.00</td>
-          </tr>
+          </tr> #}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">06 Sep 2024</td>
             <td class="govuk-table__cell">11</td>
+            <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">54.32</td>
+            <td class="govuk-table__cell schedule_paid">0.00</td>
+          </tr>
+          {# <tr class="govuk-table__row">
+            <td class="govuk-table__cell">30 Aug 2024</td>
+            <td class="govuk-table__cell">11</td>
             <td class="govuk-table__cell">Direct pay &ndash; {{ parent2 }}</td>
             <td class="govuk-table__cell">17.65</td>
             <td class="govuk-table__cell schedule_paid">0.00</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">30 Aug 2024</td>
-            <td class="govuk-table__cell">11</td>
-            <td class="govuk-table__cell">Direct pay &ndash; {{ parent1 }}</td>
-            <td class="govuk-table__cell">17.65</td>
-            <td class="govuk-table__cell schedule_paid">0.00</td>
-          </tr>
+          </tr> #}
           <!-- Removed due to API limitations -->
           <!--
           <tr class="govuk-table__row">

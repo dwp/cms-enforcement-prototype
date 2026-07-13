@@ -2,12 +2,12 @@
 
 {# ////// VARIABLES ////// #}
 {# Get parent anme and case id #}
-{% set allCases = data['multicase']['cases'] %}
+{% set allCases = data['multicase-3']['cases'] %}
 {% set parent1 = allCases[0].other_parent ~ ' - ' ~ allCases[0].parent_id %}
 {% set parent2 = allCases[1].other_parent ~ ' - ' ~ allCases[1].parent_id %}
 
 {# Set dataset source for looping #}
-{% set allCases = data['multicase']['cases'] %}
+{% set allCases = data['multicase-3']['cases'] %}
 
 {# Set case status types before the loop #}
 {% set activeCount = 0 %}
@@ -67,7 +67,7 @@
 {# Note: make sure raw data does not contain commas #}
 {# Fallback to '0' if the data path is missing, undefined, or empty #}
 
-{% set finances = data['finances']['finances'] %}
+{% set finances = data['finances-3']['finances'] %}
 {% set overpaymentsCM = finances['overpayments_child_maintenance'] | default('0', true) %}
 {% set overpaymentsCD = finances['overpayments_charges_debt'] | default('0', true) %}
 {% set cashBalance = finances['cash_balance'] | default('0', true) %}
@@ -120,19 +120,20 @@ expected_secretary_of_state
 {% endblock %}
 {% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-3" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-2-tabs">Cases (2)</a>
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activePayingCount
+              }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-finances--tabs-2-case">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-statement" aria-current="page">Statement</a>
@@ -154,7 +155,7 @@ expected_secretary_of_state
   </div>
 {% endblock %}
 {% block content %}
-  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
   Statement
 </h1>
 
@@ -565,7 +566,7 @@ expected_secretary_of_state
               <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
               <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
               {% if filterTableBy == 'all' %}
-                <td class="govuk-table__cell govuk-table__cell--numeric">74.2024</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">74.20</td>
                 <td class="govuk-table__cell statement_end">-4,486.98</td>
               {% endif %}
             </tr>
@@ -667,7 +668,7 @@ expected_secretary_of_state
               <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
               <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
               {% if filterTableBy == 'all' %}
-                <td class="govuk-table__cell govuk-table__cell--numeric">74.2024</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">74.20</td>
                 <td class="govuk-table__cell statement_end">-3,634.47</td>
               {% endif %}
             </tr>
@@ -849,7 +850,7 @@ expected_secretary_of_state
               <td class="govuk-table__cell statement_description">Child maintenance due Ruth Slater - 121000111223</td>
               <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
               {% if filterTableBy == 'all' %}
-                <td class="govuk-table__cell govuk-table__cell--numeric">74.2024</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">74.20</td>
                 <td class="govuk-table__cell statement_end">-2,348.26</td>
               {% endif %}
             </tr>
@@ -940,7 +941,7 @@ expected_secretary_of_state
               <td class="govuk-table__cell statement_description">Child maintenance due<br/>Ruth Slater 121000111223</td>
               <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
               {% if filterTableBy == 'all' %}
-                <td class="govuk-table__cell govuk-table__cell--numeric">74.2024</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">74.20</td>
                 <td class="govuk-table__cell statement_end">-1,449.36</td>
               {% endif %}
             </tr>

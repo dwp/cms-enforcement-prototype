@@ -2,12 +2,12 @@
 
 {# ////// VARIABLES ////// #}
 {# Get parent anme and case id #}
-{% set allCases = data['multicase-2']['cases'] %}
+{% set allCases = data['multicase']['cases'] %}
 {% set parent1 = allCases[0].other_parent ~ ' - ' ~ allCases[0].parent_id %}
 {% set parent2 = allCases[1].other_parent ~ ' - ' ~ allCases[1].parent_id %}
 
 {# Set dataset source for looping #}
-{% set allCases = data['multicase-2']['cases'] %}
+{% set allCases = data['multicase']['cases'] %}
 
 {# Set case status types before the loop #}
 {% set activeCount = 0 %}
@@ -120,7 +120,7 @@ expected_secretary_of_state
 {% endblock %}
 {% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-  {% include "includes/vpf/dwp-quick-reference-multicase-2" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation">

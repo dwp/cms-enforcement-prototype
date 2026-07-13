@@ -20,7 +20,10 @@ module.exports = {
   // Require other data store files
 
   'multicase': require('./multicase.js'),
+  'multicase-2': require('./multicase-2.js'),
+  'multicase-3': require('./multicase-3.js'),
   'finances': require('./finances.js'),
+  'finances-3': require('./finances-3.js'),
 
   // Insert values here
 

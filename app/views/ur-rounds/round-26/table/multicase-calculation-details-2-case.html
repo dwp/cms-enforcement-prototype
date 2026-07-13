@@ -9,7 +9,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% set reason = data['calc_details'][calcReasonIndex] %}
 
 {# Set dataset source for looping #}
-{% set allCases = data['multicase']['cases'] %}
+{% set allCases = data['multicase-2']['cases'] %}
 
 {# Set case status types before the loop #}
 {% set activeCount = 0 %}
@@ -123,7 +123,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-2" %}
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
@@ -131,11 +131,11 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-2-table">Cases ({{ activePayingCount
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activePayingCount
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-statement--all">Statement</a>

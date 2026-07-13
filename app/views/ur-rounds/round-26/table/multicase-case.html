@@ -2,7 +2,7 @@
 
 <!-- ////// PRESETS ///// -->
 {# Count case status types #}
-{% set allCases = data['multicase']['cases'] %}
+{% set allCases = data['multicase-2']['cases'] %}
 {% set activeCount = 0 %}
 {% set closedCount = 0 %}
 {% set payingCount = 0 %}
@@ -45,7 +45,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-2" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation">
@@ -54,11 +54,11 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-2-table" aria-current="page">Cases ({{ activePayingCount
+              <a class="moj-primary-navigation__link" href="multicase-case" aria-current="page">Cases ({{ activePayingCount
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-finances--table-2-case">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
@@ -84,12 +84,13 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
         Cases
       </h1>
+</div>
+    <div class="govuk-grid-column-two-thirds">
       <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
       <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
-        <strong>{{ activePayingCount }} paying,  {{ closedCount }} closed.</strong>
+        <strong>{{ activePayingCount }} paying,  {{ closedCount }} closed</strong>
       </p>
       <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
 

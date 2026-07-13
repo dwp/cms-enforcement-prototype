@@ -22,29 +22,29 @@ module.exports = {
       {
         'case_index': '0',
         'case_status': 'active',
-        'parent_id': '121000111222',
-        'case_id': '1-2345999',
+        'parent_id': '121000111232',
+        'case_id': '1-2345943',
         'service_type': 'Direct pay',
         'sub_status': 'Arrears only',
-        'effective_from': '7 October 2021',
-        'next_annual_review': '7 October 2026',
+        'effective_from': '7 July 2021',
+        'next_annual_review': '7 July 2026',
         'role': 'paying',
-        'other_parent': 'Daria Oblonskaya',
+        'other_parent': 'Penelope Carruthers',
         'qualifying_children': [
           {
-            'child_name': 'Lily Oblonskaya',
-            'dob': '7 October 2021',
+            'child_name': 'Lily Carruthers',
+            'dob': '2 March 2019',
             'overnight_stays': '1',
             'local_auth_stays': '0'
           },
             {
-            'child_name': 'Tatiana Oblonskaya',
-            'dob': '21 November 2022',
+            'child_name': 'Tatiana Carruthers',
+            'dob': '1 January 2025',
             'overnight_stays': '0',
             'local_auth_stays': '0'
           }
         ],
-        'child_maintenance_expected': '3785.35',
+        'child_maintenance_expected': '2998.98',
         'expected_CSA_debt_parent': '123.45',
         'child_maintenance_paid': '852.23',
         'charges_debt_expected': '120.00',
@@ -53,23 +53,23 @@ module.exports = {
       {
         'case_index': '1',
         'case_status': 'active',
-        'parent_id': '121000111223',
-        'case_id': '1-2245868',
+        'parent_id': '121000111991',
+        'case_id': '1-2245821',
         'service_type': 'Collect and pay',
         'sub_status': 'Perform Calculation',
-        'effective_from': '21 November 2022',
-        'next_annual_review': '21 November 2026',
+        'effective_from': '21 December 2021',
+        'next_annual_review': '21 December 2024',
         'role': 'paying',
-        'other_parent': 'Ruth Slater',
+        'other_parent': 'Olivia Rutherford',
         'qualifying_children': [
           {
-            'child_name': 'Olivia Slater',
+            'child_name': 'Mary Rutherford-Carruthers',
             'dob': '21 Nov 2022',
             'overnight_stays': '0',
             'local_auth_stays': '0'
           }
         ],
-        'child_maintenance_expected': '1892.68',
+        'child_maintenance_expected': '2,300.70',
         'expected_CSA_debt_parent': '98.62',
         'child_maintenance_paid': '426.11',
         'charges_debt_expected': '300.00',
@@ -85,7 +85,7 @@ module.exports = {
         'effective_from': '28 June 2024',
         'next_annual_review': '28 June 2026',
         'role': 'receiving',
-        'other_parent': 'Ruth Slater',
+        'other_parent': 'Olivia Rutherford',
         'qualifying_children': [
           {
             'child_name': 'Olivia Slater',
@@ -101,40 +101,7 @@ module.exports = {
         'date_closed': '20 Nov 2025',
         'parent_id': '121000111223',
         'case_id': '1-2348743',
-        'other_parent': 'Ruth Slater'
-      },
-      {
-        'case_index': '4',
-        'case_status': 'closed',
-        'date_closed': '3 Jun 2020',
-        'parent_id': '121000111223',
-        'case_id': '1-2311178',
-        'other_parent': 'Ruth Slater'
-      },
-      {
-        'case_index': '5',
-        'case_status': 'closed',
-        'date_closed': '3 Jun 2026',
-        'parent_id': '121000111224',
-        'case_id': '1-2245772',
-        'service_type': 'Collect and pay',
-        'sub_status': 'Arrears only',
-        'effective_from': '2 May 2012',
-        'next_annual_review': '2 May 2026',
-        'role': 'paying',
-        'other_parent': 'Zara Fleetwood',
-        'qualifying_children': [
-          {
-            'child_name': 'Thomas Fleetwood-Oblonsky',
-            'dob': '14 Aug 2010',
-            'overnight_stays': '2',
-            'local_auth_stays': '0'
-          }
-        ],
-        'child_maintenance_expected': '1000.00',
-        'child_maintenance_paid': '200.00',
-        'charges_debt_expected': '100.00',
-        'charges_debt_paid': '20.00',
+        'other_parent': 'Olivia Rutherford'
       }
     ]
   }

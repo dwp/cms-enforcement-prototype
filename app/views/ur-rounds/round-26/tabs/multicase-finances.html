@@ -8,7 +8,7 @@
 {% set paymentDetails = "payment-allocation/ef-pb-19 Nov 24" %}
 
 {# Set dataset source for looping #}
-{% set allCases = data['multicase']['cases'] %}
+{% set allCases = data['multicase-3']['cases'] %}
 
 {# Set case status types before the loop #}
 {% set activeCount = 0 %}
@@ -69,7 +69,7 @@
    FINANCES
 ========================= #}
 
-{% set finances = data['finances']['finances'] %}
+{% set finances = data['finances-3']['finances'] %}
 
 {% set overpaymentsCM = finances['overpayments_child_maintenance'] | default('0', true) | float %}
 {% set overpaymentsCD = finances['overpayments_charges_debt'] | default('0', true) | float %}
@@ -89,7 +89,12 @@
 {% set deductionEarningsOrder = finances['deduction_from_earnings_order'] | default('0', true) | float %}
 {% set expectedEnforcementCharges = regularDeductionOrder + lumpSumDeductionOrder + liabilityOrder + deductionEarningsOrder %}
 {% set expectedEnforcementCost = finances['expected_enforcement_cost'] | default('0', true) | float %}
-{% set expectedCSADebt = finances['expected_CSA_debt'] | default('0', true) | float %}
+{% set expectedCSADebtRP1 = finances['expected_CSA_debt_parent_1'] | default('0', true) | float %}
+{% set expectedCSADebtRP2 = finances['expected_CSA_debt_parent_2'] | default('0', true) | float %}
+{% set expectedCSADebtSOS = finances['expected_secretary_of_state'] | default('0', true) | float %}
+{% set paidCSADebtRP1 = finances['paid_CSA_debt_parent_1'] | default('0', true) | float %}
+{% set paidCSADebtRP2 = finances['paid_CSA_debt_parent_1'] | default('0', true) | float %}
+{% set expectedCSADebt = expectedCSADebtRP1 + expectedCSADebtRP1 + expectedCSADebtSOS %}
 {% set expectedDNACost = finances['expected_DNA_debt'] | default('0', true) | float %}
 {% set expectedSubjectAccessRequestCost = finances['expected_subject_access_request_cost'] | default('0', true) | float %}
 {% set expectedInterest = finances['expected_interest'] | default('0', true) | float %}
@@ -123,20 +128,20 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 {% block beforeContent %}
 
   {% include "includes/govuk-beta-banner" %}
-  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-3" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
-  <div class="moj-primary-navigation govuk-!-margin-bottom-5">
+  <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-2-tabs">Cases ({{ activePayingCount
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activePayingCount
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-finances--tabs-2-case" aria-current="page">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances" aria-current="page">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
@@ -241,16 +246,11 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                 </tbody>
               </table>
 
-              <details class="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                  Cash balance £{{ cashBalance }}
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                Money paid that cannot be allocated to child maintenance or charges yet. 
+              <div class="govuk-inset-text">
+                <p>
+          Cash balance not included £{{ cashBalance | currency }}
+                </p>
               </div>
-              </details>
             </div>
           </div>
           <div class="govuk-grid-row">
@@ -287,26 +287,23 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                     <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedEnforcementCost | currency }}</dd>
                   </div>
                   <div class="govuk-summary-list__row">
-
                     <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">CSA debt</dt>
                     <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedCSADebt | currency }}</dd>
                   </div>
                   {# ////// CSA DEBT BREAKDOWN  //////// #}
-                  {% set expectedCSADebtRP1 = 20 | float %}
-                  {% set expectedCSADebtRP2 = expectedCSADebt - expectedCSADebtRP1 %}
-                  <section class="govuk-summary-list__row" role="contentinfo" aria="Enforcement charges">
+                  <section class="govuk-summary-list__row" role="contentinfo" aria="CSA debt">
                     <dt aria-label="Charges included in CSA debt">
                       <ul class="govuk-list govuk-list--bullet govuk-!-width-full govuk-!-padding-top-3" role="list">
                         <li>£{{ expectedCSADebtRP1 | currency }} &ndash; {{ allCases[0]['other_parent'] }}
                           {{ allCases[0]['case_id'] }}</li>
                         <li>£{{ expectedCSADebtRP2 | currency }} &ndash; {{ allCases[1]['other_parent'] }}
                           {{ allCases[0]['case_id'] }}</li>
+                        <li>£{{ expectedCSADebtSOS | currency }} &ndash; Secretary of State</li>
                       </ul>
                     </dt>
-                    <dd class="govuk-summary-list__value">&nbsp;</dd>
+                    <dd class="govuk-summary-list__value"></dd>
                   </section>
                   <div class="govuk-summary-list__row">
-
                     <dt class="govuk-summary-list__key govuk-summary-list__row--no-actions govuk-!-width-two-thirds">DNA costs</dt>
                     <dd scope="row" class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedDNACost | currency }}</dd>
                   </div>
@@ -412,9 +409,13 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               £{{ case.child_maintenance_expected | default(0) | float | currency }}
                     </td>
                   </tr>
-
                 </tbody>
               </table>
+              <div class="govuk-inset-text">
+                <p>
+          Total expected includes CSA debt of £{{ case.expected_CSA_debt_parent | currency }}
+                </p>
+              </div>
             </div>
           {% endif %}
         {% endfor %}

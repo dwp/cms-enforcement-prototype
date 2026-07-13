@@ -15,7 +15,7 @@
 
 
 {# Set dataset source for looping #}
-{% set allCases = data['multicase']['cases'] %}
+{% set allCases = data['multicase-3']['cases'] %}
 
 {# Get parent anme and case id #}
 {% set parent1 = allCases[0].other_parent  ~ ' ' ~  allCases[0].case_id %}
@@ -79,7 +79,7 @@
 {# =========================
    FINANCES
 ========================= #}
-{% set finances = data['finances']['finances'] %}
+{% set finances = data['finances-3']['finances'] %}
 {% set cashBalance = finances['cash_balance'] | default('0', true) | float %}
 ////////////////////
 
@@ -93,7 +93,7 @@
 
 {% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-  {% include "includes/vpf/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase-3" %}
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation">
@@ -102,11 +102,11 @@
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case-2-tabs">Cases ({{ activePayingCount
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activePayingCount
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-finances--tabs-2-case">Finances</a>
+              <a class="moj-primary-navigation__link" href="multicase-finances">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
