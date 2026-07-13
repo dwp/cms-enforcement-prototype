@@ -69,7 +69,7 @@ module.exports = {
             'local_auth_stays': '0'
           }
         ],
-        'child_maintenance_expected': '2,300.70',
+        'child_maintenance_expected': '2300.70',
         'expected_CSA_debt_parent': '98.62',
         'child_maintenance_paid': '426.11',
         'charges_debt_expected': '300.00',

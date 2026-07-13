@@ -262,10 +262,8 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                 <th class="govuk-table__header">{{ case.other_parent }}
                   {{ case.case_id }}</th>
                 <td class="govuk-table__cell govuk-table__cell--numeric">£{{ caseArrearsCM | default(0) | float | currency }}</td>
-
                 <td class="govuk-table__cell govuk-table__cell--numeric">£{{ paidCaseCM | default(0) | float | currency }}</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">
-                  £{{ expectedCaseCM | default(0) | float | currency }}
+                <td class="govuk-table__cell govuk-table__cell--numeric">£{{ expectedCaseCM | default(0) | float | currency }}
                 </td>
               </tr>
             {% endif %}
