@@ -44,7 +44,7 @@ module.exports = {
             'local_auth_stays': '0'
           }
         ],
-        'child_maintenance_expected': '2998.98',
+        'child_maintenance_expected': '3708.23',
         'expected_CSA_debt_parent': '123.45',
         'child_maintenance_paid': '852.23',
         'charges_debt_expected': '120.00',
@@ -69,7 +69,7 @@ module.exports = {
             'local_auth_stays': '0'
           }
         ],
-        'child_maintenance_expected': '2300.70',
+        'child_maintenance_expected': '1591.45',
         'expected_CSA_debt_parent': '98.62',
         'child_maintenance_paid': '426.11',
         'charges_debt_expected': '300.00',
