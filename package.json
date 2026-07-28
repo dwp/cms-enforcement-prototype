@@ -9,7 +9,6 @@
     "start": "govuk-prototype-kit start"
   },
   "dependencies": {
-    "22": "0.0.0",
     "@dwp/dwp-frontend": "4.1.0",
     "@govuk-prototype-kit/common-templates": "3.0.0",
     "@ministryofjustice/frontend": "^9.0.0",
@@ -30,8 +29,9 @@
     "qs": "6.15.2",
     "uuid": "11.1.1",
     "form-data": "2.5.6",
-    "dompurify": "3.4.9",
+    "dompurify": "3.4.12",
     "ws": "8.21.0",
-    "immutable": "5.1.9"
+    "immutable": "5.1.9",
+    "brace-expansion": "5.0.8"
   }
 }
