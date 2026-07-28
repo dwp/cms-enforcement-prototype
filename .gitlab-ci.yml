@@ -1,4 +1,5 @@
 stages:
+  - build
   - code-quality
   - heroku-publish
 
@@ -22,9 +23,10 @@ heroku-site-publish:
   variables:
     HEROKU_APP_NAME: cms-enforcement
 
-
 install-dependencies:
-  image: node:18
+  image: node:22
   stage: build
   script:
-    - npm install
+    - node -v
+    - npm -v
+    - npm ci
