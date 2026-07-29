@@ -73,23 +73,28 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </a>
           </li>
           <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#daria" data-menukey="0" onclick="handleTab(this)">
+            <a class="govuk-tabs__tab" href="#daria" data-menukey="1" onclick="handleTab(this)">
               Daria Oblonskaya 1-2345999
             </a>
           </li>
           <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#ruth" data-menukey="1" onclick="handleTab(this)">
+            <a class="govuk-tabs__tab" href="#ruth" data-menukey="2" onclick="handleTab(this)">
               Ruth Slater 1-2345112
             </a>
           </li>
           <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#daria" data-menukey="2" onclick="handleTab(this)">
+            <a class="govuk-tabs__tab" href="#daria" data-menukey="3" onclick="handleTab(this)">
               Mary Wilson 1-2345922
             </a>
           </li>
           <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#ruth" data-menukey="3" onclick="handleTab(this)">
+            <a class="govuk-tabs__tab" href="#ruth" data-menukey="4" onclick="handleTab(this)">
               Olive Terrence-Ali 1-2345111
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#ruth" data-menukey="5" onclick="handleTab(this)">
+              Patricia Mary Featherstone 1-2366975
             </a>
           </li>
         </ul>
@@ -113,6 +118,30 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
             <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
           </h2>
           <p>Case ID: <strong>1-2345112</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+          {% include "includes/vpf/ur21/finance-amounts--case-2" %}
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+          <h2 class="govuk-heading-m">Paying to <strong>May Wilson</strong>
+            <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+          </h2>
+          <p>Case ID: <strong>1-2345922</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+          {% include "includes/vpf/ur21/finance-amounts--case-2" %}
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+          <h2 class="govuk-heading-m">Paying to <strong>Olive Terrence-Ali</strong>
+            <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+          </h2>
+          <p>Case ID: <strong>1-2345111</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+          {% include "includes/vpf/ur21/finance-amounts--case-2" %}
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+          <h2 class="govuk-heading-m">Paying to <strong>Patricia Mary Featherstone</strong>
+            <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+          </h2>
+          <p>Case ID: <strong>1-2366975</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
           </p>
           {% include "includes/vpf/ur21/finance-amounts--case-2" %}
         </div>
