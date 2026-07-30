@@ -23,8 +23,8 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
   <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation">
-  <div class="moj-primary-navigation__container">
-    <div class="moj-primary-navigation__nav">
+    <div class="moj-primary-navigation__container">
+      <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
@@ -50,8 +50,8 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           </ul>
         </nav>
       </div>
+    </div>
   </div>
-</div>
   <!-- /////////////////////////////////// -->
 {% endblock %}
 {% block content %}
@@ -104,75 +104,79 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           <p>The next annual review will be on <strong>7 October 2026</strong>.</p>
           {% include "includes/vpf/ur21/finance-amounts--case-all" %}
         </div>
-<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="daria">
           <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
             <strong class="govuk-tag govuk-tag--orange">Direct pay</strong>
           </h2>
           <p>Case ID: <strong>1-2345999</strong>.</br> Effective from <strong>7 October 2021</strong>. The next annual review will be on <strong>7 October 2026</strong>.
           </p>
-          {% include "includes/vpf/ur21/finance-amounts--case-1" %}
-        </div>
-
-        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
-          <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
-            <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
-          </h2>
-          <p>Case ID: <strong>1-2345112</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
-          </p>
-          {% include "includes/vpf/ur21/finance-amounts--case-2" %}
-        </div>
-        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
-          <h2 class="govuk-heading-m">Paying to <strong>May Wilson</strong>
-            <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
-          </h2>
-          <p>Case ID: <strong>1-2345922</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
-          </p>
-          {% include "includes/vpf/ur21/finance-amounts--case-2" %}
-        </div>
-        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
-          <h2 class="govuk-heading-m">Paying to <strong>Olive Terrence-Ali</strong>
-            <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
-          </h2>
-          <p>Case ID: <strong>1-2345111</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
-          </p>
-          {% include "includes/vpf/ur21/finance-amounts--case-2" %}
-        </div>
-        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
-          <h2 class="govuk-heading-m">Paying to <strong>Patricia Mary Featherstone</strong>
-            <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
-          </h2>
-          <p>Case ID: <strong>1-2366975</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
-          </p>
-          {% include "includes/vpf/ur21/finance-amounts--case-2" %}
-        </div>
+        {% include "includes/vpf/ur21/finance-amounts--case-1" %}
       </div>
+
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+        <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
+          <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+        </h2>
+        <p>Case ID: <strong>1-2345112</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+      {% include "includes/vpf/ur21/finance-amounts--case-2" %}
     </div>
+    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+      <h2 class="govuk-heading-m">Paying to <strong>Mary Wilson</strong>
+        <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+      </h2>
+      <p>Case ID: <strong>1-2345922</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+    {% include "includes/vpf/ur21/finance-amounts--case-2" %}
   </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+    <h2 class="govuk-heading-m">Paying to <strong>Olive Terrence-Ali</strong>
+      <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+    </h2>
+    <p>Case ID: <strong>1-2345111</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+  {% include "includes/vpf/ur21/finance-amounts--case-2" %}
+</div>
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ruth">
+  <h2 class="govuk-heading-m">Paying to <strong>Patricia Mary Featherstone</strong>
+    <strong class="govuk-tag govuk-tag--turquoise">Arrears only</strong>
+  </h2>
+  <p>Case ID: <strong>1-2366975</strong>.</br> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+{% include "includes/vpf/ur21/finance-amounts--case-2" %}
+</div>
+</div>
+</div>
+</div>
 <style>
-  .govuk-frontend-supported .govuk-tabs__list-item {
-    position: relative;
-    margin-right: 5px;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding: 10px 20px;
-    float: left;
-    background-color: #f3f3f3;
-    text-align: center;
-    margin-top: 6px;
-  }
-    .govuk-frontend-supported .govuk-tabs__list-item--selected {
-    position: relative;
-    margin-top: 0px;
-    margin-bottom: 1px;
-    padding-top: 10px;
-    padding-right: 19px;
-    padding-bottom: 10px;
-    padding-left: 19px;
-    border: 1px solid;
-    border-bottom: 0;
-    border-color: var(--govuk-border-colour, #cecece);
-    background-color: var(--govuk-body-background-colour, #ffffff);
-    border-top: 5px solid #0b0c0c;
-  }
+.govuk-frontend-supported .govuk-tabs__list {
+padding-bottom: 5px;
+margin-bottom: 0;
+border-bottom: 1px solid;
+border-bottom-color: var(--govuk-border-colour, #cecece);
+}
+
+.govuk-frontend-supported .govuk-tabs__list-item {
+position: relative;
+margin-right: 5px;
+margin-bottom: 0;
+margin-left: 0;
+padding: 10px 20px;
+float: left;
+background-color: #f3f3f3;
+text-align: center;
+margin-top: 5px;
+}
+.govuk-frontend-supported .govuk-tabs__list-item--selected {
+position: relative;
+margin-top: 0;
+margin-bottom: 0;
+padding: 10px 19px;
+border: 1px solid;
+border-bottom: 0;
+border-color: var(--govuk-border-colour, #cecece);
+background-color: var(--govuk-body-background-colour, #ffffff);
+border-top: 5px solid #0b0c0c;
+}
 </style>
 {% endblock %}
