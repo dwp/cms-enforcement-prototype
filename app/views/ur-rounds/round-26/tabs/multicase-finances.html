@@ -253,9 +253,11 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               </div>
             </div>
           </div>
+
+          {# /////////// Total Charges and debt ////////////// #}
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-              {# /////////// Total Charges and debt ////////////// #}
+
               <h2 class="govuk-heading-m govuk-!-margin-top-5">Total expected charges and debt</h2>
               <dl class="govuk-summary-list">
 
@@ -271,7 +273,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                     <dd class="govuk-summary-list__value govuk-!-text-align-right">£300.00</dd>
                   </div>
                   <section class="govuk-summary-list__row govuk-!-padding-bottom-8" role="contentinfo" aria="Enforcement charges">
-                    <dt aria-label="Charges included in £300">
+                    <dt aria-label="Charges included in Enforcement charges">
                       <ul class="govuk-list govuk-list--bullet govuk-!-width-full" role="list">
                         <li>£{{ regularDeductionOrder | currency }} Regular deduction order</li>
                         <li>£{{ lumpSumDeductionOrder | currency }} Lump sum deduction order</li>

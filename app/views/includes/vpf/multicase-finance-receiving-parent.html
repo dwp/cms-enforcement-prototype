@@ -1,0 +1,98 @@
+{% set expectedCaseCM = case.child_maintenance_expected | default(0) | float %}
+{% set paidCaseCM = case.child_maintenance_paid | default(0) | float %}
+{% set arrearsCaseCM = expectedCaseCM - paidCaseCM %}
+
+<section class="ef-card">
+        <div class="dfe-title-cash">
+          <h2 id="money-still-owed">Money still owed</h2>
+          <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="money-still-owed" style="float:right;margin-top:.7em;margin-right:.7em;">£29,055.99</p>
+        </div>
+        <div class="ef-card-duo">
+          <div class="moj-ticket-panel-duo">
+            <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+              <h3 class="govuk-body">Child maintenance</h3>
+              <p class="govuk-heading-m govuk-!-margin-bottom-2">£25,680.14</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ef-card">
+        <div class="dfe-title-cash">
+          <h2 id="overpayments">Overpayments</h2>
+          <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="overpayments" style="float:right;margin-top:.7em;margin-right:.7em;">£1,652.51</p>
+          <span class="govuk-caption-m">Included in the payments made</span>
+        </div>
+        <div class="ef-card-duo">
+          <div class="moj-ticket-panel-trio">
+            <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+              <h3 class="govuk-body">Child maintenance</h3>
+              <p class="govuk-heading-m govuk-!-margin-bottom-2">£1,101.55</p>
+            </div>
+
+            <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+              <h3 class="govuk-body">Cash balance</h3>
+              <p class="govuk-heading-m govuk-!-margin-bottom-2">£330.61</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ef-card">
+        <div class="dfe-title-cash">
+          <h2 id="payments-made">Payments made</h2>
+          <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="payments-made" style="float:right;margin-top:.7em;margin-right:.7em;">£4,213.30</p>
+          <span class="govuk-caption-m">Includes overpayments</span>
+        </div>
+        <div class="ef-card-duo">
+          <div class="moj-ticket-panel-duo">
+            <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+              <h3 class="govuk-body">Child maintenance</h3>
+              <p class="govuk-heading-m govuk-!-margin-bottom-2">£3,113.20</p>
+            </div>
+
+          </div>
+          <div class="moj-ticket-panel-duo" style="padding-top: 0;" role="text">
+            <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Cash balance £330.61
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                Money paid that cannot be allocated to child maintenance or charges yet.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="ef-card">
+        <div class="dfe-title-i8">
+          <h2 id="amount-written-off">Amount written off</h2>
+          <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="amount-written-off" style="float:right;margin-top:.7em;margin-right:.7em;">£0.00</p>
+        </div>
+      </section>
+
+<section class="ef-card">
+  <div class="dfe-title-i8">
+    <h2>Total expected</h2>
+    <h2 class="value">£{{ expectedCaseCM | currency }}</h2>
+  </div>
+  <div class="ef-card-duo">
+    <div class="moj-ticket-panel-duo" aria-label="Sub navigation 1">
+      <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+        <p class="govuk-body">Child maintenance</p>
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ expectedCaseCM | currency }}</h2>
+      </section>
+      <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+        <p class="govuk-body">CSA debt</p>
+        {% if case.case_index == 0 %}
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ expectedCSADebtRP1 | currency }}</h2>
+        {% else %}
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">£{{ expectedCSADebtRP2 | currency }}</h2>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+</section>

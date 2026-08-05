@@ -1,15 +1,22 @@
 {% extends "layouts/internal-service.html" %}
 
+
 {# =========================
    PRESETS
 ========================= #}
-{% set todays_date = '26 Aug 2026' %}
-{% set next_annual_review = '7 October 2026' %}
+
 {# Set link urls #}
 {% set paymentDetails = "payment-allocation/ef-pb-19 Nov 24" %}
 
-{# Set and count case status types in routes.js #}
-{# Then use them anywhere as as {{ activeCount }}, {{ closedCount }}, {{ payingCount }}, {{ receivingCount }} and {{ activePayingCount }}
+{# Set dataset source for looping #}
+{% set allCases = data['multicase-4']['cases'] %}
+
+{# Set case status types before the loop #}
+{% set activeCount = 0 %}
+{% set closedCount = 0 %}
+{% set payingCount = 0 %}
+{% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
 
 {# set case totals before the loop #}
 {% set totalCasesExpectedCM = 0 %}
@@ -17,8 +24,32 @@
 {% set totalCasesExpectedCD = 0 %}
 {% set totalCasesPaidCD = 0 %}
 
-{# set finances amounts #}
+{# begin loop #}
 {% for case in allCases %}
+
+  {# Count case status types #}
+  {% if case.case_status == 'active' %}
+    {% set activeCount = (activeCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'closed' %}
+    {% set closedCount = (closedCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'paying' %}
+    {% set payingCount = (payingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'receiving' %}
+    {% set receivingCount = (receivingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {# set finances amounts #}
+
   {% if case.case_status == 'active' and case.role == 'paying' %}
 
     {% set expectedCaseCM = case.child_maintenance_expected | default(0) | float %}
@@ -28,17 +59,18 @@
 
     {% set totalCasesExpectedCM = totalCasesExpectedCM + expectedCaseCM %}
     {% set totalCasesPaidCM = totalCasesPaidCM + paidCaseCM %}
-    {% set totalCasesExpectedCD = totalCasesExpectedCD + expectedCaseCD %}
+    {% set totalCasesExpectedCDFinance = totalCasesExpectedCDFinance + expectedCaseCD %}
     {% set totalCasesPaidCD = totalCasesPaidCD + paidCaseCD %}
 
   {% endif %}
+
 {% endfor %}
 
 {# =========================
    FINANCES
 ========================= #}
 
-{% set finances = data['finances-3']['finances'] %}
+{% set finances = data['finances-4']['finances'] %}
 
 {% set overpaymentsCM = finances['overpayments_child_maintenance'] | default('0', true) | float %}
 {% set overpaymentsCD = finances['overpayments_charges_debt'] | default('0', true) | float %}
@@ -106,7 +138,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activePayingCount
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ number_of_cases
               }})</a>
             </li>
             <li class="moj-primary-navigation__item">
@@ -139,93 +171,122 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
       Finances
       </h1>
-
       {# /////////// TABS ////////////// #}
-
       <div class="govuk-tabs" data-module="govuk-tabs">
         <h2 class="govuk-tabs__title">
             Contents
           </h2>
         <ul class="govuk-tabs__list">
           <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#total">
+            <a class="govuk-tabs__tab" href="#tab_total">
             Total
           </a>
           </li>
-          {% for case in allCases %}
-            {% if case.case_status == 'active'
-            and case.role == 'paying' %}
-
-              <li class="govuk-tabs__list-item">
-                <a class="govuk-tabs__tab" href="#tab_{{ case.case_index }}">
-                  {{ case.other_parent }}
-                  {{ case.case_id }}
-                </a>
-              </li>
-
-            {% endif %}
-          {% endfor %}
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#tab_2345999">
+              Daria Oblonskaya 1-2345999
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#tab_2345112">
+              Ruth Slater 1-2345112
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#tab_2345922">
+              Mary Wilson 1-2345922
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#tab_2345111">
+              Olive Terrence-Ali 1-2345111
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#tab_2366975">
+              Patricia Mary Featherstone 1-2366975
+            </a>
+          </li>
         </ul>
 
-        {# /////////// TAB PANELS ////////////// #}
-
-        <div class="govuk-tabs__panel" id="total">
-          <h2 class="govuk-heading-l">Total for {{ active_cases }} active cases</h2>
-          <p>Effective from <strong>{{ allCases[0].effective_from }}</strong> to <strong>{{ todays_date }}</strong>. The next annual review will be on <strong>{{ next_annual_review }}</strong>.
+        <div class="govuk-tabs__panel" id="tab_total">
+          <h2 class="govuk-heading-m">Total for {{ active_cases }} active cases</h2>
+          <p>The next annual review will be on <strong>7 October 2026</strong>.</p>
           {% include "includes/vpf/finance-amounts--case-all" %}
         </div>
-
-        {% for case in allCases %}
-          {% if case.case_status == 'active'
-          and case.role == 'paying' %}
-
-            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab_{{ case.case_index }}">
-              <h2 class="govuk-heading-l">Paying to <strong>{{ case.other_parent }}</strong>
-                {% if case.service_type == 'Direct pay' %}
-                  <strong class="govuk-tag govuk-tag--teal">{{ case.service_type }}</strong>
-                {% elif case.service_type == 'Collect and pay' %}
-                  <strong class="govuk-tag govuk-tag--red">{{ case.service_type }}</strong>
-                {% endif %}
-              </h2>
-              <p>Case ID: <strong>{{ case.case_id }}</strong>.</p>
-              
-              <p>Effective from <strong>{{ case.effective_from }}</strong> to <strong>{{ todays_date }}</strong>.</p>
-              {% include "includes/vpf/multicase-finance-receiving-parent" %}
-            </div>
-          {% endif %}
-        {% endfor %}
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab_2345999">
+          <h2 class="govuk-heading-m">Paying to <strong>Daria Oblonskaya</strong>
+            <strong class="govuk-tag govuk-tag--teal">Direct pay</strong>
+          </h2>
+          <p>Case ID: <strong>1-2345999</strong>.</p><p> Effective from <strong>7 October 2021</strong>. The next annual review will be on <strong>7 October 2026</strong>.
+          </p>
+        {% include "includes/vpf/finance-amounts--case-1" %}
       </div>
-    </div>
-  </div>
-  <style>
-    .govuk-frontend-supported .govuk-tabs__list {
-      padding-bottom: 5px;
-      margin-bottom: 0;
-      border-bottom: 0;
-      border-bottom-color: var(--govuk-border-colour, #cecece);
-    }
 
-    .govuk-frontend-supported .govuk-tabs__list-item {
-      position: relative;
-      margin-right: 5px;
-      margin-bottom: 0;
-      margin-left: 0;
-      padding: 10px 20px;
-      float: left;
-      background-color: #f3f3f3;
-      text-align: center;
-      margin-top: 5px;
-    }
-    .govuk-frontend-supported .govuk-tabs__list-item--selected {
-      position: relative;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: 10px 19px;
-      border: 1px solid;
-      border-bottom: 0;
-      border-color: var(--govuk-border-colour, #cecece);
-      background-color: var(--govuk-body-background-colour, #ffffff);
-      border-top: 5px solid #0b0c0c;
-    }
-  </style>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab_2345112">
+        <h2 class="govuk-heading-m">Paying to <strong>Ruth Slater</strong>
+          <strong class="govuk-tag govuk-tag--red">Collect and pay</strong>
+        </h2>
+        <p>Case ID: <strong>1-2345112</strong>.</p><p> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+      {% include "includes/vpf/finance-amounts--case-2" %}
+    </div>
+    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab_2345922">
+      <h2 class="govuk-heading-m">Paying to <strong>Mary Wilson</strong>
+        <strong class="govuk-tag govuk-tag--red">Collect and pay</strong>
+      </h2>
+      <p>Case ID: <strong>1-2345922</strong>.</p><p> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+    {% include "includes/vpf/finance-amounts--case-2" %}
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab_2345111">
+    <h2 class="govuk-heading-m">Paying to <strong>Olive Terrence-Ali</strong>
+      <strong class="govuk-tag govuk-tag--red">Collect and pay</strong>
+    </h2>
+    <p>Case ID: <strong>1-2345111</strong>.</p><p> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+  {% include "includes/vpf/finance-amounts--case-2" %}
+</div>
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab_2366975">
+  <h2 class="govuk-heading-m">Paying to <strong>Patricia Mary Featherstone</strong>
+    <strong class="govuk-tag govuk-tag--red">Collect and pay</strong>
+  </h2>
+  <p>Case ID: <strong>1-2366975</strong>.</p><p> Effective from <strong>21 Nov 2022</strong>. The next annual review will be on <strong>21 Nov 2026</strong>.
+          </p>
+{% include "includes/vpf/finance-amounts--case-2" %}
+</div>
+</div>
+</div>
+</div>
+<style>
+.govuk-frontend-supported .govuk-tabs__list {
+padding-bottom: 5px;
+margin-bottom: 0;
+border-bottom: 0;
+border-bottom-color: var(--govuk-border-colour, #cecece);
+}
+
+.govuk-frontend-supported .govuk-tabs__list-item {
+position: relative;
+margin-right: 5px;
+margin-bottom: 0;
+margin-left: 0;
+padding: 10px 20px;
+float: left;
+background-color: #f3f3f3;
+text-align: center;
+margin-top: 5px;
+}
+.govuk-frontend-supported .govuk-tabs__list-item--selected {
+position: relative;
+margin-top: 0;
+margin-bottom: 0;
+padding: 10px 19px;
+border: 1px solid;
+border-bottom: 0;
+border-color: var(--govuk-border-colour, #cecece);
+background-color: var(--govuk-body-background-colour, #ffffff);
+border-top: 5px solid #0b0c0c;
+}
+</style>
 {% endblock %}

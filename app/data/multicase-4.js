@@ -81,62 +81,6 @@ module.exports = {
         'parent_id': '121000111223',
         'case_id': '1-2245868',
         'service_type': 'Collect and pay',
-        'sub_status': 'Perform Calculation',
-        'effective_from': '21 November 2022',
-        'next_annual_review': '21 November 2026',
-        'role': 'paying',
-        'other_parent': 'Chantel Perry',
-        'qualifying_children': [
-          {
-            'child_name': '	Nicola Perry',
-            'dob': '21 Nov 2022',
-            'overnight_stays': '0',
-            'local_auth_stays': '0'
-          },
-          {
-            'child_name': '	Simon Perry',
-            'dob': '21 Nov 2022',
-            'overnight_stays': '0',
-            'local_auth_stays': '0'
-          }
-        ],
-        'child_maintenance_expected': '1892.68',
-        'expected_CSA_debt_parent': '98.62',
-        'child_maintenance_paid': '426.11',
-        'charges_debt_expected': '300.00',
-        'charges_debt_paid': '23.30',
-      },
-      {
-        'case_index': '3',
-        'case_status': 'active',
-        'parent_id': '121000111223',
-        'case_id': '1-2245868',
-        'service_type': 'Collect and pay',
-        'sub_status': 'Perform Calculation',
-        'effective_from': '21 November 2022',
-        'next_annual_review': '21 November 2026',
-        'role': 'paying',
-        'other_parent': 'Marina Ditton',
-        'qualifying_children': [
-          {
-            'child_name': 'Marina Ditton',
-            'dob': '21 Nov 2022',
-            'overnight_stays': '0',
-            'local_auth_stays': '0'
-          }
-        ],
-        'child_maintenance_expected': '1892.68',
-        'expected_CSA_debt_parent': '98.62',
-        'child_maintenance_paid': '426.11',
-        'charges_debt_expected': '300.00',
-        'charges_debt_paid': '23.30',
-      },
-      {
-        'case_index': '4',
-        'case_status': 'active',
-        'parent_id': '121000111223',
-        'case_id': '1-2245868',
-        'service_type': 'Collect and pay',
         'sub_status': 'Arrears only',
         'effective_from': '28 June 2024',
         'next_annual_review': '28 June 2026',
@@ -152,7 +96,7 @@ module.exports = {
         ]
       },
       {
-        'case_index': '5',
+        'case_index': '3',
         'case_status': 'closed',
         'date_closed': '20 Nov 2025',
         'parent_id': '121000111223',
