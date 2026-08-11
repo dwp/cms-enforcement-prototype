@@ -9,7 +9,8 @@
 {% set paymentDetails = "payment-allocation/ef-pb-19 Nov 24" %}
 
 {# Set and count case status types in routes.js #}
-{# Then use them anywhere as as {{ activeCount }}, {{ closedCount }}, {{ payingCount }}, {{ receivingCount }} and {{ activePayingCount }}
+{# Then use them anywhere as as {{ activeCount }}, {{ closedCount }}, {{ payingCount }}, {{ receivingCount }} and {{ activePayingCount }}#}
+{% set allCases = data['multicase']['cases'] %}
 
 {# set case totals before the loop #}
 {% set totalCasesExpectedCM = 0 %}
@@ -106,8 +107,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ activePayingCount
-              }})</a>
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases (4)</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" aria-current="page" href="multicase-finances-multiline-tabs">Finances</a>
@@ -171,7 +171,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
         <div class="govuk-tabs__panel" id="total">
           <h2 class="govuk-heading-l">Total for {{ active_cases }} active cases</h2>
-          <p>Effective from <strong>{{ allCases[0].effective_from }}</strong> to <strong>{{ todays_date }}</strong>. The next annual review will be on <strong>{{ next_annual_review }}</strong>.
+          <p>Effective from <strong>{{ allCases[0].effective_from }}</strong> to today. The next annual review will be on <strong>{{ next_annual_review }}</strong>.
           {% include "includes/vpf/finance-amounts--case-all" %}
         </div>
 
@@ -180,7 +180,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           and case.role == 'paying' %}
 
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab_{{ case.case_index }}">
-              <h2 class="govuk-heading-l">Paying to <strong>{{ case.other_parent }}</strong>
+              <h2 class="govuk-heading-l"><strong>{{ case.other_parent }}</strong>
                 {% if case.service_type == 'Direct pay' %}
                   <strong class="govuk-tag govuk-tag--teal">{{ case.service_type }}</strong>
                 {% elif case.service_type == 'Collect and pay' %}
@@ -189,7 +189,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               </h2>
               <p>Case ID: <strong>{{ case.case_id }}</strong>.</p>
               
-              <p>Effective from <strong>{{ case.effective_from }}</strong> to <strong>{{ todays_date }}</strong>.</p>
+              <p>Effective from <strong>{{ case.effective_from }}</strong> to today.</p>
               {% include "includes/vpf/multicase-finance-receiving-parent" %}
             </div>
           {% endif %}

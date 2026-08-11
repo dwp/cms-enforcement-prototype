@@ -54,24 +54,23 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case" aria-current="page">Cases ({{ activePayingCount
-              }})</a>
+              <a class="moj-primary-navigation__link" href="multicase-case" aria-current="page">Cases (1)</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances-multiline-tabs">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-statement">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-plan">Payment
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
               plans</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-calculations">Calculations</a>
+              <a class="moj-primary-navigation__link" href="multicase-calculations">Calculations</a>
             </li>
           </ul>
         </nav>
@@ -90,7 +89,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
     <div class="govuk-grid-column-two-thirds">
       <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
       <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
-        <strong>{{ activePayingCount }} active,  {{ closedCount }} closed</strong>
+        <strong>1 active,  {{ closedCount }} closed</strong>
       </p>
       <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
 
@@ -110,7 +109,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           Active cases
         </h2>
       {% for case in allCases %}
-        {% if case.case_status == 'active' and case.role == 'paying' %}
+        {% if case.case_index == 0 %}
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
               <h3 class="govuk-summary-card__title">

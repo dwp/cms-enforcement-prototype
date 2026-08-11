@@ -1,5 +1,61 @@
 {% extends "layouts/internal-service.html" %}
 
+///// VARIABLES /////
+{% set selectPeriod = data['selectPeriod'] | default("period1") %}
+{% if selectPeriod == 'period2' %}
+  {% set tableTitle = '20 Jun 2023 &ndash; 20 Dec 2023' %}
+{% elif selectPeriod == 'period3' %}
+  {% set tableTitle = '19 Dec 2022 &ndash; 19 Jun 2023' %}
+{% elif selectPeriod == 'period4' %}
+  {% set tableTitle = '18 Jun 2022 &ndash; 18 Dec 2022' %}
+{% else %}
+  {# Default fallback if period1 or if selectPeriod is empty #}
+  {% set tableTitle = '21 Dec 2023 &ndash; 21 Jun 2024' %}
+{% endif %}
+
+{# Set dataset source for looping #}
+{% set allCases = data['multicase']['cases'] %}
+
+{# Get parent anme and case id #}
+{% set parent1 = allCases[0].other_parent  ~ ' ' ~  allCases[0].case_id %}
+{% set parent2 = allCases[1].other_parent  ~ ' ' ~  allCases[1].case_id %}
+
+
+{# Set case status types before the loop #}
+{% set activeCount = 0 %}
+{% set closedCount = 0 %}
+{% set payingCount = 0 %}
+{% set receivingCount = 0 %}
+{% set activePayingCount = 0 %}
+
+{# begin loop #}
+{% for case in allCases %}
+
+  {# Count case status types #}
+  {% if case.case_status == 'active' %}
+    {% set activeCount = (activeCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'closed' %}
+    {% set closedCount = (closedCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'paying' %}
+    {% set payingCount = (payingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.role == 'receiving' %}
+    {% set receivingCount = (receivingCount | default(0)) + 1 %}
+  {% endif %}
+
+  {% if case.case_status == 'active' and case.role == 'paying' %}
+    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
+  {% endif %}
+
+{% endfor %}
+////////////////////
+
+
 {% block pageTitle %}
   Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
@@ -11,41 +67,41 @@
 
 {% block beforeContent %}
   {% include "includes/govuk-beta-banner" %}
-{% include "includes/vpf/dwp-quick-reference-multicase" %}
+  {% include "includes/vpf/dwp-quick-reference-multicase" %}
 
+  <!-- /////// NAVIGATION PRIMARY /////// -->
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
       <div class="moj-primary-navigation__nav">
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case" >Cases (4)</a>
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases (1)</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances-multiline-tabs">Finances</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-statement">Statement</a>
+              <a class="moj-primary-navigation__link" href="multicase-statement">Statement</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-allocation">Payment allocation</a>
+              <a class="moj-primary-navigation__link" href="multicase-payment-allocation">Payment allocation</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-payment-plan">Payment
+              <a class="moj-primary-navigation__link" href="multicase-payment-plan">Payment
               plans</a>
             </li>
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="ef-calculations" aria-current="page">Calculations</a>
+              <a class="moj-primary-navigation__link" href="multicase-calculations" aria-current="page">Calculations</a>
             </li>
           </ul>
         </nav>
       </div>
     </div>
   </div>
-
 {% endblock %}
 {% block content %}
-  <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
     Calculations
   </h1>
 
@@ -56,13 +112,15 @@
     <div class="govuk-grid-column-full">
       <p class="govuk-!-font-size-24">
         Effective from <strong>19 October 2012</strong>.
-        The next annual review will be on <strong>19 October 2026</strong>.
+        The next annual review will be on <strong>19 October 2025</strong>.
       </p>
 
       <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-bottom-0">Calculation details<br>
-        <p class="govuk-!-margin-bottom-0">Select a calculation reason to view more details about how it affects the case.</br>Calculations with the same perform date may be caused by a backdated change. See CMS2012 to confirm.</p>
-     </caption>
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-margin-top-2">Calculation details<br>
+          <span class="govuk-body">
+        Select a calculation reason to view more details about how it affects the case.
+        {# <br>There is no weekly charge while the service type is Direct Pay. #}
+      </span></caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header reasonTitle">Reason</th>
@@ -81,7 +139,7 @@
         {% if (loop.index > 0) and (loop.index <= 23) %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+              <a href="multicase-calculation-details-2-case?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
             </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
             <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
@@ -122,10 +180,10 @@
       {% if (loop.index > 23) and (loop.index < 29) %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+            <a href="multicase-calculation-details-2-case?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
           </td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['perform_date'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['weekly_gross_income'] }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['total_weekly_liability'] }}</td>
@@ -164,7 +222,7 @@
      {% if (loop.index >= 29) %}
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
-          <a href="calc-details/ef-calculation-details?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
+          <a href="multicase-calculation-details-2-case?reason_index={{loop.index0}}">{{ data['calc_details'][loop.index0]['calc_reason'] }}</a>
         </td>
         <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_from'] }}</td>
         <td class="govuk-table__cell govuk-table__cell--numeric">{{ data['calc_details'][loop.index0]['effective_to'] }}</td>
@@ -178,7 +236,6 @@
 
   </tbody>
 </table>
-
 
 </div>
 </div>

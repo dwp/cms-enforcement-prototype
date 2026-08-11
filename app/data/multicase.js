@@ -74,6 +74,10 @@ module.exports = {
         'child_maintenance_paid': '426.11',
         'charges_debt_expected': '300.00',
         'charges_debt_paid': '23.30',
+        'cash_balance': '30.61',
+        'case_overpayments': '100.00',
+        'case_overpayments_charges': '23.00',
+
       },
       {
         'case_index': '2',
@@ -82,20 +86,20 @@ module.exports = {
         'case_id': '1-2245868',
         'service_type': 'Collect and pay',
         'sub_status': 'Perform Calculation',
-        'effective_from': '21 November 2022',
+        'effective_from': '21 November 2023',
         'next_annual_review': '21 November 2026',
         'role': 'paying',
         'other_parent': 'Chantel Perry',
         'qualifying_children': [
           {
             'child_name': '	Nicola Perry',
-            'dob': '21 Nov 2022',
+            'dob': '21 Nov 2023',
             'overnight_stays': '0',
             'local_auth_stays': '0'
           },
           {
             'child_name': '	Simon Perry',
-            'dob': '21 Nov 2022',
+            'dob': '21 Nov 2024',
             'overnight_stays': '0',
             'local_auth_stays': '0'
           }
@@ -113,14 +117,14 @@ module.exports = {
         'case_id': '1-2245868',
         'service_type': 'Collect and pay',
         'sub_status': 'Perform Calculation',
-        'effective_from': '21 November 2022',
+        'effective_from': '21 November 2024',
         'next_annual_review': '21 November 2026',
         'role': 'paying',
         'other_parent': 'Marina Ditton',
         'qualifying_children': [
           {
             'child_name': 'Marina Ditton',
-            'dob': '21 Nov 2022',
+            'dob': '21 Nov 2024',
             'overnight_stays': '0',
             'local_auth_stays': '0'
           }
@@ -130,6 +134,7 @@ module.exports = {
         'child_maintenance_paid': '426.11',
         'charges_debt_expected': '300.00',
         'charges_debt_paid': '23.30',
+        'cash_balance': '50.02'
       },
       {
         'case_index': '4',

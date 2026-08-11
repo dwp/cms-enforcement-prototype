@@ -9,38 +9,8 @@
   {% include "includes/dwp-internal-service-header.html"%}
 {% endblock %}
 {% block beforeContent %}
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-      Beta
-    </strong>
-      <span class="govuk-phase-banner__text">
-      This is a new service. Help us improve it and <a target="_blank" class="govuk-link" href="https://forms.office.com/pages/responsepage.aspx?id=6fbxllcQF0GsKIDN_ob4w77Q_GYcDs9Jhep7t9aicRxUNE5IUE1BTE5TQjFNQUFJVUtGODhQSElFRi4u&route=shorturl">give your feedback (opens in new tab)</a>.
-    </span>
-    </p>
-  </div>
-
-  <section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information" style="height: auto; width: 100%; min-height: auto;">
-  <dl class="dwp-quick-reference__block" style="display: flow-root;">
-      <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-      <dd class="dwp-quick-reference__primary">Steven Oblonsky</dd>
-      <dd class="dwp-quick-reference__status">
-        <strong class="govuk-tag govuk-tag--turquoise">
-      Paying parent
-    </strong>
-        <strong class="govuk-tag govuk-tag--blue">
-      Single case
-    </strong>
-        <strong class="govuk-tag govuk-tag--yellow">
-      Manual allocation
-    </strong>
-      </dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">Reference:</dt>
-      <dd class="dwp-quick-reference__secondary">121323454232</dd>
-      <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">NI number:</dt>
-      <dd class="dwp-quick-reference__secondary">QQ123456C</dd>
-    </dl>
-  </section>
+{% include "includes/govuk-beta-banner" %}
+{% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
@@ -48,8 +18,7 @@
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case" >Cases ({{ activePayingCount
-              }})</a>
+              <a class="moj-primary-navigation__link" href="multicase-case" >Cases (4)</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances-multiline-tabs">Finances</a>
@@ -89,7 +58,7 @@
       <details class="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-          Cash balance £34.38
+          Cash balance £30.61
           </span>
         </summary>
         <div class="govuk-details__text">

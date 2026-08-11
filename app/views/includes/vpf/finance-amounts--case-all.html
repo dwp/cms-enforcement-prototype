@@ -20,6 +20,38 @@
 
 <section class="ef-card">
   <div class="dfe-title-cash">
+    <h2 id="payments-made">Payments made</h2>
+    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="payments-made" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ totalPaidFinance | currency }}</p>
+    <span class="govuk-caption-m">Includes cash balance and overpayments</span>
+  </div>
+  <div class="ef-card-duo">
+    <div class="moj-ticket-panel-duo">
+      <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+        <h3 class="govuk-body">Child maintenance</h3>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ totalPaidCMFinance | currency }}</p>
+      </div>
+      <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+        <h3 class="govuk-body">Charges and debt</h3>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ totalPaidCDFinance | currency }}</p>
+      </div>
+    </div>
+    <div class="moj-ticket-panel-duo" style="padding-top: 0;" role="text">
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+                  Cash balance £30.61
+                </span>
+        </summary>
+        <div class="govuk-details__text">
+                Money paid that cannot be allocated to child maintenance or charges yet.
+              </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="ef-card">
+  <div class="dfe-title-cash">
     <h2 id="overpayments">Overpayments</h2>
     <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="overpayments" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ totalOverpayments | currency }}</p>
     <span class="govuk-caption-m">Included in the payments made</span>
@@ -43,38 +75,6 @@
 </section>
 
 <section class="ef-card">
-  <div class="dfe-title-cash">
-    <h2 id="payments-made">Payments made</h2>
-    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="payments-made" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ totalPaidFinance | currency }}</p>
-    <span class="govuk-caption-m">Includes cash balance and overpayments</span>
-  </div>
-  <div class="ef-card-duo">
-    <div class="moj-ticket-panel-duo">
-      <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
-        <h3 class="govuk-body">Child maintenance</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ totalPaidCMFinance | currency }}</p>
-      </div>
-      <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
-        <h3 class="govuk-body">Charges and debt</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ totalPaidCDFinance | currency }}</p>
-      </div>
-    </div>
-    <div class="moj-ticket-panel-duo" style="padding-top: 0;" role="text">
-      <details class="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-                  Cash balance £330.61
-                </span>
-        </summary>
-        <div class="govuk-details__text">
-                Money paid that cannot be allocated to child maintenance or charges yet.
-              </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section class="ef-card">
   <div class="dfe-title-i8">
     <h2 id="amount-written-off">Amount written off</h2>
     <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="amount-written-off" style="float:right;margin-top:.7em;margin-right:.7em;">£0.00</p>
@@ -93,13 +93,21 @@
         <h3 class="govuk-body">Child maintenance</h3>
         <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ expectedCMFinance | currency }}</p>
       </div>
+
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Charges and debt</h3>
         <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ totalExpectedCDFinance | currency }}</p>
+      </div>
+    </div>
+
+    <div class="moj-ticket-panel-duo" style="grid-template-columns: 47% 51%;">
+
+      <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+        
 
         {# ///////// SUMMARY LIST /////////// #}
 
-        <h4 class="govuk-heading-m govuk-!-margin-top-6">Charges and debt details</h4>
+        <h4 class="govuk-heading-s">Charges and debt details</h4>
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key" style="width:70%">
@@ -179,6 +187,7 @@
         </dl>
 
       </div>
+
     </div>
   </div>
 </section>

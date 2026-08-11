@@ -54,8 +54,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case" aria-current="page">Cases ({{ activePayingCount
-              }})</a>
+              <a class="moj-primary-navigation__link" href="multicase-case" aria-current="page">Cases (4)</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances-multiline-tabs">Finances</a>
@@ -90,7 +89,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
     <div class="govuk-grid-column-two-thirds">
       <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
       <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-1 govuk-!-margin-bottom-1">
-        <strong>{{ activePayingCount }} paying,  {{ closedCount }} closed</strong>
+        <strong>{{ activePayingCount }} active,  {{ closedCount }} closed</strong>
       </p>
       <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-1" aria-hidden="true">
 
@@ -107,14 +106,14 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       {# {% set otherParent = data['case']['other_parent'] %}
   {% set caseId = data['case']['case_id'] %} #}
       <h2 class="govuk-heading-l govuk-!-margin-top-6">
-          Paying cases
+          Active cases
         </h2>
       {% for case in allCases %}
         {% if case.case_status == 'active' and case.role == 'paying' %}
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
               <h3 class="govuk-summary-card__title">
-              Paying to {{ case.other_parent }}
+              {{ case.other_parent }}
               </h3>
             </div>
             <div class="govuk-summary-card__content">

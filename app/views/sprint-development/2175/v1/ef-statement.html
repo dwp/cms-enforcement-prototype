@@ -49,7 +49,7 @@
 {% endblock %}
 {% block beforeContent %}
 {% include "includes/govuk-beta-banner" %}
-{% include "includes/vpf/dwp-quick-reference-single-manual" %}
+{% include "includes/vpf/dwp-quick-reference-multicase" %}
 
   <div class="moj-primary-navigation">
     <div class="moj-primary-navigation__container">
@@ -57,8 +57,7 @@
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case" >Cases ({{ activePayingCount
-              }})</a>
+              <a class="moj-primary-navigation__link" href="multicase-case" >Cases (4)</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances-multiline-tabs">Finances</a>
@@ -130,10 +129,10 @@
     <div class="moj-button-group moj-button-group--inline">
       <div class="moj-button-menu" data-module="moj-button-menu" data-button-text="All transactions" data-button-classes="toggle-button">
         
-        <a href="statements-filtering/ef-statements-recieved.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+        <a href="statements-filtering/ef-statement-recieved.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
           Payments received
         </a>
-        <a href="statements-filtering/ef-statements-credits.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
+        <a href="statements-filtering/ef-statement-credits.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary" data-module="govuk-button">
           All credits
         </a>
       </div>
@@ -173,7 +172,7 @@
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">19 Nov 2024</td>
            <td class="govuk-table__cell_last">Payment received from you - DDR</td>
-           <td class="govuk-table__cell statement_amount"><a class="govuk-link" href="statements-filtering/credits-19-Nov-24">24.61</a></td>
+           <td class="govuk-table__cell statement_amount">24.61</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_end">-2,220.46</td>
            
@@ -181,7 +180,7 @@
          <tr class="govuk-table__row">
            <td class="govuk-table__cell">9 Nov 2024</td>
            <td class="govuk-table__cell_last">Payment received from you - DDR</td>
-           <td class="govuk-table__cell statement_amount"><a class="govuk-link" href="statements-filtering/credits-9-nov-24">73.84</a></td>
+           <td class="govuk-table__cell statement_amount">73.84</td>
            <td class="govuk-table__cell statement_amount"></td>
            <td class="govuk-table__cell statement_end">-2,245.07</td>
          </tr>
