@@ -159,9 +159,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
                   <strong class="govuk-tag govuk-tag--red">{{ case.service_type }}</strong>
                 {% endif %}
               </h2>
-              <p>Case ID: <strong>{{ case.case_id }}</strong>.</p>
-              
-              <p>Effective from <strong>{{ case.effective_from }}</strong> to today.</p>
+              <p>Case ID: <strong>{{ case.case_id }}</strong>. Effective from <strong>{{ case.effective_from }}</strong> to today.</p>
               {% include "includes/vpf/multicase-finance-receiving-parent" %}
             </div>
           {% endif %}
