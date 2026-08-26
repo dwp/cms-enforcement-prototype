@@ -17,9 +17,10 @@
 {# Set dataset source for looping #}
 {% set allCases = data['multicase']['cases'] %}
 
-{# Get parent anme and case id #}
+{# Get parent name and case id #}
 {% set parent1 = allCases[0].other_parent  ~ ' ' ~  allCases[0].case_id %}
 {% set parent2 = allCases[1].other_parent  ~ ' ' ~  allCases[1].case_id %}
+{% set parent3 = allCases[2].other_parent  ~ ' ' ~  allCases[2].case_id %}
 
 {# Set case status types before the loop #}
 {% set activeCount = 0 %}
