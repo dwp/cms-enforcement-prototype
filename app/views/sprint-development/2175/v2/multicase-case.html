@@ -181,19 +181,22 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
       <!-- //////// CASES CLOSED LIST//////// -->
 
-      <h2 class="govuk-heading-l">
-      Closed cases
-    </h2>
-      <ul class="govuk-list govuk-list--bullet">
-        {% for case in allCases %}
-          {% if case.case_status == 'closed' %}
-            <li>
-              <p class="govuk-!-margin-bottom-2">
-              Case <span class="govuk-!-font-weight-bold">{{ case.case_id }}</span> with {{ case.other_parent }}.
-            </p>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+      {% if financeSummary.closedCount > 0 %}
+        <h2 class="govuk-heading-l">
+          Closed cases
+        </h2>
+        <ul class="govuk-list govuk-list--bullet">
+          {% for case in allCases %}
+            {% if case.case_status == 'closed' %}
+              <li>
+                <p class="govuk-!-margin-bottom-2">
+                  Case <span class="govuk-!-font-weight-bold">{{ case.case_id }}</span>
+                  with {{ case.other_parent }}.
+                </p>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
 
     {% endblock %}
