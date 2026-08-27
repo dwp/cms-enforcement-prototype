@@ -1,39 +1,9 @@
 {% extends "layouts/internal-service.html" %}
 
-<!-- ////// PRESETS ///// -->
-{# Count case status types #}
-{% set allCases = data['multicase']['cases'] %}
-{% set activeCount = 0 %}
-{% set closedCount = 0 %}
-{% set payingCount = 0 %}
-{% set receivingCount = 0 %}
-{% set activePayingCount = 0 %}
-
-{% for case in allCases %}
-  {# Count case status types #}
-  {% if case.case_status == 'active' %}
-    {% set activeCount = (activeCount | default(0)) + 1 %}
-  {% endif %}
-
-  {% if case.case_status == 'closed' %}
-    {% set closedCount = (closedCount | default(0)) + 1 %}
-  {% endif %}
-
-  {% if case.role == 'paying' %}
-    {% set payingCount = (payingCount | default(0)) + 1 %}
-  {% endif %}
-
-  {% if case.role == 'receiving' %}
-    {% set receivingCount = (receivingCount | default(0)) + 1 %}
-  {% endif %}
-
-  {% if case.case_status == 'active' and case.role == 'paying' %}
-    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
-  {% endif %}
-
-{% endfor %}
-
-<!-- //////////////////// -->
+{# ////// VARIABLES  ////// #}
+{% set todays_date = '26 Aug 2026' %}
+{% set next_annual_review = '7 October 2026' %}
+{# ////// END VARIABLES  ////// #}
 
 {% block pageTitle %}
 Finances – {{ serviceName }} – GOV.UK Prototype Kit
@@ -108,7 +78,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       <h2 class="govuk-heading-l govuk-!-margin-top-6">
           Active cases
         </h2>
-      {% for case in allCases %}
+      {% for case in financeSummary.activePayingCases %}
         {% if case.case_index == 0 %}
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
@@ -180,7 +150,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       Receiving cases
     </h2>
 
-      {% for case in allCases %}
+      {% for case in financeSummary.activePayingCases %}
         {% if case.case_status == 'active' and case.role == 'receiving' %}
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
@@ -213,7 +183,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       Closed cases
     </h2>
       <ul class="govuk-list govuk-list--bullet">
-        {% for case in allCases %}
+        {% for case in financeSummary.activePayingCases %}
           {% if case.case_status == 'closed' %}
             <li>
               <p class="govuk-!-margin-bottom-2">

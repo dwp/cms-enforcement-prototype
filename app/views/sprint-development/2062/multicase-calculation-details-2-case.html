@@ -110,10 +110,10 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% set totalPaidFinance = ((totalPaidCDFinance * 1) + (totalPaidCMFinance * 1)) %}
 {% set stillOwedCMFinance = ((expectedCMFinance * 1) - (totalPaidCMFinance * 1))  %}
 {% set stillOwedCDFinance = ((totalExpectedCDFinance * 1) - (totalPaidCDFinance * 1))  %}
-{% set stillOwedTotalFinance = ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
+{% set stillOwedTotalFinances= ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
 
-{# {% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %} #}
-{# {% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %} #}
+{# {% set expectedCaseCM = (stillOwedTotalFinances| float) * 0.3 %} #}
+{# {% set expectedCaseCM = (stillOwedTotalFinances| float) * 0.3 %} #}
 {# ////// END VARIABLES  ////// #}
 
 {% block header %}

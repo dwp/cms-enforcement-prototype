@@ -20,41 +20,7 @@
 {% set parent1 = allCases[0].other_parent  ~ ' ' ~  allCases[0].case_id %}
 {% set parent2 = allCases[1].other_parent  ~ ' ' ~  allCases[1].case_id %}
 
-
-{# Set case status types before the loop #}
-{% set activeCount = 0 %}
-{% set closedCount = 0 %}
-{% set payingCount = 0 %}
-{% set receivingCount = 0 %}
-{% set activePayingCount = 0 %}
-
-{# begin loop #}
-{% for case in allCases %}
-
-  {# Count case status types #}
-  {% if case.case_status == 'active' %}
-    {% set activeCount = (activeCount | default(0)) + 1 %}
-  {% endif %}
-
-  {% if case.case_status == 'closed' %}
-    {% set closedCount = (closedCount | default(0)) + 1 %}
-  {% endif %}
-
-  {% if case.role == 'paying' %}
-    {% set payingCount = (payingCount | default(0)) + 1 %}
-  {% endif %}
-
-  {% if case.role == 'receiving' %}
-    {% set receivingCount = (receivingCount | default(0)) + 1 %}
-  {% endif %}
-
-  {% if case.case_status == 'active' and case.role == 'paying' %}
-    {% set activePayingCount = (activePayingCount | default(0)) + 1 %}
-  {% endif %}
-
-{% endfor %}
 ////////////////////
-
 
 {% block pageTitle %}
   Statement – {{ serviceName }} – GOV.UK Prototype Kit
@@ -76,7 +42,7 @@
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case">Cases (4)</a>
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ financeSummary.activePayingCount }})</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances-multiline-tabs">Finances</a>

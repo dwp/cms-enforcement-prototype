@@ -26,7 +26,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% set totalCasesExpectedCDFinance = 0 %}
 
 {# begin loop #}
-{% for case in allCases %}
+{% for case in financeSummary.activePayingCases %}
 
   {# Count case status types #}
   {% if case.case_status == 'active' %}
@@ -110,10 +110,10 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
 {% set totalPaidFinance = ((totalPaidCDFinance * 1) + (totalPaidCMFinance * 1)) %}
 {% set stillOwedCMFinance = ((expectedCMFinance * 1) - (totalPaidCMFinance * 1))  %}
 {% set stillOwedCDFinance = ((totalExpectedCDFinance * 1) - (totalPaidCDFinance * 1))  %}
-{% set stillOwedTotalFinance = ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
+{% set stillOwedTotalFinances= ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
 
-{# {% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %} #}
-{# {% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %} #}
+{# {% set expectedCaseCM = (stillOwedTotalFinances| float) * 0.3 %} #}
+{# {% set expectedCaseCM = (stillOwedTotalFinances| float) * 0.3 %} #}
 {# ////// END VARIABLES  ////// #}
 
 {% block header %}
@@ -131,7 +131,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case">Cases (4)</a>
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ financeSummary.activePayingCount }})</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances-multiline-tabs">Finances</a>
@@ -234,7 +234,7 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
               {% set totalCasesLiabilityDaily = 0 %}
               {% set totalCasesLiabilityWeekly = caseWeeklyLiability1 + caseWeeklyLiability2 %}
               {% set totalCasesLiabilityDaily = caseDailyLiability1 + caseDailyLiability2 %}
-              {# {% for case in allCases %}
+              {# {% for case in financeSummary.activePayingCases %}
                     {% set i = loop.index0 %}
                     {% if case.case_status == 'active' and case.role == 'paying' %} #}
 

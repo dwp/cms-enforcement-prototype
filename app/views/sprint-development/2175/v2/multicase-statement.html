@@ -23,7 +23,7 @@
 {% set totalCasesPaidCD = 0 %}
 
 {# begin loop #}
-{% for case in allCases %}
+{% for case in financeSummary.activePayingCases %}
 
   {# Count case status types #}
   {% if case.case_status == 'active' %}
@@ -129,7 +129,7 @@ expected_secretary_of_state
         <nav class="moj-primary-navigation" aria-label="Primary navigation">
           <ul class="moj-primary-navigation__list">
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" href="multicase-case">Cases (4)</a>
+              <a class="moj-primary-navigation__link" href="multicase-case">Cases ({{ financeSummary.activePayingCount }})</a>
             </li>
             <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="multicase-finances-multiline-tabs">Finances</a>

@@ -9,7 +9,7 @@
 {% set receivingCount = 0 %}
 {% set activePayingCount = 0 %}
 
-{% for case in allCases %}
+{% for case in financeSummary.activePayingCases %}
   {# Count case status types #}
   {% if case.case_status == 'active' %}
     {% set activeCount = (activeCount | default(0)) + 1 %}
@@ -109,7 +109,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       <h2 class="govuk-heading-l govuk-!-margin-top-6">
           Active cases
         </h2>
-      {% for case in allCases %}
+      {% for case in financeSummary.activePayingCases %}
         {% if case.case_status == 'active' and case.role == 'paying' %}
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
@@ -181,7 +181,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       Receiving cases
     </h2>
 
-      {% for case in allCases %}
+      {% for case in financeSummary.activePayingCases %}
         {% if case.case_status == 'active' and case.role == 'receiving' %}
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
@@ -214,7 +214,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
       Closed cases
     </h2>
       <ul class="govuk-list govuk-list--bullet">
-        {% for case in allCases %}
+        {% for case in financeSummary.activePayingCases %}
           {% if case.case_status == 'closed' %}
             <li>
               <p class="govuk-!-margin-bottom-2">

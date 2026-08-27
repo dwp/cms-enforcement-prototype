@@ -1,18 +1,18 @@
 <section class="ef-card">
   <div class="dfe-title-cash">
     <h2 id="money-still-owed">Money still owed</h2>
-    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="money-still-owed" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ stillOwedTotalFinance | currency }}</p>
+    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="money-still-owed" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ financeSummary.stillOwedTotalFinances | currency }}</p>
     <span class="govuk-caption-m">Cash balance not included</span>
   </div>
   <div class="ef-card-duo">
     <div class="moj-ticket-panel-duo">
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Child maintenance</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ stillOwedCMFinance | currency }}</p>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ financeSummary.stillOwedCMFinances | currency }}</p>
       </div>
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Charges and debt</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ stillOwedCDFinance | currency }}</p>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ financeSummary.stillOwedCDFinances | currency }}</p>
       </div>
     </div>
   </div>
@@ -21,25 +21,25 @@
 <section class="ef-card">
   <div class="dfe-title-cash">
     <h2 id="payments-made">Payments made</h2>
-    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="payments-made" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ totalPaidFinance | currency }}</p>
+    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="payments-made" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ financeSummary.totalPaidFinances | currency }}</p>
     <span class="govuk-caption-m">Includes cash balance and overpayments</span>
   </div>
   <div class="ef-card-duo">
     <div class="moj-ticket-panel-duo">
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Child maintenance</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ totalPaidCMFinance | currency }}</p>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ financeSummary.totalCasesPaidCM | currency }}</p>
       </div>
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Charges and debt</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ totalPaidCDFinance | currency }}</p>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ financeSummary.totalCasesPaidCD | currency }}</p>
       </div>
     </div>
     <div class="moj-ticket-panel-duo" style="padding-top: 0;" role="text">
       <details class="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-                  Cash balance £30.61
+                  Cash balance £{{ financeSummary.totalCasesCashBalance | currency }}
                 </span>
         </summary>
         <div class="govuk-details__text">
@@ -49,26 +49,25 @@
     </div>
   </div>
 </section>
-
 <section class="ef-card">
   <div class="dfe-title-cash">
     <h2 id="overpayments">Overpayments</h2>
-    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="overpayments" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ totalOverpayments | currency }}</p>
+    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="overpayments" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ financeSummary.totalOverpaymentsFinances | currency }}</p>
     <span class="govuk-caption-m">Included in the payments made</span>
   </div>
   <div class="ef-card-duo">
     <div class="moj-ticket-panel-trio">
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Child maintenance</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ overpaymentsCM | currency }}</p>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ financeSummary.totalCasesOverpayments | currency }}</p>
       </div>
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Charges and debt</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ overpaymentsCD | currency }}</p>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ financeSummary.totalCasesOverpaymentsCharges | currency }}</p>
       </div>
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Cash balance</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ cashBalance | currency }}</p>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ financeSummary.totalCasesCashBalance | currency }}</p>
       </div>
     </div>
   </div>
@@ -77,7 +76,7 @@
 <section class="ef-card">
   <div class="dfe-title-i8">
     <h2 id="amount-written-off">Amount written off</h2>
-    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="amount-written-off" style="float:right;margin-top:.7em;margin-right:.7em;">£0.00</p>
+    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="amount-written-off" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ financeSummary.writtenOff | currency }}</p>
   </div>
 </section>
 {# /////////// Total Expected Charges and debt ////////////// #}
@@ -85,27 +84,25 @@
 <section class="ef-card">
   <div class="dfe-title-i8">
     <h2 id="total-expected">Total expected</h2>
-    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="total-expected" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ totalExpectedFinance | currency }}</p>
+    <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="total-expected" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ financeSummary.totalExpectedFinances | currency }}</p>
   </div>
   <div class="ef-card-duo">
     <div class="moj-ticket-panel-duo" style="grid-template-columns: 47% 51%;">
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Child maintenance</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ expectedCMFinance | currency }}</p>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ financeSummary.expectedCMFinances | currency }}</p>
       </div>
-
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
         <h3 class="govuk-body">Charges and debt</h3>
-        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ totalExpectedCDFinance | currency }}</p>
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">£{{ financeSummary.totalExpectedCDFinances | currency }}</p>
       </div>
-    </div>
+      </div>
 
     <div class="moj-ticket-panel-duo" style="grid-template-columns: 47% 51%;">
 
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
-        
 
-        {# ///////// SUMMARY LIST /////////// #}
+      {# ///////// SUMMARY LIST /////////// #}
 
         <h4 class="govuk-heading-s">Charges and debt details</h4>
         <dl class="govuk-summary-list">
@@ -113,40 +110,37 @@
             <dt class="govuk-summary-list__key" style="width:70%">
               Collection charges
             </dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedCollCharges | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedCollCharges | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row" style="border-bottom:none;">
             <dt class="govuk-summary-list__key">Enforcement charges</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedEnforcementCharges | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedEnforcementCharges | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row govuk-!-padding-bottom-8" role="contentinfo" aria-label="Enforcement charges breakdown">
             <dd class="govuk-summary-list__value">
               <ul class="govuk-list govuk-list--bullet" style="width:100%" role="list">
-                <li>£{{ regularDeductionOrder | currency }} Regular deduction order</li>
-                <li>£{{ lumpSumDeductionOrder | currency }} Lump sum deduction order</li>
-                <li>£{{ liabilityOrder | currency }} Liability order</li>
-                <li class="govuk-!-margin-bottom-3">£{{ deductionEarningsOrder | currency }} Deduction from earnings order or request</li>
+                <li>£{{ financeSummary.regularDeductionOrder | currency }} Regular deduction order</li>
+                <li>£{{ financeSummary.lumpSumDeductionOrder | currency }} Lump sum deduction order</li>
+                <li>£{{ financeSummary.liabilityOrder | currency }} Liability order</li>
+                <li class="govuk-!-margin-bottom-3">£{{ financeSummary.deductionEarningsOrder | currency }} Deduction from earnings order or request</li>
               </ul>
             </dd>
           </div>
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Enforcement costs</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedEnforcementCost | currency }}</dd>
-          </div>
           <div class="govuk-summary-list__row" style="border-bottom:none;">
             <dt class="govuk-summary-list__key">CSA debt</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedCSADebt | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedCSADebt | currency }}</dd>
           </div>
           {# ////// CSA DEBT BREAKDOWN  //////// #}
           <div class="govuk-summary-list__row" role="contentinfo" aria-label="CSA debt breakdown">
             <dd class="govuk-summary-list__value govuk-!-width-full">
-              <ul class="govuk-list govuk-list--bullet" role="list">
-                <li>£{{ expectedCSADebtRP1 | currency }} &ndash; {{ allCases[0]['other_parent'] }}
-                  {{ allCases[0]['case_id'] }}</li>
-                <li>£{{ expectedCSADebtRP2 | currency }} &ndash; {{ allCases[1]['other_parent'] }}
-                  {{ allCases[1]['case_id'] }}</li>
-                <li class="govuk-!-margin-bottom-3">£{{ expectedCSADebtSOS | currency }} &ndash; Secretary of State</li>
+              <ul class="govuk-list govuk-list--bullet" style="width:100%" role="list">
+                  {% for debt in financeSummary.expectedCSADebtBreakdown %}
+                    <li>
+                      £{{ debt.amount | currency }} – {{ debt.otherParent }} <span class="govuk-!-display-inline-block">{{ debt.caseId }}</span>
+                    </li>
+                  {% endfor %}
+                <li class="govuk-!-margin-bottom-3">£{{ financeSummary.expectedCSADebtSOS | currency }} &ndash; Secretary of State</li>
               </ul>
             </dd>
           </div>
@@ -154,35 +148,35 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">DNA costs</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedDNACost | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedDNACost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Subject access request costs</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedSubjectAccessRequestCost | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedSubjectAccessRequestCost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Interest</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedInterest | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedInterest | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Fees</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedFees | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedFees | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Judicial review costs</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedJudRevCost | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedJudRevCost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Appeal costs</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedAppealCost | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedAppealCost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">CMS administration costs</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedCMSAdminCost | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedCMSAdminCost | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Liability order administration costs</dt>
-            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ expectedLiabOrderCost | currency }}</dd>
+            <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedLiabOrderCost | currency }}</dd>
           </div>
         </dl>
 

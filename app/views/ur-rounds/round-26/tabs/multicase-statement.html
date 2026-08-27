@@ -113,9 +113,9 @@
 {% set totalPaidFinance = ((totalPaidCDFinance * 1) + (totalPaidCMFinance * 1)) %}
 {% set stillOwedCMFinance = ((expectedCMFinance * 1) - (totalPaidCMFinance * 1))  %}
 {% set stillOwedCDFinance = ((totalExpectedCDFinance * 1) - (totalPaidCDFinance * 1))  %}
-{% set stillOwedTotalFinance = ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
+{% set stillOwedTotalFinances= ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
 
-{% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %}
+{% set expectedCaseCM = (stillOwedTotalFinances| float) * 0.3 %}
 {# ////// END VARIABLES  ////// #}
 
 {% block pageTitle %}
@@ -185,7 +185,7 @@
           <article class="moj-ticket-panel-trio-v2" aria-label="key amounts">
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
               <h3 class="govuk-body">Money still owed</h3>
-              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£{{ stillOwedTotalFinance | currency }}</p>
+              <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">£{{ stillOwedTotalFinances| currency }}</p>
             </section>
             <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 2">
               <h3 class="govuk-body">Payments made</h3>

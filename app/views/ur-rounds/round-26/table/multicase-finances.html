@@ -111,9 +111,9 @@ expected_secretary_of_state
 {% set totalPaidFinance = ((totalPaidCDFinance * 1) + (totalPaidCMFinance * 1)) %}
 {% set stillOwedCMFinance = ((expectedCMFinance * 1) - (totalPaidCMFinance * 1))  %}
 {% set stillOwedCDFinance = ((totalExpectedCDFinance * 1) - (totalPaidCDFinance * 1))  %}
-{% set stillOwedTotalFinance = ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
+{% set stillOwedTotalFinances= ((stillOwedCMFinance * 1) + (stillOwedCDFinance * 1)) %}
 
-{% set expectedCaseCM = (stillOwedTotalFinance | float) * 0.3 %}
+{% set expectedCaseCM = (stillOwedTotalFinances| float) * 0.3 %}
 {# ////// END VARIABLES  ////// #}
 
 {% block pageTitle %}
@@ -209,7 +209,7 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           <tr class="govuk-table__row">
             <th class="govuk-table__header">Total</th>
             <td class="govuk-table__cell govuk-table__cell--numeric">
-              <strong>£{{ stillOwedTotalFinance | abs | currency }}</strong>
+              <strong>£{{ stillOwedTotalFinances| abs | currency }}</strong>
             </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
               <strong>£{{ totalPaidFinance | abs | currency }}</strong>
