@@ -208,7 +208,7 @@ function calculateFinanceSummary(finances, allCases) {
     expectedLiabOrderCost
 
   const totalExpectedFinances =
-    expectedCMFinances + totalExpectedCDFinances
+    expectedCMFinances + totalExpectedCDFinances + writtenOff
 
   const totalPaidFinances =
     totalCasesPaidCM + totalCasesPaidCD + totalCasesCashBalance
