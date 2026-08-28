@@ -84,21 +84,12 @@ const calculateFinanceSummary =
 
 router.use(
   [
-    '/sprint-development/2149',
     '/sprint-development/2175'
   ],
   addFinanceSummary
 )
-// 2149 routes
-router.get(
-  '/sprint-development/2149/multicase-finances-multiline-tabs',
-  (req, res) => {
-    res.render(
-      'sprint-development/2149/multicase-finances-multiline-tabs'
-    )
-  }
-)
-// 2175 routes
+
+// routes for folder 2175
 router.get(
   '/sprint-development/2175/multicase-finances-multiline-tabs',
   (req, res) => {

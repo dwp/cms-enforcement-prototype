@@ -1,42 +1,8 @@
 {% extends "layouts/internal-service.html" %}
 
-{# ////// VARIABLES ////// #}
-{# Note: make sure raw data does not contain commas #}
-{# Fallback to '0' if the data path is missing, undefined, or empty #}
-{% set finances = data['finances']['finances'] %}
-
-{% set overpaymentsCM = finances['overpayments_child_maintenance'] | default('0', true) %}
-{% set overpaymentsCD = finances['overpayments_charges_debt'] | default('0', true) %}
-{% set cashBalance = finances['cash_balance'] | default('0', true) %}
-{% set operpaymentsTotal = ((overpaymentsCM * 1) + (overpaymentsCD * 1) + (cashBalance * 1)) %}
-{% set paymentsMadeCM = finances['payments_made_child_maintenance'] | default('0', true) %}
-{% set paymentsMadeCD = finances['payments_made_charges_debt'] | default('0', true) %}
-{% set paymentsMadeTotal = ((paymentsMadeCM * 1) + (paymentsMadeCD * 1)) %}
-{% set writtenOff = finances['written_off'] | default('0', true) %}
-{% set expectedCM = finances['expected_child_maintenance'] | default('0', true) %}
-{% set expectedCollCharges = finances['expected_collection_charges'] | default('0', true) %}
-
-{% set regularDeductionOrder = finances['regular_deduction_order'] | default('0', true) %}
-{% set lumpSumDeductionOrder = finances['lump_sum_deduction_order'] | default('0', true) %}
-{% set liabilityOrder = finances['liability_order'] | default('0', true) %}
-{% set deductionEarningsOrder = finances['deduction_from_earnings_order'] | default('0', true) %}
-{% set expectedEnfCharges = ((regularDeductionOrder * 1) + (lumpSumDeductionOrder * 1) + (liabilityOrder * 1) + (deductionEarningsOrder * 1)) %}
-{% set expectedEnforcementCost = finances['expected_enforcement_cost'] | default('0', true) %}
-{% set expectedCSADebt = finances['expected_CSA_debt'] | default('0', true) %}
-{% set expectedDNACost = finances['expected_DNA_debt'] | default('0', true) %}
-{% set expectedSubjectAccessRequestCost = finances['expected_subject_access_request_cost'] | default('0', true) %}
-{% set expectedInterest = finances['expected_interest'] | default('0', true) %}
-{% set expectedFees = finances['expected_fees'] | default('0', true) %}
-{% set expectedJudRevCost = finances['expected_judicial_review_cost'] | default('0', true) %}
-{% set expectedAppealCost = finances['expected_appeal_cost'] | default('0', true) %}
-{% set expectedCMSAdminCost = finances['expected_cms_admin_cost'] | default('0', true) %}
-{% set expectedLiabOrderCost = finances['expected_liability_order_cost'] | default('0', true) %}
-{% set expectedCD = ((expectedCollCharges * 1) + (expectedEnfCharges * 1) + (expectedEnforcementCost * 1) + (expectedCSADebt * 1) + ( expectedDNACost * 1) + ( expectedSubjectAccessRequestCost * 1) + ( expectedInterest * 1) + ( expectedFees * 1) + ( expectedJudRevCost * 1) + ( expectedAppealCost * 1) + ( expectedCMSAdminCost * 1) + ( expectedLiabOrderCost * 1)) %}
-{% set expectedTotal = ((expectedCM * 1) + (expectedCD * 1)) %}
-{% set stillOwedCM = ((expectedCM * 1) - (paymentsMadeCM * 1))  %}
-{% set stillOwedCD = ((expectedCD * 1) - (paymentsMadeCD * 1))  %}
-{% set stillOwedTotal = ((stillOwedCM * 1) + (stillOwedCD * 1)) %}
-
+{# ////// VARIABLES  ////// #}
+{% set todays_date = '26 Aug 2026' %}
+{% set next_annual_review = '7 October 2026' %}
 {# ////// END VARIABLES  ////// #}
 
 {% block pageTitle %}

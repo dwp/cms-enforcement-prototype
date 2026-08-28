@@ -95,7 +95,7 @@ function calculateFinanceSummary(finances, allCases) {
     )
 
   const totalOverpaymentsFinances =
-    totalCasesOverpayments + totalCasesOverpaymentsCharges
+    totalCasesOverpayments + totalCasesOverpaymentsCharges + totalCasesCashBalance
 
   const activePayingCount =
     activePayingCasesWithAllocation.length
@@ -211,7 +211,7 @@ function calculateFinanceSummary(finances, allCases) {
     expectedCMFinances + totalExpectedCDFinances
 
   const totalPaidFinances =
-    totalCasesPaidCM + totalCasesPaidCD
+    totalCasesPaidCM + totalCasesPaidCD + totalCasesCashBalance
 
   const stillOwedCMFinances =
     expectedCMFinances - totalCasesPaidCM
