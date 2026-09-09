@@ -1,0 +1,42 @@
+{% extends "layouts/internal-service.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %}-->
+
+      {% include "includes/back-link.html" %}
+      <span class="govuk-caption-m govuk-!-margin-bottom-2">
+        <a class='govuk-link' href='https://dwpdigital.atlassian.net/browse/SAE-1972'>SAE-1972</a>
+      </span>
+          <h1 class="govuk-heading-l">
+      Finances page and VPF blue banner - content reflow when magnified
+    </h1>
+
+    <h2 class="govuk-heading-s">Description:</h2>
+
+    <p>Various elements on the page do not arrange correctly if screen is resized to a narrow width. </p>
+    <p>Elements affected are:</p>
+    
+    <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+      <li>Across VPF - the blue banner contents.</li>
+      <li>Finances page – amounts and their boxes spill over their parent container</li>
+      <li>Finances page – ‘Charge and debt details’ breakdown box.</li>
+    </ul>
+
+      <h3 class="govuk-heading-s">Page:</h3>
+      <ul class="govuk-list govuk-list--spaced govuk-list--bullet">
+        <li>
+          <a href="ef-finances">
+          Finances
+        </a>
+        </li>
+      </ul>
+
+      <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}-->
+    </div>
+  </div>
+
+{% endblock %}

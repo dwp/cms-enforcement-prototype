@@ -24,7 +24,7 @@
 }
 
 .hmrc-sign-out-nav {
-  float:right;
+  float: right;
   text-align: right;
   padding-top: 5px;
   margin-left: 25px;
@@ -45,8 +45,8 @@ a.navActive {
 
 // MoJ button-menu
 // remove margin gap
-.moj-button-menu__wrapper > li {
-margin-bottom: 0px;
+.moj-button-menu__wrapper>li {
+  margin-bottom: 0px;
 }
 
 // Notification badge
@@ -68,54 +68,74 @@ margin-bottom: 0px;
 // Quick reference component
 
 .dwp-quick-reference {
- min-height: 110px;
- border-bottom: 10px solid #1d70b8;
+
+  margin-bottom: 0;
+
+  &--alternative {
+    padding-bottom: govuk-spacing(4);
+  }
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: govuk-spacing(3);
+    row-gap: govuk-spacing(1);
+    margin-bottom: govuk-spacing(2);
+  }
+
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: govuk-spacing(4);
+    row-gap: govuk-spacing(1);
+  }
+
+  &__row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    gap: govuk-spacing(2);
+
+    @include govuk-media-query($until: $dwp-quick-reference-label-breakpoint) {
+      display: block;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: govuk-spacing(1);
+    row-gap: govuk-spacing(2);
+    margin-bottom: govuk-spacing(2);
+
+    @include govuk-media-query($until: $dwp-quick-reference-label-breakpoint) {
+      margin-top: -#{govuk-spacing(1)};
+    }
+  }
+
+  &__pair {
+    display: flex;
+    align-items: baseline;
+    // gap: govuk-spacing(1);
+    white-space: nowrap;
+  }
+
+  &__label {
+  flex: 0 0 auto;
+
+  @include govuk-media-query($until: $dwp-quick-reference-label-breakpoint) {
+    padding-bottom: 4px;
+    }
+  }
+
+    &__secondary {
+    padding-bottom: govuk-spacing(1);
+  }
 }
 
-.dwp-quick-reference {
-  min-height: 127px;
-  margin: 0px;
-  border-bottom: 10px solid #1d70b8;
-}
 
-.dwp-quick-reference--alternative {
-  margin-left: -15px;
-  padding: 15px 15px 5px;
-  color: #ffffff;
-  background: #1d70b8;
-}
 
-.dwp-quick-reference__primary {
-  float:left;
-  width: max-content;
-  font-size: 1.6875rem;
-  font-family: Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-weight: 700;
-    margin: 0;
-}
-
-.dwp-quick-reference__status {
-  padding: 0px 8px 0px 16px;
-  display: flex;
-}
-
-.dwp-quick-reference__secondary {
-  float: left;
-  margin-right: 20px;
-  margin-top: 10px;
-}
-
-.dwp-quick-reference__label {
-  float:left;
-  width: auto;
-  margin-right: 5px;
-  margin-top: 10px;
-}
-
-.govuk-tag {
-  margin-right: 15px;
-}
 
 
 // CMS 2012 image
@@ -168,25 +188,28 @@ margin-bottom: 0px;
 .govuk-phase-banner {
   padding-top: 10px;
   padding-bottom: 0px;
-  border: none;;
+  border: none;
+  ;
 }
+
 .govuk-phase-bannerTwo {
   padding-top: 10px;
   padding-bottom: 40px;
   /* border-bottom: 1px solid #b1b4b6; */
 }
 
-  p.govuk-phase-banner__content {
-    padding-bottom: 20px;
-  }
+p.govuk-phase-banner__content {
+  padding-bottom: 20px;
+}
 
-  .dateRange {
+.dateRange {
   padding-bottom: 30px;
-  }
-  .dateRange__text {
-   font-size: 24px;
-   display: block;
-    width: max-content;
+}
+
+.dateRange__text {
+  font-size: 24px;
+  display: block;
+  width: max-content;
 }
 
 // Date range 
@@ -201,7 +224,7 @@ margin-bottom: 0px;
   float: left;
   margin-top: 66px;
 }
- 
+
 
 // Cards
 .moj-ticket-panel__content {
@@ -225,35 +248,40 @@ margin-bottom: 0px;
 .moj-ticket-panel {
   margin: 30px;
   display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        //grid-template-columns: repeat(auto-fill, minmax(279px, 0fr));
-        gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  //grid-template-columns: repeat(auto-fill, minmax(279px, 0fr));
+  gap: 30px;
 }
+
 .moj-ticket-panel-trio {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 0fr));
   gap: 30px;
 }
+
 .ef-card-trio-v2 {
   max-width: none;
   position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
 }
+
 .moj-ticket-panel-trio-v2 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(292px, 0fr));
   gap: 19px;
   padding: 22px;
 }
+
 .ef-card-duo {
   max-width: none;
   position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
 }
+
 .moj-ticket-panel-duo {
   display: grid;
   grid-template-columns: auto auto;
@@ -264,20 +292,22 @@ margin-bottom: 0px;
 .ef-card {
   max-width: none;
   position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    border: 1px solid #b1b4b6;
-    margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #b1b4b6;
+  margin-bottom: 40px;
 }
+
 .ef-card-trio {
   max-width: none;
   position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  margin-bottom: 40px;
 }
+
 .moj-ticket-panel-trio {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(292px, 0fr));
@@ -285,89 +315,93 @@ margin-bottom: 0px;
   padding: 22px;
 }
 
-  // Card title and value
-  .dfe-title, .dfe-title-i8, .dfe-title-cash {
-    background-color: #F7F7F7;
-    border-bottom: 1px solid #b1b4b6;
-    }
+// Card title and value
+.dfe-title,
+.dfe-title-i8,
+.dfe-title-cash {
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #b1b4b6;
+}
 
-  // before iteration 8
-  .dfe-title h2 {
-    float: left;
-    font-size: 1.5rem;
-    margin: 25px 0px 24px 40px;
-    }
-    .dfe-title h2.value {
-      float: right;
-      font-size: 40px;
-      margin: 15px 30px 15px 15px;
-      font-weight: bold;
-      }
+// before iteration 8
+.dfe-title h2 {
+  float: left;
+  font-size: 1.5rem;
+  margin: 25px 0px 24px 40px;
+}
+
+.dfe-title h2.value {
+  float: right;
+  font-size: 40px;
+  margin: 15px 30px 15px 15px;
+  font-weight: bold;
+}
+
 // iteration 8 onwards
-    .dfe-title-i8 h2 {
-      float: left;
-      font-size: 1.5rem;
-      margin: 20px 0px 20px 22px;
-      font-family: "GDS Transport", arial, sans-serif;
-      }
+.dfe-title-i8 h2 {
+  float: left;
+  font-size: 1.5rem;
+  margin: 20px 0px 20px 22px;
+  font-family: "GDS Transport", arial, sans-serif;
+}
 
-      .dfe-title-i8 h2.value {
-        float: right;
-        font-size: 40px;
-        margin: 10px 25px 11px 15px;
-        font-weight: bold;
-        font-family: "GDS Transport", arial, sans-serif;
-        }
+.dfe-title-i8 h2.value {
+  float: right;
+  font-size: 40px;
+  margin: 10px 25px 11px 15px;
+  font-weight: bold;
+  font-family: "GDS Transport", arial, sans-serif;
+}
 
-  // prototypes with cash balance subheader
+// prototypes with cash balance subheader
 
-    .dfe-title-cash h2 {
-    float: left;
-    font-size: 1.5rem;
-    margin: 20px 0px 0px 22px;
-    font-family: "GDS Transport", arial, sans-serif;
-    }
-  
-    .dfe-title-cash span.govuk-caption-m {
-    width: fit-content;
-    margin: 0px 0px 20px 22px;
-    clear: left;
-    }
-    
-    .dfe-title-cash h2.value {
-      float: right;
-      font-size: 40px;
-      margin: 23px 25px 11px 15px;
-      font-weight: bold;
-      font-family: "GDS Transport", arial, sans-serif;
-      }
+.dfe-title-cash h2 {
+  float: left;
+  font-size: 1.5rem;
+  margin: 20px 0px 0px 22px;
+  font-family: "GDS Transport", arial, sans-serif;
+}
 
-    
-  
-    .dfe-title p {
-      float: right;
-      margin: 15px 40px 15px 15px;
-      font-size: 30px;
-      font-weight: bold;
-      color: #000000;
-      }
+.dfe-title-cash span.govuk-caption-m {
+  width: fit-content;
+  margin: 0px 0px 20px 22px;
+  clear: left;
+}
 
-      .dfe-title p.value {
-        float: left;
-        margin: 19px 40px 18px 10px;
-        font-size: 24px;
-        font-weight: normal;
-        }
+.dfe-title-cash h2.value {
+  float: right;
+  font-size: 40px;
+  margin: 23px 25px 11px 15px;
+  font-weight: bold;
+  font-family: "GDS Transport", arial, sans-serif;
+}
+
+
+
+.dfe-title p {
+  float: right;
+  margin: 15px 40px 15px 15px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.dfe-title p.value {
+  float: left;
+  margin: 19px 40px 18px 10px;
+  font-size: 24px;
+  font-weight: normal;
+}
 
 
 // Pagination
 
 .pagination {
   float: left;
-    margin: 0 15% 0 15%;
-    padding: 0px;
-    display: flex;
-    width: fit-content;
+  margin: 0 15% 0 15%;
+  padding: 0px;
+  display: flex;
+  width: fit-content;
 }
 
 // Password field
@@ -396,19 +430,28 @@ margin-bottom: 0px;
   padding: 10px 20px 10px 0;
   border-bottom: 1px solid #b1b4b6;
   text-align: left;
-  vertical-align: top; 
+  vertical-align: top;
 }
+
 .govuk-table__cell_link {
   color: #1d70b8;
   padding: 10px 20px 10px 0;
-    border-bottom: 1px solid #b1b4b6;
-    text-align: left;
-    vertical-align: top;
-    text-align: center;
+  border-bottom: 1px solid #b1b4b6;
+  text-align: left;
+  vertical-align: top;
+  text-align: center;
 }
 
 .numerical {
   text-align: right;
+}
+
+dd.govuk-summary-list__value.summary-list__value__currency {
+  text-align: right;
+
+  @media (max-width: 400px) {
+    text-align: left;
+  }
 }
 
 // Breadcrumbs
@@ -423,29 +466,29 @@ margin-bottom: 0px;
 // Payments table
 
 .cell_date {
-  width:150px;
+  width: 150px;
 }
 
 .cell_description {
-  width:610px;
+  width: 610px;
 }
 
 .cell_amount {
-  width:130px;
+  width: 130px;
 }
 
 // Statement table 
 
 .statement_date {
-  width:200px;
+  width: 200px;
 }
 
 .statement_description {
-  width:610px;
+  width: 610px;
 }
 
 .statement_amount {
-  width:170px;
+  width: 170px;
   text-align: right;
 }
 
@@ -453,6 +496,7 @@ margin-bottom: 0px;
   text-align: right;
   width: 150px;
 }
+
 .statement_39_end {
   text-align: right;
   width: 170px;
@@ -461,16 +505,19 @@ margin-bottom: 0px;
 // Payment table
 
 .schedule_date {
-  width:20%;
+  width: 20%;
 }
+
 .schedule_method {
-  width:56%;
+  width: 56%;
 }
+
 .schedule_due {
-  width:12%;
+  width: 12%;
 }
+
 .schedule_paid {
-  width:12%;
+  width: 12%;
   text-align: right;
 }
 
@@ -491,7 +538,7 @@ margin-bottom: 0px;
 
 @media (min-width: 40.0625em) {
   .govuk-notification-banner__content {
-      padding: 20px 20px 20px 40px;
+    padding: 20px 20px 20px 40px;
   }
 }
 
@@ -538,11 +585,11 @@ a.govuk-focused-text {
 
 // Maintenance calcs table
 .reasonTitle {
-  width:180px;
+  width: 180px;
 }
 
 .cell_reason {
-  width:180px;
+  width: 180px;
   position: relative;
   width: -webkit-fit-content;
   width: fit-content;
@@ -552,12 +599,12 @@ a.govuk-focused-text {
 }
 
 .cell_calDate {
-  width:130px;
+  width: 130px;
 }
 
 // Maintenance calcs breakdown table
 .mcTitle {
-  width:300px;
+  width: 300px;
 }
 
 .mcParentRow {
@@ -571,10 +618,10 @@ a.govuk-focused-text {
 .mcDetails {
   width: 588px;
 }
-.mcCellEnd {
-  float:left;
-      padding: 10px 20px 10px 0;
-    border-bottom: 1px solid #b1b4b6;
-    vertical-align: top;
-}
 
+.mcCellEnd {
+  float: left;
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #b1b4b6;
+  vertical-align: top;
+}

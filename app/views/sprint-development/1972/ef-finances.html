@@ -1,0 +1,366 @@
+{% extends "layouts/internal-service.html" %}
+
+{# {% block pageTitle %}
+Finances – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %} #}
+
+{% block header %}
+{% include "includes/ukic-components-source.html"%}
+{% include "includes/dwp-internal-service-header.html"%}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/govuk-beta-banner" %}
+{% include "includes/vpf/dwp-quick-reference-multicase-manual" %}
+
+<!-- /////// NAVIGATION PRIMARY /////// -->
+<div class="moj-primary-navigation">
+  <div class="moj-primary-navigation__container">
+    <div class="moj-primary-navigation__nav">
+      <nav class="moj-primary-navigation" aria-label="Primary navigation">
+        <ul class="moj-primary-navigation__list">
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" aria-current="page" href="ef-finances.html">Finances</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="ef-statements.html">Statement</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="ef-payment-allocation.html">Payment allocation</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="ef-payment-plan.html">Payment plan</a>
+          </li>
+          <!--<li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" href="ef-calculations-1.html">Calculations</a>
+            </li>-->
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="case">Case</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+<!-- /////////////////////////////////// -->
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+      Finances
+    </h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <p class="govuk-!-font-size-24">
+          From the case effective date <strong>8 December 2014</strong> to <strong>6 May 2025</strong>.
+
+        </p>
+      </div>
+
+      <div class="govuk-grid-column-full">
+
+        <section class="ef-card">
+          <div class="dfe-title-cash">
+            <div class="dfe-title-cash__text">
+              <h2 id="money-still-owed">Money still owed</h2>
+              <span class="govuk-caption-m">
+                Cash balance not included
+              </span>
+            </div>
+            <p class="dfe-title-cash__amount govuk-!-font-size-36 govuk-!-font-weight-bold"
+              aria-describedby="money-still-owed">
+              £29,055.99
+            </p>
+          </div>
+
+          <div class="ef-card-duo">
+            <div class="moj-ticket-panel-duo">
+              <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+                <h3 class="govuk-body">Child maintenance</h3>
+                <p class="govuk-heading-m govuk-!-margin-bottom-2">£25,680.14</p>
+              </div>
+              <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+                <h3 class="govuk-body">Charges and debt</h3>
+                <p class="govuk-heading-m govuk-!-margin-bottom-2">£3,375.85</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ef-card">
+          <div class="dfe-title-cash">
+            <div class="dfe-title-cash__text">
+              <h2 id="overpayments">Overpayments</h2>
+              <span class="govuk-caption-m">Included in the payments made</span>
+            </div>
+            <p class="dfe-title-cash__amount govuk-!-font-size-36 govuk-!-font-weight-bold"
+              aria-describedby="overpayments">£1,652.51</p>
+          </div>
+          <div class="ef-card-duo">
+            <div class="moj-ticket-panel-trio">
+              <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+                <h3 class="govuk-body">Child maintenance</h3>
+                <p class="govuk-heading-m govuk-!-margin-bottom-2">£1,101.55</p>
+              </div>
+              <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+                <h3 class="govuk-body">Charges and debt</h3>
+                <p class="govuk-heading-m govuk-!-margin-bottom-2">£220.35</p>
+              </div>
+              <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+                <h3 class="govuk-body">Cash balance</h3>
+                <p class="govuk-heading-m govuk-!-margin-bottom-2">£330.61</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ef-card">
+          <div class="dfe-title-cash">
+            <div class="dfe-title-cash__text">
+              <h2 id="overpayments">Payments made</h2>
+              <span class="govuk-caption-m">Includes cash balance and overpayments</span>
+            </div>
+            <p class="dfe-title-cash__amount govuk-!-font-size-36 govuk-!-font-weight-bold"
+              aria-describedby="overpayments">£4,213.30</p>
+          </div>
+          <div class="ef-card-duo">
+            <div class="moj-ticket-panel-duo">
+              <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+                <h3 class="govuk-body">Child maintenance</h3>
+                <p class="govuk-heading-m govuk-!-margin-bottom-2">£3,113.20</p>
+              </div>
+              <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+                <h3 class="govuk-body">Charges and debt</h3>
+                <p class="govuk-heading-m govuk-!-margin-bottom-2">£1,100.10</p>
+              </div>
+            </div>
+            <div class="moj-ticket-panel-duo" style="padding-top: 0;" role="text">
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Cash balance £330.61
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  Money paid that cannot be allocated to child maintenance or charges yet.
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section class="ef-card">
+          <div class="dfe-title-cash">
+            <div class="dfe-title-cash__text">
+              <h2 id="money-still-owed">Amount written off</h2>
+            </div>
+            <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="amount-written-off">£0.00</p>
+          </div>
+        </section>
+
+        {# /////////// Total Expected ////////////// #}
+
+        <section class="ef-card">
+          <div class="dfe-title-cash">
+            <div class="dfe-title-cash__text">
+              <h2 id="money-still-owed">Total expected</h2>
+            </div>
+            <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="total-expected">£34,921.80</p>
+          </div>
+
+          {# /////////// Expected child maintenance ////////////// #}
+
+          <div class="moj-ticket-panel-duo moj-ticket-panel-duo--charges">
+            <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+              <h3 class="govuk-body">Child maintenance</h3>
+              <p class="govuk-heading-m govuk-!-margin-bottom-2">£31,545.95</p>
+            </div>
+            <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
+              <h3 class="govuk-body">Charges and debt</h3>
+              <p class="govuk-heading-m govuk-!-margin-bottom-2">£3,375.85</p>
+            </div>
+            <div class="moj-ticket-panel__content moj-ticket-panel__content--blue moj-ticket-panel__content--details">
+              <h4 class="govuk-heading-m govuk-!-margin-top-0">Charges and debt details</h4>
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Collection charges
+                  </dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">
+                    £3,075.85</dd>
+                </div>
+                <div class="govuk-summary-list__row" style="border-bottom:none;">
+                  <dt class="govuk-summary-list__key">Enforcement charges</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£300.00</dd>
+                </div>
+
+                {# //////////////////// #}
+
+                <section class="govuk-summary-list__row govuk-!-padding-bottom-8" role="contentinfo"
+                  aria="Enforcement charges">
+                  <dt aria-label="Charges included in £300">
+                    <ul class="govuk-list" role="list">
+                      <li>£20.00 Regular deduction order.</li>
+                      <li>£100.00 Lump sum deduction order.</li>
+                      <li>£150.00 Liability order.</li>
+                      <li class="govuk-!-margin-bottom-3">£30.00 Deduction from earnings order or request.</li>
+                    </ul>
+                  </dt>
+                  <dd class="govuk-summary-list__value"></dd>
+                </section>
+
+                {# //////////////////// #}
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Enforcement costs</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£160.00</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">CSA debt</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£63.45</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">DNA costs</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£87.23</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Subject access request costs</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£19.00</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Interest</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£30.67</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Fees</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£22.87</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Judicial review costs</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£107.89</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Appeal costs</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£43.45</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">CMS administration costs</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£26.89</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Liability order administration costs</dt>
+                  <dd class="govuk-summary-list__value summary-list__value__currency">£54.00</dd>
+                </div>
+              </dl>
+              {# ///////// End of DL /////////// #}
+            </div>
+          </div>
+        </section>
+        {# //////////////////// #}
+
+      </div>
+    </div>
+
+    <style>
+      .govuk-table__body .govuk-table__header {
+        text-align: right;
+      }
+
+      .moj-ticket-panel-duo {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 19px;
+        padding: 22px;
+        align-items: stretch;
+      }
+
+      .moj-ticket-panel__content {
+        min-width: 0;
+      }
+
+      .moj-ticket-panel-duo> :nth-child(3) {
+        grid-column: 1;
+      }
+
+      @media (max-width: 800px) {
+        .moj-ticket-panel-duo> :nth-child(3) {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .moj-ticket-panel-duo {
+          grid-template-columns: 1fr;
+        }
+
+        .moj-ticket-panel-duo> :nth-child(3) {
+          grid-column: auto;
+        }
+      }
+
+      @media (min-width: 640px) {
+
+        .moj-ticket-panel__content--details .govuk-summary-list__key {
+          width: 70%;
+        }
+
+        .moj-ticket-panel__content--details .govuk-summary-list__value,
+        .moj-ticket-panel__content--details .summary-list__value__currency {
+          width: 30%;
+          white-space: nowrap;
+        }
+      }
+
+      .moj-ticket-panel-trio {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 19px;
+        padding: 22px;
+        align-items: stretch;
+      }
+
+      .dfe-title-cash {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 16px;
+        padding: 22px;
+        flex-wrap: wrap;
+      }
+
+      .dfe-title-cash__text {
+        display: flex;
+        flex-direction: column;
+        gap: govuk-spacing(1);
+
+        h2,
+        span.govuk-caption-m {
+          margin: 0;
+        }
+      }
+
+      .dfe-title-cash__amount {
+        margin: 0;
+      }
+
+      @media (max-width: 640px) {
+        .dfe-title-cash {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .dfe-title-cash {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .dfe-title-cash__amount {
+          margin-top: govuk-spacing(2);
+        }
+      }
+    </style>
+
+    {% endblock %}
