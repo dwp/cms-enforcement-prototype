@@ -31,9 +31,9 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
           <li class="moj-primary-navigation__item">
             <a class="moj-primary-navigation__link" href="ef-payment-plan.html">Payment plan</a>
           </li>
-          <!--<li class="moj-primary-navigation__item">
+          <li class="moj-primary-navigation__item">
               <a class="moj-primary-navigation__link" href="ef-calculations-1.html">Calculations</a>
-            </li>-->
+            </li>
           <li class="moj-primary-navigation__item">
             <a class="moj-primary-navigation__link" href="case">Case</a>
           </li>
@@ -74,7 +74,6 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
               £29,055.99
             </p>
           </div>
-
           <div class="ef-card-duo">
             <div class="moj-ticket-panel-duo">
               <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
@@ -262,105 +261,87 @@ Finances – {{ serviceName }} – GOV.UK Prototype Kit
 
       </div>
     </div>
+<style>
+  .govuk-table__body .govuk-table__header {
+    text-align: right;
+  }
 
-    <style>
-      .govuk-table__body .govuk-table__header {
-        text-align: right;
-      }
+  /* Ticket panels */
+  .moj-ticket-panel-duo,
+  .moj-ticket-panel-trio {
+    display: grid;
+    gap: 19px;
+    padding: 22px;
+    align-items: stretch;
+  }
 
-      .moj-ticket-panel-duo {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(220px, 1fr));
-        gap: 19px;
-        padding: 22px;
-        align-items: stretch;
-      }
+  .moj-ticket-panel-duo, 
+  .moj-ticket-panel-trio {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
 
-      .moj-ticket-panel__content {
-        min-width: 0;
-      }
+  .moj-ticket-panel__content {
+    min-width: 0;
+  }
 
-      .moj-ticket-panel-duo> :nth-child(3) {
-        grid-column: 1;
-      }
+  /* Summary list layout */
+  @media (min-width: 640px) {
+    .moj-ticket-panel__content--details .govuk-summary-list__key {
+      width: 70%;
+    }
 
-      @media (max-width: 800px) {
-        .moj-ticket-panel-duo> :nth-child(3) {
-          grid-column: 1 / -1;
-        }
-      }
+    .moj-ticket-panel__content--details .govuk-summary-list__value,
+    .moj-ticket-panel__content--details .summary-list__value__currency {
+      width: 30%;
+      white-space: nowrap;
+    }
+  }
 
-      @media (max-width: 640px) {
-        .moj-ticket-panel-duo {
-          grid-template-columns: 1fr;
-        }
+  @media (max-width: 640px) {
+    .moj-ticket-panel-duo,
+    .moj-ticket-panel-trio {
+      grid-template-columns: 1fr;
+    }
 
-        .moj-ticket-panel-duo> :nth-child(3) {
-          grid-column: auto;
-        }
-      }
+    .moj-ticket-panel-duo > :nth-child(3) {
+      grid-column: auto;
+    }
 
-      @media (min-width: 640px) {
+    .dfe-title-cash {
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-        .moj-ticket-panel__content--details .govuk-summary-list__key {
-          width: 70%;
-        }
+    .dfe-title-cash__amount {
+      margin-top: govuk-spacing(2);
+    }
+  }
 
-        .moj-ticket-panel__content--details .govuk-summary-list__value,
-        .moj-ticket-panel__content--details .summary-list__value__currency {
-          width: 30%;
-          white-space: nowrap;
-        }
-      }
+  /* Title and amount */
+  .dfe-title-cash {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px;
+    flex-wrap: wrap;
 
-      .moj-ticket-panel-trio {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 19px;
-        padding: 22px;
-        align-items: stretch;
-      }
+    span.govuk-caption-m {
+      margin: 0;
+    }
+  }
 
-      .dfe-title-cash {
-        display: flex;
-        justify-content: space-between;
-        align-items: start;
-        gap: 16px;
-        padding: 22px;
-        flex-wrap: wrap;
-      }
+  .dfe-title-cash__text {
+    display: flex;
+    flex-direction: column;
+    gap: govuk-spacing(1);
+  }
 
-      .dfe-title-cash__text {
-        display: flex;
-        flex-direction: column;
-        gap: govuk-spacing(1);
-
-        h2,
-        span.govuk-caption-m {
-          margin: 0;
-        }
-      }
-
-      .dfe-title-cash__amount {
-        margin: 0;
-      }
-
-      @media (max-width: 640px) {
-        .dfe-title-cash {
-          flex-direction: column;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .dfe-title-cash {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .dfe-title-cash__amount {
-          margin-top: govuk-spacing(2);
-        }
-      }
-    </style>
+  .dfe-title-cash__text h2,
+  .dfe-title-cash__text .govuk-caption-m,
+  .dfe-title-cash__amount {
+    margin: 0;
+  }
+</style>
 
     {% endblock %}

@@ -63,6 +63,18 @@ a.navActive {
 .moj-primary-navigation {
   margin-left: -15px;
   padding-left: 15px;
+
+  &__container {
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .moj-primary-navigation {
+      margin-right: -15px;
+      padding-right: 15px;
+    }
+
+  }
 }
 
 // Quick reference component
@@ -114,22 +126,47 @@ a.navActive {
     }
   }
 
+  &__block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: govuk-spacing(1) govuk-spacing(4);
+  }
+
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: govuk-spacing(4);
+    // row-gap: govuk-spacing(1);
+  }
+
   &__pair {
     display: flex;
     align-items: baseline;
-    // gap: govuk-spacing(1);
     white-space: nowrap;
   }
 
-  &__label {
-  flex: 0 0 auto;
+  &__status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: govuk-spacing(2);
 
-  @include govuk-media-query($until: $dwp-quick-reference-label-breakpoint) {
-    padding-bottom: 4px;
+    @media (max-width: 320px) {
+      .dwp-quick-reference__status {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   }
 
-    &__secondary {
+  &__label {
+    flex: 0 0 auto;
+
+    @include govuk-media-query($until: $dwp-quick-reference-label-breakpoint) {
+      padding-bottom: 4px;
+    }
+  }
+
+  &__secondary {
     padding-bottom: govuk-spacing(1);
   }
 }
