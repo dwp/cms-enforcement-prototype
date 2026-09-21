@@ -143,6 +143,12 @@ a.navActive {
     display: flex;
     align-items: baseline;
     white-space: nowrap;
+
+    @media (max-width: 300px) {
+        display: block;
+        white-space: normal;
+      }
+
   }
 
   &__status {
@@ -150,11 +156,9 @@ a.navActive {
     flex-wrap: wrap;
     gap: govuk-spacing(2);
 
-    @media (max-width: 320px) {
-      .dwp-quick-reference__status {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    @media (max-width: 30cs0px) {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 
