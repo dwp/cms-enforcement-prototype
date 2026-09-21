@@ -22,7 +22,7 @@
   <div class="dfe-title-cash">
     <h2 id="payments-made">Payments made</h2>
     <p class="govuk-!-font-size-36 govuk-!-font-weight-bold" aria-describedby="payments-made" style="float:right;margin-top:.7em;margin-right:.7em;">£{{ financeSummary.totalPaidFinances | currency }}</p>
-    <span class="govuk-caption-m">Includes cash balance and overpayments</span>
+    <span class="govuk-caption-m">Includes overpayments</span>
   </div>
   <div class="ef-card-duo">
     <div class="moj-ticket-panel-duo">
@@ -39,12 +39,12 @@
       <details class="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-                  Cash balance £{{ financeSummary.totalCasesCashBalance | currency }}
-                </span>
+            Cash balance £{{ financeSummary.totalCasesCashBalance | currency }}
+          </span>
         </summary>
         <div class="govuk-details__text">
-                Money paid that cannot be allocated to child maintenance or charges yet.
-              </div>
+          Money that has been allocated but not issued.
+        </div>
       </details>
     </div>
   </div>
