@@ -7,22 +7,6 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here
-// Run this code when a form is submitted to 'juggling-balls-answer'
-// router.post('/juggling-balls-answer', function (req, res) {
-
-//     // Make a variable and give it the value from 'how-many-balls'
-//     var howManyBalls = req.session.data['how-many-balls']
-
-//     // Check whether the variable matches a condition
-//     if (howManyBalls == "3 or more"){
-//       // Send user to next page
-//       res.redirect('/juggling-trick')
-//     } else {
-//       // Send user to ineligible page
-//       res.redirect('/ineligible')
-//     }
-
-//   })
 
 // router.get('/sprint-development/multicase/tabs-pattern/multicase-finances', function (req, res, next) {   
 //   res.locals.tab = '2';   
@@ -60,10 +44,11 @@ router.get('/sprint-development/1716/tabs-pattern/multicase-statement', function
   next();
 });
 
-// Use the finance-calculator.js helper to count the number of cases in VPF multicase. Then make results available to page template as {{ financeSummary.activeCount }}, {{ financeSummary.closedCount }}, etc.
+// Import the finance-calculator.js helper to count the number of cases in VPF multicase. Then make results available to page template as {{ financeSummary.activeCount }}, {{ financeSummary.closedCount }}, etc.
 const calculateFinanceSummary =
   require('./helpers/finance-calculator')
 
+// MIDDLEWARE //
 // Add middleware function so the helper is available to other folders
   function addFinanceSummary(req, res, next) {
   const allCases =
@@ -80,11 +65,13 @@ const calculateFinanceSummary =
   next()
 }
 
-// Set which folders the middleware applies to
+// Set an array of folders the middleware applies to. Set this before any routes it applies to.
 
 router.use(
   [
-    '/sprint-development/2175'
+    '/sprint-development/2149',
+    '/sprint-development/2175',
+    '/sprint-development/live-2026-04'
   ],
   addFinanceSummary
 )
@@ -95,6 +82,25 @@ router.get(
   (req, res) => {
     res.render(
       'sprint-development/2175/multicase-finances-multiline-tabs'
+    )
+  }
+)
+
+// routes for folder 2149
+router.get(
+  '/sprint-development/2149/multicase-finances-multiline-tabs',
+  (req, res) => {
+    res.render(
+      'sprint-development/2149/multicase-finances-multiline-tabs'
+    )
+  }
+)
+// routes for folder live-2026-04
+router.get(
+  '/sprint-development/live-2026-04/multicase-finances',
+  (req, res) => {
+    res.render(
+      'sprint-development/live-2026-04/multicase-finances'
     )
   }
 )

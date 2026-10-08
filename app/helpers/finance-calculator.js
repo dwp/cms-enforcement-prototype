@@ -8,7 +8,7 @@ function calculateFinanceSummary(finances, allCases) {
   const expectedCMFinances =
     n(finances.expected_child_maintenance)
 
-  // Active paying cases
+  // Filter active + paying cases only
   const activePayingCases = allCases.filter(
     c => c.case_status === 'active' &&
       c.role === 'paying'
@@ -62,8 +62,7 @@ function calculateFinanceSummary(finances, allCases) {
         stillOwedCaseCD,
 
         stillOwedCaseTotal:
-          stillOwedCaseCM +
-          stillOwedCaseCD
+          stillOwedCaseCM
       }
     })
 

@@ -103,7 +103,6 @@
       <div class="moj-ticket-panel__content moj-ticket-panel__content--blue">
 
       {# ///////// SUMMARY LIST /////////// #}
-
         <h4 class="govuk-heading-s">Charges and debt details</h4>
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -114,6 +113,8 @@
           </div>
           <div class="govuk-summary-list__row" style="border-bottom:none;">
             <dt class="govuk-summary-list__key">Enforcement charges</dt>
+
+<pre>{{ financeSummary | dump }}</pre>
             <dd class="govuk-summary-list__value govuk-!-text-align-right">£{{ financeSummary.expectedEnforcementCharges | currency }}</dd>
           </div>
           <div class="govuk-summary-list__row govuk-!-padding-bottom-8" role="contentinfo" aria-label="Enforcement charges breakdown">
