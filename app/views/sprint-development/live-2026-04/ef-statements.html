@@ -2175,6 +2175,11 @@ Statement – {{ serviceName }} – GOV.UK Prototype Kit
   </div>
 </div>
 
-  {% include "includes/back-to-top-link" %}
+ {# back-to-top link needs the back-to-top.js to work #}
+{% include "includes/back-to-top-link-vpf" %}
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/back-to-top.js"></script>
 {% endblock %}
